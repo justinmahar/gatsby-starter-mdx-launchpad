@@ -6,7 +6,7 @@
 
 See the live demo and get started **[here](https://boldlypress.com/start-here)**.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/abc-123/deploy-status)](https://app.netlify.com/sites/boldlypress/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6c4493db-5263-469c-a0d2-4e3194086bb3/deploy-status)](https://app.netlify.com/sites/boldlypress-fresh/deploys)
 
 # MIT License
 
