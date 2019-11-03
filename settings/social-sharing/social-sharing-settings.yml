@@ -1,0 +1,15 @@
+shareHomePageEnabled: true
+facebook:
+  connectViaFacebookEnabled: true
+  connectViaFacebookUrl: 'https://www.facebook.com/devboldly/'
+  facebookPostSharingEnabled: true
+twitter:
+  connectViaTwitterEnabled: true
+  connectViaTwitterUrl: 'https://twitter.com/devboldly'
+  twitterPostSharingEnabled: true
+  twitterSiteUsername: 'devboldly'
+linkedIn:
+  linkedInPostSharingEnabled: true
+email:
+  connectViaEmailEnabled: true
+  connectViaEmailUrl: /contact

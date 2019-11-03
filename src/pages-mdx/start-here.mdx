@@ -1,0 +1,255 @@
+---
+title: Start Here
+rawSlug: start-here
+date: '2019-07-20'
+category: none
+customExcerpt: none
+featuredImage:
+  featuredImageAlt: none
+  featuredImageEnabled: false
+  featuredImageUrl: /media/no-image.png
+  showTitleSection: true
+  showCardImage: true
+showTitle: true
+showSidebar: false
+layout: page
+hidden: false
+dateEnabled: false
+discussionEnabled: false
+sharing:
+  facebookHashtag: none
+  facebookQuote: '{contentOgTitle}'
+  sharingEnabled: false
+  twitterHashtags: none
+  twitterTitle: '{contentTwitterCardTitle}'
+  twitterVia: '{contentTwitterSiteUsername}'
+seoSettings:
+  openGraph:
+    ogDescription: '{siteWidePageOgDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{siteWidePageOgTitle}'
+  seoDescription: '{siteWidePageSeoDescription}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    seoImageSelection: featured-image-if-enabled
+  seoTitle: '{siteWidePageSeoTitle}'
+  twitterCards:
+    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
+    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
+    twitterCardType: site-wide-twitter-card-type
+group: pages
+---
+
+import { Badge } from "react-bootstrap"
+import { Button } from "react-bootstrap"
+import { Link } from "gatsby"
+import ConfiguredBootswatchOverride from "../components/configured/ConfiguredBootswatchOverride"
+import CurrentYear from "../components/CurrentYear"
+
+Want to use BoldlyPress for your website, blog, or next big serverless React CMS project?
+
+BoldlyPress was created primarily as a serverless CMS for creating blogs, but with some elbow grease, you can use BoldlyPress to build just about anything. 
+
+If you're already familiar with React, it's easy to get started.
+
+## Initial Setup
+---
+
+### Clone BoldlyPress
+
+First, clone the [BoldlyPress project](https://github.com/devboldly/boldlypress) and upload to your own [GitHub](https://github.com/) (or GitLab or BitBucket) account:
+
+```bash
+$ git clone git@github.com:devboldly/boldlypress.git my-new-project
+$ git remote set-url origin git@github.com:my-username/my-new-project.git
+$ git push -u origin master
+```
+
+### Deploy Your Site
+
+Deploy with <a href="https://netlify.com/" target="_blank" rel="noopener">Netlify</a>:
+
+  1. In <a href="https://netlify.com/" target="_blank" rel="noopener">Netlify</a>, select *New site from Git* and add your project. The project will immediately build and deploy. You can visit the new site when it's done.
+  1. Under *Domain settings &raquo; Identity*, enable *Netlify Identity*
+  1. Add GitHub to *Identity &raquo; External Providers* (makes it easy to sign into your site)
+  1. Enable *Git Gateway* under *Identity &raquo; Services* (used by [NetlifyCMS](https://www.netlifycms.org/) for editing content)
+  1. Click your site's link in Netlify, open this Start Here page, and [click this link](/admin) (or add <code>/admin</code> after your site's URL).
+  1. [Log into your site](/admin) using your GitHub account.
+  1. **Important:** In Netlify, under *Identity &raquo; Registration*, set registration to *Invite Only* after your account is created. Otherwise, anyone can create an account and change your site!
+
+### Configure Your Site
+
+Update site information via the [NetlifyCMS Admin section](/admin) of your new site. 
+
+Most importantly:
+
+  - Change your site name, description, images, and URL in [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings)
+  - Configure [Disqus](https://disqus.com/) comments under [Discussion Settings](/admin/#/collections/settings/entries/discussion-settings).
+  - Configure your navbar logo/text under [Navbar Settings](/admin/#/collections/settings/entries/navbarSettings)
+  - Configure social sharing under [Social Sharing Settings](/admin/#/collections/settings/entries/socialSharingSettings)
+  - Configure [Google Analytics](https://analytics.google.com/) and [Build Status Badge](https://www.netlify.com/blog/2019/01/29/sharing-the-love-with-netlify-deployment-badges/) under [Reporting Settings](/admin/#/collections/settings/entries/reportingSettings).
+    - You can find your Netlify deploy status badge under: *Site settings &raquo; General &raquo; Status badges*
+    - The site's status badge is on the <Link to="/site-status">Site Status</Link> page. Feel free to delete that page.
+
+*(Optional)* In your <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">favorite editor</a>, open <code>package.json</code> and update the project name, description, and URLs. Then run <small> `bash:::git add . && git commit -m "Initial setup" && git push` </small>
+
+You're ready to go!
+
+## Start Creating
+---
+
+The site comes with a single <Link to="/hello-world">Hello World</Link> blog post and a few default pages, including this one.
+
+Change these however you see fit under the [admin section](/admin) of the site. Be sure to modify the [menus](/admin/#/collections/settings/entries/menuSettings) if you change the pages they point to.
+
+### Write Some Code
+
+You can also modify the <code>src/pages/index.tsx</code> homepage, the page templates, or the site's React components if you'd like.
+
+The site is powered by [Gatsby](https://www.gatsbyjs.org/) and heavily uses its conventions, so if you're already familiar with that, you can dive right into the code. To know Gatsby is to know BoldlyPress.
+
+To fully customize BoldlyPress, all you need are a good understanding of [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Gatsby](https://www.gatsbyjs.org/), the former two of which have become industry standards.
+
+#### Use The Power of MDX
+
+This site uses [MDX](https://mdxjs.com/) for its Markdown. This is a special kind of Markdown that supports JSX components. Just imagine the possibilities!
+
+For instance, I can import and embed a JSX <Button variant="outline-dark" class="mx-1" size="sm" onClick={()=>{alert("Neato!");}}>Button</Button> (or any other component) directly into this document, which is otherwise written in Markdown. Pretty cool, huh? (Take a look at this page's [raw source](https://raw.githubusercontent.com/devboldly/boldlypress/master/src/pages-mdx/start-here.mdx) to see how to do this.)
+
+This means you can add any React component to any post or page on your site, and it's all editable via the [admin dashboard](/admin)'s UI. I'm sold. Check out the theme preview component below for another example.
+
+## Themes
+---
+
+BoldlyPress uses Bootstrap for its styles. As such, you can choose from 21 <a href="https://bootswatch.com/" target="_blank" rel="noopener">Bootswatch themes</a> to quickly skin your entire site.
+
+<ConfiguredBootswatchOverride startingThemeName="default" labelText="Select a theme to preview:" />
+
+<span class="d-md-none d-lg-block">
+
+*(Protip: Select a theme, then use the Up/Down arrow keys to switch them easily.)*
+
+</span>
+
+#### Selected theme colors:
+<Badge variant="primary">Primary</Badge>
+&nbsp;<Badge variant="secondary">Secondary</Badge>
+&nbsp;<Badge variant="success">Success</Badge>
+&nbsp;<Badge variant="danger">Danger</Badge>
+&nbsp;<Badge variant="warning">Warning</Badge>
+&nbsp;<Badge variant="info">Info</Badge>
+&nbsp;<Badge variant="light">Light</Badge>
+&nbsp;<Badge variant="dark">Dark</Badge>
+<br/><br/>
+
+You can also change the navbar colors to use one of the above theme colors in [Theme Settings](/admin/#/collections/settings/entries/themeSettings).
+
+### Installing A Theme
+
+Switch to your chosen theme with just a few clicks here:
+
+> [Admin &raquo; Settings &raquo; Theme Settings](/admin/#/collections/settings/entries/themeSettings)
+
+Just switch on **Use Bootswatch Theme** and select the desired theme.
+
+### PrismJS Theme
+
+Code blocks are themed using [PrismJS](https://prismjs.com/). There are eight themes available. 
+
+BoldlyPress uses the <small> `Okaidia` </small> theme by default. You can configure the desired theme in <code>gatsby-browser.js</code>. Just comment out all except the one you want.
+
+PrismJS supports inline code syntax highlighting using a prefix. This can be configured in <code>gatsby-config.js</code>.
+
+The default has been set to <small> `:::` </small>. So, for example, in Markdown you would write:
+
+```md
+Some JavaScript `js:::console.log("Hello!");`
+```
+
+...to highlight inline syntax as: 
+
+<div style="border: solid 1px #CCCCCC; padding: 25px 20px 10px 20px; border-radius: 5px;">
+
+  Some JavaScript `js:::console.log("Hello!");`
+
+</div>
+
+<br/>
+
+## Additional Tools
+
+Below are some additional BoldlyPress features and tools you may find helpful.
+
+### Template Tags
+
+In your site's various settings, you can reference other settings using template tags. 
+
+That way, if you change one setting, all others update automatically. Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings). Circular references are not allowed.
+
+The following template tags are available:
+
+| Template Tag      | Value               | Source      |
+|-------------------|---------------------|---------------|
+| <small> `{siteName}` </small>       | Name of site        | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
+| <small> `{siteDescription}` </small> | Description of site | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
+| <small> `{contentTitle}` </small> | Title of current content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentExcerpt}` </small> | Excerpt from current content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentCategory}` </small> | Category of current content (or none if not relevant) | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentSeoTitle}` </small> | SEO title of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentSeoDescription}` </small> | SEO description of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentOgTitle}` </small> | OpenGraph title of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentOgDescription}` </small> | OpenGraph description of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentTwitterCardTitle}` </small> | Twitter Card title for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentTwitterCardDescription}` </small> | Twitter Card description for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{contentTwitterSiteUsername}` </small> | Twitter Card username for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
+| <small> `{twitterSiteUsername}` </small> | Twitter username for site | [Social &amp; Sharing Settings](/admin/#/collections/settings/entries/socialSharingSettings) |
+| <small> `{seoTitleSeparator}` </small> | Separator for use in SEO titles. | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostSeoTitle}` </small> | Default SEO title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostSeoDescription}` </small> | Default SEO description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostOgTitle}` </small> | Default OpenGraph title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostOgDescription}` </small> | Default OpenGraph description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostTwitterCardTitle}` </small> | Default Twitter Card title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostTwitterCardDescription}` </small> | Default Twitter Card description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePostTwitterCardSiteUsername}` </small> | Default Twitter Card site username for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageSeoTitle}` </small> | Default SEO title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageSeoDescription}` </small> | Default SEO description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageOgTitle}` </small> | Default OpenGraph title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageOgDescription}` </small> | Default OpenGraph description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageTwitterCardTitle}` </small> | Default Twitter Card title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageTwitterCardDescription}` </small> | Default Twitter Card description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{siteWidePageTwitterCardSiteUsername}` </small> | Default Twitter Card site username for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+
+
+# MIT License
+---
+
+Copyright (c) 2019 [DevBoldly](https://devboldly.com)
+
+Copyright (c) 2018 gatsbyjs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

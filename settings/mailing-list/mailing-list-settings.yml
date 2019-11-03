@@ -1,0 +1,29 @@
+mailingListFormActionUrl: /
+mailingListFormMethod: POST
+mailingListFormNameAttribute: subscriptions
+mailingListEmailAddressFieldNameAttribute: emailAddress
+mailingListEmailAddressFieldPlaceholder: Enter your email
+mailingListAsyncEnabled: true
+sidebarWidget:
+  bodyText: Find out when new content comes out! Sign up now.
+  buttonText: Subscribe
+  enabled: true
+  errorSubmittingText: There was a problem. Please try again.
+  headerImage: /media/mailing-list-widget-header.jpg
+  privacyText: "Your email will be kept safe, secure, and private."
+  successBodyText: "You're all set. Stay tuned for updates. \U0001F44D"
+  successImage: /media/mailing-list-widget-success.jpg
+  successTitleText: You're signed up!
+  titleText: Get notified!
+footerMailingListSection:
+  backgroundImage: /media/mailing-list-section-background.jpg
+  backgroundImageBrightness: 25
+  bodyText: Sign up now!
+  buttonText: Subscribe
+  enabled: true
+  errorSubmittingText: There was a problem. Please try again.
+  privacyText: "Your email will be kept safe, secure, and private."
+  successBodyText: "You're all set. Stay tuned for updates. \U0001F44D"
+  successImage: /media/mailing-list-section-success.jpg
+  successTitleText: "You're signed up!"
+  titleText: Don't miss out on the next post

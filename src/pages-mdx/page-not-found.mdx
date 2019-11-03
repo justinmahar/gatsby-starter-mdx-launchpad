@@ -1,0 +1,76 @@
+---
+title: Page Not Found
+rawSlug: page-not-found
+date: '2019-11-02'
+category: none
+customExcerpt: 'Sorry, we couldn''t find what you were looking for.'
+featuredImage:
+  featuredImageAlt: A surprised looking kitten.
+  featuredImageEnabled: true
+  featuredImageUrl: /media/not-found-header.jpg
+  showTitleSection: true
+  showCardImage: false
+showTitle: false
+showSidebar: false
+hidden: false
+layout: page
+dateEnabled: false
+discussionEnabled: false
+sharing:
+  facebookHashtag: none
+  facebookQuote: '{contentOgTitle}'
+  sharingEnabled: false
+  twitterHashtags: none
+  twitterTitle: '{contentTwitterCardTitle}'
+  twitterVia: '{contentTwitterSiteUsername}'
+seoSettings:
+  openGraph:
+    ogDescription: '{siteWidePageOgDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{siteWidePageOgTitle}'
+  seoDescription: '{siteWidePageSeoDescription}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    seoImageSelection: featured-image-if-enabled
+  seoTitle: '{siteWidePageSeoTitle}'
+  twitterCards:
+    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
+    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
+    twitterCardType: site-wide-twitter-card-type
+group: pages
+---
+import { Link } from "gatsby"
+import { Button, Image } from "react-bootstrap"
+
+<div class="text-center">
+
+  # Well, shoot.
+
+  <br/>
+
+  ##### We couldn't find what you were looking for, so here's a kitten instead.
+
+  <br/>
+
+  <Image
+    class="w-50"
+    src="/media/not-found-image.jpg"
+    alt="A tiny, cute kitten."
+    title="Kitten"
+    thumbnail
+  />
+
+  <br/><br/>
+
+  <Link to="/"><Button variant="outline-primary">&laquo; Home</Button></Link>
+
+</div>

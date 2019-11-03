@@ -1,0 +1,81 @@
+---
+title: Site Status
+rawSlug: site-status
+date: '2019-10-13'
+category: none
+customExcerpt: This page shows the current status of the site.
+featuredImage:
+  featuredImageAlt: none
+  featuredImageEnabled: false
+  featuredImageUrl: /media/no-image.png
+  showTitleSection: true
+  showCardImage: true
+showTitle: true
+showSidebar: false
+layout: page
+hidden: false
+dateEnabled: false
+discussionEnabled: false
+sharing:
+  facebookHashtag: none
+  facebookQuote: '{contentOgTitle}'
+  sharingEnabled: false
+  twitterHashtags: none
+  twitterTitle: '{contentTwitterCardTitle}'
+  twitterVia: '{contentTwitterSiteUsername}'
+seoSettings:
+  openGraph:
+    ogDescription: '{siteWidePageOgDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{siteWidePageOgTitle}'
+  seoDescription: '{siteWidePageSeoDescription}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    seoImageSelection: featured-image-if-enabled
+  seoTitle: '{siteWidePageSeoTitle}'
+  twitterCards:
+    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
+    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
+    twitterCardType: site-wide-twitter-card-type
+group: pages
+---
+
+import { Badge } from "react-bootstrap"
+import SiteName from "../components/configured/SiteName"
+import BuildStatusBadge from "../components/configured/BuildStatusBadge"
+
+Below is the build status of <SiteName/>:
+
+<BuildStatusBadge/>
+
+<br/>
+
+<small>(Refreshes every 5 seconds)</small>
+
+<br/><br/>
+
+#### If the status indicates <Badge variant="success">Success</Badge>:
+---
+
+You are looking at the latest and greatest version of <SiteName/>.
+
+#### If the status indicates <Badge variant="warning">Building</Badge>:
+---
+
+A change was just made to <SiteName/> and will be available to you shortly.
+
+#### If the status indicates <Badge variant="danger">Failure</Badge>:
+---
+
+This usually means the owner of <SiteName/> made a change that caused a problem (oops!). Nobody's perfect.
+
+Until the problem is fixed, you may not see new updates to the site, but you can keep using the current version.

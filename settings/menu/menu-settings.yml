@@ -1,0 +1,81 @@
+navbarMenus:
+  - menuItems:
+      - class: font-weight-bold
+        external: false
+        link: /start-here
+        name: Start Here
+      - class: none
+        external: false
+        link: '#'
+        name: Categories
+      - class: none
+        external: false
+        link: /about
+        name: About
+      - class: none
+        external: false
+        link: /contact
+        name: Contact
+    name: Main Menu
+    parentMenuItemName: none
+  - menuItems:
+      - class: none
+        external: false
+        link: /posts
+        name: All Posts
+      - class: none
+        external: false
+        link: '#'
+        name: '---'
+      - class: none
+        external: false
+        link: /posts/category/uncategorized
+        name: Uncategorized
+    name: Categories Submenu
+    parentMenuItemName: Categories
+footerMenus:
+  - menuItems:
+      - class: font-weight-bold
+        external: false
+        link: /start-here
+        name: Start Here
+      - class: none
+        external: false
+        link: /about
+        name: About
+      - class: none
+        external: false
+        link: /contact
+        name: Contact
+      - class: none
+        external: false
+        link: /site-status
+        name: Site Status
+      - class: none
+        external: true
+        link: /admin/
+        name: Admin
+    name: Navigation
+  - menuItems:
+      - class: none
+        external: false
+        link: /posts
+        name: All Posts
+      - class: none
+        external: false
+        link: /posts/category/uncategorized
+        name: Uncategorized
+    name: Categories
+footerLegalMenuItems:
+  - class: none
+    external: true
+    link: /sitemap.xml
+    name: Sitemap
+  - class: none
+    external: false
+    link: /privacy
+    name: Privacy Policy
+  - class: none
+    external: false
+    link: /terms
+    name: Terms of Service

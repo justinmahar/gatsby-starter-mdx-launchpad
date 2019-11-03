@@ -1,0 +1,17 @@
+{
+  "offlineSupportEnabled": true,
+  "showPromptWhenUpdateAvailable": true,
+  "updateAvailablePromptMessage": "This application has been updated. Reload to display the latest version?",
+  "gatsbyPluginManifestOptions": {
+    "name": "{siteName}",
+    "shortName": "{siteName}",
+    "startUrl": "/",
+    "themeColor": "#69BDF8",
+    "backgroundColor": "#69BDF8",
+    "display": "standalone",
+    "icon": {
+      "useSiteIcon": true,
+      "customIcon": "/media/no-image.png"
+    }
+  }
+}

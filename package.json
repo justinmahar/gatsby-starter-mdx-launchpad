@@ -1,0 +1,60 @@
+{
+  "name": "boldlypress",
+  "private": true,
+  "description": "The serverless CMS for React developers. React + TypeScript + MDX + NetlifyCMS + SEO + More",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "rm -rf .cache && rm -rf public",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.0.21",
+    "@mdx-js/react": "^1.0.21",
+    "@mdx-js/tag": "^0.20.3",
+    "bootstrap": "^4.3.1",
+    "disqus-react": "^1.0.6",
+    "form-data": "^2.5.1",
+    "gatsby": "^2.13.2",
+    "gatsby-mdx": "^0.6.3",
+    "gatsby-plugin-google-analytics": "^2.1.4",
+    "gatsby-plugin-manifest": "^2.2.4",
+    "gatsby-plugin-netlify-cms": "^4.1.6",
+    "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-react-helmet": "^3.1.0",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
+    "gatsby-plugin-robots-txt": "^1.4.0",
+    "gatsby-plugin-sass": "^2.1.0",
+    "gatsby-plugin-sitemap": "^2.2.1",
+    "gatsby-plugin-typescript": "^2.1.0",
+    "gatsby-remark-prismjs": "^3.3.3",
+    "gatsby-source-filesystem": "^2.1.2",
+    "gatsby-transformer-json": "^2.2.16",
+    "gatsby-transformer-remark": "^2.6.7",
+    "gatsby-transformer-yaml": "^2.2.3",
+    "moment": "^2.24.0",
+    "netlify-cms-app": "^2.9.7",
+    "node-sass": "^4.12.0",
+    "prismjs": "^1.16.0",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-share": "^3.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devboldly/boldlypress"
+  },
+  "bugs": {
+    "url": "https://github.com/devboldly/boldlypress/issues"
+  }
+}

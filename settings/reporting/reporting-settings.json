@@ -1,0 +1,14 @@
+{
+  "googleAnalytics": {
+    "analyticsEnabled": true,
+    "trackingId": "UA-123456789-1",
+    "anonymize": false,
+    "respectDNT": false,
+    "scriptInHead": false
+  },
+  "buildStatusBadge": {
+    "buildStatusBadgeImageUrl": "https://api.netlify.com/api/v1/badges/abc-123/deploy-status",
+    "buildStatusBadgeImageAlt": "Netlify Status",
+    "buildStatusBadgeImageLink": "https://app.netlify.com/sites/boldlypress/deploys"
+  }
+}

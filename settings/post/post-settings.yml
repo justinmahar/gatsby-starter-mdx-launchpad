@@ -1,0 +1,17 @@
+indexPagePostCount: 5
+listPagePostCount: 5
+recentPostsWidgetPostCount: 5
+recentPostsWidgetPostCategories:
+  - categoryName: all
+allPostsListSlug: /posts
+postCategoryListSlug: /posts/category
+featuredPost:
+  buttonText: Read More »
+  contentCueText: Featured Post
+  customTeaser: none
+  customTitleText: none
+  featuredPostEnabled: true
+  featureNewestPostEnabled: false
+  featuredPostSlug: hello-world
+  leftQuote: “
+  rightQuote: ”
