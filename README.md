@@ -1,10 +1,10 @@
 
 
-# <a href="https://boldlypress.com/start-here"><img alt="BoldlyPress" src="https://github.com/devboldly/boldlypress/raw/master/static/media/default-site-icon.png" width="30" /></a> **Boldly**Press
+# <a href="https://boldlypress-fresh.netlify.com/start-here"><img alt="BoldlyPress" src="https://github.com/devboldly/boldlypress/raw/master/static/media/default-site-icon.png" width="30" /></a> **Boldly**Press
 
 <h3>The serverless CMS for React developers.</h3>
 
-See the live demo and get started **[here](https://boldlypress.com/start-here)**.
+See the live demo and get started **[here](https://boldlypress-fresh.netlify.com/start-here)**.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6c4493db-5263-469c-a0d2-4e3194086bb3/deploy-status)](https://app.netlify.com/sites/boldlypress-fresh/deploys)
 
