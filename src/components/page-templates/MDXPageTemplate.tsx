@@ -1,5 +1,5 @@
 import * as React from "react"
-import MdxContent, { MdxSeoTwitterCardType } from "../../data/MdxContent"
+import MdxContent from "../../data/MdxContent"
 import PageLayout from "../layouts/PageLayout"
 
 export interface IMDXPageTemplateProps {

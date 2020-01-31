@@ -83,9 +83,7 @@ export const mdxFragmentQuery = graphql`
       }
       group
     }
-    code {
-      body
-    }
+    body
     fileAbsolutePath
   }
 `
@@ -159,9 +157,7 @@ export type MdxData = {
     }
     group: MdxGroup
   }
-  code: {
-    body: string
-  }
+  body: string
   fileAbsolutePath: string
 }
 

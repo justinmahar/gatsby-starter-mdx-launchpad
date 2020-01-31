@@ -1,6 +1,6 @@
 import { Location } from "@reach/router"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import MDXRenderer from "gatsby-mdx/mdx-renderer"
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import moment from "moment"
 import * as React from "react"
 import { Card, Col, Container, Row } from "react-bootstrap"
@@ -286,7 +286,7 @@ export default function PageLayout(props: IPageLayoutProps) {
                           )}
                         </Card.Text>
                       )}
-                    <MDXRenderer scope={undefined} components={undefined}>{mdxContent.data.code.body}</MDXRenderer>
+                    <MDXRenderer scope={undefined} components={undefined}>{mdxContent.data.body}</MDXRenderer>
                   </Card.Body>
                 </Card>
               </div>
