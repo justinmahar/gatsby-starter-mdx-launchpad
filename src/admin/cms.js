@@ -3,6 +3,8 @@ import blogPosts from './collections/blog-posts.json';
 import pages from './collections/pages.json';
 import settings from './collections/settings';
 
+console.log('CMS init');
+
 const setup = {
   backend: {
     name: 'git-gateway',
