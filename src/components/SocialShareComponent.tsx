@@ -1,54 +1,43 @@
-import { graphql, useStaticQuery } from "gatsby"
-import * as React from "react"
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-} from "react-share"
-import SocialSharingSettings from "../data/settings/SocialSharingSettings"
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
+import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 
-const ICON_SIZE: number = 32
+const ICON_SIZE = 32;
 
 const divStyles: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  alignContent: "flex-start",
-}
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  alignContent: 'flex-start',
+};
 const buttonStyles: React.CSSProperties = {
-  cursor: "pointer",
+  cursor: 'pointer',
+};
+
+export interface SocialShareComponentProps {
+  url: string;
+  facebookQuote?: string;
+  facebookHashtag?: string;
+  twitterTitle?: string;
+  twitterVia?: string;
+  twitterHashtags?: string[];
+  className?: any;
+  styles?: any;
 }
 
-export interface ISocialShareComponentProps {
-  url: string
-  facebookQuote?: string
-  facebookHashtag?: string
-  twitterTitle?: string
-  twitterVia?: string
-  twitterHashtags?: string[]
-  className?: any
-  styles?: any
-}
-
-export default function SocialShareComponent(
-  props: ISocialShareComponentProps
-) {
+export default function SocialShareComponent(props: SocialShareComponentProps): JSX.Element {
   const data = useStaticQuery(graphql`
     query SocialShareComponentQuery {
       socialSharingYaml {
         ...socialSharingSettings
       }
     }
-  `)
+  `);
 
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(
-    data.socialSharingYaml
-  )
+  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   return (
     <div className={props.className} style={{ ...divStyles, ...props.styles }}>
@@ -64,11 +53,7 @@ export default function SocialShareComponent(
         </FacebookShareButton>
       )}
       {socialSharingSettings.data.linkedIn.linkedInPostSharingEnabled && (
-        <LinkedinShareButton
-          className="mr-2"
-          url={props.url}
-          style={buttonStyles}
-        >
+        <LinkedinShareButton className="mr-2" url={props.url} style={buttonStyles}>
           <LinkedinIcon size={ICON_SIZE} round />
         </LinkedinShareButton>
       )}
@@ -77,12 +62,12 @@ export default function SocialShareComponent(
           url={props.url}
           style={buttonStyles}
           title={props.twitterTitle}
-          via={props.twitterVia.startsWith("@") ? props.twitterVia.slice(1) : props.twitterVia}
+          via={props.twitterVia.startsWith('@') ? props.twitterVia.slice(1) : props.twitterVia}
           hashtags={props.twitterHashtags}
         >
           <TwitterIcon size={ICON_SIZE} round />
         </TwitterShareButton>
       )}
     </div>
-  )
+  );
 }

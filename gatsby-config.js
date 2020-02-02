@@ -18,11 +18,11 @@
 // Some gatsby-config settings live in JSON files and are thus configurable via NetlifyCMS.
 // We pull in the user-configurable settings here using node's require function:
 /** Reporting configuration */
-const reportingConfig = require('./settings/reporting/reporting-settings.json')
+const reportingConfig = require('./settings/reporting/reporting-settings.json');
 /** Site metadata configuration */
-const siteMetadataConfig = require('./settings/site-metadata/site-metadata-settings.json')
+const siteMetadataConfig = require('./settings/site-metadata/site-metadata-settings.json');
 /** Offline/PWA configuration */
-const offlineConfig = require('./settings/offline/offline-settings.json')
+const offlineConfig = require('./settings/offline/offline-settings.json');
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.
@@ -39,24 +39,27 @@ const gatsbyPluginManifestOptions = {
   icon: offlineConfig.gatsbyPluginManifestOptions.icon.useSiteIcon
     ? siteMetadataConfig.siteIcon
     : offlineConfig.gatsbyPluginManifestOptions.icon.customIcon,
-}
+};
 
 // Fix path to icon:
 // Gatsby serves content in static without "static" in the path, but here
 // the path must be relative to this config file. So we add in static before the path.
 if (gatsbyPluginManifestOptions.icon) {
   gatsbyPluginManifestOptions.icon =
-    'static' + (gatsbyPluginManifestOptions.icon.startsWith('/') ? '' : '/') + gatsbyPluginManifestOptions.icon
+    'static' + (gatsbyPluginManifestOptions.icon.startsWith('/') ? '' : '/') + gatsbyPluginManifestOptions.icon;
 }
 // Replace site name slugs for offline config
 if (!!gatsbyPluginManifestOptions.name && typeof gatsbyPluginManifestOptions.name === 'string') {
-  gatsbyPluginManifestOptions.name = gatsbyPluginManifestOptions.name.replace('{siteName}', siteMetadataConfig.siteName)
+  gatsbyPluginManifestOptions.name = gatsbyPluginManifestOptions.name.replace(
+    '{siteName}',
+    siteMetadataConfig.siteName
+  );
 }
 if (!!gatsbyPluginManifestOptions.short_name && typeof gatsbyPluginManifestOptions.short_name === 'string') {
   gatsbyPluginManifestOptions.short_name = gatsbyPluginManifestOptions.short_name.replace(
     '{siteName}',
     siteMetadataConfig.siteName
-  )
+  );
 }
 
 // These plugins are used to enable offline PWA features.
@@ -70,19 +73,19 @@ const offlineSupportEnabledPlugins = [
     },
   },
   'gatsby-plugin-offline',
-]
+];
 // These plugins are used to disable offline PWA features.
 // See: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
-const offlineSupportDisabledPlugins = [`gatsby-plugin-remove-serviceworker`]
+const offlineSupportDisabledPlugins = [`gatsby-plugin-remove-serviceworker`];
 // Switch on/off offline support based on the current settings.
 const offlineSupportPlugins = offlineConfig.offlineSupportEnabled
   ? offlineSupportEnabledPlugins
-  : offlineSupportDisabledPlugins
+  : offlineSupportDisabledPlugins;
 // == END Offline Support Settings Setup ==
 
 // Ensure there is no trailing slash on the Site URL
 if (!!siteMetadataConfig.siteUrl && typeof siteMetadataConfig.siteUrl === 'string') {
-  siteMetadataConfig.siteUrl = siteMetadataConfig.siteUrl.replace(/(.*)[/]+$/, '$1')
+  siteMetadataConfig.siteUrl = siteMetadataConfig.siteUrl.replace(/(.*)[/]+$/, '$1');
 }
 
 // All plugins used
@@ -156,7 +159,7 @@ const plugins = [
     resolve: 'boldlypress-core',
     options: {},
   },
-]
+];
 
 // == Google Analytics ==
 
@@ -167,7 +170,7 @@ if (reportingConfig.googleAnalytics.analyticsEnabled) {
     anonymize: reportingConfig.googleAnalytics.anonymize,
     respectDNT: reportingConfig.googleAnalytics.respectDNT,
     head: reportingConfig.googleAnalytics.scriptInHead,
-  }
+  };
   plugins.push({
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
     resolve: `gatsby-plugin-google-analytics`,
@@ -176,7 +179,7 @@ if (reportingConfig.googleAnalytics.analyticsEnabled) {
       ...analyticsPluginConfig,
       // Add/override additional settings here
     },
-  })
+  });
 }
 // == End Analytics ==
 
@@ -187,4 +190,4 @@ module.exports = {
     // Add additional site metadata here
   },
   plugins: plugins,
-}
+};

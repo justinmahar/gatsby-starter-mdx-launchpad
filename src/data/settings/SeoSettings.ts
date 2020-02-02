@@ -1,5 +1,5 @@
-import { graphql } from "gatsby"
-import { Tags } from "../../util/render-template-tags"
+import { graphql } from 'gatsby';
+import { Tags } from '../../util/render-template-tags';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -160,168 +160,166 @@ export const seoYamlQuery = graphql`
       }
     }
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type SeoSettingsData = {
-  seoTitleSeparator: string
+  seoTitleSeparator: string;
   siteWidePostSeoSettings: {
     openGraph: {
-      ogDescription: string
+      ogDescription: string;
       ogImage: {
-        ogCustomImage: string
-        ogCustomImageAlt: string
-        ogUseCustomOgImage: boolean
-      }
-      ogTitle: string
-    }
-    seoDescription: string
+        ogCustomImage: string;
+        ogCustomImageAlt: string;
+        ogUseCustomOgImage: boolean;
+      };
+      ogTitle: string;
+    };
+    seoDescription: string;
     seoImage: {
-      customSeoImage: string
-      customSeoImageAlt: string
-      useSiteImage: boolean
-    }
-    seoTitle: string
+      customSeoImage: string;
+      customSeoImageAlt: string;
+      useSiteImage: boolean;
+    };
+    seoTitle: string;
     twitterCards: {
-      twitterCardDescription: string
+      twitterCardDescription: string;
       twitterCardImage: {
-        twitterCardCustomImage: string
-        twitterCardCustomImageAlt: string
-        twitterCardUseCustomImage: boolean
-      }
-      twitterCardSiteUsername: string
-      twitterCardTitle: string
-      twitterCardType: SeoTwitterCardType
-    }
-  }
+        twitterCardCustomImage: string;
+        twitterCardCustomImageAlt: string;
+        twitterCardUseCustomImage: boolean;
+      };
+      twitterCardSiteUsername: string;
+      twitterCardTitle: string;
+      twitterCardType: SeoTwitterCardType;
+    };
+  };
   siteWidePageSeoSettings: {
     openGraph: {
-      ogDescription: string
+      ogDescription: string;
       ogImage: {
-        ogCustomImage: string
-        ogCustomImageAlt: string
-        ogUseCustomOgImage: boolean
-      }
-      ogTitle: string
-    }
-    seoDescription: string
+        ogCustomImage: string;
+        ogCustomImageAlt: string;
+        ogUseCustomOgImage: boolean;
+      };
+      ogTitle: string;
+    };
+    seoDescription: string;
     seoImage: {
-      customSeoImage: string
-      customSeoImageAlt: string
-      useSiteImage: boolean
-    }
-    seoTitle: string
+      customSeoImage: string;
+      customSeoImageAlt: string;
+      useSiteImage: boolean;
+    };
+    seoTitle: string;
     twitterCards: {
-      twitterCardDescription: string
+      twitterCardDescription: string;
       twitterCardImage: {
-        twitterCardCustomImage: string
-        twitterCardCustomImageAlt: string
-        twitterCardUseCustomImage: boolean
-      }
-      twitterCardSiteUsername: string
-      twitterCardTitle: string
-      twitterCardType: SeoTwitterCardType
-    }
-  }
+        twitterCardCustomImage: string;
+        twitterCardCustomImageAlt: string;
+        twitterCardUseCustomImage: boolean;
+      };
+      twitterCardSiteUsername: string;
+      twitterCardTitle: string;
+      twitterCardType: SeoTwitterCardType;
+    };
+  };
   indexSeoSettings: {
     openGraph: {
-      ogDescription: string
+      ogDescription: string;
       ogImage: {
-        ogCustomImage: string
-        ogCustomImageAlt: string
-        ogUseCustomOgImage: boolean
-      }
-      ogTitle: string
-    }
-    seoDescription: string
+        ogCustomImage: string;
+        ogCustomImageAlt: string;
+        ogUseCustomOgImage: boolean;
+      };
+      ogTitle: string;
+    };
+    seoDescription: string;
     seoImage: {
-      customSeoImage: string
-      customSeoImageAlt: string
-      useSiteImage: boolean
-    }
-    seoTitle: string
+      customSeoImage: string;
+      customSeoImageAlt: string;
+      useSiteImage: boolean;
+    };
+    seoTitle: string;
     twitterCards: {
-      twitterCardDescription: string
+      twitterCardDescription: string;
       twitterCardImage: {
-        twitterCardCustomImage: string
-        twitterCardCustomImageAlt: string
-        twitterCardUseCustomImage: boolean
-      }
-      twitterCardSiteUsername: string
-      twitterCardTitle: string
-      twitterCardType: SeoTwitterCardType
-    }
-  }
+        twitterCardCustomImage: string;
+        twitterCardCustomImageAlt: string;
+        twitterCardUseCustomImage: boolean;
+      };
+      twitterCardSiteUsername: string;
+      twitterCardTitle: string;
+      twitterCardType: SeoTwitterCardType;
+    };
+  };
   categoryPostListingPageSettings: {
     openGraph: {
-      ogDescription: string
+      ogDescription: string;
       ogImage: {
-        ogCustomImage: string
-        ogCustomImageAlt: string
-        ogUseCustomOgImage: boolean
-      }
-      ogTitle: string
-    }
-    seoDescription: string
+        ogCustomImage: string;
+        ogCustomImageAlt: string;
+        ogUseCustomOgImage: boolean;
+      };
+      ogTitle: string;
+    };
+    seoDescription: string;
     seoImage: {
-      customSeoImage: string
-      customSeoImageAlt: string
-      useSiteImage: boolean
-    }
-    seoTitle: string
+      customSeoImage: string;
+      customSeoImageAlt: string;
+      useSiteImage: boolean;
+    };
+    seoTitle: string;
     twitterCards: {
-      twitterCardDescription: string
+      twitterCardDescription: string;
       twitterCardImage: {
-        twitterCardCustomImage: string
-        twitterCardCustomImageAlt: string
-        twitterCardUseCustomImage: boolean
-      }
-      twitterCardSiteUsername: string
-      twitterCardTitle: string
-      twitterCardType: SeoTwitterCardType
-    }
-  }
+        twitterCardCustomImage: string;
+        twitterCardCustomImageAlt: string;
+        twitterCardUseCustomImage: boolean;
+      };
+      twitterCardSiteUsername: string;
+      twitterCardTitle: string;
+      twitterCardType: SeoTwitterCardType;
+    };
+  };
   notFoundPageSeoSettings: {
     openGraph: {
-      ogDescription: string
+      ogDescription: string;
       ogImage: {
-        ogCustomImage: string
-        ogCustomImageAlt: string
-        ogUseCustomOgImage: boolean
-      }
-      ogTitle: string
-    }
-    seoDescription: string
+        ogCustomImage: string;
+        ogCustomImageAlt: string;
+        ogUseCustomOgImage: boolean;
+      };
+      ogTitle: string;
+    };
+    seoDescription: string;
     seoImage: {
-      customSeoImage: string
-      customSeoImageAlt: string
-      seoImageSelection:
-      | "featured-image-if-enabled"
-      | "custom-image"
-    }
-    seoTitle: string
+      customSeoImage: string;
+      customSeoImageAlt: string;
+      seoImageSelection: 'featured-image-if-enabled' | 'custom-image';
+    };
+    seoTitle: string;
     twitterCards: {
-      twitterCardDescription: string
+      twitterCardDescription: string;
       twitterCardImage: {
-        twitterCardCustomImage: string
-        twitterCardCustomImageAlt: string
-        twitterCardUseCustomImage: boolean
-      }
-      twitterCardSiteUsername: string
-      twitterCardTitle: string
-      twitterCardType: SeoTwitterCardType
-    }
-  }
-}
+        twitterCardCustomImage: string;
+        twitterCardCustomImageAlt: string;
+        twitterCardUseCustomImage: boolean;
+      };
+      twitterCardSiteUsername: string;
+      twitterCardTitle: string;
+      twitterCardType: SeoTwitterCardType;
+    };
+  };
+};
 
-export type SeoTwitterCardType = "summary-card" | "summary-card-with-large-image"
+export type SeoTwitterCardType = 'summary-card' | 'summary-card-with-large-image';
 
 // === === === === === === === === ===
 
 export default class SeoSettings {
-  constructor(public data: SeoSettingsData) { }
+  constructor(public data: SeoSettingsData) {}
 
   getSiteWideTemplateTags(): Tags {
     return {
@@ -339,8 +337,8 @@ export default class SeoSettings {
       siteWidePageOgDescription: this.data.siteWidePageSeoSettings.openGraph.ogDescription,
       siteWidePageTwitterCardTitle: this.data.siteWidePageSeoSettings.twitterCards.twitterCardTitle,
       siteWidePageTwitterCardDescription: this.data.siteWidePageSeoSettings.twitterCards.twitterCardDescription,
-      siteWidePageTwitterCardSiteUsername: this.data.siteWidePageSeoSettings.twitterCards.twitterCardSiteUsername
-    }
+      siteWidePageTwitterCardSiteUsername: this.data.siteWidePageSeoSettings.twitterCards.twitterCardSiteUsername,
+    };
   }
 
   getIndexSeoTempateTags(): Tags {
@@ -351,8 +349,8 @@ export default class SeoSettings {
       contentOgDescription: this.data.indexSeoSettings.openGraph.ogDescription,
       contentTwitterCardTitle: this.data.indexSeoSettings.twitterCards.twitterCardTitle,
       contentTwitterCardDescription: this.data.indexSeoSettings.twitterCards.twitterCardDescription,
-      contentTwitterCardSiteUsername: this.data.indexSeoSettings.twitterCards.twitterCardSiteUsername
-    }
+      contentTwitterCardSiteUsername: this.data.indexSeoSettings.twitterCards.twitterCardSiteUsername,
+    };
   }
   getCategoryPostListingSeoTempateTags(): Tags {
     return {
@@ -362,8 +360,8 @@ export default class SeoSettings {
       contentOgDescription: this.data.categoryPostListingPageSettings.openGraph.ogDescription,
       contentTwitterCardTitle: this.data.categoryPostListingPageSettings.twitterCards.twitterCardTitle,
       contentTwitterCardDescription: this.data.categoryPostListingPageSettings.twitterCards.twitterCardDescription,
-      contentTwitterCardSiteUsername: this.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername
-    }
+      contentTwitterCardSiteUsername: this.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername,
+    };
   }
   getNotFoundPageSeoTempateTags(): Tags {
     return {
@@ -373,12 +371,11 @@ export default class SeoSettings {
       contentOgDescription: this.data.notFoundPageSeoSettings.openGraph.ogDescription,
       contentTwitterCardTitle: this.data.notFoundPageSeoSettings.twitterCards.twitterCardTitle,
       contentTwitterCardDescription: this.data.notFoundPageSeoSettings.twitterCards.twitterCardDescription,
-      contentTwitterCardSiteUsername: this.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername
-    }
+      contentTwitterCardSiteUsername: this.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername,
+    };
   }
 
-  replaceContentTitleTemplateTag(templateString: string, contentTitle: string) {
-    return templateString
-      .replace("{contentTitle}", contentTitle)
+  replaceContentTitleTemplateTag(templateString: string, contentTitle: string): string {
+    return templateString.replace('{contentTitle}', contentTitle);
   }
 }

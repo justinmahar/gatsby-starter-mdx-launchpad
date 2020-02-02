@@ -1,6 +1,6 @@
-import { graphql } from "gatsby"
-import { SeoTwitterCardType } from "./settings/SeoSettings"
-import { Tags } from "../util/render-template-tags"
+import { graphql } from 'gatsby';
+import { Tags } from '../util/render-template-tags';
+import { SeoTwitterCardType } from './settings/SeoSettings';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -86,95 +86,85 @@ export const mdxFragmentQuery = graphql`
     body
     fileAbsolutePath
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type MdxData = {
-  id: string
+  id: string;
   fields: {
-    slug: string
-    categorySlug: string
-  }
-  timeToRead: string
-  excerpt: string
+    slug: string;
+    categorySlug: string;
+  };
+  timeToRead: string;
+  excerpt: string;
   frontmatter: {
-    title: string
-    rawSlug: string
-    date: string
-    category: string
-    customExcerpt: string
+    title: string;
+    rawSlug: string;
+    date: string;
+    category: string;
+    customExcerpt: string;
     featuredImage: {
-      featuredImageEnabled: boolean
-      featuredImageUrl: string
-      featuredImageAlt: string
-      showTitleSection: boolean
-      showCardImage: boolean
-    }
-    showTitle: boolean
-    showSidebar: boolean
-    hidden: boolean
-    layout: MdxLayout
-    dateEnabled: boolean
-    discussionEnabled: boolean
+      featuredImageEnabled: boolean;
+      featuredImageUrl: string;
+      featuredImageAlt: string;
+      showTitleSection: boolean;
+      showCardImage: boolean;
+    };
+    showTitle: boolean;
+    showSidebar: boolean;
+    hidden: boolean;
+    layout: MdxLayout;
+    dateEnabled: boolean;
+    discussionEnabled: boolean;
     sharing: {
-      sharingEnabled: boolean
-      facebookQuote: string
-      facebookHashtag: string
-      twitterTitle: string
-      twitterVia: string
-      twitterHashtags: string
-    }
+      sharingEnabled: boolean;
+      facebookQuote: string;
+      facebookHashtag: string;
+      twitterTitle: string;
+      twitterVia: string;
+      twitterHashtags: string;
+    };
     seoSettings: {
       openGraph: {
-        ogDescription: string
+        ogDescription: string;
         ogImage: {
-          ogCustomImage: string
-          ogCustomImageAlt: string
-          ogUseCustomOgImage: boolean
-        }
-        ogTitle: string
-      }
-      seoDescription: string
+          ogCustomImage: string;
+          ogCustomImageAlt: string;
+          ogUseCustomOgImage: boolean;
+        };
+        ogTitle: string;
+      };
+      seoDescription: string;
       seoImage: {
-        customSeoImage: string
-        customSeoImageAlt: string
-        seoImageSelection: MdxSeoImageSelection
-      }
-      seoTitle: string
+        customSeoImage: string;
+        customSeoImageAlt: string;
+        seoImageSelection: MdxSeoImageSelection;
+      };
+      seoTitle: string;
       twitterCards: {
-        twitterCardDescription: string
+        twitterCardDescription: string;
         twitterCardImage: {
-          twitterCardCustomImage: string
-          twitterCardCustomImageAlt: string
-          twitterCardUseCustomImage: boolean
-        }
-        twitterCardSiteUsername: string
-        twitterCardTitle: string
-        twitterCardType: MdxSeoTwitterCardType
-      }
-    }
-    group: MdxGroup
-  }
-  body: string
-  fileAbsolutePath: string
-}
+          twitterCardCustomImage: string;
+          twitterCardCustomImageAlt: string;
+          twitterCardUseCustomImage: boolean;
+        };
+        twitterCardSiteUsername: string;
+        twitterCardTitle: string;
+        twitterCardType: MdxSeoTwitterCardType;
+      };
+    };
+    group: MdxGroup;
+  };
+  body: string;
+  fileAbsolutePath: string;
+};
 
-export type MdxGroup =
-  | "posts"
-  | "pages"
-export type MdxLayout =
-  | "post"
-  | "page"
-  | "index"
-  | "category-post-listing"
-export type MdxSeoImageSelection =
-  | "featured-image-if-enabled"
-  | "custom-image"
-export type MdxSeoTwitterCardType =
-  | "site-wide-twitter-card-type"
-  | SeoTwitterCardType
+export type MdxGroup = 'posts' | 'pages';
+export type MdxLayout = 'post' | 'page' | 'index' | 'category-post-listing';
+export type MdxSeoImageSelection = 'featured-image-if-enabled' | 'custom-image';
+export type MdxSeoTwitterCardType = 'site-wide-twitter-card-type' | SeoTwitterCardType;
 
 // === === === === === === === === ===
 
@@ -184,11 +174,10 @@ export type MdxSeoTwitterCardType =
  * to construct one. Then pass each MDX node into the constructor.
  */
 export default class MdxContent {
-
-  constructor(public data: MdxData) { }
+  constructor(public data: MdxData) {}
 
   public getExcerpt(): string {
-    return this.data.frontmatter.customExcerpt !== "none" ? this.data.frontmatter.customExcerpt : this.data.excerpt;
+    return this.data.frontmatter.customExcerpt !== 'none' ? this.data.frontmatter.customExcerpt : this.data.excerpt;
   }
 
   public getTemplateTags(): Tags {
@@ -203,21 +192,21 @@ export default class MdxContent {
       contentTwitterCardTitle: this.data.frontmatter.seoSettings.twitterCards.twitterCardTitle,
       contentTwitterCardDescription: this.data.frontmatter.seoSettings.twitterCards.twitterCardDescription,
       contentTwitterSiteUsername: this.data.frontmatter.seoSettings.twitterCards.twitterCardSiteUsername,
-    }
+    };
   }
 
   public isPost(): boolean {
-    return this.data.frontmatter.group === "posts"
+    return this.data.frontmatter.group === 'posts';
   }
 
   public isPage(): boolean {
-    return this.data.frontmatter.group === "pages"
+    return this.data.frontmatter.group === 'pages';
   }
 
   /**
    * Returns true if this MDX uses the post layout, false otherwise.
    */
-  public hasSidebar() {
-    return this.data.frontmatter.showSidebar
+  public hasSidebar(): boolean {
+    return this.data.frontmatter.showSidebar;
   }
 }

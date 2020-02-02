@@ -1,5 +1,5 @@
-import { graphql } from "gatsby"
-import { Tags } from "../util/render-template-tags"
+import { graphql } from 'gatsby';
+import { Tags } from '../util/render-template-tags';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -26,21 +26,21 @@ export const siteMetadataFragmentQuery = graphql`
     siteLanguage
     siteUrl
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type SiteMetadataCommonsData = {
-  siteName: string
-  siteDescription: string
-  siteImage: string
-  siteImageAlt: string
-  siteIcon: string
-  siteIconAlt: string
-  siteLanguage: string
-  siteUrl: string
-}
+  siteName: string;
+  siteDescription: string;
+  siteImage: string;
+  siteImageAlt: string;
+  siteIcon: string;
+  siteIconAlt: string;
+  siteLanguage: string;
+  siteUrl: string;
+};
 
 // === === === === === === === === ===
 
@@ -50,26 +50,25 @@ export type SiteMetadataCommonsData = {
  * to construct one. Then pass the data into the constructor.
  */
 export default class SiteMetadata {
-
   constructor(public data: SiteMetadataCommonsData) {
     // Remove trailing slash
-    this.data.siteUrl = (this.data.siteUrl as string).replace(/(.*)[/]+$/, "$1")
+    this.data.siteUrl = (this.data.siteUrl as string).replace(/(.*)[/]+$/, '$1');
   }
 
-  getTemplateTags():Tags {
+  getTemplateTags(): Tags {
     return {
       siteName: this.data.siteName,
-      siteDescription: this.data.siteDescription
-    }
+      siteDescription: this.data.siteDescription,
+    };
   }
 
-  replaceTemplateTags(templateString: string) {
+  replaceTemplateTags(templateString: string): string {
     return templateString
-      .replace("{siteName}", this.data.siteName)
-      .replace("{siteDescription}", this.data.siteDescription)
-      .replace("{siteImage}", this.data.siteImage)
-      .replace("{siteIcon}", this.data.siteIcon)
-      .replace("{siteLanguage}", this.data.siteLanguage)
-      .replace("{siteUrl}", this.data.siteUrl)
+      .replace('{siteName}', this.data.siteName)
+      .replace('{siteDescription}', this.data.siteDescription)
+      .replace('{siteImage}', this.data.siteImage)
+      .replace('{siteIcon}', this.data.siteIcon)
+      .replace('{siteLanguage}', this.data.siteLanguage)
+      .replace('{siteUrl}', this.data.siteUrl);
   }
 }

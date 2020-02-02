@@ -1,5 +1,5 @@
-import { graphql } from "gatsby";
-import { Tags } from "../../util/render-template-tags";
+import { graphql } from 'gatsby';
+import { Tags } from '../../util/render-template-tags';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -37,51 +37,51 @@ export const builtInPagesJsonQuery = graphql`
       headline
     }
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type BuiltInPageSettingsData = {
   indexSettings: {
-    rawIndexSlug: string
-  }
+    rawIndexSlug: string;
+  };
   categoryPostListingPageSettings: {
-    rawCategoryPostListingPageSlug: string
-    contentTitle: string
-    showSidebar: boolean
-  }
+    rawCategoryPostListingPageSlug: string;
+    contentTitle: string;
+    showSidebar: boolean;
+  };
   notFoundPageSettings: {
-    rawNotFoundPageSlug: string
-    bodyImage: string
-    bodyImageAlt: string
-    bodyText: string
-    buttonText: string
-    buttonUrl: string
-    contentTitle: string
+    rawNotFoundPageSlug: string;
+    bodyImage: string;
+    bodyImageAlt: string;
+    bodyText: string;
+    buttonText: string;
+    buttonUrl: string;
+    contentTitle: string;
     featuredImage: {
-      featuredImageEnabled: boolean
-      featuredImageUrl: string
-      featuredImageAlt: string
-    }
-    headline: string
-  }
+      featuredImageEnabled: boolean;
+      featuredImageUrl: string;
+      featuredImageAlt: string;
+    };
+    headline: string;
+  };
 };
 
 // === === === === === === === === ===
 
 export default class BuiltInPagesSettings {
-  constructor(public data: BuiltInPageSettingsData) { }
+  constructor(public data: BuiltInPageSettingsData) {}
 
   getCategoryPostListingTemplateTags(): Tags {
     return {
-      contentTitle: this.data.categoryPostListingPageSettings.contentTitle
-    }
+      contentTitle: this.data.categoryPostListingPageSettings.contentTitle,
+    };
   }
 
   getNotFoundTemplateTags(): Tags {
     return {
-      contentTitle: this.data.notFoundPageSettings.contentTitle
-    }
+      contentTitle: this.data.notFoundPageSettings.contentTitle,
+    };
   }
 }

@@ -1,18 +1,16 @@
-import * as React from "react"
-import { Button, Card, Form, FormControlProps } from "react-bootstrap"
-import { BsPrefixProps, ReplaceProps } from "react-bootstrap/helpers"
-import { MailingList } from "../hooks/useMailingList"
-import { useStaticQuery, graphql } from "gatsby"
-import MailingListSettings from "../data/settings/MailingListSettings"
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import { Button, Card, Form, FormControlProps } from 'react-bootstrap';
+import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
+import MailingListSettings from '../data/settings/MailingListSettings';
+import { MailingList } from '../hooks/useMailingList';
 
-export interface IMailingListSignupCardProps {
-  mailingList: MailingList
+export interface MailingListSignupCardProps {
+  mailingList: MailingList;
 }
 
-export default function MailingListSignupCard(
-  props: IMailingListSignupCardProps
-) {
-  const mailingList = props.mailingList
+export default function MailingListSignupCard(props: MailingListSignupCardProps): JSX.Element {
+  const mailingList = props.mailingList;
 
   const data = useStaticQuery(graphql`
     query MailingListSignupCardQuery {
@@ -20,29 +18,22 @@ export default function MailingListSignupCard(
         ...mailingListSettings
       }
     }
-  `)
+  `);
 
-  const mailingListSettings = new MailingListSettings(data.mailingListYaml)
-  const formName = mailingListSettings.data.mailingListFormNameAttribute
-  const formActionUrl = mailingListSettings.data.mailingListFormActionUrl
-  const formMethod = mailingListSettings.data.mailingListFormMethod
-  const emailAddressFieldName =
-    mailingListSettings.data.mailingListEmailAddressFieldNameAttribute
-  const emailAddressFieldPlaceholder =
-    mailingListSettings.data.mailingListEmailAddressFieldPlaceholder
+  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
+  const formName = mailingListSettings.data.mailingListFormNameAttribute;
+  const formActionUrl = mailingListSettings.data.mailingListFormActionUrl;
+  const formMethod = mailingListSettings.data.mailingListFormMethod;
+  const emailAddressFieldName = mailingListSettings.data.mailingListEmailAddressFieldNameAttribute;
+  const emailAddressFieldPlaceholder = mailingListSettings.data.mailingListEmailAddressFieldPlaceholder;
 
   return (
     <>
       {!mailingList.mailingListSubmitSuccess && (
         <Card className="secondary">
-          <Card.Img
-            variant="top"
-            src={mailingListSettings.data.sidebarWidget.headerImage}
-          />
+          <Card.Img variant="top" src={mailingListSettings.data.sidebarWidget.headerImage} />
           <Card.Body>
-            <Card.Title>
-              {mailingListSettings.data.sidebarWidget.titleText}
-            </Card.Title>
+            <Card.Title>{mailingListSettings.data.sidebarWidget.titleText}</Card.Title>
             <Card.Text
               dangerouslySetInnerHTML={{
                 __html: mailingListSettings.data.sidebarWidget.bodyText,
@@ -68,26 +59,14 @@ export default function MailingListSignupCard(
                   name={emailAddressFieldName}
                   placeholder={emailAddressFieldPlaceholder}
                   value={mailingList.mailingListEmail}
-                  onChange={(
-                    e: React.FormEvent<
-                      ReplaceProps<
-                        "input",
-                        BsPrefixProps<"input"> & FormControlProps
-                      >
-                    >
-                  ) => mailingList.setMailingListEmail(e.currentTarget.value)}
+                  onChange={(e: React.FormEvent<ReplaceProps<'input', BsPrefixProps<'input'> & FormControlProps>>) =>
+                    mailingList.setMailingListEmail(e.currentTarget.value)
+                  }
                   required
                 />
-                <Form.Text className="text-muted">
-                  {mailingListSettings.data.sidebarWidget.privacyText}
-                </Form.Text>
+                <Form.Text className="text-muted">{mailingListSettings.data.sidebarWidget.privacyText}</Form.Text>
               </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-                disabled={mailingList.mailingListSubmitting}
-                block
-              >
+              <Button variant="primary" type="submit" disabled={mailingList.mailingListSubmitting} block>
                 {mailingListSettings.data.sidebarWidget.buttonText}
               </Button>
             </Form>
@@ -96,14 +75,9 @@ export default function MailingListSignupCard(
       )}
       {mailingList.mailingListSubmitSuccess && (
         <Card>
-          <Card.Img
-            variant="top"
-            src={mailingListSettings.data.sidebarWidget.successImage}
-          />
+          <Card.Img variant="top" src={mailingListSettings.data.sidebarWidget.successImage} />
           <Card.Body>
-            <Card.Title>
-              {mailingListSettings.data.sidebarWidget.successTitleText}
-            </Card.Title>
+            <Card.Title>{mailingListSettings.data.sidebarWidget.successTitleText}</Card.Title>
             <Card.Text
               dangerouslySetInnerHTML={{
                 __html: mailingListSettings.data.sidebarWidget.successBodyText,
@@ -113,5 +87,5 @@ export default function MailingListSignupCard(
         </Card>
       )}
     </>
-  )
+  );
 }

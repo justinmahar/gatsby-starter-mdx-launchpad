@@ -1,32 +1,27 @@
-import FormData from "form-data";
+import FormData from 'form-data';
 
-const DEFAULT_METHOD: string = "POST";
+const DEFAULT_METHOD = 'POST';
 
 export const submitFormData = (
   formActionUrl: string,
   formData: FormData,
   fetchRequestInit: RequestInit = {}
 ): Promise<any> => {
-  return new Promise(
-    (
-      resolve: (value?: {} | PromiseLike<{}> | undefined) => void,
-      reject: (reason?: any) => void
-    ) => {
-      const mergedFetchRequestInit: any = {
-        body: formData,
-        method: DEFAULT_METHOD,
-        ...fetchRequestInit
-      };
+  return new Promise((resolve: (value?: {} | PromiseLike<{}> | undefined) => void, reject: (reason?: any) => void) => {
+    const mergedFetchRequestInit: any = {
+      body: formData,
+      method: DEFAULT_METHOD,
+      ...fetchRequestInit,
+    };
 
-      fetch(formActionUrl, mergedFetchRequestInit)
-        .then(response => {
-          resolve(response);
-        })
-        .catch(err => {
-          reject(err);
-        });
-    }
-  );
+    fetch(formActionUrl, mergedFetchRequestInit)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
 };
 
 export const submitForm = (
@@ -39,6 +34,6 @@ export const submitForm = (
 
 const FormSubmit = {
   submitFormData: submitFormData,
-  submitForm: submitForm
+  submitForm: submitForm,
 };
 export default FormSubmit;

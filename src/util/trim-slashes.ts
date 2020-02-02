@@ -10,11 +10,8 @@
  */
 export function trimSlashes(path: string): string {
   if (!!path && path.length > 0) {
-    path = path.startsWith("/") || path.startsWith("\\") ? path.slice(1) : path
-    path =
-      path.endsWith("/") || path.endsWith("\\")
-        ? path.slice(0, path.length - 1)
-        : path
+    path = path.startsWith('/') || path.startsWith('\\') ? path.slice(1) : path;
+    path = path.endsWith('/') || path.endsWith('\\') ? path.slice(0, path.length - 1) : path;
   }
-  return path
+  return path;
 }

@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -44,44 +44,44 @@ export const mailingListYamlQuery = graphql`
       successBodyText
     }
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type MailingListSettingsData = {
-  mailingListAsyncEnabled: boolean
-  mailingListEmailAddressFieldNameAttribute: string
-  mailingListEmailAddressFieldPlaceholder: string
-  mailingListFormActionUrl: string
-  mailingListFormMethod: string
-  mailingListFormNameAttribute: string
+  mailingListAsyncEnabled: boolean;
+  mailingListEmailAddressFieldNameAttribute: string;
+  mailingListEmailAddressFieldPlaceholder: string;
+  mailingListFormActionUrl: string;
+  mailingListFormMethod: string;
+  mailingListFormNameAttribute: string;
   sidebarWidget: {
-    enabled: boolean
-    headerImage: string
-    titleText: string
-    bodyText: string
-    buttonText: string
-    privacyText: string
-    errorSubmittingText: string
-    successImage: string
-    successTitleText: string
-    successBodyText: string
-  }
+    enabled: boolean;
+    headerImage: string;
+    titleText: string;
+    bodyText: string;
+    buttonText: string;
+    privacyText: string;
+    errorSubmittingText: string;
+    successImage: string;
+    successTitleText: string;
+    successBodyText: string;
+  };
   footerMailingListSection: {
-    enabled: boolean
-    backgroundImage: string
-    backgroundImageBrightness: number
-    titleText: string
-    bodyText: string
-    buttonText: string
-    privacyText: string
-    errorSubmittingText: string
-    successImage: string
-    successTitleText: string
-    successBodyText: string
-  }
-}
+    enabled: boolean;
+    backgroundImage: string;
+    backgroundImageBrightness: number;
+    titleText: string;
+    bodyText: string;
+    buttonText: string;
+    privacyText: string;
+    errorSubmittingText: string;
+    successImage: string;
+    successTitleText: string;
+    successBodyText: string;
+  };
+};
 
 // === === === === === === === === ===
 
@@ -95,8 +95,8 @@ export type MailingListSettingsData = {
  * For all async `init` options, see: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
  */
 export default class MailingListSettings {
-  public asyncFetchInitOptions: RequestInit
+  public asyncFetchInitOptions: RequestInit;
   constructor(public data: MailingListSettingsData) {
-    this.asyncFetchInitOptions = {}
+    this.asyncFetchInitOptions = {};
   }
 }

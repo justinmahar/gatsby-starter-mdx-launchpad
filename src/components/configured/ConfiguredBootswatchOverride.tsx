@@ -1,14 +1,14 @@
-import * as React from "react"
-import ThemeSettings from "../../data/settings/ThemeSettings"
-import { useStaticQuery, graphql } from "gatsby"
-import { Helmet } from "react-helmet"
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import { Helmet } from 'react-helmet';
+import ThemeSettings from '../../data/settings/ThemeSettings';
 
-export interface IConfiguredBootswatchOverrideProps {
-  labelText: string
-  startingThemeName: string
+export interface ConfiguredBootswatchOverrideProps {
+  labelText: string;
+  startingThemeName: string;
 }
 
-export default function ConfiguredBootswatchOverride(props: IConfiguredBootswatchOverrideProps) {
+export default function ConfiguredBootswatchOverride(props: ConfiguredBootswatchOverrideProps): JSX.Element {
   // Theme Settings
   const data = useStaticQuery(graphql`
     query BootswatchOverrideQuery {
@@ -16,29 +16,26 @@ export default function ConfiguredBootswatchOverride(props: IConfiguredBootswatc
         ...themeSettings
       }
     }
-  `)
-  const themeSettings = new ThemeSettings(data.themeYaml)
+  `);
+  const themeSettings = new ThemeSettings(data.themeYaml);
 
-  const [selectedThemeName, setSelectedThemeName] = React.useState(props.startingThemeName)
+  const [selectedThemeName, setSelectedThemeName] = React.useState(props.startingThemeName);
 
-  const themeCss = `${themeSettings.data.bootswatchSettings.bootswatchThemeCDNLocation}${selectedThemeName}/${themeSettings.data.bootswatchSettings.bootswatchThemeFilename}`
+  const themeCss = `${themeSettings.data.bootswatchSettings.bootswatchThemeCDNLocation}${selectedThemeName}/${themeSettings.data.bootswatchSettings.bootswatchThemeFilename}`;
 
   return (
     <>
-      <Helmet>
-        {selectedThemeName !== "default" &&
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href={themeCss}
-          />}
-      </Helmet>
+      <Helmet>{selectedThemeName !== 'default' && <link rel="stylesheet" type="text/css" href={themeCss} />}</Helmet>
 
       <div className="form-group">
         <label htmlFor="theme-select">{props.labelText}</label>
-        <select className="form-control" id="theme-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-          setSelectedThemeName(e.target.value)
-        }}>
+        <select
+          className="form-control"
+          id="theme-select"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+            setSelectedThemeName(e.target.value);
+          }}
+        >
           <option value="default">Default (No Theme)</option>
           <option disabled>──────────</option>
           <option value="cerulean">Cerulean - A calm blue sky</option>
@@ -65,5 +62,5 @@ export default function ConfiguredBootswatchOverride(props: IConfiguredBootswatc
         </select>
       </div>
     </>
-  )
+  );
 }

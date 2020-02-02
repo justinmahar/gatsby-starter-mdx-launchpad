@@ -1,1 +1,1 @@
-export type SocialConnectNetwork = "facebook" | "twitter" | "email"
+export type SocialConnectNetwork = 'facebook' | 'twitter' | 'email';

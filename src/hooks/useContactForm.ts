@@ -1,6 +1,6 @@
-import * as React from "react";
-import FormData from "form-data";
-import FormSubmit from "../util/form-submit";
+import FormData from 'form-data';
+import * as React from 'react';
+import FormSubmit from '../util/form-submit';
 
 /**
  * A contact form field. Can be a text input, email input, or textarea.
@@ -9,11 +9,7 @@ export interface ContactFormField {
   nameAttribute: string;
   label?: string;
   initialValue?: any;
-  type?:
-  | "text"
-  | "email"
-  | "textarea"
-  | "hidden";
+  type?: 'text' | 'email' | 'textarea' | 'hidden';
   placeholder?: string;
   required?: boolean;
   requiredErrorText?: string;
@@ -26,20 +22,18 @@ export interface ContactFormField {
 }
 
 const defaultContactFormFieldPartial: Partial<ContactFormField> = {
-  label: "",
-  initialValue: "",
-  type: "text",
-  placeholder: "",
+  label: '',
+  initialValue: '',
+  type: 'text',
+  placeholder: '',
   required: false,
-  requiredErrorText: "This field is required."
+  requiredErrorText: 'This field is required.',
 };
 
 /** Used to validate emails when no email validation is provided. */
 const emailValidate = (email: any) => {
-  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase())
-    ? true
-    : "Please enter a valid email.";
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase()) ? true : 'Please enter a valid email.';
 };
 
 export type FormValues = {
@@ -80,12 +74,9 @@ export default function useContactForm(
   const [formErrors, setFormErrors] = React.useState<FormErrors>({});
   const [sending, setSending] = React.useState<boolean>(false);
 
-  const getFieldValue = (
-    nameAttribute: string,
-    defaultIfUndefined: any = undefined
-  ): any => {
+  const getFieldValue = (nameAttribute: string, defaultIfUndefined: any = undefined): any => {
     let value = formValues[nameAttribute];
-    if (typeof value === "undefined") {
+    if (typeof value === 'undefined') {
       value = defaultIfUndefined;
     }
     return value;
@@ -101,31 +92,26 @@ export default function useContactForm(
     Object.keys(formFieldMap).forEach(key => {
       const field: ContactFormField = formFieldMap[key];
       const fieldValue: any = formValues[key];
-      if (!!field.required && (!fieldValue && fieldValue !== 0)) {
+      if (!!field.required && !fieldValue && fieldValue !== 0) {
         newFormErrors = {
           ...newFormErrors,
-          [key]: field.requiredErrorText
-            ? field.requiredErrorText
-            : "This field is required."
+          [key]: field.requiredErrorText ? field.requiredErrorText : 'This field is required.',
         };
-      } else if (!!field.validate) {
+      } else if (field.validate) {
         const validation: boolean | string = field.validate(formValues[key]);
-        if (typeof validation === "string" || validation === false) {
-          const message: string =
-            typeof validation === "string"
-              ? validation
-              : "Invalid entry. Please try again.";
+        if (typeof validation === 'string' || validation === false) {
+          const message: string = typeof validation === 'string' ? validation : 'Invalid entry. Please try again.';
           newFormErrors = {
             ...newFormErrors,
-            [key]: message
+            [key]: message,
           };
         }
-      } else if (field.type === "email") {
+      } else if (field.type === 'email') {
         const validation: boolean | string = emailValidate(formValues[key]);
-        if (typeof validation === "string") {
+        if (typeof validation === 'string') {
           newFormErrors = {
             ...newFormErrors,
-            [key]: validation
+            [key]: validation,
           };
         }
       }
@@ -146,16 +132,12 @@ export default function useContactForm(
   const submit = (): Promise<any> => {
     const formData: FormData = new FormData();
     Object.keys(formValues).forEach((key: string) => {
-      let value = formValues[key];
-      formData.append(key, value ? value : "");
+      const value = formValues[key];
+      formData.append(key, value ? value : '');
     });
 
     setSending(true);
-    return FormSubmit.submitFormData(
-      actionUrl,
-      formData,
-      fetchRequestInit
-    )
+    return FormSubmit.submitFormData(actionUrl, formData, fetchRequestInit)
       .then(() => setSending(false))
       .catch(() => setSending(false));
   };
@@ -170,10 +152,10 @@ export default function useContactForm(
     isValid: isValid,
     clear: clear,
     submit: submit,
-    sending: sending
+    sending: sending,
   };
 }
 
 export const GFORMS_FETCH_INIT: RequestInit = {
-  mode: "no-cors"
+  mode: 'no-cors',
 };

@@ -30,7 +30,7 @@
 // === CSS/LESS/SASS imports ===
 
 // == Bootstrap Base ==
-require("bootstrap/dist/css/bootstrap.min.css")
+require('bootstrap/dist/css/bootstrap.min.css');
 
 // == Bootswatch Theme ==
 // Copy your theme to ./static and uncomment this to avoid using the CDN.
@@ -41,26 +41,23 @@ require("bootstrap/dist/css/bootstrap.min.css")
 // require("prismjs/themes/prism-coy.css")
 // require("prismjs/themes/prism-dark.css")
 // require("prismjs/themes/prism-funky.css")
-require("prismjs/themes/prism-okaidia.css")
+require('prismjs/themes/prism-okaidia.css');
 // require("prismjs/themes/prism-solarizedlight.css")
 // require("prismjs/themes/prism-tomorrow.css")
 // require("prismjs/themes/prism-twilight.css")
 
 // == Custom Styles ==
-require("./src/styles/styles.scss")
+require('./src/styles/styles.scss');
 
 // Offline support - Configure the prompt to update.
-let offlineConfig = require("./settings/offline/offline-settings.json")
-let onServiceWorkerUpdateReadyFunction = undefined
-if (
-  !!offlineConfig.offlineSupportEnabled &&
-  !!offlineConfig.showPromptWhenUpdateAvailable
-) {
+const offlineConfig = require('./settings/offline/offline-settings.json');
+let onServiceWorkerUpdateReadyFunction = undefined;
+if (!!offlineConfig.offlineSupportEnabled && !!offlineConfig.showPromptWhenUpdateAvailable) {
   onServiceWorkerUpdateReadyFunction = () => {
-    const answer = window.confirm(offlineConfig.updateAvailablePromptMessage)
+    const answer = window.confirm(offlineConfig.updateAvailablePromptMessage);
     if (answer === true) {
-      window.location.reload()
+      window.location.reload();
     }
-  }
+  };
 }
-export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction
+export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

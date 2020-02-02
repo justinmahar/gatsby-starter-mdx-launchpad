@@ -1,16 +1,15 @@
-import { graphql, useStaticQuery } from "gatsby"
-import * as React from "react"
-import Helmet from "react-helmet"
-import Footer from "./Footer"
-import TopBar from "./TopBar"
-import ThemeSettings from "../data/settings/ThemeSettings"
-import NavbarSettings from "../data/settings/NavbarSettings"
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import Helmet from 'react-helmet';
+import NavbarSettings from '../data/settings/NavbarSettings';
+import ThemeSettings from '../data/settings/ThemeSettings';
+import Footer from './Footer';
 
-export interface ILayoutProps {
-  children: React.ReactNode
+export interface LayoutProps {
+  children: React.ReactNode;
 }
 
-export default function Layout(props: ILayoutProps) {
+export default function Layout(props: LayoutProps): JSX.Element {
   // Theme Settings
   const data = useStaticQuery(graphql`
     query LayoutQuery {
@@ -21,19 +20,19 @@ export default function Layout(props: ILayoutProps) {
         ...navbarSettings
       }
     }
-  `)
-  const themeSettings = new ThemeSettings(data.themeYaml)
-  let themeFileUrl = ""
+  `);
+  const themeSettings = new ThemeSettings(data.themeYaml);
+  let themeFileUrl = '';
   if (themeSettings.data.bootswatchSettings.useBootswatchTheme) {
     themeFileUrl =
       themeSettings.data.bootswatchSettings.bootswatchThemeCDNLocation +
       themeSettings.data.bootswatchSettings.bootswatchThemeName +
-      "/" +
-      themeSettings.data.bootswatchSettings.bootswatchThemeFilename
+      '/' +
+      themeSettings.data.bootswatchSettings.bootswatchThemeFilename;
   }
   // END Bootswatch Settings
 
-  const navbarSettings = new NavbarSettings(data.navbarYaml)
+  const navbarSettings = new NavbarSettings(data.navbarYaml);
 
   return (
     <>
@@ -48,5 +47,5 @@ export default function Layout(props: ILayoutProps) {
       {props.children}
       <Footer />
     </>
-  )
+  );
 }

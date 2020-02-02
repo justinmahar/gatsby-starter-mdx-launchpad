@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -38,41 +38,41 @@ export const menuYamlQuery = graphql`
       external
     }
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type MenuSettingsData = {
   navbarMenus: {
-    parentMenuItemName: string
-    name: string
+    parentMenuItemName: string;
+    name: string;
     menuItems: {
-      name: string
-      link: string
-      class: string
-      external: boolean
-    }[]
-  }[]
+      name: string;
+      link: string;
+      class: string;
+      external: boolean;
+    }[];
+  }[];
   footerMenus: {
-    name: string
+    name: string;
     menuItems: {
-      name: string
-      link: string
-      class: string
-      external: boolean
-    }[]
-  }[]
+      name: string;
+      link: string;
+      class: string;
+      external: boolean;
+    }[];
+  }[];
   footerLegalMenuItems: {
-    name: string
-    link: string
-    class: string
-    external: boolean
-  }[]
-}
+    name: string;
+    link: string;
+    class: string;
+    external: boolean;
+  }[];
+};
 
 // === === === === === === === === ===
 
 export default class MenuSettings {
-  constructor(public data: MenuSettingsData) { }
+  constructor(public data: MenuSettingsData) {}
 }

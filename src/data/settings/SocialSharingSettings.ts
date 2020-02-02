@@ -1,5 +1,5 @@
-import { graphql } from "gatsby"
-import { Tags } from "../../util/render-template-tags"
+import { graphql } from 'gatsby';
+import { Tags } from '../../util/render-template-tags';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -33,41 +33,41 @@ export const socialSharingYamlQuery = graphql`
       connectViaEmailUrl
     }
   }
-`
+`;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type SocialSharingSettingsData = {
-  shareHomePageEnabled: boolean
+  shareHomePageEnabled: boolean;
   facebook: {
-    connectViaFacebookEnabled: boolean
-    connectViaFacebookUrl: string
-    facebookPostSharingEnabled: boolean
-  }
+    connectViaFacebookEnabled: boolean;
+    connectViaFacebookUrl: string;
+    facebookPostSharingEnabled: boolean;
+  };
   twitter: {
-    connectViaTwitterEnabled: boolean
-    connectViaTwitterUrl: string
-    twitterPostSharingEnabled: boolean
-    twitterSiteUsername: string
-  }
+    connectViaTwitterEnabled: boolean;
+    connectViaTwitterUrl: string;
+    twitterPostSharingEnabled: boolean;
+    twitterSiteUsername: string;
+  };
   linkedIn: {
-    linkedInPostSharingEnabled: boolean
-  }
+    linkedInPostSharingEnabled: boolean;
+  };
   email: {
-    connectViaEmailEnabled: boolean
-    connectViaEmailUrl: string
-  }
-}
+    connectViaEmailEnabled: boolean;
+    connectViaEmailUrl: string;
+  };
+};
 
 // === === === === === === === === ===
 
 export default class SocialSharingSettings {
-  constructor(public data: SocialSharingSettingsData) { }
+  constructor(public data: SocialSharingSettingsData) {}
 
-  getTemplateTags():Tags {
+  getTemplateTags(): Tags {
     return {
-      twitterSiteUsername: this.data.twitter.twitterSiteUsername
-    }
+      twitterSiteUsername: this.data.twitter.twitterSiteUsername,
+    };
   }
 }
