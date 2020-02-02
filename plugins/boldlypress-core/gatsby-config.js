@@ -1,15 +1,13 @@
 /** Site metadata configuration */
 module.exports = themeOptions => {
-  const netlifyCmsOptions = themeOptions.netlifyCmsOptions;
-  let htmlTitle = 'Admin';
-  htmlTitle = netlifyCmsOptions && netlifyCmsOptions.htmlTitle ? netlifyCmsOptions.htmlTitle : htmlTitle;
+  const netlifyCmsOptions = themeOptions.netlifyCmsOptions ? themeOptions.netlifyCmsOptions : {};
 
   return {
     plugins: [
       {
         resolve: `gatsby-plugin-netlify-cms`,
         options: {
-          htmlTitle: htmlTitle,
+          ...netlifyCmsOptions,
           modulePath: `${__dirname}/src/admin/cms.js`,
           manualInit: true,
         },
