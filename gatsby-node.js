@@ -26,27 +26,26 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const { createFilePath } = require("gatsby-source-filesystem")
-const path = require("path")
+const path = require('path')
 // We need access to these settings outside of the GraphQL environment.
-const builtInPageSettings = require("./settings/built-in-pages/built-in-page-settings.json")
+const builtInPageSettings = require('./settings/built-in-pages/built-in-page-settings.json')
 
-const INDEX_SLUG = "__index"
-const NOT_FOUND_SLUG = "__404"
-const CATEGORY_POST_LISTING_PAGE_SLUG = "__category_post_listing_page"
+const INDEX_SLUG = '__index'
+const NOT_FOUND_SLUG = '__404'
+const CATEGORY_POST_LISTING_PAGE_SLUG = '__category_post_listing_page'
 const BUILT_IN_SLUGS = [INDEX_SLUG, NOT_FOUND_SLUG, CATEGORY_POST_LISTING_PAGE_SLUG]
 
 // Post category used when none is specified.
-const NONE_CATEGORY = "none"
+const NONE_CATEGORY = 'none'
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-
   // First, determine which pages are being set aside for the built-in pages
   // like the index, 404, etc. These are the raw user-defined slugs.
   // Those pages won't be created with their own slugs but will instead get predefined ones
   // that can be selected on later.
   const rawIndexSlug = builtInPageSettings.indexSettings.rawIndexSlug
-  const rawCategoryPostListingPageSlug = builtInPageSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug
+  const rawCategoryPostListingPageSlug =
+    builtInPageSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug
   const rawNotFoundPageSlug = builtInPageSettings.notFoundPageSettings.rawNotFoundPageSlug
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
@@ -54,28 +53,28 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // We only want to operate on `Mdx` nodes. If we had content from a
   // remote CMS we could also check to see if the parent node was a
   // `File` node here
-  if (node.internal.type === "Mdx") {
+  if (node.internal.type === 'Mdx') {
     const rawSlug = node.frontmatter.rawSlug
     // Create a URL safe slug by lowercasing and replacing all non-letters
-    let safeSlug = rawSlug.toLocaleLowerCase().replace(/\W/gi, "-")
+    let safeSlug = rawSlug.toLocaleLowerCase().replace(/\W/gi, '-')
 
     // Hardcode the built-in page slugs. These will be used in their page queries.
     switch (rawSlug) {
       case rawIndexSlug:
         safeSlug = INDEX_SLUG
-        break;
+        break
       case rawCategoryPostListingPageSlug:
         safeSlug = CATEGORY_POST_LISTING_PAGE_SLUG
-        break;
+        break
       case rawNotFoundPageSlug:
         safeSlug = NOT_FOUND_SLUG
-        break;
+        break
       default:
     }
 
     createNodeField({
       // Name of the field you are adding
-      name: "slug",
+      name: 'slug',
       // Individual MDX node
       node,
       // URL safe slug for the content
@@ -83,14 +82,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
 
     // Retrieve the category, or use none if not specified.
-    const category = !!node.frontmatter.category
-      ? node.frontmatter.category
-      : NONE_CATEGORY
+    const category = node.frontmatter.category ? node.frontmatter.category : NONE_CATEGORY
     // Create a slug from the category by lowercasing and replacing all non-letters
-    const categorySlug = category.toLowerCase().replace(/\W/gi, "-")
+    const categorySlug = category.toLowerCase().replace(/\W/gi, '-')
     createNodeField({
       // Name of the field you are adding
-      name: "categorySlug",
+      name: 'categorySlug',
       // Individual MDX node
       node,
       // The slug value
@@ -103,15 +100,11 @@ exports.createPages = ({ graphql, actions }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions
 
-  const mdxPageTemplate = path.resolve(
-    `./src/components/page-templates/js/MDXPageTemplate.js`
-  )
-  const mdxPostListPageTemplate = path.resolve(
-    `./src/components/page-templates/js/MDXPostListPageTemplate.js`
-  )
+  const mdxPageTemplate = path.resolve(`./src/components/page-templates/js/MDXPageTemplate.js`)
+  const mdxPostListPageTemplate = path.resolve(`./src/components/page-templates/js/MDXPostListPageTemplate.js`)
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
-  let mdxQueryPromise = graphql(`
+  const mdxQueryPromise = graphql(`
     query NodeMDXQuery {
       allMdx(sort: { order: DESC, fields: frontmatter___date }) {
         nodes {
@@ -143,10 +136,9 @@ exports.createPages = ({ graphql, actions }) => {
 
     // We'll call `createPage` for each result, creating each post page.
     mdxNodes.forEach(node => {
-
       // Don't create pages for the hidden or built-in ones
       if (!node.frontmatter.hidden && !BUILT_IN_SLUGS.includes(node.fields.slug)) {
-        let pageConfig = {
+        const pageConfig = {
           // This is the slug we created in onCreateNode
           path: node.fields.slug,
           // This component will wrap our MDX content
@@ -155,7 +147,7 @@ exports.createPages = ({ graphql, actions }) => {
           // page queries as GraphQL variables.
           context: {
             slug: node.fields.slug,
-            modelPageSlug: "page-not-found"
+            modelPageSlug: 'page-not-found',
           },
         }
 
@@ -169,53 +161,45 @@ exports.createPages = ({ graphql, actions }) => {
     // Collect all the post settings we'll need
     const postsPerPage = result.data.postYaml.listPagePostCount
     const allPostsListSlug = trimSlashes(result.data.postYaml.allPostsListSlug)
-    const postCategoryListSlug = trimSlashes(
-      result.data.postYaml.postCategoryListSlug
-    )
+    const postCategoryListSlug = trimSlashes(result.data.postYaml.postCategoryListSlug)
 
     // Collect all posts together.
     // These will be in the "posts" group defined in the frontmatter.
     const posts = mdxNodes.filter(mdxNode => {
       return (
-        mdxNode.frontmatter.group === "posts"
+        mdxNode.frontmatter.group === 'posts' &&
         // Don't list hidden or built-in ones
-        && !mdxNode.frontmatter.hidden
-        && !BUILT_IN_SLUGS.includes(mdxNode.fields.slug)
+        !mdxNode.frontmatter.hidden &&
+        !BUILT_IN_SLUGS.includes(mdxNode.fields.slug)
       )
     })
-    let postCount = posts.length
+    const postCount = posts.length
 
     // Build a map of all the category slugs to display names.
     // All posts with the category slug "none" are ignored.
-    let postCategorySlugsToNames = {}
+    const postCategorySlugsToNames = {}
     posts
-      .filter(
-        post =>
-          !!post.fields.categorySlug &&
-          post.fields.categorySlug !== NONE_CATEGORY
-      )
+      .filter(post => !!post.fields.categorySlug && post.fields.categorySlug !== NONE_CATEGORY)
       .forEach(post => {
         if (!postCategorySlugsToNames[post.fields.categorySlug]) {
-          postCategorySlugsToNames[post.fields.categorySlug] =
-            post.frontmatter.category
+          postCategorySlugsToNames[post.fields.categorySlug] = post.frontmatter.category
         }
       })
     // Get an array of the post slugs.
-    let postCategorySlugs = Object.keys(postCategorySlugsToNames)
+    const postCategorySlugs = Object.keys(postCategorySlugsToNames)
 
     // Create listing pages for all posts.
-    let totalNumPages = Math.ceil(postCount / postsPerPage)
+    const totalNumPages = Math.ceil(postCount / postsPerPage)
     Array.from({ length: totalNumPages }).forEach((_, i) => {
       createPage({
-        path:
-          i === 0 ? `/${allPostsListSlug}` : `/${allPostsListSlug}/${i + 1}`,
+        path: i === 0 ? `/${allPostsListSlug}` : `/${allPostsListSlug}/${i + 1}`,
         component: mdxPostListPageTemplate,
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
-          categorySlugGlob: "*",
+          categorySlugGlob: '*',
           numPages: totalNumPages,
-          categoryName: "All",
+          categoryName: 'All',
           currentPage: i + 1,
         },
       })
@@ -223,16 +207,12 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Now we'll create listing pages for each categorySlug.
     postCategorySlugs.forEach(categorySlug => {
-      const posts = mdxNodes.filter(
-        node => node.fields.categorySlug === categorySlug
-      )
-      let numCategoryPages = Math.ceil(posts.length / postsPerPage)
+      const posts = mdxNodes.filter(node => node.fields.categorySlug === categorySlug)
+      const numCategoryPages = Math.ceil(posts.length / postsPerPage)
       Array.from({ length: numCategoryPages }).forEach((_, i) => {
         createPage({
           path:
-            i === 0
-              ? `/${postCategoryListSlug}/${categorySlug}`
-              : `/${postCategoryListSlug}/${categorySlug}/${i + 1}`,
+            i === 0 ? `/${postCategoryListSlug}/${categorySlug}` : `/${postCategoryListSlug}/${categorySlug}/${i + 1}`,
           component: mdxPostListPageTemplate,
           context: {
             limit: postsPerPage,
@@ -264,11 +244,8 @@ exports.createPages = ({ graphql, actions }) => {
  */
 function trimSlashes(path) {
   if (!!path && path.length > 0) {
-    path = path.startsWith("/") || path.startsWith("\\") ? path.slice(1) : path
-    path =
-      path.endsWith("/") || path.endsWith("\\")
-        ? path.slice(0, path.length - 1)
-        : path
+    path = path.startsWith('/') || path.startsWith('\\') ? path.slice(1) : path
+    path = path.endsWith('/') || path.endsWith('\\') ? path.slice(0, path.length - 1) : path
   }
   return path
 }

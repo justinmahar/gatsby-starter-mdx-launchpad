@@ -1,6 +1,6 @@
+import { graphql } from "gatsby"
 import React from "react"
 import Page from "../MDXPostListPageTemplate"
-import { graphql } from "gatsby"
 
 // This component is a wrapper for the TSX layout component of the
 // same name.

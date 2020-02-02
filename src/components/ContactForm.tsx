@@ -82,11 +82,11 @@ export default function ContactForm(props: IContactFormProps) {
         formModel
           .submit()
           .then(() => {
-            console.log("Submitted!")
+            console.log("Submitted!") 
             formModel.clear()
             setSuccessAlertVisible(true)
-          })
-          .catch(e => {
+          }) 
+          .catch(e => { 
             console.error(e)
             setErrorAlertVisible(true)
           })

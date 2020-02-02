@@ -1,15 +1,13 @@
-import Disqus from "disqus-react"
-import * as React from "react"
+import Disqus from 'disqus-react'
+import * as React from 'react'
 
-export interface ICommentCountComponentProps {
-  identifier: string
+export interface CommentCountComponentProps {
+  identifier: string 
   url: string
   title: string
 }
 
-export default function CommentCountComponent(
-  props: ICommentCountComponentProps
-) {
+export default function CommentCountComponent(props: CommentCountComponentProps): JSX.Element {
   const shortname = process.env.GATSBY_DISQUS_NAME
   const disqusConfig = {
     shortname: shortname,

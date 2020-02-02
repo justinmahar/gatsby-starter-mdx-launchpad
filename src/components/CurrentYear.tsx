@@ -1,12 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 
-export interface ICurrentYearProps {
-}
+export interface CurrentYearProps {}
 
-export default function CurrentYear (props: ICurrentYearProps) {
-  return (
-    <>
-      {new Date().getFullYear()}
-    </>
-  );
+export default function CurrentYear(props: CurrentYearProps): JSX.Element {
+  return <>{new Date().getFullYear()}</>
 }

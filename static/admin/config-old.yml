@@ -1,7 +1,5 @@
 backend:
-  # Use the test-repo when developing the config UI locally.
-  # name: test-repo
-
+  
   # Use git-gateway for production.
   # 1) Enable Netlify Identity
   # 2) Add GitHub to External providers
@@ -9,7 +7,10 @@ backend:
   # 4) Sign into your site to create an account
   # 5) Set registration to Invite Only
   # View your users under: General -> Site members
-  name: git-gateway
+  # name: git-gateway
+
+  # Use the test-repo when developing the config UI locally.
+  name: test-repo
 
   # Branch to update (optional; defaults to master)
   branch: master
