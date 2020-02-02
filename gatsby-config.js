@@ -18,11 +18,11 @@
 // Some gatsby-config settings live in JSON files and are thus configurable via NetlifyCMS.
 // We pull in the user-configurable settings here using node's require function:
 /** Reporting configuration */
-const reportingConfig = require('./settings/reporting/reporting-settings.json');
+const reportingConfig = require(`${__dirname}/settings/reporting/reporting-settings.json`);
 /** Site metadata configuration */
-const siteMetadataConfig = require('./settings/site-metadata/site-metadata-settings.json');
+const siteMetadataConfig = require(`${__dirname}/settings/site-metadata/site-metadata-settings.json`);
 /** Offline/PWA configuration */
-const offlineConfig = require('./settings/offline/offline-settings.json');
+const offlineConfig = require(`${__dirname}/settings/offline/offline-settings.json`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.
@@ -90,14 +90,14 @@ if (!!siteMetadataConfig.siteUrl && typeof siteMetadataConfig.siteUrl === 'strin
 
 // All plugins used
 const plugins = [
-  {
-    resolve: `gatsby-plugin-netlify-cms`,
-    options: {
-      htmlTitle: `${siteMetadataConfig.siteName} Admin`,
-      modulePath: `${__dirname}/src/admin/cms.js`,
-      manualInit: true,
-    },
-  },
+  // {
+  //   resolve: `gatsby-plugin-netlify-cms`,
+  //   options: {
+  //     htmlTitle: `${siteMetadataConfig.siteName} Admin`,
+  //     modulePath: `${__dirname}/src/admin/cms.js`,
+  //     manualInit: true,
+  //   },
+  // },
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-sitemap`,
   `gatsby-plugin-robots-txt`,
@@ -157,7 +157,11 @@ const plugins = [
   ...offlineSupportPlugins,
   {
     resolve: 'boldlypress-core',
-    options: {},
+    options: {
+      netlifyCmsOptions: {
+        htmlTitle: `${siteMetadataConfig.siteName} Admin`,
+      },
+    },
   },
 ];
 

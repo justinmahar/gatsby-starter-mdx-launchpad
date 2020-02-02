@@ -1,0 +1,10 @@
+{
+  "siteIcon": "/media/default-site-icon.png",
+  "siteUrl": "https://boldlypress-fresh.netlify.com",
+  "siteIconAlt": "Dots arranged in a spiral pattern.",
+  "siteName": "BoldlyPress In Theme",
+  "siteImage": "/media/default-site-image.jpg",
+  "siteDescription": "The serverless CMS for React developers.",
+  "siteImageAlt": "Cute and cuddly kittens.",
+  "siteLanguage": "en"
+}
