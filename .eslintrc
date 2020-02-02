@@ -2,12 +2,14 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "prettier",
+    "json",
     "react",
     "react-hooks",
     "@typescript-eslint"
   ],
   "extends": [ 
     "eslint:recommended",
+    "plugin:json/recommended",
     "plugin:react/recommended",
     "plugin:react-app/recommended",
     "plugin:@typescript-eslint/recommended"

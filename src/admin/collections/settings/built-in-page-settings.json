@@ -1,0 +1,140 @@
+{
+  "label": "Built-In Page Settings",
+  "name": "builtInPageSettings",
+  "file": "settings/built-in-pages/built-in-page-settings.json",
+  "fields": [
+    {
+      "label": "Index (Homepage) Settings",
+      "name": "indexSettings",
+      "widget": "object",
+      "hint": "Settings for the index (homepage).",
+      "fields": [
+        {
+          "label": "Index Page",
+          "name": "rawIndexSlug",
+          "widget": "relation",
+          "collection": "pages",
+          "searchFields": ["title", "rawSlug"],
+          "valueField": "rawSlug",
+          "displayFields": ["title"],
+          "hint": "Page to show as the index, or homepage, of the site."
+        }
+      ]
+    },
+    {
+      "label": "Category Post-Listing Page Settings",
+      "name": "categoryPostListingPageSettings",
+      "widget": "object",
+      "hint": "Settings for the category pages that list posts within that category.",
+      "fields": [
+        {
+          "label": "Category Post Listing Page",
+          "name": "rawCategoryPostListingPageSlug",
+          "widget": "relation",
+          "collection": "pages",
+          "searchFields": ["title", "rawSlug"],
+          "valueField": "rawSlug",
+          "displayFields": ["title"],
+          "hint": "Page to use as the category post listing page."
+        },
+        {
+          "label": "Content Title",
+          "name": "contentTitle",
+          "widget": "string",
+          "hint": "Name for the page. Used primarily for SEO. Can use {siteName}, {siteDescription}, and {contentCategoryName}."
+        },
+        {
+          "label": "Show Sidebar",
+          "name": "showSidebar",
+          "widget": "boolean",
+          "hint": "True to show the sidebar on this page, false otherwise."
+        }
+      ]
+    },
+    {
+      "label": "Not Found (404) Page Settings",
+      "name": "notFoundPageSettings",
+      "widget": "object",
+      "hint": "Settings for the Not Found page that is shown when linking to a page that doesn't exist.",
+      "fields": [
+        {
+          "label": "Not Found Page",
+          "name": "rawNotFoundPageSlug",
+          "widget": "relation",
+          "collection": "pages",
+          "searchFields": ["title", "rawSlug"],
+          "valueField": "rawSlug",
+          "displayFields": ["title"],
+          "hint": "The 404 Not Found page."
+        },
+        {
+          "label": "Content Title",
+          "name": "contentTitle",
+          "widget": "string",
+          "hint": "The title of the Not Found page."
+        },
+        {
+          "label": "Featured Image",
+          "name": "featuredImage",
+          "widget": "object",
+          "fields": [
+            {
+              "label": "Use Featured Image",
+              "name": "featuredImageEnabled",
+              "widget": "boolean",
+              "hint": "When disabled, the featured image will not be shown for the Not Found page."
+            },
+            {
+              "label": "Featured Image",
+              "name": "featuredImageUrl",
+              "widget": "image",
+              "hint": "Recommended size is 1200x630 (1.91:1), and under 5MB. You can use Canva to edit, and can grab a free image here: https://www.pexels.com/"
+            },
+            {
+              "label": "Featured Image Alt",
+              "name": "featuredImageAlt",
+              "widget": "string",
+              "hint": "A description of what's happening in the custom image. This is used for accessibility, so visually impaired readers can know what's up. Set to none to disable."
+            }
+          ]
+        },
+        {
+          "label": "Headline",
+          "name": "headline",
+          "widget": "string",
+          "hint": "Headline shown at the top of the page."
+        },
+        {
+          "label": "Body Text",
+          "name": "bodyText",
+          "widget": "string",
+          "hint": "Body text shown under the headline."
+        },
+        {
+          "label": "Body Image",
+          "name": "bodyImage",
+          "widget": "image",
+          "hint": "Image shown under the text."
+        },
+        {
+          "label": "Body Image Alt",
+          "name": "bodyImageAlt",
+          "widget": "string",
+          "hint": "Description of the body image. For visually impaired users."
+        },
+        {
+          "label": "Button Text",
+          "name": "buttonText",
+          "widget": "string",
+          "hint": "Text shown on the button."
+        },
+        {
+          "label": "Button Url",
+          "name": "buttonUrl",
+          "widget": "string",
+          "hint": "URL that the button points to."
+        }
+      ]
+    }
+  ]
+}
