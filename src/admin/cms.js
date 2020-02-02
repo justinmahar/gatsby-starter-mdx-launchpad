@@ -3,9 +3,6 @@ import blogPosts from './collections/blog-posts.json';
 import pages from './collections/pages.json';
 import settings from './collections/settings';
 
-// This global flag enables manual initialization.
-window.CMS_MANUAL_INIT = true;
-
 const setup = {
   backend: {
     name: 'git-gateway',
