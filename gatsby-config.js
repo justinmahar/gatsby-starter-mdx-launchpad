@@ -90,11 +90,6 @@ if (!!siteMetadataConfig.siteUrl && typeof siteMetadataConfig.siteUrl === 'strin
 
 // All plugins used
 const plugins = [
-  `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-sitemap`,
-  `gatsby-plugin-robots-txt`,
-  `gatsby-plugin-typescript`,
-  `gatsby-plugin-sass`,
   {
     resolve: `gatsby-plugin-netlify-cms`,
     options: {
@@ -103,6 +98,11 @@ const plugins = [
       manualInit: true,
     },
   },
+  `gatsby-plugin-react-helmet`,
+  `gatsby-plugin-sitemap`,
+  `gatsby-plugin-robots-txt`,
+  `gatsby-plugin-typescript`,
+  `gatsby-plugin-sass`,
   {
     resolve: `gatsby-plugin-mdx`,
     options: {
