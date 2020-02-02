@@ -20,7 +20,11 @@ import SiteMetadata from '../data/SiteMetadata';
 import useMailingList from '../hooks/useMailingList';
 import renderTemplateTags from '../util/render-template-tags';
 
-export default function Index(props: {}): JSX.Element {
+interface IndexProps {
+  data: any;
+}
+
+export default function Index(props: IndexProps): JSX.Element {
   const data = props.data;
 
   console.log('Got it!', props.data.indexMdx);

@@ -41,13 +41,6 @@ const gatsbyPluginManifestOptions = {
     : offlineConfig.gatsbyPluginManifestOptions.icon.customIcon,
 };
 
-// Fix path to icon:
-// Gatsby serves content in static without "static" in the path, but here
-// the path must be relative to this config file. So we add in static before the path.
-if (gatsbyPluginManifestOptions.icon) {
-  gatsbyPluginManifestOptions.icon =
-    'static' + (gatsbyPluginManifestOptions.icon.startsWith('/') ? '' : '/') + gatsbyPluginManifestOptions.icon;
-}
 // Replace site name slugs for offline config
 if (!!gatsbyPluginManifestOptions.name && typeof gatsbyPluginManifestOptions.name === 'string') {
   gatsbyPluginManifestOptions.name = gatsbyPluginManifestOptions.name.replace(
@@ -62,27 +55,6 @@ if (!!gatsbyPluginManifestOptions.short_name && typeof gatsbyPluginManifestOptio
   );
 }
 
-// These plugins are used to enable offline PWA features.
-const offlineSupportEnabledPlugins = [
-  {
-    resolve: `gatsby-plugin-manifest`,
-    options: {
-      // Use our settings configuration:
-      ...gatsbyPluginManifestOptions,
-      // Add/override additional options here
-    },
-  },
-  'gatsby-plugin-offline',
-];
-// These plugins are used to disable offline PWA features.
-// See: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
-const offlineSupportDisabledPlugins = [`gatsby-plugin-remove-serviceworker`];
-// Switch on/off offline support based on the current settings.
-const offlineSupportPlugins = offlineConfig.offlineSupportEnabled
-  ? offlineSupportEnabledPlugins
-  : offlineSupportDisabledPlugins;
-// == END Offline Support Settings Setup ==
-
 // Ensure there is no trailing slash on the Site URL
 if (!!siteMetadataConfig.siteUrl && typeof siteMetadataConfig.siteUrl === 'string') {
   siteMetadataConfig.siteUrl = siteMetadataConfig.siteUrl.replace(/(.*)[/]+$/, '$1');
@@ -90,77 +62,17 @@ if (!!siteMetadataConfig.siteUrl && typeof siteMetadataConfig.siteUrl === 'strin
 
 // All plugins used
 const plugins = [
-  // {
-  //   resolve: `gatsby-plugin-netlify-cms`,
-  //   options: {
-  //     htmlTitle: `${siteMetadataConfig.siteName} Admin`,
-  //     modulePath: `${__dirname}/src/admin/cms.js`,
-  //     manualInit: true,
-  //   },
-  // },
-  `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-sitemap`,
-  `gatsby-plugin-robots-txt`,
-  `gatsby-plugin-typescript`,
-  `gatsby-plugin-sass`,
-  {
-    resolve: `gatsby-plugin-mdx`,
-    options: {
-      gatsbyRemarkPlugins: [
-        {
-          // For line numbering/highlights and more, see:
-          // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            classPrefix: 'language-',
-            // Use this string to denote which language to use in inline code blocks.
-            // Example: `js:::let finalBoss = "Bowser"`
-            // The js::: part is removed and everything after it is highlighted as js.
-            inlineCodeMarker: ':::',
-            aliases: {},
-          },
-        },
-      ],
-    },
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `pages-mdx`,
-      path: `${__dirname}/src/pages-mdx`,
-    },
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `posts-mdx`,
-      path: `${__dirname}/src/posts-mdx`,
-    },
-  },
-  `gatsby-transformer-yaml`,
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `yml-settings`,
-      path: `${__dirname}/settings`,
-    },
-  },
-  `gatsby-transformer-json`,
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `json-settings`,
-      path: `${__dirname}/settings`,
-    },
-  },
-  // Offline support is configurable.
-  ...offlineSupportPlugins,
   {
     resolve: 'boldlypress-core',
     options: {
+      pagesPath: `${__dirname}/src/pages-mdx`,
+      postsPath: `${__dirname}/src/posts-mdx`,
+      settingsPath: `${__dirname}/settings`,
       netlifyCmsOptions: {
         htmlTitle: `${siteMetadataConfig.siteName} Admin`,
       },
+      offlineSupportEnabled: offlineConfig.offlineSupportEnabled,
+      manifestOptions: gatsbyPluginManifestOptions,
     },
   },
 ];
