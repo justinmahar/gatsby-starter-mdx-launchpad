@@ -23,6 +23,8 @@ const reportingConfig = require(`${__dirname}/settings/reporting/reporting-setti
 const siteMetadataConfig = require(`${__dirname}/settings/site-metadata/site-metadata-settings.json`);
 /** Offline/PWA configuration */
 const offlineConfig = require(`${__dirname}/settings/offline/offline-settings.json`);
+// We need access to these settings outside of the GraphQL environment.
+const builtInPageSettings = require('./settings/built-in-pages/built-in-page-settings.json');
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.
@@ -71,33 +73,30 @@ const plugins = [
       netlifyCmsOptions: {
         htmlTitle: `${siteMetadataConfig.siteName} Admin`,
       },
-      offlineSupportEnabled: offlineConfig.offlineSupportEnabled,
-      manifestOptions: gatsbyPluginManifestOptions,
+      offlineConfig: {
+        offlineSupportEnabled: offlineConfig.offlineSupportEnabled,
+        showPromptWhenUpdateAvailable: offlineConfig.showPromptWhenUpdateAvailable,
+        updateAvailablePromptMessage: offlineConfig.updateAvailablePromptMessage,
+        manifestOptions: gatsbyPluginManifestOptions,
+      },
+      builtInPageSettings: {
+        rawIndexSlug: builtInPageSettings.indexSettings.rawIndexSlug,
+        rawCategoryPostListingPageSlug:
+          builtInPageSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug,
+        rawNotFoundPageSlug: builtInPageSettings.notFoundPageSettings.rawNotFoundPageSlug,
+      },
+      reportingConfig: {
+        googleAnalytics: {
+          analyticsEnabled: reportingConfig.googleAnalytics.analyticsEnabled,
+          trackingId: reportingConfig.googleAnalytics.trackingId,
+          anonymize: reportingConfig.googleAnalytics.anonymize,
+          respectDNT: reportingConfig.googleAnalytics.respectDNT,
+          scriptInHead: reportingConfig.googleAnalytics.scriptInHead,
+        },
+      },
     },
   },
 ];
-
-// == Google Analytics ==
-
-// Only add the analytics plugin if it's enabled
-if (reportingConfig.googleAnalytics.analyticsEnabled) {
-  const analyticsPluginConfig = {
-    trackingId: reportingConfig.googleAnalytics.trackingId,
-    anonymize: reportingConfig.googleAnalytics.anonymize,
-    respectDNT: reportingConfig.googleAnalytics.respectDNT,
-    head: reportingConfig.googleAnalytics.scriptInHead,
-  };
-  plugins.push({
-    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    resolve: `gatsby-plugin-google-analytics`,
-    options: {
-      // Use our settings from the config:
-      ...analyticsPluginConfig,
-      // Add/override additional settings here
-    },
-  });
-}
-// == End Analytics ==
 
 module.exports = {
   siteMetadata: {

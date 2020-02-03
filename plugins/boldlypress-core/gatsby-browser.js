@@ -29,19 +29,17 @@
 
 // === CSS/LESS/SASS imports ===
 
-// == Bootswatch Theme ==
-// Copy your theme to ./static and uncomment this to avoid using the CDN.
-// require("./static/bootswatch-4.3.1/cerulean/bootstrap.min.css")
+// == Bootstrap Base ==
+require('bootstrap/dist/css/bootstrap.min.css');
 
-// == PrismJS code syntax highlighting themes ==
-// require("prismjs/themes/prism.css")
-// require("prismjs/themes/prism-coy.css")
-// require("prismjs/themes/prism-dark.css")
-// require("prismjs/themes/prism-funky.css")
-require('prismjs/themes/prism-okaidia.css');
-// require("prismjs/themes/prism-solarizedlight.css")
-// require("prismjs/themes/prism-tomorrow.css")
-// require("prismjs/themes/prism-twilight.css")
+// Offline support - Configure the prompt to update.
+const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext, pluginOptions) => {
+  if (!!pluginOptions.offlineSupportEnabled && !!pluginOptions.showPromptWhenUpdateAvailable) {
+    const answer = window.confirm(pluginOptions.updateAvailablePromptMessage);
+    if (answer === true) {
+      window.location.reload();
+    }
+  }
+};
 
-// == Custom Styles ==
-require('./src/styles/styles.scss');
+export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

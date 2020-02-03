@@ -6,11 +6,20 @@ module.exports = themeOptions => {
   const typescriptOptions = themeOptions.typescriptOptions ? themeOptions.typescriptOptions : {};
   const sassOptions = themeOptions.sassOptions ? themeOptions.sassOptions : {};
   const netlifyCmsOptions = themeOptions.netlifyCmsOptions ? themeOptions.netlifyCmsOptions : {};
-  const offlineSupportEnabled = !!themeOptions.offlineSupportEnabled;
-  const manifestOptions = themeOptions.manifestOptions ? themeOptions.manifestOptions : {};
-  const offlineOptions = themeOptions.offlineOptions ? themeOptions.offlineOptions : {};
-  const removeServiceworkerOptions = themeOptions.removeServiceworkerOptions
-    ? themeOptions.removeServiceworkerOptions
+  const offlineConfig = themeOptions.offlineConfig;
+  const offlineSupportEnabled = offlineConfig ? !!offlineConfig.offlineSupportEnabled : false;
+  const manifestOptions = offlineConfig ? (offlineConfig.manifestOptions ? offlineConfig.manifestOptions : {}) : {};
+  const offlineOptions = offlineConfig ? (offlineConfig.offlineOptions ? offlineConfig.offlineOptions : {}) : {};
+  const removeServiceworkerOptions = offlineConfig
+    ? offlineConfig.removeServiceworkerOptions
+      ? themeOptions.removeServiceworkerOptions
+      : {}
+    : {};
+  const reportingConfig = themeOptions.reportingConfig;
+  const googleAnalyticsOptions = reportingConfig
+    ? reportingConfig.googleAnalytics.googleAnalyticsOptions
+      ? reportingConfig.googleAnalytics.googleAnalyticsOptions
+      : {}
     : {};
 
   const pagesPath = themeOptions.pagesPath;
@@ -54,98 +63,123 @@ module.exports = themeOptions => {
   const offlineSupportPlugins = offlineSupportEnabled ? offlineSupportEnabledPlugins : offlineSupportDisabledPlugins;
   // == END Offline Support Settings Setup ==
 
-  return {
-    plugins: [
-      // Offline support is configurable.
-      ...offlineSupportPlugins,
-      {
-        resolve: `gatsby-plugin-react-helmet`,
-        options: {
-          ...reactHelmetOptions,
-        },
+  // == Google Analytics ==
+
+  const plugins = [
+    // Offline support is configurable.
+    ...offlineSupportPlugins,
+    {
+      resolve: `gatsby-plugin-react-helmet`,
+      options: {
+        ...reactHelmetOptions,
       },
-      {
-        resolve: `gatsby-plugin-sitemap`,
-        options: {
-          ...sitemapOptions,
-        },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        ...sitemapOptions,
       },
-      {
-        resolve: `gatsby-plugin-robots-txt`,
-        options: {
-          ...robotsTxtOptions,
-        },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        ...robotsTxtOptions,
       },
-      {
-        resolve: `gatsby-plugin-typescript`,
-        options: {
-          ...typescriptOptions,
-        },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        ...typescriptOptions,
       },
-      {
-        resolve: `gatsby-plugin-sass`,
-        options: {
-          ...sassOptions,
-        },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        ...sassOptions,
       },
-      {
-        resolve: `gatsby-plugin-netlify-cms`,
-        options: {
-          modulePath: `${__dirname}/src/admin/cms.js`,
-          manualInit: true,
-          ...netlifyCmsOptions,
-        },
+    },
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/src/admin/cms.js`,
+        manualInit: true,
+        ...netlifyCmsOptions,
       },
-      {
-        resolve: `gatsby-plugin-mdx`,
-        options: {
-          gatsbyRemarkPlugins: [
-            {
-              // For line numbering/highlights and more, see:
-              // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
-              resolve: 'gatsby-remark-prismjs',
-              options: {
-                classPrefix: 'language-',
-                // Use this string to denote which language to use in inline code blocks.
-                // Example: `js:::let finalBoss = "Bowser"`
-                // The js::: part is removed and everything after it is highlighted as js.
-                inlineCodeMarker: ':::',
-                aliases: {},
-              },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            // For line numbering/highlights and more, see:
+            // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+              // Use this string to denote which language to use in inline code blocks.
+              // Example: `js:::let finalBoss = "Bowser"`
+              // The js::: part is removed and everything after it is highlighted as js.
+              inlineCodeMarker: ':::',
+              aliases: {},
             },
-          ],
-        },
+          },
+        ],
       },
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `pages-mdx`,
-          path: pagesPath,
-        },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages-mdx`,
+        path: pagesPath,
       },
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `posts-mdx`,
-          path: postsPath,
-        },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts-mdx`,
+        path: postsPath,
       },
-      `gatsby-transformer-yaml`,
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `yml-settings`,
-          path: settingsPath,
-        },
+    },
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `yml-settings`,
+        path: settingsPath,
       },
-      `gatsby-transformer-json`,
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `json-settings`,
-          path: settingsPath,
-        },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `json-settings`,
+        path: settingsPath,
       },
-    ],
+    },
+  ];
+
+  // Only add the analytics plugin if it's enabled
+  if (reportingConfig.googleAnalytics.analyticsEnabled) {
+    const analyticsPluginConfig = {
+      trackingId: reportingConfig.googleAnalytics.trackingId,
+      anonymize: reportingConfig.googleAnalytics.anonymize,
+      respectDNT: reportingConfig.googleAnalytics.respectDNT,
+      head: reportingConfig.googleAnalytics.scriptInHead,
+    };
+    plugins.push({
+      // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // Use our settings from the config:
+        ...analyticsPluginConfig,
+        // Add/override additional settings here
+        ...googleAnalyticsOptions,
+      },
+    });
+  }
+  // == End Analytics ==
+
+  return {
+    plugins: plugins,
   };
 };
