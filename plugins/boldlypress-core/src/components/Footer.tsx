@@ -1,9 +1,9 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import BuildStatusBadge from '../components/configured/BuildStatusBadge';
 import MenuSettings from '../data/settings/MenuSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import BuildStatusBadge from './configured/BuildStatusBadge';
 import SocialConnectComponent from './SocialConnectComponent';
 
 export default function Footer(props: {}): JSX.Element {

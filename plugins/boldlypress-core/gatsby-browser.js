@@ -32,6 +32,9 @@
 // == Bootstrap Base ==
 require('bootstrap/dist/css/bootstrap.min.css');
 
+// == Theme Styles ==
+require('./src/styles/styles.scss');
+
 // Offline support - Configure the prompt to update.
 const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext, pluginOptions) => {
   if (!!pluginOptions.offlineSupportEnabled && !!pluginOptions.showPromptWhenUpdateAvailable) {

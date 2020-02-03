@@ -115,8 +115,10 @@ exports.createPages = ({ graphql, actions }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions;
 
-  const mdxPageTemplate = path.resolve(`./src/components/page-templates/js/MDXPageTemplate.js`);
-  const mdxPostListPageTemplate = path.resolve(`./src/components/page-templates/js/MDXPostListPageTemplate.js`);
+  const mdxPageTemplate = path.resolve(`${__dirname}/src/components/page-templates/js/MDXPageTemplate.js`);
+  const mdxPostListPageTemplate = path.resolve(
+    `${__dirname}/src/components/page-templates/js/MDXPostListPageTemplate.js`
+  );
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
   const mdxQueryPromise = graphql(`

@@ -1,0 +1,30 @@
+// Put your styles here
+
+// Add gentle shadows to navbar, cards and sections
+.section { // .navbar, .section, .card
+  &.primary {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+  }
+  &.secondary {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+  }
+}
+
+// Remove horizonal scrollbars for code blocks
+.gatsby-highlight pre code {
+  white-space: pre-wrap;
+}
+
+// Style Markdown tables
+.card-body table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.card-body table td, th {
+  border: 1px solid #cccccc;
+  text-align: left;
+  padding: 8px;
+}
