@@ -24,7 +24,7 @@ const siteMetadataConfig = require(`${__dirname}/settings/site-metadata/site-met
 /** Offline/PWA configuration */
 const offlineConfig = require(`${__dirname}/settings/offline/offline-settings.json`);
 // We need access to these settings outside of the GraphQL environment.
-const builtInPageSettings = require('./settings/built-in-pages/built-in-page-settings.json');
+const builtInPageSettings = require(`${__dirname}/settings/built-in-pages/built-in-page-settings.json`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.

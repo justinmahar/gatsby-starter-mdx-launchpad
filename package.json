@@ -3,7 +3,7 @@
   "private": true,
   "description": "The serverless CMS for React developers. React + TypeScript + MDX + NetlifyCMS + SEO + More",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "No License",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

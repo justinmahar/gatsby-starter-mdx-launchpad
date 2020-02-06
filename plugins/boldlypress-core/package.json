@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "DevBoldly",
-  "license": "MIT",
-  "dependencies": {
-    "gatsby-plugin-netlify-cms": "^4.1.37"
-  },
+  "license": "No License",
+  "dependencies": {},
   "peerDependencies": {
     "gatsby": "^2.19.10"
   }

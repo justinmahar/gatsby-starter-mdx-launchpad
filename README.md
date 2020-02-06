@@ -10,7 +10,7 @@ See the live demo and get started **[here](https://boldlypress-fresh.netlify.com
 
 # MIT License
 
-Copyright (c) 2019 [DevBoldly](https://devboldly.com)
+Copyright (c) 2020 [DevBoldly](https://devboldly.com)
 
 Copyright (c) 2018 gatsbyjs
 
