@@ -9,7 +9,7 @@ import offlineSupportSettings from './settings/offline-support-settings.json';
 import postSettings from './settings/post-settings.json';
 import reportingSettings from './settings/reporting-settings.json';
 import siteSettings from './settings/site-settings.json';
-import siteWideSeoSettings from './settings/site-wide-seo-settings.json';
+import siteSeoSettings from './settings/site-seo-settings.json';
 import socialSharingSettings from './settings/social-sharing-settings.json';
 import themeSettings from './settings/theme-settings.json';
 
@@ -24,7 +24,7 @@ const settings = {
   files: [
     siteSettings,
     builtInPageSettings,
-    siteWideSeoSettings,
+    siteSeoSettings,
     contactFormSettings,
     mailingListSettings,
     discussionSettings,

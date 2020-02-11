@@ -198,37 +198,20 @@ That way, if you change one setting, all others update automatically. Template t
 
 The following template tags are available:
 
-| Template Tag      | Value               | Source      |
-|-------------------|---------------------|---------------|
-| <small> `{siteName}` </small>       | Name of site        | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
+| Template Tag | Value | Source |
+|--------------|-------|--------|
+| <small> `{year}` </small> | Current Year | Calendar |
+| <small> `{siteName}` </small> | Name of site | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
 | <small> `{siteDescription}` </small> | Description of site | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
 | <small> `{contentTitle}` </small> | Title of current content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
 | <small> `{contentExcerpt}` </small> | Excerpt from current content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
 | <small> `{contentCategory}` </small> | Category of current content (or none if not relevant) | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
 | <small> `{contentSeoTitle}` </small> | SEO title of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
 | <small> `{contentSeoDescription}` </small> | SEO description of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
-| <small> `{contentOgTitle}` </small> | OpenGraph title of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
-| <small> `{contentOgDescription}` </small> | OpenGraph description of the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
-| <small> `{contentTwitterCardTitle}` </small> | Twitter Card title for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
-| <small> `{contentTwitterCardDescription}` </small> | Twitter Card description for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
-| <small> `{contentTwitterSiteUsername}` </small> | Twitter Card username for the content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPageSettings) |
 | <small> `{twitterSiteUsername}` </small> | Twitter username for site | [Social &amp; Sharing Settings](/admin/#/collections/settings/entries/socialSharingSettings) |
-| <small> `{seoTitleSeparator}` </small> | Separator for use in SEO titles. | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostSeoTitle}` </small> | Default SEO title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostSeoDescription}` </small> | Default SEO description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostOgTitle}` </small> | Default OpenGraph title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostOgDescription}` </small> | Default OpenGraph description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostTwitterCardTitle}` </small> | Default Twitter Card title for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostTwitterCardDescription}` </small> | Default Twitter Card description for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePostTwitterCardSiteUsername}` </small> | Default Twitter Card site username for posts | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageSeoTitle}` </small> | Default SEO title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageSeoDescription}` </small> | Default SEO description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageOgTitle}` </small> | Default OpenGraph title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageOgDescription}` </small> | Default OpenGraph description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageTwitterCardTitle}` </small> | Default Twitter Card title for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageTwitterCardDescription}` </small> | Default Twitter Card description for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-| <small> `{siteWidePageTwitterCardSiteUsername}` </small> | Default Twitter Card site username for pages | [Site-Wide SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
-
+| <small> `{seoTitleSeparator}` </small> | Separator for use in SEO titles. | [Site SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{configSeoTitle}` </small> | SEO title for a particular configuration | [Site SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
+| <small> `{configSeoDescription}` </small> | SEO description for a particular configuration | [Site SEO Settings](/admin/#/collections/settings/entries/seoSettings) |
 
 # MIT License
 ---

@@ -76,38 +76,45 @@
       ]
     },
     {
-      "label": "Show Sidebar",
-      "name": "showSidebar",
-      "widget": "boolean",
-      "hint": "You can show the sidebar for specific posts if you'd like.",
-      "default": true
-    },
-    {
-      "label": "Hide Post",
-      "name": "hidden",
-      "widget": "boolean",
-      "hint": "If you hide a post, it won't be visible to users on the site.",
-      "default": false
-    },
-    {
-      "label": "Layout",
-      "name": "layout",
-      "widget": "hidden",
-      "default": "post"
-    },
-    {
-      "label": "Show Date",
-      "name": "dateEnabled",
-      "widget": "boolean",
-      "hint": "When disabled, the date will not be shown for the post.",
-      "default": true
-    },
-    {
-      "label": "Enable Discussion",
-      "name": "discussionEnabled",
-      "widget": "boolean",
-      "hint": "When disabled, the comments section will not be shown.",
-      "default": true
+      "label": "Post Options",
+      "name": "options",
+      "widget": "object",
+      "fields": [
+        {
+          "label": "Show Sidebar",
+          "name": "showSidebar",
+          "widget": "boolean",
+          "hint": "You can show the sidebar for specific posts if you'd like.",
+          "default": true
+        },
+        {
+          "label": "Hide Post",
+          "name": "hidden",
+          "widget": "boolean",
+          "hint": "If you hide a post, it won't be visible to users on the site.",
+          "default": false
+        },
+        {
+          "label": "Layout",
+          "name": "layout",
+          "widget": "hidden",
+          "default": "post"
+        },
+        {
+          "label": "Show Date",
+          "name": "dateEnabled",
+          "widget": "boolean",
+          "hint": "When disabled, the date will not be shown for the post.",
+          "default": true
+        },
+        {
+          "label": "Enable Discussion",
+          "name": "discussionEnabled",
+          "widget": "boolean",
+          "hint": "When disabled, the comments section will not be shown.",
+          "default": true
+        }
+      ]
     },
     {
       "label": "Sharing",
@@ -164,6 +171,21 @@
       "widget": "object",
       "fields": [
         {
+          "label": "SEO Configuration",
+          "name": "seoConfiguration",
+          "widget": "relation",
+          "collection": "settings",
+          "searchFields": [
+            "seoSettings.seoConfigurations.seoConfigurationName"
+          ],
+          "valueField": "seoSettings.seoConfigurations.seoConfigurationId",
+          "displayFields": [
+            "seoSettings.seoConfigurations.seoConfigurationName"
+          ],
+          "hint": "Select the SEO configuration to use (defined in Site SEO Settings).",
+          "default": "default"
+        },
+        {
           "label": "SEO Title",
           "name": "seoTitle",
           "widget": "string",
@@ -187,9 +209,13 @@
               "label": "SEO Image Used",
               "name": "seoImageSelection",
               "widget": "select",
-              "hint": "Specify which image should be used for SEO. ⮞ Featured Image (If Enabled): The featured image will be used for SEO. If \"Featured Image » Use Featured Image\" is disabled, it will fall back to the site-wide image specifed in Site-Wide Post SEO Settings. ⮞ Custom Image: The image specified below will be used for SEO. Choose this option if you want a different SEO image from the featured or fallback site-wide one.",
+              "hint": "Specify which image should be used for SEO. ⮞ Site Image: The site image defined in Site Settings will be used for SEO. ⮞ Featured Image (If Enabled): The featured image will be used for SEO. If \"Featured Image » Use Featured Image\" is disabled, it will fall back to the Site Image specifed in Site Settings. ⮞ Custom Image: The image specified below will be used for SEO. Choose this option if you want a different SEO image from the featured or fallback site-wide one.",
               "default": "featured-image-if-enabled",
               "options": [
+                {
+                  "label": "Site Image",
+                  "value": "site-image"
+                },
                 {
                   "label": "Featured Image (If Enabled)",
                   "value": "featured-image-if-enabled"
@@ -213,136 +239,6 @@
               "widget": "string",
               "hint": "A description of what's happening in the custom image. This is used for accessibility, so visually impaired readers can know what's up. Supports template tags.",
               "default": "none"
-            }
-          ]
-        },
-        {
-          "label": "Open Graph",
-          "name": "openGraph",
-          "widget": "object",
-          "hint": "↑ Settings for Open Graph, a protocol that allows you to specify the information to show when someone shares your page.",
-          "fields": [
-            {
-              "label": "OG Title",
-              "name": "ogTitle",
-              "widget": "string",
-              "hint": "The title shown when someone shares your page. Use {siteWidePostOgTitle} for the computed OG title from Site-Wide SEO Settings. Supports template tags. Template tag for this setting: {contentOgTitle}",
-              "default": "{siteWidePostOgTitle}"
-            },
-            {
-              "label": "OG Description",
-              "name": "ogDescription",
-              "widget": "string",
-              "hint": "The description shown when someone shares your page. At least two sentences long is recommended, and it should entice users to click.  Use {siteWidePostOgDescription} for the computed OG description from Site-Wide Post SEO Settings. Supports template tags. Template tag for this setting: {contentOgDescription}",
-              "default": "{siteWidePostOgDescription}"
-            },
-            {
-              "label": "Open Graph Image",
-              "name": "ogImage",
-              "widget": "object",
-              "hint": "Open Graph image settings.",
-              "fields": [
-                {
-                  "label": "Use Custom OG Image",
-                  "name": "ogUseCustomOgImage",
-                  "widget": "boolean",
-                  "hint": "Enable to use the custom image for Open Graph specified below. Otherwise, the SEO Image configured above will be used.",
-                  "default": false
-                },
-                {
-                  "label": "Custom OG Image",
-                  "name": "ogCustomImage",
-                  "widget": "image",
-                  "hint": "The overridden image for Open Graph. You must switch on Use Custom OG Image above for this to take effect. Facebook recommends a 1200×630 (1.91:1) and will crop the top and bottom of larger images.",
-                  "default": "/media/no-image.png"
-                },
-                {
-                  "label": "Custom OG Image Alt",
-                  "name": "ogCustomImageAlt",
-                  "widget": "string",
-                  "hint": "A description of what's happening in the custom Open Graph image. This is for accessibility, so visually impaired readers can know what's up. Supports template tags.",
-                  "default": "none"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Twitter Cards",
-          "name": "twitterCards",
-          "widget": "object",
-          "hint": "↑ Settings for the Twitter Cards that are created when sharing your page on Twitter.",
-          "fields": [
-            {
-              "label": "Twitter Card Type",
-              "name": "twitterCardType",
-              "widget": "select",
-              "hint": "Choose the card type. Use Site-Wide Setting will use the site-wide setting specified in Site-Wide Post SEO Settings. You can override this by choosing another option here. Regular summary cards use a square image and place the image next to the content, while the summary card with large image places the image above the card's text.",
-              "default": "site-wide-twitter-card-type",
-              "options": [
-                {
-                  "label": "Use Site-Wide Setting",
-                  "value": "site-wide-twitter-card-type"
-                },
-                {
-                  "label": "Summary Card",
-                  "value": "summary-card"
-                },
-                {
-                  "label": "Summary Card With Large Image",
-                  "value": "summary-card-with-large-image"
-                }
-              ]
-            },
-            {
-              "label": "Twitter Card Title",
-              "name": "twitterCardTitle",
-              "widget": "string",
-              "hint": "The title shown when someone shares your page on Twitter. Use {siteWidePostTwitterCardTitle} for the computed Twitter Card title from Site-Wide Post SEO Settings. Supports template tags. Template tag for this setting: {contentTwitterCardTitle}",
-              "default": "{siteWidePostTwitterCardTitle}"
-            },
-            {
-              "label": "Twitter Card Description",
-              "name": "twitterCardDescription",
-              "widget": "string",
-              "hint": "The description shown when someone shares your page on Twitter. Use {siteWidePostTwitterCardDescription} for the computed Twitter Card description from Site-Wide Post SEO Settings. Supports template tags. Template tag for this setting: {contentTwitterCardDescription}",
-              "default": "{siteWidePostTwitterCardDescription}"
-            },
-            {
-              "label": "Twitter Card Image",
-              "name": "twitterCardImage",
-              "widget": "object",
-              "hint": "Twitter Card image settings.",
-              "fields": [
-                {
-                  "label": "Use Custom Twitter Card Image",
-                  "name": "twitterCardUseCustomImage",
-                  "widget": "boolean",
-                  "hint": "Enable to override the SEO Image (above) for Twitter Cards, specifying a different one below.",
-                  "default": false
-                },
-                {
-                  "label": "Custom Twitter Card Image",
-                  "name": "twitterCardCustomImage",
-                  "widget": "image",
-                  "hint": "The custom image for Twitter Cards. You must switch on Use Custom Twitter Card Image above for this to take effect. You should not use a generic image such as your website logo, author photo, or other image that spans multiple pages. Images for Summary Card support an aspect ratio of 1:1 with minimum dimensions of 144x144 or maximum of 4096x4096 pixels, and will be cropped to a square on all platforms. Images for Summary Card With Large Image support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.",
-                  "default": "/media/no-image.png"
-                },
-                {
-                  "label": "Custom Twitter Card Image Alt",
-                  "name": "twitterCardCustomImageAlt",
-                  "widget": "string",
-                  "hint": "A description of what's happening in the custom Twitter Card image. This is for accessibility, so visually impaired readers can know what's up. Supports template tags.",
-                  "default": "none"
-                }
-              ]
-            },
-            {
-              "label": "Twitter Card Site Username",
-              "name": "twitterCardSiteUsername",
-              "widget": "string",
-              "hint": "The site username that the Twitter Card is attributed to, prefixed with the @ symbol. Use {siteWidePostTwitterCardSiteUsername} to specify the site username set in Site-Wide Post SEO Settings. Supports template tags. Template tag for this setting: {contentTwitterSiteUsername}",
-              "default": "{siteWidePostTwitterCardSiteUsername}"
             }
           ]
         }
