@@ -89,60 +89,67 @@
       ]
     },
     {
-      "label": "Show Sidebar",
-      "name": "showSidebar",
-      "widget": "boolean",
-      "hint": "You can show the sidebar for specific pages if you'd like.",
-      "default": false
-    },
-    {
-      "label": "Show Title",
-      "name": "showTitle",
-      "widget": "boolean",
-      "hint": "The title will be shown on the page above the content.",
-      "default": true
-    },
-    {
-      "label": "Hide Page",
-      "name": "hidden",
-      "widget": "boolean",
-      "hint": "If you hide a page, it won't be visible to users on the site.",
-      "default": false
-    },
-    {
-      "label": "Layout",
-      "name": "layout",
-      "widget": "select",
-      "hint": "Select the layout type.",
-      "default": "page",
-      "options": [
+      "label": "Page Options",
+      "name": "options",
+      "widget": "object",
+      "fields": [
         {
-          "label": "Standard Page",
-          "value": "page"
+          "label": "Show Sidebar",
+          "name": "showSidebar",
+          "widget": "boolean",
+          "hint": "You can show the sidebar for specific pages if you'd like.",
+          "default": false
         },
         {
-          "label": "Index (Homepage)",
-          "value": "index"
+          "label": "Show Title",
+          "name": "showTitle",
+          "widget": "boolean",
+          "hint": "The title will be shown on the page above the content.",
+          "default": true
         },
         {
-          "label": "Category Post Listing Page",
-          "value": "category-post-listing"
+          "label": "Hide Page",
+          "name": "hidden",
+          "widget": "boolean",
+          "hint": "If you hide a page, it won't be visible to users on the site.",
+          "default": false
+        },
+        {
+          "label": "Layout",
+          "name": "layout",
+          "widget": "select",
+          "hint": "Select the layout type.",
+          "default": "page",
+          "options": [
+            {
+              "label": "Standard Page",
+              "value": "page"
+            },
+            {
+              "label": "Index (Homepage)",
+              "value": "index"
+            },
+            {
+              "label": "Category Post Listing Page",
+              "value": "category-post-listing"
+            }
+          ]
+        },
+        {
+          "label": "Show Date",
+          "name": "dateEnabled",
+          "widget": "boolean",
+          "hint": "When enabled, the date will be shown for the page.",
+          "default": false
+        },
+        {
+          "label": "Enable Discussion",
+          "name": "discussionEnabled",
+          "widget": "boolean",
+          "hint": "When enabled, the comments section will be shown.",
+          "default": false
         }
       ]
-    },
-    {
-      "label": "Show Date",
-      "name": "dateEnabled",
-      "widget": "boolean",
-      "hint": "When enabled, the date will be shown for the page.",
-      "default": false
-    },
-    {
-      "label": "Enable Discussion",
-      "name": "discussionEnabled",
-      "widget": "boolean",
-      "hint": "When enabled, the comments section will be shown.",
-      "default": false
     },
     {
       "label": "Sharing",
