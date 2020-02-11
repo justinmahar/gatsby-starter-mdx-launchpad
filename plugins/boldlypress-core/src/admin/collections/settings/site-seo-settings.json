@@ -1,7 +1,7 @@
 {
   "label": "Site SEO Settings",
   "name": "siteSeoSettings",
-  "file": "settings/seo/site-seo-settings.yml",
+  "file": "settings/seo/seo-settings.yml",
   "fields": [
     {
       "label": "SEO Title Separator",

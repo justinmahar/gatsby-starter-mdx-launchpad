@@ -71,7 +71,7 @@ const plugins = [
       postsPath: `${__dirname}/src/posts-mdx`,
       settingsPath: `${__dirname}/settings`,
       netlifyCmsOptions: {
-        htmlTitle: `${siteMetadataConfig.siteName} Admin`,
+        htmlTitle: `${siteMetadataConfig.siteName} Admin!`,
       },
       offlineConfig: {
         offlineSupportEnabled: offlineConfig.offlineSupportEnabled,
