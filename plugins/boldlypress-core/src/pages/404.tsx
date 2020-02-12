@@ -187,7 +187,7 @@ export const query = graphql`
       ...seoSettings
     }
     builtInPagesYaml {
-      ...builtInPageSettings
+      ...builtInPagesSettings
     }
     socialSharingYaml {
       ...socialSharingSettings

@@ -1,7 +1,7 @@
 const pageSettings = {
-  label: 'Built-In Page Settings',
-  name: 'builtInPageSettings',
-  file: 'settings/built-in-pages/built-in-page-settings.yml',
+  label: 'Page Settings',
+  name: 'pageSettings',
+  file: 'settings/built-in-pages/built-in-pages-settings.yml',
   fields: [
     {
       label: 'Index Page',

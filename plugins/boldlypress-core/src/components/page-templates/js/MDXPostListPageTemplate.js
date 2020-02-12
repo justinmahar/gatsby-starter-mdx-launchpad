@@ -45,7 +45,7 @@ export const query = graphql`
       ...socialSharingSettings
     }
     builtInPagesYaml {
-      ...builtInPageSettings
+      ...builtInPagesSettings
     }
   }
 `;

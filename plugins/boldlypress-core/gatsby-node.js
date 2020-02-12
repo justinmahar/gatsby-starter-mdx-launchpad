@@ -59,9 +59,9 @@ exports.onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
   // like the index, 404, etc. These are the raw user-defined slugs.
   // Those pages won't be created with their own slugs but will instead get predefined ones
   // that can be selected on later.
-  const rawIndexSlug = pluginOptions.builtInPageSettings.rawIndexSlug;
-  const rawCategoryPostListingPageSlug = pluginOptions.builtInPageSettings.rawCategoryPostListingPageSlug;
-  const rawNotFoundPageSlug = pluginOptions.builtInPageSettings.rawNotFoundPageSlug;
+  const rawIndexSlug = pluginOptions.builtInPagesSettings.rawIndexSlug;
+  const rawCategoryPostListingPageSlug = pluginOptions.builtInPagesSettings.rawCategoryPostListingPageSlug;
+  const rawNotFoundPageSlug = pluginOptions.builtInPagesSettings.rawNotFoundPageSlug;
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
   const { createNodeField } = actions;

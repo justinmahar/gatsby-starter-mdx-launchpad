@@ -5,7 +5,7 @@ import mailingListSettings from './settings/mailingListSettings';
 import menuSettings from './settings/menuSettings';
 import navbarSettings from './settings/navbarSettings';
 import offlineSupportSettings from './settings/offlineSupportSettings';
-import pageSettings from './settings/pageSettings';
+import builtInPagesSettings from './settings/builtInPagesSettings';
 import postSettings from './settings/postSettings';
 import reportingSettings from './settings/reportingSettings';
 import siteSeoSettings from './settings/siteSeoSettings';
@@ -23,7 +23,7 @@ const settings = {
   },
   files: [
     siteSettings,
-    pageSettings,
+    builtInPagesSettings,
     siteSeoSettings,
     contactFormSettings,
     mailingListSettings,

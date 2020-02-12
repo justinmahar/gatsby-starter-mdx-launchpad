@@ -24,7 +24,7 @@ const siteMetadataConfig = readYaml.sync(`${__dirname}/settings/site-metadata/si
 /** Offline/PWA configuration */
 const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
 // We need access to these settings outside of the GraphQL environment.
-const builtInPageSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-page-settings.yml`);
+const builtInPagesSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-pages-settings.yml`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.
@@ -79,11 +79,11 @@ const plugins = [
         updateAvailablePromptMessage: offlineConfig.updateAvailablePromptMessage,
         manifestOptions: gatsbyPluginManifestOptions,
       },
-      builtInPageSettings: {
-        rawIndexSlug: builtInPageSettings.indexSettings.rawIndexSlug,
+      builtInPagesSettings: {
+        rawIndexSlug: builtInPagesSettings.indexSettings.rawIndexSlug,
         rawCategoryPostListingPageSlug:
-          builtInPageSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug,
-        rawNotFoundPageSlug: builtInPageSettings.notFoundPageSettings.rawNotFoundPageSlug,
+          builtInPagesSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug,
+        rawNotFoundPageSlug: builtInPagesSettings.notFoundPageSettings.rawNotFoundPageSlug,
       },
       reportingConfig: {
         googleAnalytics: {
