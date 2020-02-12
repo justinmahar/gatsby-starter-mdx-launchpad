@@ -30,7 +30,7 @@ export const query = graphql`
       }
     }
     seoYaml {
-      ...seoSettings
+      ...siteSeoSettings
     }
     mailingListYaml {
       ...mailingListSettings

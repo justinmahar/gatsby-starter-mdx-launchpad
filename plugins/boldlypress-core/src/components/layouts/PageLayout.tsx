@@ -8,7 +8,7 @@ import MdxContent, { MdxSeoTwitterCardType } from '../../data/MdxContent';
 import DiscussionSettings from '../../data/settings/DiscussionSettings';
 import MailingListSettings from '../../data/settings/MailingListSettings';
 import PostSettings from '../../data/settings/PostSettings';
-import SeoSettings from '../../data/settings/SeoSettings';
+import SeoSettings from '../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../data/SiteMetadata';
 import useMailingList from '../../hooks/useMailingList';
@@ -37,7 +37,7 @@ export default function PageLayout(props: PageLayoutProps): JSX.Element {
         }
       }
       seoYaml {
-        ...seoSettings
+        ...siteSeoSettings
       }
       mailingListYaml {
         ...mailingListSettings
@@ -60,7 +60,7 @@ export default function PageLayout(props: PageLayoutProps): JSX.Element {
 
   const mdxContent: MdxContent = props.mdxContent;
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const seoSettings = new SeoSettings(data.seoYaml);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const postSettings = new PostSettings(data.postYaml);
@@ -81,7 +81,7 @@ export default function PageLayout(props: PageLayoutProps): JSX.Element {
   const templateTags = {
     ...siteMetadata.getTemplateTags(),
     ...socialSharingSettings.getTemplateTags(),
-    ...seoSettings.getSiteWideTemplateTags(),
+    ...siteSeoSettings.getSiteWideTemplateTags(),
     ...mdxContent.getTemplateTags(),
   };
 
@@ -101,31 +101,37 @@ export default function PageLayout(props: PageLayoutProps): JSX.Element {
           : undefined;
     } else {
       if (mdxContent.isPost()) {
-        if (seoSettings.data.siteWidePostSeoSettings.seoImage.useSiteImage) {
+        if (siteSeoSettings.data.siteWidePostSeoSettings.seoImage.useSiteImage) {
           seoImageUrl = siteMetadata.data.siteImage;
           seoImageAlt =
             siteMetadata.data.siteImageAlt !== 'none'
               ? renderTemplateTags(siteMetadata.data.siteImageAlt, templateTags)
               : undefined;
         } else {
-          seoImageUrl = seoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImage;
+          seoImageUrl = siteSeoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImage;
           seoImageAlt =
-            seoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImageAlt !== 'none'
-              ? renderTemplateTags(seoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImageAlt, templateTags)
+            siteSeoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImageAlt !== 'none'
+              ? renderTemplateTags(
+                  siteSeoSettings.data.siteWidePostSeoSettings.seoImage.customSeoImageAlt,
+                  templateTags
+                )
               : undefined;
         }
       } else if (mdxContent.isPage()) {
-        if (seoSettings.data.siteWidePageSeoSettings.seoImage.useSiteImage) {
+        if (siteSeoSettings.data.siteWidePageSeoSettings.seoImage.useSiteImage) {
           seoImageUrl = siteMetadata.data.siteImage;
           seoImageAlt =
             siteMetadata.data.siteImageAlt !== 'none'
               ? renderTemplateTags(siteMetadata.data.siteImageAlt, templateTags)
               : undefined;
         } else {
-          seoImageUrl = seoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImage;
+          seoImageUrl = siteSeoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImage;
           seoImageAlt =
-            seoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImageAlt !== 'none'
-              ? renderTemplateTags(seoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImageAlt, templateTags)
+            siteSeoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImageAlt !== 'none'
+              ? renderTemplateTags(
+                  siteSeoSettings.data.siteWidePageSeoSettings.seoImage.customSeoImageAlt,
+                  templateTags
+                )
               : undefined;
         }
       }
@@ -185,10 +191,10 @@ export default function PageLayout(props: PageLayoutProps): JSX.Element {
   if (postTwitterCardType === 'site-wide-twitter-card-type') {
     if (mdxContent.isPost()) {
       twitterUseLargeImage =
-        seoSettings.data.siteWidePostSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
+        siteSeoSettings.data.siteWidePostSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
     } else if (mdxContent.isPage()) {
       twitterUseLargeImage =
-        seoSettings.data.siteWidePageSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
+        siteSeoSettings.data.siteWidePageSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
     }
   }
 

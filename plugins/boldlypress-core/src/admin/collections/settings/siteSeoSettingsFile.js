@@ -1,7 +1,7 @@
 const siteSeoSettings = {
   label: 'Site SEO Settings',
   name: 'siteSeoSettings',
-  file: 'settings/seo/seo-settings.yml',
+  file: 'settings/seo/site-seo-settings.yml',
   fields: [
     {
       label: 'SEO Title Separator',
@@ -18,16 +18,16 @@ const siteSeoSettings = {
         '↑ SEO (Search Engine Optimization) configurations can be used to quickly change SEO and sharing settings for all posts and pages that reference them.',
       fields: [
         {
-          label: 'Configuration ID',
-          name: 'seoConfigurationId',
-          widget: 'string',
-          hint: 'A unique ID used to reference this SEO configuration. This will only be visible in this admin portal.',
-        },
-        {
           label: 'Configuration Name',
           name: 'seoConfigurationName',
           widget: 'string',
           hint: 'A name for this SEO configuration. This will only be visible in this admin portal.',
+        },
+        {
+          label: 'Configuration ID',
+          name: 'seoConfigurationId',
+          widget: 'string',
+          hint: 'A unique ID used to reference this SEO configuration. This will only be visible in this admin portal.',
         },
         {
           label: 'SEO Title',

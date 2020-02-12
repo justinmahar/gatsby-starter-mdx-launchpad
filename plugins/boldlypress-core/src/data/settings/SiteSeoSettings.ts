@@ -7,12 +7,12 @@ import { Tags } from '../../util/render-template-tags';
   To use: 
   ```graphql
     seoYaml {
-      ...seoSettings
+      ...siteSeoSettings
     }
   ```
 */
 export const seoYamlQuery = graphql`
-  fragment seoSettings on SeoYaml {
+  fragment siteSeoSettings on SeoYaml {
     seoTitleSeparator
     siteWidePostSeoSettings {
       openGraph {

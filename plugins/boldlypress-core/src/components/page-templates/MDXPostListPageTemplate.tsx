@@ -6,7 +6,7 @@ import BuiltInPagesSettings from '../../data/settings/BuiltInPagesSettings';
 import DiscussionSettings from '../../data/settings/DiscussionSettings';
 import MailingListSettings from '../../data/settings/MailingListSettings';
 import PostSettings from '../../data/settings/PostSettings';
-import SeoSettings from '../../data/settings/SeoSettings';
+import SiteSeoSettings from '../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../data/SiteMetadata';
 import useMailingList from '../../hooks/useMailingList';
@@ -33,7 +33,7 @@ export default function MDXPostListPageTemplate(props: MDXPostListPageTemplatePr
   const allMdx = data.allMdx;
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesYaml);
-  const seoSettings = new SeoSettings(data.seoYaml);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const postSettings = new PostSettings(data.postYaml);
@@ -101,10 +101,10 @@ export default function MDXPostListPageTemplate(props: MDXPostListPageTemplatePr
   const templateTags = {
     ...siteMetadata.getTemplateTags(),
     ...socialSharingSettings.getTemplateTags(),
-    ...seoSettings.getSiteWideTemplateTags(),
-    ...seoSettings.getCategoryPostListingSeoTempateTags(),
+    ...siteSeoSettings.getSiteWideTemplateTags(),
+    ...siteSeoSettings.getCategoryPostListingSeoTempateTags(),
     ...builtInPagesSettings.getCategoryPostListingTemplateTags(),
-    contentExcerpt: seoSettings.data.categoryPostListingPageSettings.seoDescription,
+    contentExcerpt: siteSeoSettings.data.categoryPostListingPageSettings.seoDescription,
     contentCategory: categoryName,
   };
 
@@ -114,76 +114,84 @@ export default function MDXPostListPageTemplate(props: MDXPostListPageTemplatePr
     builtInPagesSettings.data.categoryPostListingPageSettings.contentTitle,
     templateTags
   );
-  const seoTitle = renderTemplateTags(seoSettings.data.categoryPostListingPageSettings.seoTitle, templateTags);
+  const seoTitle = renderTemplateTags(siteSeoSettings.data.categoryPostListingPageSettings.seoTitle, templateTags);
   const seoDescription = renderTemplateTags(
-    seoSettings.data.categoryPostListingPageSettings.seoDescription,
+    siteSeoSettings.data.categoryPostListingPageSettings.seoDescription,
     templateTags
   );
   let seoImageUrl = siteMetadata.data.siteImage;
   let seoImageAlt = siteMetadata.data.siteImageAlt;
-  if (seoSettings.data.categoryPostListingPageSettings.seoImage.useSiteImage) {
+  if (siteSeoSettings.data.categoryPostListingPageSettings.seoImage.useSiteImage) {
     seoImageUrl = siteMetadata.data.siteImage;
     seoImageAlt =
       siteMetadata.data.siteImageAlt !== 'none'
         ? renderTemplateTags(siteMetadata.data.siteImageAlt, templateTags)
         : undefined;
   } else {
-    seoImageUrl = seoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImage;
+    seoImageUrl = siteSeoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImage;
     seoImageAlt =
-      seoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImageAlt !== 'none'
-        ? renderTemplateTags(seoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImageAlt, templateTags)
+      siteSeoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImageAlt !== 'none'
+        ? renderTemplateTags(
+            siteSeoSettings.data.categoryPostListingPageSettings.seoImage.customSeoImageAlt,
+            templateTags
+          )
         : undefined;
   }
-  const ogTitle = renderTemplateTags(seoSettings.data.categoryPostListingPageSettings.openGraph.ogTitle, templateTags);
+  const ogTitle = renderTemplateTags(
+    siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogTitle,
+    templateTags
+  );
   const ogDescription = renderTemplateTags(
-    seoSettings.data.categoryPostListingPageSettings.openGraph.ogDescription,
+    siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogDescription,
     templateTags
   );
   let ogImageUrl = seoImageUrl;
   let ogImageAlt = seoImageAlt;
-  if (seoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogUseCustomOgImage) {
-    ogImageUrl = seoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImage;
+  if (siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogUseCustomOgImage) {
+    ogImageUrl = siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImage;
     ogImageAlt =
-      seoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
+      siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
         ? renderTemplateTags(
-            seoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImageAlt,
+            siteSeoSettings.data.categoryPostListingPageSettings.openGraph.ogImage.ogCustomImageAlt,
             templateTags
           )
         : undefined;
   }
   let twitterSiteUsername =
-    seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername !== 'none'
+    siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername !== 'none'
       ? renderTemplateTags(
-          seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername,
+          siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardSiteUsername,
           templateTags
         )
       : undefined;
   // If it was replaced with the site username which is none, set it to undefined.
   twitterSiteUsername = twitterSiteUsername !== 'none' ? twitterSiteUsername : undefined;
   const twitterCardTitle = renderTemplateTags(
-    seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardTitle,
+    siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardTitle,
     templateTags
   );
   const twitterCardDescription = renderTemplateTags(
-    seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardDescription,
+    siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardDescription,
     templateTags
   );
   let twitterCardImageUrl = seoImageUrl;
   let twitterCardImageAlt = seoImageAlt;
-  if (seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
+  if (siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
     twitterCardImageUrl =
-      seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
+      siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
     twitterCardImageAlt =
-      seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !==
+      siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !==
       'none'
         ? renderTemplateTags(
-            seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt,
+            siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardImage
+              .twitterCardCustomImageAlt,
             templateTags
           )
         : undefined;
   }
   const twitterUseLargeImage: boolean =
-    seoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
+    siteSeoSettings.data.categoryPostListingPageSettings.twitterCards.twitterCardType ===
+    'summary-card-with-large-image';
 
   const openGraph = {
     ogTitle: ogTitle,

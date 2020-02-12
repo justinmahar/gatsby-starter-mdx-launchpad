@@ -1,0 +1,125 @@
+seoConfigurations:
+  - seoConfigurationId: default-page-seo-configuration
+    seoConfigurationName: Default Page SEO Configuration
+    seoDescription: '{contentExcerpt}'
+    seoTitle: '{contentTitle}'
+  - seoConfigurationId: default-post-seo-configuration
+    seoConfigurationName: Default Post SEO Configuration
+    seoDescription: '{contentExcerpt}'
+    seoTitle: '{contentTitle}'
+seoTitleSeparator: " - "
+siteWidePostSeoSettings:
+  openGraph:
+    ogDescription: '{contentSeoDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{contentSeoTitle}'
+  seoDescription: '{contentExcerpt}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    useSiteImage: true
+  seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
+  twitterCards:
+    twitterCardDescription: '{contentSeoDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{twitterSiteUsername}'
+    twitterCardTitle: '{contentSeoTitle}'
+    twitterCardType: summary-card
+siteWidePageSeoSettings:
+  openGraph:
+    ogDescription: '{contentSeoDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{contentSeoTitle}'
+  seoDescription: '{contentExcerpt}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    useSiteImage: true
+  seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
+  twitterCards:
+    twitterCardDescription: '{contentSeoDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{twitterSiteUsername}'
+    twitterCardTitle: '{contentSeoTitle}'
+    twitterCardType: summary-card
+indexSeoSettings:
+  openGraph:
+    ogDescription: '{contentSeoDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{contentSeoTitle}'
+  seoDescription: '{siteDescription}'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    useSiteImage: true
+  seoTitle: '{siteName}{seoTitleSeparator}{siteDescription}'
+  twitterCards:
+    twitterCardDescription: '{contentSeoDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{twitterSiteUsername}'
+    twitterCardTitle: '{contentSeoTitle}'
+    twitterCardType: summary-card
+categoryPostListingPageSettings:
+  openGraph:
+    ogDescription: '{contentSeoDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{contentSeoTitle}'
+  seoDescription: '{siteName} posts in the {contentCategory} category'
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    useSiteImage: true
+  seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
+  twitterCards:
+    twitterCardDescription: '{contentSeoDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{twitterSiteUsername}'
+    twitterCardTitle: '{contentSeoTitle}'
+    twitterCardType: summary-card
+notFoundPageSeoSettings:
+  openGraph:
+    ogDescription: '{contentSeoDescription}'
+    ogImage:
+      ogCustomImage: /media/no-image.png
+      ogCustomImageAlt: none
+      ogUseCustomOgImage: false
+    ogTitle: '{contentSeoTitle}'
+  seoDescription: "Sorry, we couldn't find what you were looking for."
+  seoImage:
+    customSeoImage: /media/no-image.png
+    customSeoImageAlt: none
+    seoImageSelection: featured-image-if-enabled
+  seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
+  twitterCards:
+    twitterCardDescription: '{contentSeoDescription}'
+    twitterCardImage:
+      twitterCardCustomImage: /media/no-image.png
+      twitterCardCustomImageAlt: none
+      twitterCardUseCustomImage: false
+    twitterCardSiteUsername: '{twitterSiteUsername}'
+    twitterCardTitle: '{contentSeoTitle}'
+    twitterCardType: summary-card

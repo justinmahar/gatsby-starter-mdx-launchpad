@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import { Tags } from '../util/render-template-tags';
-import { SeoTwitterCardType } from './settings/SeoSettings';
+import { SeoTwitterCardType } from './settings/SiteSeoSettings';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).

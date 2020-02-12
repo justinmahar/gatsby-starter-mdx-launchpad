@@ -7,11 +7,11 @@ import { Tags } from '../../util/render-template-tags';
   To use: 
   ```graphql
     builtInPagesYaml {
-      ...pageSettings
+      ...builtInPagesSettings
     }
   ```
 */
-export const pageSettingsYamlQuery = graphql`
+export const builtInPagesYamlQuery = graphql`
   fragment builtInPagesSettings on BuiltInPagesYaml {
     indexSettings {
       rawIndexSlug

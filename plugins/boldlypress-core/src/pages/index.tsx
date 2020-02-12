@@ -14,7 +14,7 @@ import MdxContent from '../data/MdxContent';
 import DiscussionSettings from '../data/settings/DiscussionSettings';
 import MailingListSettings from '../data/settings/MailingListSettings';
 import PostSettings from '../data/settings/PostSettings';
-import SeoSettings from '../data/settings/SeoSettings';
+import SiteSeoSettings from '../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import SiteMetadata from '../data/SiteMetadata';
 import useMailingList from '../hooks/useMailingList';
@@ -30,7 +30,7 @@ export default function Index(props: IndexProps): JSX.Element {
   console.log('Got it!', props.data.indexMdx);
 
   const siteMetadata: SiteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const seoSettings = new SeoSettings(data.seoYaml);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const postSettings = new PostSettings(data.postYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
@@ -84,8 +84,8 @@ export default function Index(props: IndexProps): JSX.Element {
   const templateTags = {
     ...siteMetadata.getTemplateTags(),
     ...socialSharingSettings.getTemplateTags(),
-    ...seoSettings.getSiteWideTemplateTags(),
-    ...seoSettings.getIndexSeoTempateTags(),
+    ...siteSeoSettings.getSiteWideTemplateTags(),
+    ...siteSeoSettings.getIndexSeoTempateTags(),
     contentTitle: siteMetadata.data.siteName,
     contentExcerpt: siteMetadata.data.siteDescription,
     contentCategory: 'none',
@@ -93,62 +93,62 @@ export default function Index(props: IndexProps): JSX.Element {
 
   const lang = siteMetadata.data.siteLanguage;
 
-  const seoTitle = renderTemplateTags(seoSettings.data.indexSeoSettings.seoTitle, templateTags);
-  const seoDescription = renderTemplateTags(seoSettings.data.indexSeoSettings.seoDescription, templateTags);
+  const seoTitle = renderTemplateTags(siteSeoSettings.data.indexSeoSettings.seoTitle, templateTags);
+  const seoDescription = renderTemplateTags(siteSeoSettings.data.indexSeoSettings.seoDescription, templateTags);
   let seoImageUrl = siteMetadata.data.siteImage;
   let seoImageAlt = siteMetadata.data.siteImageAlt;
-  if (seoSettings.data.indexSeoSettings.seoImage.useSiteImage) {
+  if (siteSeoSettings.data.indexSeoSettings.seoImage.useSiteImage) {
     seoImageUrl = siteMetadata.data.siteImage;
     seoImageAlt =
       siteMetadata.data.siteImageAlt !== 'none'
         ? renderTemplateTags(siteMetadata.data.siteImageAlt, templateTags)
         : undefined;
   } else {
-    seoImageUrl = seoSettings.data.indexSeoSettings.seoImage.customSeoImage;
+    seoImageUrl = siteSeoSettings.data.indexSeoSettings.seoImage.customSeoImage;
     seoImageAlt =
-      seoSettings.data.indexSeoSettings.seoImage.customSeoImageAlt !== 'none'
-        ? renderTemplateTags(seoSettings.data.indexSeoSettings.seoImage.customSeoImageAlt, templateTags)
+      siteSeoSettings.data.indexSeoSettings.seoImage.customSeoImageAlt !== 'none'
+        ? renderTemplateTags(siteSeoSettings.data.indexSeoSettings.seoImage.customSeoImageAlt, templateTags)
         : undefined;
   }
-  const ogTitle = renderTemplateTags(seoSettings.data.indexSeoSettings.openGraph.ogTitle, templateTags);
-  const ogDescription = renderTemplateTags(seoSettings.data.indexSeoSettings.openGraph.ogDescription, templateTags);
+  const ogTitle = renderTemplateTags(siteSeoSettings.data.indexSeoSettings.openGraph.ogTitle, templateTags);
+  const ogDescription = renderTemplateTags(siteSeoSettings.data.indexSeoSettings.openGraph.ogDescription, templateTags);
   let ogImageUrl = seoImageUrl;
   let ogImageAlt = seoImageAlt;
-  if (seoSettings.data.indexSeoSettings.openGraph.ogImage.ogUseCustomOgImage) {
-    ogImageUrl = seoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImage;
+  if (siteSeoSettings.data.indexSeoSettings.openGraph.ogImage.ogUseCustomOgImage) {
+    ogImageUrl = siteSeoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImage;
     ogImageAlt =
-      seoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
-        ? renderTemplateTags(seoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImageAlt, templateTags)
+      siteSeoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
+        ? renderTemplateTags(siteSeoSettings.data.indexSeoSettings.openGraph.ogImage.ogCustomImageAlt, templateTags)
         : undefined;
   }
   let twitterSiteUsername =
-    seoSettings.data.indexSeoSettings.twitterCards.twitterCardSiteUsername !== 'none'
-      ? renderTemplateTags(seoSettings.data.indexSeoSettings.twitterCards.twitterCardSiteUsername, templateTags)
+    siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardSiteUsername !== 'none'
+      ? renderTemplateTags(siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardSiteUsername, templateTags)
       : undefined;
   // If it was replaced with the site username which is none, set it to undefined.
   twitterSiteUsername = twitterSiteUsername !== 'none' ? twitterSiteUsername : undefined;
   const twitterCardTitle = renderTemplateTags(
-    seoSettings.data.indexSeoSettings.twitterCards.twitterCardTitle,
+    siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardTitle,
     templateTags
   );
   const twitterCardDescription = renderTemplateTags(
-    seoSettings.data.indexSeoSettings.twitterCards.twitterCardDescription,
+    siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardDescription,
     templateTags
   );
   let twitterCardImageUrl = seoImageUrl;
   let twitterCardImageAlt = seoImageAlt;
-  if (seoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
-    twitterCardImageUrl = seoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
+  if (siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
+    twitterCardImageUrl = siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
     twitterCardImageAlt =
-      seoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !== 'none'
+      siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !== 'none'
         ? renderTemplateTags(
-            seoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt,
+            siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt,
             templateTags
           )
         : undefined;
   }
   const twitterUseLargeImage: boolean =
-    seoSettings.data.indexSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
+    siteSeoSettings.data.indexSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
 
   const openGraph = {
     ogTitle: ogTitle,
@@ -285,7 +285,7 @@ export const query = graphql`
       }
     }
     seoYaml {
-      ...seoSettings
+      ...siteSeoSettings
     }
     mailingListYaml {
       ...mailingListSettings

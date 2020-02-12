@@ -1,7 +1,7 @@
 import CMS from 'netlify-cms-app';
-import blogPosts from './collections/blogPosts';
-import pages from './collections/pages';
-import settings from './collections/settings';
+import blogPostsCollection from './collections/blogPostsCollection';
+import pagesCollection from './collections/pagesCollection';
+import settingsCollection from './collections/settingsCollection';
 
 const setup = {
   backend: {
@@ -24,7 +24,7 @@ if (isDevelopment) {
 const initOptions = {
   config: {
     ...setup,
-    collections: [blogPosts, pages, settings],
+    collections: [blogPostsCollection, pagesCollection, settingsCollection],
   },
 };
 

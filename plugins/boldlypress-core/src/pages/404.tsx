@@ -7,16 +7,20 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import TopBar from '../components/TopBar';
 import BuiltInPagesSettings from '../data/settings/BuiltInPagesSettings';
-import SeoSettings from '../data/settings/SeoSettings';
+import SiteSeoSettings from '../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import SiteMetadata from '../data/SiteMetadata';
 import renderTemplateTags from '../util/render-template-tags';
 
-export default function NotFound(props: {}): JSX.Element {
+interface NotFoundProps {
+  data: any;
+}
+
+export default function NotFound(props: NotFoundProps): JSX.Element {
   const data = props.data;
   const socialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const seoSettings = new SeoSettings(data.seoYaml);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
   const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesYaml);
 
   // === SEO === === === === === === === ===
@@ -24,21 +28,21 @@ export default function NotFound(props: {}): JSX.Element {
   const templateTags = {
     ...siteMetadata.getTemplateTags(),
     ...socialSharingSettings.getTemplateTags(),
-    ...seoSettings.getSiteWideTemplateTags(),
-    ...seoSettings.getNotFoundPageSeoTempateTags(),
+    ...siteSeoSettings.getSiteWideTemplateTags(),
+    ...siteSeoSettings.getNotFoundPageSeoTempateTags(),
     ...builtInPagesSettings.getNotFoundTemplateTags(),
-    contentExcerpt: seoSettings.data.notFoundPageSeoSettings.seoDescription,
+    contentExcerpt: siteSeoSettings.data.notFoundPageSeoSettings.seoDescription,
     contentCategory: 'none',
   };
 
   const lang = siteMetadata.data.siteLanguage;
 
   const contentTitle = renderTemplateTags(builtInPagesSettings.data.notFoundPageSettings.contentTitle, templateTags);
-  const seoTitle = renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.seoTitle, templateTags);
-  const seoDescription = renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.seoDescription, templateTags);
+  const seoTitle = renderTemplateTags(siteSeoSettings.data.notFoundPageSeoSettings.seoTitle, templateTags);
+  const seoDescription = renderTemplateTags(siteSeoSettings.data.notFoundPageSeoSettings.seoDescription, templateTags);
   let seoImageUrl = siteMetadata.data.siteImage;
   let seoImageAlt = siteMetadata.data.siteImageAlt;
-  if (seoSettings.data.notFoundPageSeoSettings.seoImage.seoImageSelection === 'featured-image-if-enabled') {
+  if (siteSeoSettings.data.notFoundPageSeoSettings.seoImage.seoImageSelection === 'featured-image-if-enabled') {
     if (builtInPagesSettings.data.notFoundPageSettings.featuredImage.featuredImageEnabled) {
       seoImageUrl = builtInPagesSettings.data.notFoundPageSettings.featuredImage.featuredImageUrl;
       seoImageAlt =
@@ -56,55 +60,62 @@ export default function NotFound(props: {}): JSX.Element {
           : undefined;
     }
   } else {
-    seoImageUrl = seoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImage;
+    seoImageUrl = siteSeoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImage;
     seoImageAlt =
-      seoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImageAlt !== 'none'
-        ? renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImageAlt, templateTags)
+      siteSeoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImageAlt !== 'none'
+        ? renderTemplateTags(siteSeoSettings.data.notFoundPageSeoSettings.seoImage.customSeoImageAlt, templateTags)
         : undefined;
   }
 
-  const ogTitle = renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.openGraph.ogTitle, templateTags);
+  const ogTitle = renderTemplateTags(siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogTitle, templateTags);
   const ogDescription = renderTemplateTags(
-    seoSettings.data.notFoundPageSeoSettings.openGraph.ogDescription,
+    siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogDescription,
     templateTags
   );
   let ogImageUrl = seoImageUrl;
   let ogImageAlt = seoImageAlt;
-  if (seoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogUseCustomOgImage) {
-    ogImageUrl = seoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImage;
+  if (siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogUseCustomOgImage) {
+    ogImageUrl = siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImage;
     ogImageAlt =
-      seoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
-        ? renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImageAlt, templateTags)
+      siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImageAlt !== 'none'
+        ? renderTemplateTags(
+            siteSeoSettings.data.notFoundPageSeoSettings.openGraph.ogImage.ogCustomImageAlt,
+            templateTags
+          )
         : undefined;
   }
   let twitterSiteUsername =
-    seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername !== 'none'
-      ? renderTemplateTags(seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername, templateTags)
+    siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername !== 'none'
+      ? renderTemplateTags(
+          siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardSiteUsername,
+          templateTags
+        )
       : undefined;
   // If it was replaced with the site username which is none, set it to undefined.
   twitterSiteUsername = twitterSiteUsername !== 'none' ? twitterSiteUsername : undefined;
   const twitterCardTitle = renderTemplateTags(
-    seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardTitle,
+    siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardTitle,
     templateTags
   );
   const twitterCardDescription = renderTemplateTags(
-    seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardDescription,
+    siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardDescription,
     templateTags
   );
   let twitterCardImageUrl = seoImageUrl;
   let twitterCardImageAlt = seoImageAlt;
-  if (seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
-    twitterCardImageUrl = seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
+  if (siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardUseCustomImage) {
+    twitterCardImageUrl =
+      siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImage;
     twitterCardImageAlt =
-      seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !== 'none'
+      siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt !== 'none'
         ? renderTemplateTags(
-            seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt,
+            siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardImage.twitterCardCustomImageAlt,
             templateTags
           )
         : undefined;
   }
   const twitterUseLargeImage: boolean =
-    seoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
+    siteSeoSettings.data.notFoundPageSeoSettings.twitterCards.twitterCardType === 'summary-card-with-large-image';
 
   const openGraph = {
     ogTitle: ogTitle,
@@ -184,7 +195,7 @@ export const query = graphql`
       }
     }
     seoYaml {
-      ...seoSettings
+      ...siteSeoSettings
     }
     builtInPagesYaml {
       ...builtInPagesSettings

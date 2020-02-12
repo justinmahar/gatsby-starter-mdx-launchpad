@@ -1,6 +1,0 @@
-seoTitleSeparator: ' - '
-seoConfigurations:
-  - seoConfigurationId: default-page-seo-configuration
-    seoConfigurationName: Default Page SEO Configuration
-    seoDescription: '{contentExcerpt}'
-    seoTitle: '{contentTitle}'
