@@ -165,7 +165,7 @@ export const seoYamlQuery = graphql`
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
-export type SeoSettingsData = {
+export type SiteSeoSettingsData = {
   seoTitleSeparator: string;
   siteWidePostSeoSettings: {
     openGraph: {
@@ -318,8 +318,8 @@ export type SeoTwitterCardType = 'summary-card' | 'summary-card-with-large-image
 
 // === === === === === === === === ===
 
-export default class SeoSettings {
-  constructor(public data: SeoSettingsData) {}
+export default class SiteSeoSettings {
+  constructor(public data: SiteSeoSettingsData) {}
 
   getSiteWideTemplateTags(): Tags {
     return {
