@@ -2,7 +2,7 @@
   "name": "boldlypress",
   "private": true,
   "description": "The serverless CMS for React developers. React + TypeScript + MDX + NetlifyCMS + SEO + More",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "No License",
   "scripts": {
     "build": "gatsby build",
