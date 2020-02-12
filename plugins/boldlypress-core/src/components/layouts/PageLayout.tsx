@@ -8,7 +8,7 @@ import MdxContent, { MdxSeoTwitterCardType } from '../../data/MdxContent';
 import DiscussionSettings from '../../data/settings/DiscussionSettings';
 import MailingListSettings from '../../data/settings/MailingListSettings';
 import PostSettings from '../../data/settings/PostSettings';
-import SeoSettings from '../../data/settings/SiteSeoSettings';
+import SiteSeoSettings from '../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../data/SiteMetadata';
 import useMailingList from '../../hooks/useMailingList';
