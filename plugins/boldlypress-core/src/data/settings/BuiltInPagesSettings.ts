@@ -6,13 +6,13 @@ import { Tags } from '../../util/render-template-tags';
   
   To use: 
   ```graphql
-    builtInPagesJson {
+    builtInPagesYaml {
       ...builtInPageSettings
     }
   ```
 */
-export const builtInPagesJsonQuery = graphql`
-  fragment builtInPageSettings on BuiltInPagesJson {
+export const builtInPagesYamlQuery = graphql`
+  fragment builtInPageSettings on BuiltInPagesYaml {
     indexSettings {
       rawIndexSlug
     }

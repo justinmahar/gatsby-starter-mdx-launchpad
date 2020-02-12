@@ -1,17 +1,17 @@
-import builtInPageSettings from './settings/built-in-page-settings.json';
-import contactFormSettings from './settings/contact-form-settings.json';
-import customSettings from './settings/custom-settings.json';
-import discussionSettings from './settings/discussion-settings.json';
-import mailingListSettings from './settings/mailing-list-settings.json';
-import menuSettings from './settings/menu-settings.json';
-import navbarSettings from './settings/navbar-settings.json';
-import offlineSupportSettings from './settings/offline-support-settings.json';
-import postSettings from './settings/post-settings.json';
-import reportingSettings from './settings/reporting-settings.json';
-import siteSettings from './settings/site-settings.json';
-import siteSeoSettings from './settings/site-seo-settings.json';
-import socialSharingSettings from './settings/social-sharing-settings.json';
-import themeSettings from './settings/theme-settings.json';
+import contactFormSettings from './settings/contactFormSettings';
+import customSettings from './settings/customSettings';
+import discussionSettings from './settings/discussionSettings';
+import mailingListSettings from './settings/mailingListSettings';
+import menuSettings from './settings/menuSettings';
+import navbarSettings from './settings/navbarSettings';
+import offlineSupportSettings from './settings/offlineSupportSettings';
+import pageSettings from './settings/pageSettings';
+import postSettings from './settings/postSettings';
+import reportingSettings from './settings/reportingSettings';
+import siteSeoSettings from './settings/siteSeoSettings';
+import siteSettings from './settings/siteSettings';
+import socialSharingSettings from './settings/socialSharingSettings';
+import themeSettings from './settings/themeSettings';
 
 const settings = {
   label: 'Settings',
@@ -23,7 +23,7 @@ const settings = {
   },
   files: [
     siteSettings,
-    builtInPageSettings,
+    pageSettings,
     siteSeoSettings,
     contactFormSettings,
     mailingListSettings,

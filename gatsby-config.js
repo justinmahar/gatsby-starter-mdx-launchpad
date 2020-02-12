@@ -15,16 +15,16 @@
  * Note: Reload your development server when making changes to this file.
  */
 
-// Some gatsby-config settings live in JSON files and are thus configurable via NetlifyCMS.
-// We pull in the user-configurable settings here using node's require function:
+// Some settings are needed here outside the GraphQL layer. We use read-yaml to read them directly as JSON.
+const readYaml = require('read-yaml');
 /** Reporting configuration */
-const reportingConfig = require(`${__dirname}/settings/reporting/reporting-settings.json`);
+const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting-settings.yml`);
 /** Site metadata configuration */
-const siteMetadataConfig = require(`${__dirname}/settings/site-metadata/site-metadata-settings.json`);
+const siteMetadataConfig = readYaml.sync(`${__dirname}/settings/site-metadata/site-metadata-settings.yml`);
 /** Offline/PWA configuration */
-const offlineConfig = require(`${__dirname}/settings/offline/offline-settings.json`);
+const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
 // We need access to these settings outside of the GraphQL environment.
-const builtInPageSettings = require(`${__dirname}/settings/built-in-pages/built-in-page-settings.json`);
+const builtInPageSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-page-settings.yml`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a JSON file and is configurable through NetlifyCMS.

@@ -1,0 +1,119 @@
+const postSettings = {
+  label: 'Post Settings',
+  name: 'postSettings',
+  file: 'settings/post/post-settings.yml',
+  fields: [
+    {
+      label: 'Home Page Post Count',
+      name: 'indexPagePostCount',
+      widget: 'number',
+      hint: 'The number of posts to show on the home page.',
+    },
+    {
+      label: 'List Page Post Count',
+      name: 'listPagePostCount',
+      widget: 'number',
+      hint: 'The number of posts to show on the All Posts page and category pages that lists posts.',
+    },
+    {
+      label: 'Recent Posts Widget Post Count',
+      name: 'recentPostsWidgetPostCount',
+      widget: 'number',
+      hint: 'The number of posts to show in the Recent Posts widget.',
+    },
+    {
+      label: 'Recent Posts Widget Post Categories',
+      name: 'recentPostsWidgetPostCategories',
+      widget: 'list',
+      hint: 'The categories to show recent posts for. This allows you to only show categories of interest.',
+      field: {
+        label: 'Category Name',
+        name: 'categoryName',
+        widget: 'string',
+        default: 'all',
+        hint: 'Specify a category name, or set this to all to capture all categories.',
+      },
+    },
+    {
+      label: 'All Posts List URL Slug',
+      name: 'allPostsListSlug',
+      widget: 'string',
+      hint: 'The slug used to access the All Posts page. Example: /posts',
+    },
+    {
+      label: 'Post Category List URL Slug',
+      name: 'postCategoryListSlug',
+      widget: 'string',
+      hint:
+        'The slug prefix used to access post lists for categories. For example, if you set this to "/posts/category" and your category is "adventure", then the full path to access the category post list would become "/posts/category/adventure"',
+    },
+    {
+      label: 'Featured Post',
+      name: 'featuredPost',
+      widget: 'object',
+      fields: [
+        {
+          label: 'Featured Post Enabled',
+          name: 'featuredPostEnabled',
+          widget: 'boolean',
+          hint: 'When switched on, the post with the slug below will appear on the index page as the featured post.',
+        },
+        {
+          label: 'Featured The Newest Post',
+          name: 'featureNewestPostEnabled',
+          widget: 'boolean',
+          hint: 'When switched on, the newest post will be featured and the selected post below will be ignored.',
+        },
+        {
+          label: 'Featured Post',
+          name: 'featuredPostSlug',
+          widget: 'relation',
+          collection: 'posts',
+          searchFields: ['title', 'rawSlug'],
+          valueField: 'rawSlug',
+          displayFields: ['title'],
+          hint:
+            'Choose post you\'d like to feature. You must switch off the "Feature The Newest Post" settings for this to take effect.',
+        },
+        {
+          label: 'Content Cue Text',
+          name: 'contentCueText',
+          widget: 'string',
+          hint: 'The cue text above the title that informs the reader what the section is for. Set to none to disable.',
+        },
+        {
+          label: 'Custom Title Text',
+          name: 'customTitleText',
+          widget: 'string',
+          hint: 'The title text. Set to none to use the post title.',
+        },
+        {
+          label: 'Custom Teaser',
+          name: 'customTeaser',
+          widget: 'string',
+          hint: 'The teaser text used to get the reader to click. Set to none to use the post excerpt.',
+        },
+        {
+          label: 'Left Teaser Quote',
+          name: 'leftQuote',
+          widget: 'string',
+          hint: 'The left quote for the teaser text. Set to none for no quotes.',
+        },
+        {
+          label: 'Right Teaser Quote',
+          name: 'rightQuote',
+          widget: 'string',
+          hint: 'The right quote for the teaser text. Set to none for no quotes.',
+        },
+        {
+          label: 'Button Text',
+          name: 'buttonText',
+          widget: 'string',
+          hint: 'The text for the button. Set to none to disable.',
+        },
+      ],
+    },
+  ],
+};
+
+export default postSettings;

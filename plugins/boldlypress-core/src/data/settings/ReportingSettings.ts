@@ -5,14 +5,14 @@ import { graphql } from 'gatsby';
   
   To use: 
   ```graphql
-    reportingJson {
+    reportingYaml {
       ...reportingSettings
     }
   ```
 */
 
-export const reportingJsonQuery = graphql`
-  fragment reportingSettings on ReportingJson {
+export const reportingYamlQuery = graphql`
+  fragment reportingSettings on ReportingYaml {
     googleAnalytics {
       analyticsEnabled
       trackingId

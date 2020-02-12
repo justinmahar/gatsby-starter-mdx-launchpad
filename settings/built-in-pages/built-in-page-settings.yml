@@ -1,0 +1,19 @@
+indexSettings:
+  rawIndexSlug: homepage
+categoryPostListingPageSettings:
+  rawCategoryPostListingPageSlug: category-post-listing-page
+  contentTitle: "{contentCategory} Posts"
+  showSidebar: true
+notFoundPageSettings:
+  bodyImage: "/media/not-found-image.jpg"
+  bodyImageAlt: A tiny, cute kitten.
+  bodyText: We couldn't find what you were looking for, so here's a kitten instead.
+  buttonText: "« Home"
+  buttonUrl: "/"
+  contentTitle: Page Not Found
+  featuredImage:
+    featuredImageAlt: A surprised looking kitten.
+    featuredImageEnabled: true
+    featuredImageUrl: "/media/not-found-header.jpg"
+  headline: Well, shoot.
+  rawNotFoundPageSlug: page-not-found

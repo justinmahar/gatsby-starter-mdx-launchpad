@@ -8,12 +8,12 @@ export default function BuildStatusBadge(props: {}): JSX.Element {
 
   const data = useStaticQuery(graphql`
     query BuildStatusBadgeQuery {
-      reportingJson {
+      reportingYaml {
         ...reportingSettings
       }
     }
   `);
-  const reportingSettings = new ReportingSettings(data.reportingJson);
+  const reportingSettings = new ReportingSettings(data.reportingYaml);
 
   const paramSymbol = reportingSettings.data.buildStatusBadge.buildStatusBadgeImageUrl.indexOf('?') >= 0 ? '&' : '?';
 

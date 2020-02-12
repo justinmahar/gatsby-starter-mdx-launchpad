@@ -32,7 +32,7 @@ export default function MDXPostListPageTemplate(props: MDXPostListPageTemplatePr
   const data = props.data;
   const allMdx = data.allMdx;
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesJson);
+  const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesYaml);
   const seoSettings = new SeoSettings(data.seoYaml);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);

@@ -1,6 +1,6 @@
 import CMS from 'netlify-cms-app';
-import blogPosts from './collections/blog-posts.json';
-import pages from './collections/pages.json';
+import blogPosts from './collections/blogPosts';
+import pages from './collections/pages';
 import settings from './collections/settings';
 
 const setup = {

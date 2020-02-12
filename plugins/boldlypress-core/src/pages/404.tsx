@@ -17,7 +17,7 @@ export default function NotFound(props: {}): JSX.Element {
   const socialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const seoSettings = new SeoSettings(data.seoYaml);
-  const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesJson);
+  const builtInPagesSettings = new BuiltInPagesSettings(data.builtInPagesYaml);
 
   // === SEO === === === === === === === ===
 
@@ -186,7 +186,7 @@ export const query = graphql`
     seoYaml {
       ...seoSettings
     }
-    builtInPagesJson {
+    builtInPagesYaml {
       ...builtInPageSettings
     }
     socialSharingYaml {
