@@ -18,14 +18,14 @@
 // Some configurable settings are needed here, which is outside the GraphQL environment.
 // We'll use read-yaml to read them directly from the Yaml files as JSON.
 const readYaml = require('read-yaml');
-/** Reporting configuration */
-const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting-settings.yml`);
 /** Site metadata configuration */
 const siteMetadataConfig = readYaml.sync(`${__dirname}/settings/site-metadata/site-metadata-settings.yml`);
-/** Offline/PWA configuration */
-const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
 // Settings for built-in pages
 const builtInPagesSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-pages-settings.yml`);
+/** Offline/PWA configuration */
+const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
+/** Reporting configuration */
+const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting-settings.yml`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a Yaml file and is configurable through NetlifyCMS.
