@@ -15,12 +15,14 @@
  * Note: Reload your development server when making changes to this file.
  */
 
-// Some configurable settings are needed here, which is outside the GraphQL environment.
-// We'll use read-yaml to read them directly from the Yaml files as JSON.
+/**
+ * Some configurable settings are needed here, which is outside the GraphQL environment.
+ * We'll use read-yaml to read them directly from the Yaml files as JSON.
+ */
 const readYaml = require('read-yaml');
 /** Site metadata configuration */
 const siteMetadataConfig = readYaml.sync(`${__dirname}/settings/site-metadata/site-metadata-settings.yml`);
-// Settings for built-in pages
+/** Settings for built-in pages */
 const builtInPagesSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-pages-settings.yml`);
 /** Offline/PWA configuration */
 const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
@@ -31,7 +33,7 @@ const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting
 // Offline support configuration lives in a Yaml file and is configurable through NetlifyCMS.
 // For more info on offline support, see: https://gatsby.app/offline
 
-// These options are passed directly into the manifest plugin.
+/** These options are passed directly into the manifest plugin. */
 const gatsbyPluginManifestOptions = {
   name: offlineConfig.gatsbyPluginManifestOptions.name,
   short_name: offlineConfig.gatsbyPluginManifestOptions.shortName,
