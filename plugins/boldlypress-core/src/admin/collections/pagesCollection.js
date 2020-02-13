@@ -136,6 +136,10 @@ const pages = {
               value: 'page',
             },
             {
+              label: 'Standard Post',
+              value: 'post',
+            },
+            {
               label: 'Index (Homepage)',
               value: 'index',
             },
@@ -221,9 +225,9 @@ const pages = {
           name: 'seoConfiguration',
           widget: 'relation',
           collection: 'settings',
-          searchFields: ['seoSettings.seoConfigurations.seoConfigurationName'],
-          valueField: 'seoSettings.seoConfigurations.seoConfigurationId',
-          displayFields: ['seoSettings.seoConfigurations.seoConfigurationName'],
+          searchFields: ['siteSeoSettings.seoConfigurations.seoConfigurationName'],
+          valueField: 'siteSeoSettings.seoConfigurations.seoConfigurationId',
+          displayFields: ['siteSeoSettings.seoConfigurations.seoConfigurationName'],
           hint:
             "Select the SEO configuration to use (defined in Site SEO Settings). You can override this below, if you'd like.",
           default: 'default',

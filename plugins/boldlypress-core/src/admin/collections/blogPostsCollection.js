@@ -106,8 +106,27 @@ const blogPosts = {
         {
           label: 'Layout',
           name: 'layout',
-          widget: 'hidden',
+          widget: 'select',
+          hint: 'Select the layout type.',
           default: 'post',
+          options: [
+            {
+              label: 'Standard Page',
+              value: 'page',
+            },
+            {
+              label: 'Standard Post',
+              value: 'post',
+            },
+            {
+              label: 'Index (Homepage)',
+              value: 'index',
+            },
+            {
+              label: 'Category Post Listing Page',
+              value: 'category-post-listing',
+            },
+          ],
         },
         {
           label: 'Show Date',
@@ -185,9 +204,9 @@ const blogPosts = {
           name: 'seoConfiguration',
           widget: 'relation',
           collection: 'settings',
-          searchFields: ['seoSettings.seoConfigurations.seoConfigurationName'],
-          valueField: 'seoSettings.seoConfigurations.seoConfigurationId',
-          displayFields: ['seoSettings.seoConfigurations.seoConfigurationName'],
+          searchFields: ['siteSeoSettings.seoConfigurations.seoConfigurationName'],
+          valueField: 'siteSeoSettings.seoConfigurations.seoConfigurationId',
+          displayFields: ['siteSeoSettings.seoConfigurations.seoConfigurationName'],
           hint: 'Select the SEO configuration to use (defined in Site SEO Settings).',
           default: 'default',
         },
