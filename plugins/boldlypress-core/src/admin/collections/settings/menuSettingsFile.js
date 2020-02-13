@@ -1,4 +1,4 @@
-const menuSettings = {
+const menuSettingsFile = {
   label: 'Menu Settings',
   name: 'menuSettings',
   file: 'settings/menu/menu-settings.yml',
@@ -161,4 +161,4 @@ const menuSettings = {
   ],
 };
 
-export default menuSettings;
+export default menuSettingsFile;

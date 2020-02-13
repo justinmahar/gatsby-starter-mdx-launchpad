@@ -1,4 +1,4 @@
-const discussionSettings = {
+const discussionSettingsFile = {
   label: 'Discussion Settings',
   name: 'discussion-settings',
   file: 'settings/discussion/discussion-settings.yml',
@@ -18,4 +18,4 @@ const discussionSettings = {
   ],
 };
 
-export default discussionSettings;
+export default discussionSettingsFile;

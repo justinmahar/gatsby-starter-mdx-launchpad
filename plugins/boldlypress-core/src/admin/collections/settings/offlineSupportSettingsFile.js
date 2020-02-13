@@ -1,4 +1,4 @@
-const offlineSupportSettings = {
+const offlineSupportSettingsFile = {
   label: 'Offline Support (Progressive Web App) Settings',
   name: 'offlineSupportSettings',
   file: 'settings/offline/offline-settings.yml',
@@ -112,4 +112,4 @@ const offlineSupportSettings = {
   ],
 };
 
-export default offlineSupportSettings;
+export default offlineSupportSettingsFile;

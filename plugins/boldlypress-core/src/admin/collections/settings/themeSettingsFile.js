@@ -1,4 +1,4 @@
-const themeSettings = {
+const themeSettingsFile = {
   label: 'Theme Settings',
   name: 'themeSettings',
   file: 'settings/theme/theme-settings.yml',
@@ -194,4 +194,4 @@ const themeSettings = {
   ],
 };
 
-export default themeSettings;
+export default themeSettingsFile;

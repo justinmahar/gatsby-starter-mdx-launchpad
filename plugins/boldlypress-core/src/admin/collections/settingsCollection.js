@@ -1,6 +1,6 @@
 import builtInPagesSettingsFile from './settings/builtInPagesSettingsFile';
 import contactFormSettingsFile from './settings/contactFormSettingsFile';
-import customSettingsFile from './settings/customSettingsFile';
+import customSettingsFiles from './settings/customSettingsFiles';
 import discussionSettingsFile from './settings/discussionSettingsFile';
 import mailingListSettingsFile from './settings/mailingListSettingsFile';
 import menuSettingsFile from './settings/menuSettingsFile';
@@ -35,7 +35,7 @@ const settingsCollection = {
     postSettingsFile,
     reportingSettingsFile,
     offlineSupportSettingsFile,
-    ...customSettingsFile,
+    ...customSettingsFiles,
   ],
 };
 

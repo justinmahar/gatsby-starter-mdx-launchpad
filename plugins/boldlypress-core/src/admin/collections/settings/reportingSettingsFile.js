@@ -1,4 +1,4 @@
-const reportingSettings = {
+const reportingSettingsFile = {
   label: 'Reporting Settings',
   name: 'reportingSettings',
   file: 'settings/reporting/reporting-settings.yml',
@@ -73,4 +73,4 @@ const reportingSettings = {
   ],
 };
 
-export default reportingSettings;
+export default reportingSettingsFile;

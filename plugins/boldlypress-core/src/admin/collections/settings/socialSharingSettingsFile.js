@@ -1,4 +1,4 @@
-const socialSharingSettings = {
+const socialSharingSettingsFile = {
   label: 'Social & Sharing Settings',
   name: 'socialSharingSettings',
   file: 'settings/social-sharing/social-sharing-settings.yml',
@@ -103,4 +103,4 @@ const socialSharingSettings = {
   ],
 };
 
-export default socialSharingSettings;
+export default socialSharingSettingsFile;

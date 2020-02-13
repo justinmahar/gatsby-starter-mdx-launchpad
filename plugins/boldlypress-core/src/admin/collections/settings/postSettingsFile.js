@@ -1,4 +1,4 @@
-const postSettings = {
+const postSettingsFile = {
   label: 'Post Settings',
   name: 'postSettings',
   file: 'settings/post/post-settings.yml',
@@ -116,4 +116,4 @@ const postSettings = {
   ],
 };
 
-export default postSettings;
+export default postSettingsFile;

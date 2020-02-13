@@ -63,8 +63,6 @@ module.exports = themeOptions => {
   const offlineSupportPlugins = offlineSupportEnabled ? offlineSupportEnabledPlugins : offlineSupportDisabledPlugins;
   // == END Offline Support Settings Setup ==
 
-  // == Google Analytics ==
-
   const plugins = [
     // Offline support is configurable.
     ...offlineSupportPlugins,
@@ -148,16 +146,9 @@ module.exports = themeOptions => {
         path: settingsPath,
       },
     },
-    `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `json-settings`,
-        path: settingsPath,
-      },
-    },
   ];
 
+  // == Google Analytics ==
   // Only add the analytics plugin if it's enabled
   if (reportingConfig.googleAnalytics.analyticsEnabled) {
     const analyticsPluginConfig = {

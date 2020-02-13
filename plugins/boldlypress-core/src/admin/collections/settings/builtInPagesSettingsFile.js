@@ -1,4 +1,4 @@
-const builtInPageSettings = {
+const builtInPageSettingsFile = {
   label: 'Built-In Page Settings',
   name: 'builtInPageSettings',
   file: 'settings/built-in-pages/built-in-pages-settings.yml',
@@ -36,4 +36,4 @@ const builtInPageSettings = {
   ],
 };
 
-export default builtInPageSettings;
+export default builtInPageSettingsFile;

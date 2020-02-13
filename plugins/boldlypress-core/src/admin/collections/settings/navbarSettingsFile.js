@@ -1,4 +1,4 @@
-const navbarSettings = {
+const navbarSettingsFile = {
   label: 'Navbar Settings',
   name: 'navbarSettings',
   file: 'settings/navbar/navbar-settings.yml',
@@ -163,4 +163,4 @@ const navbarSettings = {
   ],
 };
 
-export default navbarSettings;
+export default navbarSettingsFile;

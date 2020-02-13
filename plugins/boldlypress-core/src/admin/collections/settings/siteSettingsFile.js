@@ -1,6 +1,6 @@
 import languageOptions from './languageOptions';
 
-const siteSettings = {
+const siteSettingsFile = {
   label: 'Site Settings',
   name: 'siteMetadataSettings',
   file: 'settings/site-metadata/site-metadata-settings.yml',
@@ -61,4 +61,4 @@ const siteSettings = {
   ],
 };
 
-export default siteSettings;
+export default siteSettingsFile;

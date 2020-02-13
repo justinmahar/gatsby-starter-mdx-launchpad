@@ -1,4 +1,4 @@
-const mailingListSettings = {
+const mailingListSettingsFile = {
   label: 'Mailing List Settings',
   name: 'mailingListSettings',
   file: 'settings/mailing-list/mailing-list-settings.yml',
@@ -191,4 +191,4 @@ const mailingListSettings = {
   ],
 };
 
-export default mailingListSettings;
+export default mailingListSettingsFile;

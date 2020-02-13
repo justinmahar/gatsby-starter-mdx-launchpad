@@ -1,4 +1,4 @@
-const siteSeoSettings = {
+const siteSeoSettingsFile = {
   label: 'Site SEO Settings',
   name: 'siteSeoSettings',
   file: 'settings/seo/site-seo-settings.yml',
@@ -48,4 +48,4 @@ const siteSeoSettings = {
   ],
 };
 
-export default siteSeoSettings;
+export default siteSeoSettingsFile;

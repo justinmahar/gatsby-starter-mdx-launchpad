@@ -1,4 +1,4 @@
-const contactFormSettings = {
+const contactFormSettingsFile = {
   label: 'Contact Form Settings',
   name: 'contactFormSettings',
   file: 'settings/contact/contact-form-settings.yml',
@@ -126,4 +126,4 @@ const contactFormSettings = {
   ],
 };
 
-export default contactFormSettings;
+export default contactFormSettingsFile;
