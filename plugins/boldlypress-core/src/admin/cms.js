@@ -1,5 +1,5 @@
 import CMS from 'netlify-cms-app';
-import blogPostsCollection from './collections/blogPostsCollection';
+import postsCollection from './collections/postsCollection';
 import pagesCollection from './collections/pagesCollection';
 import settingsCollection from './collections/settingsCollection';
 
@@ -24,7 +24,7 @@ if (isDevelopment) {
 const initOptions = {
   config: {
     ...setup,
-    collections: [blogPostsCollection, pagesCollection, settingsCollection],
+    collections: [postsCollection, pagesCollection, settingsCollection],
   },
 };
 
