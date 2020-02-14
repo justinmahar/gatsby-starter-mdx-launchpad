@@ -8,44 +8,30 @@ featuredImage:
   featuredImageAlt: none
   featuredImageEnabled: false
   featuredImageUrl: /media/no-image.png
-  showCardImage: true
-  showTitleSection: true
-showSidebar: false
-showTitle: true
-hidden: false
-layout: page
-dateEnabled: false
-discussionEnabled: false
+  showCardImage: false
+  showTitleSection: false
+options:
+  dateEnabled: false
+  discussionEnabled: false
+  hidden: false
+  showTitle: true
+  layout: page
+  showSidebar: false
 sharing:
   facebookHashtag: none
-  facebookQuote: '{contentOgTitle}'
+  facebookQuote: '{contentSeoTitle}'
   sharingEnabled: false
   twitterHashtags: none
-  twitterTitle: '{contentTwitterCardTitle}'
-  twitterVia: '{contentTwitterSiteUsername}'
+  twitterTitle: '{contentSeoTitle}'
+  twitterVia: '{twitterSiteUsername}'
 seoSettings:
-  openGraph:
-    ogDescription: '{siteWidePageOgDescription}'
-    ogImage:
-      ogCustomImage: /media/no-image.png
-      ogCustomImageAlt: none
-      ogUseCustomOgImage: false
-    ogTitle: '{siteWidePageOgTitle}'
-  seoDescription: '{siteWidePageSeoDescription}'
+  seoConfigurationId: default-post-seo-configuration
+  seoDescription: '{configSeoDescription}'
   seoImage:
     customSeoImage: /media/no-image.png
     customSeoImageAlt: none
     seoImageSelection: featured-image-if-enabled
-  seoTitle: '{siteWidePageSeoTitle}'
-  twitterCards:
-    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
-    twitterCardImage:
-      twitterCardCustomImage: /media/no-image.png
-      twitterCardCustomImageAlt: none
-      twitterCardUseCustomImage: false
-    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
-    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
-    twitterCardType: site-wide-twitter-card-type
+  seoTitle: '{configSeoTitle}'
 group: pages
 ---
 
@@ -200,7 +186,7 @@ The following template tags are available:
 
 | Template Tag | Value | Source |
 |--------------|-------|--------|
-| <small> `{year}` </small> | Current Year | Calendar |
+| <small> `{year}` </small> | Current year (i.e. `2020`) | Calendar |
 | <small> `{siteName}` </small> | Name of site | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
 | <small> `{siteDescription}` </small> | Description of site | [Site Settings](/admin/#/collections/settings/entries/siteMetadataSettings) |
 | <small> `{contentTitle}` </small> | Title of current content | [Posts](/admin/#/collections/posts), [Pages](/admin/#/collections/pages), and [Built-In Page Settings](/admin/#/collections/settings/entries/builtInPagesSettings) |

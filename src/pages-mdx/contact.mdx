@@ -8,44 +8,30 @@ featuredImage:
   featuredImageAlt: none
   featuredImageEnabled: false
   featuredImageUrl: /media/no-image.png
-  showTitleSection: true
-  showCardImage: true
-showTitle: true
-showSidebar: false
-layout: page
-hidden: false
-dateEnabled: false
-discussionEnabled: false
+  showCardImage: false
+  showTitleSection: false
+options:
+  dateEnabled: false
+  discussionEnabled: false
+  hidden: false
+  showTitle: true
+  layout: page
+  showSidebar: false
 sharing:
   facebookHashtag: none
-  facebookQuote: '{contentOgTitle}'
+  facebookQuote: '{contentSeoTitle}'
   sharingEnabled: false
   twitterHashtags: none
-  twitterTitle: '{contentTwitterCardTitle}'
-  twitterVia: '{contentTwitterSiteUsername}'
+  twitterTitle: '{contentSeoTitle}'
+  twitterVia: '{twitterSiteUsername}'
 seoSettings:
-  openGraph:
-    ogDescription: '{siteWidePageOgDescription}'
-    ogImage:
-      ogCustomImage: /media/no-image.png
-      ogCustomImageAlt: none
-      ogUseCustomOgImage: false
-    ogTitle: '{siteWidePageOgTitle}'
-  seoDescription: '{siteWidePageSeoDescription}'
+  seoConfigurationId: default-post-seo-configuration
+  seoDescription: '{configSeoDescription}'
   seoImage:
     customSeoImage: /media/no-image.png
     customSeoImageAlt: none
     seoImageSelection: featured-image-if-enabled
-  seoTitle: '{siteWidePageSeoTitle}'
-  twitterCards:
-    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
-    twitterCardImage:
-      twitterCardCustomImage: /media/no-image.png
-      twitterCardCustomImageAlt: none
-      twitterCardUseCustomImage: false
-    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
-    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
-    twitterCardType: site-wide-twitter-card-type
+  seoTitle: '{configSeoTitle}'
 group: pages
 ---
 

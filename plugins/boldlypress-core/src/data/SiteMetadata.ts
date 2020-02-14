@@ -57,6 +57,7 @@ export default class SiteMetadata {
 
   getTemplateTags(): Tags {
     return {
+      year: `${new Date().getFullYear()}`,
       siteName: this.data.siteName,
       siteDescription: this.data.siteDescription,
     };

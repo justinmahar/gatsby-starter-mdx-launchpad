@@ -5,47 +5,33 @@ date: '2019-11-02'
 category: none
 customExcerpt: 'Sorry, we couldn''t find what you were looking for.'
 featuredImage:
-  featuredImageAlt: A surprised looking kitten.
-  featuredImageEnabled: true
-  featuredImageUrl: /media/not-found-header.jpg
-  showTitleSection: true
+  featuredImageAlt: none
+  featuredImageEnabled: false
+  featuredImageUrl: /media/no-image.png
   showCardImage: false
-showTitle: false
-showSidebar: false
-hidden: false
-layout: page
-dateEnabled: false
-discussionEnabled: false
+  showTitleSection: false
+options:
+  dateEnabled: false
+  discussionEnabled: false
+  hidden: false
+  showTitle: true
+  layout: page
+  showSidebar: false
 sharing:
   facebookHashtag: none
-  facebookQuote: '{contentOgTitle}'
+  facebookQuote: '{contentSeoTitle}'
   sharingEnabled: false
   twitterHashtags: none
-  twitterTitle: '{contentTwitterCardTitle}'
-  twitterVia: '{contentTwitterSiteUsername}'
+  twitterTitle: '{contentSeoTitle}'
+  twitterVia: '{twitterSiteUsername}'
 seoSettings:
-  openGraph:
-    ogDescription: '{siteWidePageOgDescription}'
-    ogImage:
-      ogCustomImage: /media/no-image.png
-      ogCustomImageAlt: none
-      ogUseCustomOgImage: false
-    ogTitle: '{siteWidePageOgTitle}'
-  seoDescription: '{siteWidePageSeoDescription}'
+  seoConfigurationId: default-post-seo-configuration
+  seoDescription: '{configSeoDescription}'
   seoImage:
     customSeoImage: /media/no-image.png
     customSeoImageAlt: none
     seoImageSelection: featured-image-if-enabled
-  seoTitle: '{siteWidePageSeoTitle}'
-  twitterCards:
-    twitterCardDescription: '{siteWidePageTwitterCardDescription}'
-    twitterCardImage:
-      twitterCardCustomImage: /media/no-image.png
-      twitterCardCustomImageAlt: none
-      twitterCardUseCustomImage: false
-    twitterCardSiteUsername: '{siteWidePageTwitterCardSiteUsername}'
-    twitterCardTitle: '{siteWidePageTwitterCardTitle}'
-    twitterCardType: site-wide-twitter-card-type
+  seoTitle: '{configSeoTitle}'
 group: pages
 ---
 import { Link } from "gatsby"

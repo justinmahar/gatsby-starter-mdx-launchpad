@@ -19,6 +19,13 @@ const ContentOptionsObject = options => {
         default: showSidebarDefault,
       },
       {
+        label: 'Show Title',
+        name: 'showTitle',
+        widget: 'boolean',
+        hint: "You can show or hide the title if you'd like.",
+        default: true,
+      },
+      {
         label: 'Hidden',
         name: 'hidden',
         widget: 'boolean',
@@ -47,6 +54,22 @@ const ContentOptionsObject = options => {
           {
             label: 'Category Post Listing Page',
             value: 'category-post-listing',
+          },
+          {
+            label: '404 Not Found Page',
+            value: 'not-found-page',
+          },
+          {
+            label: 'Custom Layout 1',
+            value: 'custom-layout-1',
+          },
+          {
+            label: 'Custom Layout 2',
+            value: 'custom-layout-2',
+          },
+          {
+            label: 'Custom Layout 3',
+            value: 'custom-layout-3',
           },
         ],
       },

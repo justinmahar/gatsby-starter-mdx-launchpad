@@ -38,12 +38,14 @@ export const mdxFragmentQuery = graphql`
         showTitleSection
         showCardImage
       }
-      showTitle
-      showSidebar
-      hidden
-      layout
-      dateEnabled
-      discussionEnabled
+      options {
+        dateEnabled
+        discussionEnabled
+        hidden
+        showTitle
+        layout
+        showSidebar
+      }
       sharing {
         sharingEnabled
         facebookQuote
@@ -112,12 +114,14 @@ export type MdxData = {
       showTitleSection: boolean;
       showCardImage: boolean;
     };
-    showTitle: boolean;
-    showSidebar: boolean;
-    hidden: boolean;
-    layout: MdxLayout;
-    dateEnabled: boolean;
-    discussionEnabled: boolean;
+    options: {
+      dateEnabled: boolean;
+      discussionEnabled: boolean;
+      hidden: boolean;
+      showTitle: boolean;
+      layout: string;
+      showSidebar: boolean;
+    };
     sharing: {
       sharingEnabled: boolean;
       facebookQuote: string;
@@ -127,32 +131,13 @@ export type MdxData = {
       twitterHashtags: string;
     };
     seoSettings: {
-      openGraph: {
-        ogDescription: string;
-        ogImage: {
-          ogCustomImage: string;
-          ogCustomImageAlt: string;
-          ogUseCustomOgImage: boolean;
-        };
-        ogTitle: string;
-      };
+      seoConfigurationId: string;
+      seoTitle: string;
       seoDescription: string;
       seoImage: {
         customSeoImage: string;
         customSeoImageAlt: string;
         seoImageSelection: MdxSeoImageSelection;
-      };
-      seoTitle: string;
-      twitterCards: {
-        twitterCardDescription: string;
-        twitterCardImage: {
-          twitterCardCustomImage: string;
-          twitterCardCustomImageAlt: string;
-          twitterCardUseCustomImage: boolean;
-        };
-        twitterCardSiteUsername: string;
-        twitterCardTitle: string;
-        twitterCardType: MdxSeoTwitterCardType;
       };
     };
     group: MdxGroup;
@@ -162,8 +147,7 @@ export type MdxData = {
 };
 
 export type MdxGroup = 'posts' | 'pages';
-export type MdxLayout = 'post' | 'page' | 'index' | 'category-post-listing';
-export type MdxSeoImageSelection = 'featured-image-if-enabled' | 'custom-image';
+export type MdxSeoImageSelection = 'site-image' | 'featured-image-if-enabled' | 'custom-image';
 export type MdxSeoTwitterCardType = 'site-wide-twitter-card-type' | SeoTwitterCardType;
 
 // === === === === === === === === ===
@@ -187,11 +171,6 @@ export default class MdxContent {
       contentCategory: this.data.frontmatter.category,
       contentSeoTitle: this.data.frontmatter.seoSettings.seoTitle,
       contentSeoDescription: this.data.frontmatter.seoSettings.seoDescription,
-      contentOgTitle: this.data.frontmatter.seoSettings.openGraph.ogTitle,
-      contentOgDescription: this.data.frontmatter.seoSettings.openGraph.ogDescription,
-      contentTwitterCardTitle: this.data.frontmatter.seoSettings.twitterCards.twitterCardTitle,
-      contentTwitterCardDescription: this.data.frontmatter.seoSettings.twitterCards.twitterCardDescription,
-      contentTwitterSiteUsername: this.data.frontmatter.seoSettings.twitterCards.twitterCardSiteUsername,
     };
   }
 
@@ -207,6 +186,6 @@ export default class MdxContent {
    * Returns true if this MDX uses the post layout, false otherwise.
    */
   public hasSidebar(): boolean {
-    return this.data.frontmatter.showSidebar;
+    return this.data.frontmatter.options.showSidebar;
   }
 }

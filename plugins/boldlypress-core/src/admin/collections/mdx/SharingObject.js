@@ -16,7 +16,7 @@ const SharingObject = () => {
         name: 'facebookQuote',
         widget: 'string',
         hint: 'Quote to use when sharing via the Facebook button. Supports template tags.',
-        default: '{contentOgTitle}',
+        default: '{contentSeoTitle}',
       },
       {
         label: 'Facebook Hashtag',
@@ -31,14 +31,14 @@ const SharingObject = () => {
         name: 'twitterTitle',
         widget: 'string',
         hint: 'Title shown when sharing via the Twitter button. Supports template tags.',
-        default: '{contentTwitterCardTitle}',
+        default: '{contentSeoTitle}',
       },
       {
         label: 'Twitter Via',
         name: 'twitterVia',
         widget: 'string',
         hint: 'The attribution for the shared content on Twitter. Supports template tags.',
-        default: '{contentTwitterSiteUsername}',
+        default: '{twitterSiteUsername}',
       },
       {
         label: 'Twitter Hashtags',

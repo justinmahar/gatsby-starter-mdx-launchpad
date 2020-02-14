@@ -28,6 +28,20 @@ const FeaturedImageObject = options => {
           "A description of what's happening in the custom image. This is used for accessibility, so visually impaired readers can know what's up. Supports template tags. Set to none to disable.",
         default: 'none',
       },
+      {
+        label: 'Show Card Image',
+        name: 'showCardImage',
+        widget: 'string',
+        hint: 'Switch on to show the featured image at the top of the content card.',
+        default: false,
+      },
+      {
+        label: 'Show Title Section',
+        name: 'showTitleSection',
+        widget: 'string',
+        hint: 'Switch on to show the title section.',
+        default: false,
+      },
     ],
   };
 };
