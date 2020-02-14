@@ -3,8 +3,8 @@ seoConfigurations:
   - seoConfigurationId: default-page-seo-configuration
     seoConfigurationName: Default Page SEO Configuration
     seoDescription: '{contentExcerpt}'
-    seoTitle: '{contentTitle}'
+    seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
   - seoConfigurationId: default-post-seo-configuration
     seoConfigurationName: Default Post SEO Configuration
     seoDescription: '{contentExcerpt}'
-    seoTitle: '{contentTitle}'
+    seoTitle: '{contentTitle}{seoTitleSeparator}{siteName}'
