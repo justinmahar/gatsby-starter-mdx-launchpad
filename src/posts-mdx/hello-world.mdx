@@ -1,48 +1,34 @@
 ---
 title: Hello World!
 rawSlug: hello-world
-date: '2019-10-31'
+date: '2020-02-14'
 category: Uncategorized
 customExcerpt: none
 featuredImage:
   featuredImageAlt: Aerial view of a bay surrounded by cliffs.
   featuredImageEnabled: true
   featuredImageUrl: /media/hello-world.jpg
-showSidebar: true
-hidden: false
-layout: post
-dateEnabled: true
-discussionEnabled: true
+options:
+  dateEnabled: true
+  discussionEnabled: true
+  hidden: false
+  layout: post
+  showSidebar: true
 sharing:
   facebookHashtag: none
-  facebookQuote: '{contentOgTitle}'
+  facebookQuote: '{contentSeoTitle}'
   sharingEnabled: true
   twitterHashtags: none
-  twitterTitle: '{contentTwitterCardTitle}'
-  twitterVia: '{contentTwitterSiteUsername}'
+  twitterTitle: '{contentSeoTitle}'
+  twitterVia: '{twitterSiteUsername}'
 seoSettings:
-  openGraph:
-    ogDescription: '{siteWidePostOgDescription}'
-    ogImage:
-      ogCustomImage: /media/no-image.png
-      ogCustomImageAlt: none
-      ogUseCustomOgImage: false
-    ogTitle: '{siteWidePostOgTitle}'
-  seoDescription: '{siteWidePostSeoDescription}'
+  seoConfigurationId: default-post-seo-configuration
+  seoDescription: '{configSeoDescription}'
   seoImage:
     customSeoImage: /media/no-image.png
     customSeoImageAlt: none
     seoImageSelection: featured-image-if-enabled
-  seoTitle: '{siteWidePostSeoTitle}'
-  twitterCards:
-    twitterCardDescription: '{siteWidePostTwitterCardDescription}'
-    twitterCardImage:
-      twitterCardCustomImage: /media/no-image.png
-      twitterCardCustomImageAlt: none
-      twitterCardUseCustomImage: false
-    twitterCardSiteUsername: '{siteWidePostTwitterCardSiteUsername}'
-    twitterCardTitle: '{siteWidePostTwitterCardTitle}'
-    twitterCardType: site-wide-twitter-card-type
+  seoTitle: '{configSeoTitle}'
 group: posts
 ---
 import { Link } from "gatsby"
