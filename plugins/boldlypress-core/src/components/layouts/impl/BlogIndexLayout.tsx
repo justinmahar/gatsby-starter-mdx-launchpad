@@ -22,7 +22,7 @@ import MdxSEO from '../../configured/MdxSEO';
 import { LayoutProps } from '../getLayout';
 
 export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
-  const staticQueryData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query BlogIndexLayoutQuery {
       allMdxPosts: allMdx(filter: { frontmatter: { group: { eq: "posts" } } }) {
         nodes {
@@ -53,12 +53,12 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   `);
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
-  const siteMetadata: SiteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
-  const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
-  const mailingListSettings = new MailingListSettings(staticQueryData.mailingListYaml);
-  const postSettings = new PostSettings(staticQueryData.postYaml);
-  const discussionSettings = new DiscussionSettings(staticQueryData.discussionYaml);
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(staticQueryData.socialSharingYaml);
+  const siteMetadata: SiteMetadata = new SiteMetadata(data.site.siteMetadata);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
+  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
+  const postSettings = new PostSettings(data.postYaml);
+  const discussionSettings = new DiscussionSettings(data.discussionYaml);
+  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const mailingList = useMailingList(
     mailingListSettings.data.mailingListFormActionUrl,
@@ -72,7 +72,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const featuredPostEnabled: boolean = postSettings.data.featuredPost.featuredPostEnabled;
   const featuredPostSlug: string = postSettings.data.featuredPost.featuredPostSlug;
 
-  const posts: MdxContent[] = staticQueryData.allMdxPosts.nodes
+  const posts: MdxContent[] = data.allMdxPosts.nodes
     .map(node => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 

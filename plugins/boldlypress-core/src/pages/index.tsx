@@ -1,9 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import { getMdxContentLayout, LayoutProps } from '../components/layouts/getLayout';
-import MdxContent from '../data/MdxContent';
-import BuiltInPagesSettings from '../data/settings/BuiltInPagesSettings';
 import BuiltInPageLayout from '../components/layouts/BuiltInPageLayout';
+import BuiltInPagesSettings from '../data/settings/BuiltInPagesSettings';
 
 interface IndexProps {
   data: any;
@@ -21,7 +19,7 @@ export default function Index(props: IndexProps): JSX.Element {
   );
 }
 
-// Settings fragments are in: src/data
+// Page query
 export const query = graphql`
   query IndexQuery {
     builtInPagesYaml {

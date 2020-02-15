@@ -26,7 +26,7 @@ import { LayoutProps } from '../getLayout';
 import Footer from '../../Footer';
 
 export default function ContentLayout(props: LayoutProps): JSX.Element {
-  const staticQueryData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query ContentLayoutQuery {
       site {
         siteMetadata {
@@ -52,12 +52,12 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
   `);
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
-  const siteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
-  const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
-  const mailingListSettings = new MailingListSettings(staticQueryData.mailingListYaml);
-  const postSettings = new PostSettings(staticQueryData.postYaml);
-  const discussionSettings = new DiscussionSettings(staticQueryData.discussionYaml);
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(staticQueryData.socialSharingYaml);
+  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
+  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
+  const postSettings = new PostSettings(data.postYaml);
+  const discussionSettings = new DiscussionSettings(data.discussionYaml);
+  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const postCategoryListSlug = postSettings.data.postCategoryListSlug;
 

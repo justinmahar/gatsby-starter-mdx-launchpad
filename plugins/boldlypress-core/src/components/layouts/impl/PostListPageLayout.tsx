@@ -25,7 +25,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 const ALL_POSTS_GLOB = '*';
 
 export default function PostListPageLayout(props: LayoutProps): JSX.Element {
-  const staticQueryData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query PostListPageLayoutQuery {
       site {
         siteMetadata {
@@ -50,12 +50,12 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
     }
   `);
 
-  const siteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
-  const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
-  const mailingListSettings = new MailingListSettings(staticQueryData.mailingListYaml);
-  const postSettings = new PostSettings(staticQueryData.postYaml);
-  const discussionSettings = new DiscussionSettings(staticQueryData.discussionYaml);
-  const socialSharingSettings = new SocialSharingSettings(staticQueryData.socialSharingYaml);
+  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
+  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
+  const postSettings = new PostSettings(data.postYaml);
+  const discussionSettings = new DiscussionSettings(data.discussionYaml);
+  const socialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const allPostsListSlug = postSettings.data.allPostsListSlug;
   const postCategoryListSlug = postSettings.data.postCategoryListSlug;

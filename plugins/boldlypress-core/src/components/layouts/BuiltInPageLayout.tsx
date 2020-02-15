@@ -10,7 +10,7 @@ export interface BuiltInPageLayoutProps {
 }
 
 export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.Element {
-  const staticQueryData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query BuiltInPageLayoutQuery {
       allMdxPages: allMdx(filter: { frontmatter: { group: { eq: "pages" } } }) {
         nodes {
@@ -21,7 +21,7 @@ export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.El
   `);
 
   const mdxContent: MdxContent = new MdxContent(
-    staticQueryData.allMdxPages.nodes.find(node => {
+    data.allMdxPages.nodes.find(node => {
       const mdxContent: MdxContent = new MdxContent(node);
       return mdxContent.data.frontmatter.rawSlug === props.rawPageSlug;
     })

@@ -13,7 +13,7 @@ import SocialSharingSettings from '../../../../../plugins/boldlypress-core/src/d
 import SiteMetadata from '../../../../../plugins/boldlypress-core/src/data/SiteMetadata';
 
 export default function CustomLayout1(props: LayoutProps): JSX.Element {
-  const staticQueryData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query CustomLayout1Query {
       site {
         siteMetadata {
@@ -39,9 +39,9 @@ export default function CustomLayout1(props: LayoutProps): JSX.Element {
   `);
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
-  const siteMetadata: SiteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
-  const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(staticQueryData.socialSharingYaml);
+  const siteMetadata: SiteMetadata = new SiteMetadata(data.site.siteMetadata);
+  const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
+  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const templateTags = {
     ...siteMetadata.getTemplateTags(),
