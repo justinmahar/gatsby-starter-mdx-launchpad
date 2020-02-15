@@ -1,8 +1,12 @@
 import { CustomLayouts } from '../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
-import CustomLayout1 from './impl/CustomLayout1';
+import LandingPageLayout from './impl/LandingPageLayout';
+import AppLayout from './impl/AppLayout';
+import TemplateLayout from './impl/TemplateLayout';
 
 const customMdxLayouts: CustomLayouts = {
-  'custom-layout-1': CustomLayout1,
+  'landing-page': LandingPageLayout,
+  app: AppLayout,
+  template: TemplateLayout,
 };
 
 export default customMdxLayouts;

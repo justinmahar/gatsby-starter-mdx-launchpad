@@ -12,9 +12,9 @@ import SiteSeoSettings from '../../../../../plugins/boldlypress-core/src/data/se
 import SocialSharingSettings from '../../../../../plugins/boldlypress-core/src/data/settings/SocialSharingSettings';
 import SiteMetadata from '../../../../../plugins/boldlypress-core/src/data/SiteMetadata';
 
-export default function CustomLayout1(props: LayoutProps): JSX.Element {
+export default function TemplateLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
-    query CustomLayout1Query {
+    query TemplateLayoutQuery {
       site {
         siteMetadata {
           ...siteMetadataCommons
@@ -66,7 +66,8 @@ export default function CustomLayout1(props: LayoutProps): JSX.Element {
         <Container className="mt-5 mb-4">
           <Row>
             <Col>
-              <h1>Custom layout!</h1>
+              <h1>Layout template</h1>
+              <p>Don't use this directly. Instead, use this as a template for new layouts.</p>
             </Col>
           </Row>
         </Container>
