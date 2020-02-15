@@ -83,10 +83,9 @@ const plugins = [
         manifestOptions: gatsbyPluginManifestOptions,
       },
       builtInPagesSettings: {
-        rawIndexSlug: builtInPagesSettings.indexSettings.rawIndexSlug,
-        rawCategoryPostListingPageSlug:
-          builtInPagesSettings.categoryPostListingPageSettings.rawCategoryPostListingPageSlug,
-        rawNotFoundPageSlug: builtInPagesSettings.notFoundPageSettings.rawNotFoundPageSlug,
+        rawIndexSlug: builtInPagesSettings.rawIndexSlug,
+        rawCategoryPostListingPageSlug: builtInPagesSettings.rawCategoryPostListingPageSlug,
+        rawNotFoundPageSlug: builtInPagesSettings.rawNotFoundPageSlug,
       },
       reportingConfig: {
         googleAnalytics: {
