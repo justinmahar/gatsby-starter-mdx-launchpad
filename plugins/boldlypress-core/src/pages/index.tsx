@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import FeaturedPostContainer from '../components/FeaturedPostContainer';
-import Layout from '../components/Layout';
+import Wrapper from '../components/Wrapper';
 import MailingListSignupCard from '../components/MailingListSignupCard';
 import MailingListSignupContainer from '../components/MailingListSignupContainer';
 import PostCard from '../components/PostCard';
@@ -19,6 +19,7 @@ import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import SiteMetadata from '../data/SiteMetadata';
 import useMailingList from '../hooks/useMailingList';
 import renderTemplateTags from '../util/render-template-tags';
+import Footer from '../components/Footer';
 
 interface IndexProps {
   data: any;
@@ -176,7 +177,7 @@ export default function Index(props: IndexProps): JSX.Element {
   // === End SEO === === === === === === === ===
 
   return (
-    <Layout>
+    <Wrapper>
       <Location>
         {locationProps => {
           return (
@@ -264,7 +265,8 @@ export default function Index(props: IndexProps): JSX.Element {
         </Row>
       </Container>
       <MailingListSignupContainer mailingList={mailingList} />
-    </Layout>
+      <Footer />
+    </Wrapper>
   );
 }
 

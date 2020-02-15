@@ -23,7 +23,7 @@ export default function RecentPostsWidget(props: {}): JSX.Element {
 
   const posts: MdxContent[] = data.allMdx.nodes
     .map(node => new MdxContent(node))
-    .filter((post: MdxContent) => !post.data.frontmatter.hidden);
+    .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
   const categories: string[] = postSettings.data.recentPostsWidgetPostCategories.map(
     postCategory => postCategory.categoryName

@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Page from '../MDXPageTemplate';
+import TsxMDXPageTemplate from '../MDXPageTemplate';
 
 // This component is a wrapper for the TSX layout component of the
 // same name.
@@ -8,18 +8,14 @@ import Page from '../MDXPageTemplate';
 // plug-in in gatsby-node.js.
 
 function MDXPageTemplate(props) {
-  return <Page {...props} />;
+  return <TsxMDXPageTemplate {...props} />;
 }
 
 export default MDXPageTemplate;
 
 export const query = graphql`
-  query MDXPageComponentQuery($slug: String!, $modelPageSlug: String!) {
+  query MDXPageComponentQuery($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      ...mdxContent
-    }
-    # Alias as modelPageMdx
-    modelPageMdx: mdx(fields: { slug: { eq: $modelPageSlug } }) {
       ...mdxContent
     }
   }

@@ -1,3 +1,5 @@
+import customLayoutOptions from './customLayoutOptions';
+
 const ContentOptionsObject = options => {
   const layoutDefault = options && options.layoutDefault ? options.layoutDefault : 'post';
   const showSidebarDefault =
@@ -40,37 +42,18 @@ const ContentOptionsObject = options => {
         default: layoutDefault,
         options: [
           {
-            label: 'Standard Page',
-            value: 'page',
+            label: 'Page/Post',
+            value: 'page-post',
           },
           {
-            label: 'Standard Post',
-            value: 'post',
-          },
-          {
-            label: 'Index (Homepage)',
-            value: 'index',
+            label: 'Blog Homepage',
+            value: 'blog-index',
           },
           {
             label: 'Category Post Listing Page',
             value: 'category-post-listing',
           },
-          {
-            label: '404 Not Found Page',
-            value: 'not-found-page',
-          },
-          {
-            label: 'Custom Layout 1',
-            value: 'custom-layout-1',
-          },
-          {
-            label: 'Custom Layout 2',
-            value: 'custom-layout-2',
-          },
-          {
-            label: 'Custom Layout 3',
-            value: 'custom-layout-3',
-          },
+          ...customLayoutOptions,
         ],
       },
       {

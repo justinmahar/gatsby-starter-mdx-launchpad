@@ -45,11 +45,17 @@ export type SeoTwitterCardType = 'summary-card' | 'summary-card-with-large-image
 export default class SiteSeoSettings {
   constructor(public data: SiteSeoSettingsData) {}
 
-  getTemplateTagsFor(configuration: SeoConfiguration): Tags {
+  getTemplateTagsFor(configurationId: string): Tags {
+    const foundConfiguration: SeoConfiguration | undefined = this.data.seoConfigurations.find(
+      (value: SeoConfiguration): boolean => {
+        return value.seoConfigurationId === configurationId;
+      }
+    );
+
     return {
       seoTitleSeparator: this.data.seoTitleSeparator,
-      configSeoTitle: configuration.seoTitle,
-      configSeoDescription: configuration.seoDescription,
+      configSeoTitle: foundConfiguration ? foundConfiguration.seoTitle : '[SEO config not found]',
+      configSeoDescription: foundConfiguration ? foundConfiguration.seoDescription : '[SEO config not found]',
     };
   }
 }

@@ -164,7 +164,6 @@ exports.createPages = ({ graphql, actions }) => {
           // page queries as GraphQL variables.
           context: {
             slug: node.fields.slug,
-            modelPageSlug: 'page-not-found',
           },
         };
 

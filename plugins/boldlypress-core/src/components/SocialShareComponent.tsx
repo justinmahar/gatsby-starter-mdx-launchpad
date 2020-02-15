@@ -1,7 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
-import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from 'react-share';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import MdxContent from '../data/MdxContent';
+import renderTemplateTags from '../util/render-template-tags';
 
 const ICON_SIZE = 32;
 
@@ -19,11 +28,8 @@ const buttonStyles: React.CSSProperties = {
 
 export interface SocialShareComponentProps {
   url: string;
-  facebookQuote?: string;
-  facebookHashtag?: string;
-  twitterTitle?: string;
-  twitterVia?: string;
-  twitterHashtags?: string[];
+  mdxContent: MdxContent;
+  templateTags: { [x: string]: string };
   className?: any;
   styles?: any;
 }
@@ -39,6 +45,35 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
 
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
+  const mdxContent: MdxContent = props.mdxContent;
+
+  const facebookQuote =
+    mdxContent.data.frontmatter.sharing.facebookQuote !== 'none'
+      ? renderTemplateTags(mdxContent.data.frontmatter.sharing.facebookQuote, props.templateTags)
+      : undefined;
+  const facebookHashtag =
+    mdxContent.data.frontmatter.sharing.facebookHashtag !== 'none'
+      ? mdxContent.data.frontmatter.sharing.facebookHashtag.startsWith('#')
+        ? mdxContent.data.frontmatter.sharing.facebookHashtag
+        : '#' + mdxContent.data.frontmatter.sharing.facebookHashtag
+      : undefined;
+  const twitterTitle =
+    mdxContent.data.frontmatter.sharing.twitterTitle !== 'none'
+      ? renderTemplateTags(mdxContent.data.frontmatter.sharing.twitterTitle, props.templateTags)
+      : undefined;
+  const twitterVia =
+    mdxContent.data.frontmatter.sharing.twitterVia !== 'none'
+      ? renderTemplateTags(mdxContent.data.frontmatter.sharing.twitterVia, props.templateTags)
+      : undefined;
+  // Create an array of twitter hashtags
+  const twitterHashtags =
+    mdxContent.data.frontmatter.sharing.twitterHashtags !== 'none'
+      ? mdxContent.data.frontmatter.sharing.twitterHashtags
+          .split(/\s+/)
+          .filter((hashtag: string) => hashtag.length > 0)
+          .map((hashtag: string) => (hashtag.startsWith('#') ? hashtag : '#' + hashtag))
+      : undefined;
+
   return (
     <div className={props.className} style={{ ...divStyles, ...props.styles }}>
       {socialSharingSettings.data.facebook.facebookPostSharingEnabled && (
@@ -46,8 +81,8 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
           className="mr-2"
           url={props.url}
           style={buttonStyles}
-          quote={props.facebookQuote}
-          hashtag={props.facebookHashtag}
+          quote={facebookQuote}
+          hashtag={facebookHashtag}
         >
           <FacebookIcon size={ICON_SIZE} round />
         </FacebookShareButton>
@@ -61,9 +96,9 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
         <TwitterShareButton
           url={props.url}
           style={buttonStyles}
-          title={props.twitterTitle}
-          via={props.twitterVia.startsWith('@') ? props.twitterVia.slice(1) : props.twitterVia}
-          hashtags={props.twitterHashtags}
+          title={twitterTitle}
+          via={twitterVia.startsWith('@') ? twitterVia.slice(1) : twitterVia}
+          hashtags={twitterHashtags}
         >
           <TwitterIcon size={ICON_SIZE} round />
         </TwitterShareButton>

@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import React from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import ImageHeaderContainer from '../components/ImageHeaderContainer';
-import Layout from '../components/Layout';
+import Wrapper from '../components/Wrapper';
 import SEO from '../components/SEO';
 import TopBar from '../components/TopBar';
 import BuiltInPagesSettings from '../data/settings/BuiltInPagesSettings';
@@ -11,6 +11,7 @@ import SiteSeoSettings from '../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import SiteMetadata from '../data/SiteMetadata';
 import renderTemplateTags from '../util/render-template-tags';
+import Footer from '../components/Footer';
 
 interface NotFoundProps {
   data: any;
@@ -137,7 +138,7 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
   // === End SEO === === === === === === === ===
 
   return (
-    <Layout>
+    <Wrapper>
       <Location>
         {locationProps => {
           return (
@@ -183,7 +184,8 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
           </Link>
         </div>
       </Container>
-    </Layout>
+      <Footer />
+    </Wrapper>
   );
 }
 

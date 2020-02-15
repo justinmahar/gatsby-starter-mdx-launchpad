@@ -3,13 +3,12 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import NavbarSettings from '../data/settings/NavbarSettings';
 import ThemeSettings from '../data/settings/ThemeSettings';
-import Footer from './Footer';
 
-export interface LayoutProps {
+export interface WrapperProps {
   children: React.ReactNode;
 }
 
-export default function Layout(props: LayoutProps): JSX.Element {
+export default function Wrapper(props: WrapperProps): JSX.Element {
   // Theme Settings
   const data = useStaticQuery(graphql`
     query LayoutQuery {
@@ -45,7 +44,6 @@ export default function Layout(props: LayoutProps): JSX.Element {
         <div style={{ paddingBottom: navbarSettings.data.navbarFixedTopPadding }} />
       )}
       {props.children}
-      <Footer />
     </>
   );
 }

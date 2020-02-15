@@ -148,7 +148,6 @@ export type MdxData = {
 
 export type MdxGroup = 'posts' | 'pages';
 export type MdxSeoImageSelection = 'site-image' | 'featured-image-if-enabled' | 'custom-image';
-export type MdxSeoTwitterCardType = 'site-wide-twitter-card-type' | SeoTwitterCardType;
 
 // === === === === === === === === ===
 

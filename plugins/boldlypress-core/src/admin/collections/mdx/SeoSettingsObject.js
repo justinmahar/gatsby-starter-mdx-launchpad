@@ -20,7 +20,7 @@ const SeoSettingsObject = options => {
         widget: 'string',
         hint:
           'The title shown in the browser tab and in Google search results. Use an attention-grabbing title and keep this to 50-60 characters or shorter for best results. Supports template tags. Template tag for this setting: {contentSeoTitle}',
-        default: '{siteWidePostSeoTitle}',
+        default: '{configSeoTitle}',
       },
       {
         label: 'SEO Description',
@@ -28,7 +28,7 @@ const SeoSettingsObject = options => {
         widget: 'string',
         hint:
           'A description of the content. Can also be an excerpt, if you want. At least two sentences long is recommended, and it should entice users to click. Use {computedPostSeoDescription} for the site-wide title computed from Site-Wide Post SEO Settings. Supports template tags. Template tag for this setting: {contentSeoDescription}',
-        default: '{siteWidePostSeoDescription}',
+        default: '{configSeoDescription}',
       },
       {
         label: 'SEO Image',
