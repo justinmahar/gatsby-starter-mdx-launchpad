@@ -26,7 +26,7 @@ const ALL_POSTS_GLOB = '*';
 
 export default function PostListPageLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
-    query PageLayoutQuery {
+    query PostListPageLayoutQuery {
       site {
         siteMetadata {
           ...siteMetadataCommons

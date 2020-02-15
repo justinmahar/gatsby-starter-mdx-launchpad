@@ -1,4 +1,5 @@
 import customLayoutOptions from './customLayoutOptions';
+import coreLayoutOptions from './coreLayoutOptions';
 
 const ContentOptionsObject = options => {
   const layoutDefault = options && options.layoutDefault ? options.layoutDefault : 'post';
@@ -40,21 +41,7 @@ const ContentOptionsObject = options => {
         widget: 'select',
         hint: 'Select the layout type.',
         default: layoutDefault,
-        options: [
-          {
-            label: 'Page/Post',
-            value: 'page-post',
-          },
-          {
-            label: 'Blog Homepage',
-            value: 'blog-index',
-          },
-          {
-            label: 'Category Post Listing Page',
-            value: 'category-post-listing',
-          },
-          ...customLayoutOptions,
-        ],
+        options: [...coreLayoutOptions, ...customLayoutOptions],
       },
       {
         label: 'Show Date',

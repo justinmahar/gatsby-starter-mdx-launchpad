@@ -9,21 +9,6 @@ import DiscussionComponent from '../../../../../plugins/boldlypress-core/src/com
 import Footer from '../../../../../plugins/boldlypress-core/src/components/Footer';
 import ImageHeaderContainer from '../../../../../plugins/boldlypress-core/src/components/ImageHeaderContainer';
 import { LayoutProps } from '../../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
-import MailingListSignupCard from '../../../../../plugins/boldlypress-core/src/components/MailingListSignupCard';
-import MailingListSignupContainer from '../../../../../plugins/boldlypress-core/src/components/MailingListSignupContainer';
-import RecentPostsWidget from '../../../../../plugins/boldlypress-core/src/components/RecentPostsWidget';
-import SocialShareComponent from '../../../../../plugins/boldlypress-core/src/components/SocialShareComponent';
-import TopBar from '../../../../../plugins/boldlypress-core/src/components/TopBar';
-import Wrapper from '../../../../../plugins/boldlypress-core/src/components/Wrapper';
-import MdxContent from '../../../../../plugins/boldlypress-core/src/data/MdxContent';
-import DiscussionSettings from '../../../../../plugins/boldlypress-core/src/data/settings/DiscussionSettings';
-import MailingListSettings from '../../../../../plugins/boldlypress-core/src/data/settings/MailingListSettings';
-import PostSettings from '../../../../../plugins/boldlypress-core/src/data/settings/PostSettings';
-import SiteSeoSettings from '../../../../../plugins/boldlypress-core/src/data/settings/SiteSeoSettings';
-import SocialSharingSettings from '../../../../../plugins/boldlypress-core/src/data/settings/SocialSharingSettings';
-import SiteMetadata from '../../../../../plugins/boldlypress-core/src/data/SiteMetadata';
-import useMailingList from '../../../../../plugins/boldlypress-core/src/hooks/useMailingList';
-import renderTemplateTags from '../../../../../plugins/boldlypress-core/src/util/render-template-tags';
 
 export default function CustomLayout1(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`

@@ -36,12 +36,11 @@ group: pages
 ---
 
 import { Badge } from "react-bootstrap"
-import SiteName from "../../plugins/boldlypress-core/src/components/configured/SiteName"
-import BuildStatusBadge from "../../plugins/boldlypress-core/src/components/configured/BuildStatusBadge"
+import CoreComponents from "../components/CoreComponents"
 
-Below is the build status of <SiteName/>:
+Below is the build status of <CoreComponents.SiteName/>:
 
-<BuildStatusBadge/>
+<CoreComponents.BuildStatusBadge/>
 
 <br/>
 
@@ -52,16 +51,16 @@ Below is the build status of <SiteName/>:
 #### If the status indicates <Badge variant="success">Success</Badge>:
 ---
 
-You are looking at the latest and greatest version of <SiteName/>.
+You are looking at the latest and greatest version of <CoreComponents.SiteName/>.
 
 #### If the status indicates <Badge variant="warning">Building</Badge>:
 ---
 
-A change was just made to <SiteName/> and will be available to you shortly.
+A change was just made to <CoreComponents.SiteName/> and will be available to you shortly.
 
 #### If the status indicates <Badge variant="danger">Failure</Badge>:
 ---
 
-This usually means the owner of <SiteName/> made a change that caused a problem (oops!). Nobody's perfect.
+This usually means the owner of <CoreComponents.SiteName/> made a change that caused a problem (oops!). Nobody's perfect.
 
 Until the problem is fixed, you may not see new updates to the site, but you can keep using the current version.
