@@ -24,6 +24,11 @@ import { LayoutProps } from '../getLayout';
 export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const staticQueryData = useStaticQuery(graphql`
     query BlogIndexLayoutQuery {
+      allMdxPosts: allMdx(filter: { frontmatter: { group: { eq: "posts" } } }) {
+        nodes {
+          ...mdxContent
+        }
+      }
       site {
         siteMetadata {
           ...siteMetadataCommons
@@ -67,7 +72,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const featuredPostEnabled: boolean = postSettings.data.featuredPost.featuredPostEnabled;
   const featuredPostSlug: string = postSettings.data.featuredPost.featuredPostSlug;
 
-  const posts: MdxContent[] = props.data.allMdx.nodes
+  const posts: MdxContent[] = staticQueryData.allMdxPosts.nodes
     .map(node => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 

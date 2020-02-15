@@ -84,7 +84,7 @@ const plugins = [
       },
       builtInPagesSettings: {
         rawIndexSlug: builtInPagesSettings.rawIndexSlug,
-        rawCategoryPostListingPageSlug: builtInPagesSettings.rawCategoryPostListingPageSlug,
+        rawCategoryPostListPageSlug: builtInPagesSettings.rawCategoryPostListPageSlug,
         rawNotFoundPageSlug: builtInPagesSettings.rawNotFoundPageSlug,
       },
       reportingConfig: {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import MdxContent from '../../data/MdxContent';
 import BuiltInPagesSettings from '../../data/settings/BuiltInPagesSettings';
 import { getMdxContentLayout, LayoutProps } from '../layouts/getLayout';
+import BuiltInPageLayout from '../layouts/BuiltInPageLayout';
 
 export interface MDXPostListPageTemplateProps {
   pageContext: any;
@@ -9,16 +10,15 @@ export interface MDXPostListPageTemplateProps {
 }
 
 export default function MDXPostListPageTemplate(props: MDXPostListPageTemplateProps): JSX.Element {
-  const builtInPagesSettings = new BuiltInPagesSettings(props.data.builtInPagesYaml);
-  const mdxContent: MdxContent = new MdxContent(
-    props.data.allMdx.nodes
-      .map(node => new MdxContent(node))
-      .find(
-        (post: MdxContent) => post.data.frontmatter.rawSlug === builtInPagesSettings.data.rawCategoryPostListingPageSlug
-      )
+  const pageQueryData = props.data;
+  const builtInPagesSettings = new BuiltInPagesSettings(pageQueryData.builtInPagesYaml);
+  return (
+    <BuiltInPageLayout
+      rawPageSlug={builtInPagesSettings.data.rawCategoryPostListPageSlug}
+      pageQueryData={pageQueryData}
+      pageContext={props.pageContext}
+    />
   );
-  const Layout: React.FC<LayoutProps> = getMdxContentLayout(mdxContent);
-  return <Layout mdx={props.data.mdx} pageContext={props.pageContext} data={props.data} />;
 }
 
 // Page query is located in js/MDXPostListPage.js

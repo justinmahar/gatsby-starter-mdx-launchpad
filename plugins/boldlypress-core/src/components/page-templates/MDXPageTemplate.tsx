@@ -10,7 +10,7 @@ export interface MDXPageTemplateProps {
 export default function MDXPageTemplate(props: MDXPageTemplateProps): JSX.Element {
   const mdxContent: MdxContent = new MdxContent(props.data.mdx);
   const Layout: React.FC<LayoutProps> = getMdxContentLayout(mdxContent);
-  return <Layout mdx={props.data.mdx} pageContext={props.pageContext} data={props.data} />;
+  return <Layout mdx={props.data.mdx} pageContext={props.pageContext} pageQueryData={props.data} />;
 }
 
 // Page query is located in js/MDXPageTemplate.js

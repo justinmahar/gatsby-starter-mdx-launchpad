@@ -60,7 +60,7 @@ exports.onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
   // Those pages won't be created with their own slugs but will instead get predefined ones
   // that can be selected on later.
   const rawIndexSlug = pluginOptions.builtInPagesSettings.rawIndexSlug;
-  const rawCategoryPostListingPageSlug = pluginOptions.builtInPagesSettings.rawCategoryPostListingPageSlug;
+  const rawCategoryPostListPageSlug = pluginOptions.builtInPagesSettings.rawCategoryPostListPageSlug;
   const rawNotFoundPageSlug = pluginOptions.builtInPagesSettings.rawNotFoundPageSlug;
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
@@ -78,7 +78,7 @@ exports.onCreateNode = ({ node, actions, getNode }, pluginOptions) => {
       case rawIndexSlug:
         safeSlug = INDEX_SLUG;
         break;
-      case rawCategoryPostListingPageSlug:
+      case rawCategoryPostListPageSlug:
         safeSlug = CATEGORY_POST_LISTING_PAGE_SLUG;
         break;
       case rawNotFoundPageSlug:

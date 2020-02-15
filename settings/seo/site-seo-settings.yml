@@ -1,5 +1,9 @@
 seoTitleSeparator: ' - '
 seoConfigurations:
+  - seoConfigurationId: index-seo-configuration
+    seoConfigurationName: Index SEO Configuration
+    seoDescription: '{siteDescription}'
+    seoTitle: '{siteName}{seoTitleSeparator}{siteDescription}'
   - seoConfigurationId: default-page-seo-configuration
     seoConfigurationName: Default Page SEO Configuration
     seoDescription: '{contentExcerpt}'

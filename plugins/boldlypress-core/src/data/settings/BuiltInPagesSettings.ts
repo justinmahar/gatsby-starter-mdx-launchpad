@@ -13,7 +13,7 @@ import { graphql } from 'gatsby';
 export const builtInPagesYamlQuery = graphql`
   fragment builtInPagesSettings on BuiltInPagesYaml {
     rawIndexSlug
-    rawCategoryPostListingPageSlug
+    rawCategoryPostListPageSlug
     rawNotFoundPageSlug
   }
 `;
@@ -23,7 +23,7 @@ export const builtInPagesYamlQuery = graphql`
 
 export type BuiltInPageSettingsData = {
   rawIndexSlug: string;
-  rawCategoryPostListingPageSlug: string;
+  rawCategoryPostListPageSlug: string;
   rawNotFoundPageSlug: string;
 };
 

@@ -25,9 +25,9 @@ import Wrapper from '../../Wrapper';
 import { LayoutProps } from '../getLayout';
 import Footer from '../../Footer';
 
-export default function PagePostLayout(props: LayoutProps): JSX.Element {
+export default function ContentLayout(props: LayoutProps): JSX.Element {
   const staticQueryData = useStaticQuery(graphql`
-    query PagePostLayoutQuery {
+    query ContentLayoutQuery {
       site {
         siteMetadata {
           ...siteMetadataCommons
@@ -51,7 +51,7 @@ export default function PagePostLayout(props: LayoutProps): JSX.Element {
     }
   `);
 
-  const mdxContent: MdxContent = new MdxContent(props.data.mdx);
+  const mdxContent: MdxContent = new MdxContent(props.mdx);
   const siteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
   const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
   const mailingListSettings = new MailingListSettings(staticQueryData.mailingListYaml);
@@ -67,7 +67,7 @@ export default function PagePostLayout(props: LayoutProps): JSX.Element {
     mailingListSettings.asyncFetchInitOptions
   );
 
-  if (!props.data.mdx) {
+  if (!mdxContent) {
     return <p>No MDX content was provided.</p>;
   }
 

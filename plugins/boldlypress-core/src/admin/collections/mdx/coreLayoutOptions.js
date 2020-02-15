@@ -1,15 +1,15 @@
 const coreLayoutOptions = [
   {
-    label: 'Page/Post',
-    value: 'page-post',
+    label: 'Content (Pages & Posts)',
+    value: 'content',
   },
   {
     label: 'Blog Homepage',
     value: 'blog-index',
   },
   {
-    label: 'Category Post Listing Page',
-    value: 'category-post-listing',
+    label: 'Category Post List Page',
+    value: 'category-post-list',
   },
 ];
 export default coreLayoutOptions;

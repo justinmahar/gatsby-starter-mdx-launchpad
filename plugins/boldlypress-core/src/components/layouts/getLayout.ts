@@ -6,7 +6,7 @@ import NoLayout from './NoLayout';
 
 export interface LayoutProps {
   mdx: any;
-  data: any;
+  pageQueryData: any;
   pageContext: any;
 }
 

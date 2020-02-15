@@ -50,7 +50,6 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
     }
   `);
 
-  const allMdx = staticQueryData.allMdx;
   const siteMetadata = new SiteMetadata(staticQueryData.site.siteMetadata);
   const siteSeoSettings = new SiteSeoSettings(staticQueryData.seoYaml);
   const mailingListSettings = new MailingListSettings(staticQueryData.mailingListYaml);
@@ -78,7 +77,8 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
 
   const showSidebar: boolean = mdxContent.data.frontmatter.options.showSidebar;
 
-  const posts: MdxContent[] = allMdx.nodes
+  const mdxPosts = props.pageQueryData.mdxPosts ? props.pageQueryData.mdxPosts : [];
+  const posts: MdxContent[] = mdxPosts.nodes
     .map(node => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 

@@ -1,11 +1,11 @@
-import PagePostLayout from './impl/PageLayout';
+import ContentLayout from './impl/ContentLayout';
 import BlogIndexLayout from './impl/BlogIndexLayout';
 import PostListPageLayout from './impl/PostListPageLayout';
 
 const coreLayouts = {
-  'page-post': PagePostLayout,
+  content: ContentLayout,
   'blog-index': BlogIndexLayout,
-  'category-post-listing': PostListPageLayout,
+  'category-post-list': PostListPageLayout,
 };
 
 export default coreLayouts;

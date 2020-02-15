@@ -14,7 +14,7 @@ export default MDXPostListPage;
 
 export const query = graphql`
   query MDXPostListPageQuery($skip: Int!, $limit: Int!, $categorySlugGlob: String!) {
-    allMdx(
+    mdxPosts: allMdx(
       sort: { order: DESC, fields: frontmatter___date }
       limit: $limit
       skip: $skip
