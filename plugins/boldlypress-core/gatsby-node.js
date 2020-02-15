@@ -132,7 +132,9 @@ exports.createPages = ({ graphql, actions }) => {
           frontmatter {
             group
             category
-            hidden
+            options {
+              hidden
+            }
           }
         }
       }
@@ -154,7 +156,7 @@ exports.createPages = ({ graphql, actions }) => {
     // We'll call `createPage` for each result, creating each post page.
     mdxNodes.forEach(node => {
       // Don't create pages for the hidden or built-in ones
-      if (!node.frontmatter.hidden && !BUILT_IN_SLUGS.includes(node.fields.slug)) {
+      if (!node.frontmatter.options.hidden && !BUILT_IN_SLUGS.includes(node.fields.slug)) {
         const pageConfig = {
           // This is the slug we created in onCreateNode
           path: node.fields.slug,
@@ -185,7 +187,7 @@ exports.createPages = ({ graphql, actions }) => {
       return (
         mdxNode.frontmatter.group === 'posts' &&
         // Don't list hidden or built-in ones
-        !mdxNode.frontmatter.hidden &&
+        !mdxNode.frontmatter.options.hidden &&
         !BUILT_IN_SLUGS.includes(mdxNode.fields.slug)
       );
     });

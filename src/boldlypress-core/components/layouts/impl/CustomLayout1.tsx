@@ -14,7 +14,7 @@ import SiteMetadata from '../../../../../plugins/boldlypress-core/src/data/SiteM
 
 export default function CustomLayout1(props: LayoutProps): JSX.Element {
   const staticQueryData = useStaticQuery(graphql`
-    query BlogIndexLayoutQuery {
+    query CustomLayout1Query {
       site {
         siteMetadata {
           ...siteMetadataCommons

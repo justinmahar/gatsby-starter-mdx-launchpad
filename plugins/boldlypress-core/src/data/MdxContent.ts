@@ -54,32 +54,13 @@ export const mdxFragmentQuery = graphql`
         twitterHashtags
       }
       seoSettings {
-        openGraph {
-          ogDescription
-          ogImage {
-            ogCustomImage
-            ogCustomImageAlt
-            ogUseCustomOgImage
-          }
-          ogTitle
-        }
+        seoConfigurationId
+        seoTitle
         seoDescription
         seoImage {
           customSeoImage
           customSeoImageAlt
           seoImageSelection
-        }
-        seoTitle
-        twitterCards {
-          twitterCardDescription
-          twitterCardImage {
-            twitterCardCustomImage
-            twitterCardCustomImageAlt
-            twitterCardUseCustomImage
-          }
-          twitterCardSiteUsername
-          twitterCardTitle
-          twitterCardType
         }
       }
       group

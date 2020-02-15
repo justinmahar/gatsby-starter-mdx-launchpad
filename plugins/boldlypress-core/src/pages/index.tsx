@@ -14,7 +14,7 @@ export default function Index(props: IndexProps): JSX.Element {
   const mdxContent: MdxContent = new MdxContent(
     props.data.allMdx.nodes
       .map(node => new MdxContent(node))
-      .find((post: MdxContent) => post.data.frontmatter.rawSlug === builtInPagesSettings.data.rawIndexSlug)
+      .find((page: MdxContent) => page.data.frontmatter.rawSlug === builtInPagesSettings.data.rawIndexSlug)
   );
   const Layout: React.FC<LayoutProps> = getMdxContentLayout(mdxContent);
   return <Layout mdx={mdxContent.data} pageContext={{}} data={props.data} />;
@@ -23,7 +23,7 @@ export default function Index(props: IndexProps): JSX.Element {
 // Settings fragments are in: src/data
 export const query = graphql`
   query IndexQuery {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }, filter: { frontmatter: { group: { eq: "posts" } } }) {
+    allMdx(filter: { frontmatter: { group: { eq: "pages" } } }) {
       nodes {
         ...mdxContent
       }

@@ -22,6 +22,11 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
 
 export const query = graphql`
   query NotFoundQuery {
+    allMdx(filter: { frontmatter: { group: { eq: "pages" } } }) {
+      nodes {
+        ...mdxContent
+      }
+    }
     builtInPagesYaml {
       ...builtInPagesSettings
     }
