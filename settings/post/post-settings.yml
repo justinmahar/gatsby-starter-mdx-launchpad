@@ -1,4 +1,4 @@
-blogEnabled: false
+blogEnabled: true
 indexPagePostCount: 5
 listPagePostCount: 5
 recentPostsWidgetPostCount: 5
@@ -11,8 +11,8 @@ featuredPost:
   contentCueText: Featured Post
   customTeaser: none
   customTitleText: none
-  featuredPostEnabled: true
   featureNewestPostEnabled: false
+  featuredPostEnabled: true
   featuredPostSlug: hello-world
   leftQuote: “
   rightQuote: ”
