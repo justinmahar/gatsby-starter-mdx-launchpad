@@ -18,7 +18,7 @@ const formSettingsFile = {
           label: 'Form ID',
           name: 'formId',
           widget: 'string',
-          hint: 'An ID used to reference this form. Must be unique.',
+          hint: 'An ID used to reference this form via the CMS. This is not the HTML ID. Must be unique.',
         },
         {
           label: 'Form Action URL',
