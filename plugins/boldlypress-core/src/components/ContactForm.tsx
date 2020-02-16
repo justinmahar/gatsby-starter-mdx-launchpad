@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Alert, Button, Form, FormControlProps, Spinner } from 'react-bootstrap';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
-import ContactSettings, { ContactFormFieldData } from '../data/settings/ContactSettings';
+import FormSettings, { FormFieldData } from '../data/settings/FormSettings';
 import useContactForm, { ContactFormField } from '../hooks/useContactForm';
 
 export interface ContactFormProps {
@@ -17,24 +17,22 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const data = useStaticQuery(graphql`
     query ContactFormQuery {
-      contactYaml {
-        ...contactSettings
+      formsYaml {
+        ...formSettings
       }
     }
   `);
 
-  const contactSettings = new ContactSettings(data.contactYaml);
+  const formSettings = new FormSettings(data.formsYaml);
 
-  const formFields: ContactFormField[] = contactSettings.data.contactFormControls.fields.map(
-    (value: ContactFormFieldData) => {
-      return {
-        ...value,
-        validate: () => true,
-      };
-    }
-  );
+  const formFields: ContactFormField[] = formSettings.data.formControls.fields.map((value: FormFieldData) => {
+    return {
+      ...value,
+      validate: () => true,
+    };
+  });
 
-  const fetchInitOptions = contactSettings.asyncFetchInitOptions;
+  const fetchInitOptions = formSettings.asyncFetchInitOptions;
 
   const formModel = useContactForm('/', formFields, fetchInitOptions);
 
@@ -70,7 +68,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (contactSettings.data.contactFormAsyncEnabled) {
+    if (formSettings.data.formAsyncEnabled) {
       e.preventDefault();
       if (formModel.validate()) {
         formModel
@@ -94,10 +92,10 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
       onSubmit={handleSubmit}
       ref={formRef}
       className={props.className}
-      name={contactSettings.data.contactFormNameAttribute}
+      name={formSettings.data.formNameAttribute}
       data-netlify="true"
     >
-      <input type="hidden" name="form-name" value={contactSettings.data.contactFormNameAttribute} />
+      <input type="hidden" name="form-name" value={formSettings.data.formNameAttribute} />
       {successAlertVisible && (
         <Alert variant="success" onClose={() => setSuccessAlertVisible(false)} dismissible>
           Your message has been sent.
@@ -118,7 +116,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
             Sending...
           </>
         )}
-        {!formModel.sending && <>{contactSettings.data.contactFormControls.submitButtonText}</>}
+        {!formModel.sending && <>{formSettings.data.formControls.submitButtonText}</>}
       </Button>
     </Form>
   );

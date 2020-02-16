@@ -155,7 +155,3 @@ export default function useContactForm(
     sending: sending,
   };
 }
-
-export const GFORMS_FETCH_INIT: RequestInit = {
-  mode: 'no-cors',
-};

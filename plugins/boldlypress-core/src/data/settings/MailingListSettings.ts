@@ -12,12 +12,7 @@ import { graphql } from 'gatsby';
 */
 export const mailingListYamlQuery = graphql`
   fragment mailingListSettings on MailingListYaml {
-    mailingListAsyncEnabled
-    mailingListEmailAddressFieldNameAttribute
-    mailingListEmailAddressFieldPlaceholder
-    mailingListFormActionUrl
-    mailingListFormMethod
-    mailingListFormNameAttribute
+    mailingListFormId
     sidebarWidget {
       enabled
       headerImage
@@ -50,12 +45,7 @@ export const mailingListYamlQuery = graphql`
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type MailingListSettingsData = {
-  mailingListAsyncEnabled: boolean;
-  mailingListEmailAddressFieldNameAttribute: string;
-  mailingListEmailAddressFieldPlaceholder: string;
-  mailingListFormActionUrl: string;
-  mailingListFormMethod: string;
-  mailingListFormNameAttribute: string;
+  mailingListFormId: string;
   sidebarWidget: {
     enabled: boolean;
     headerImage: string;
@@ -95,8 +85,5 @@ export type MailingListSettingsData = {
  * For all async `init` options, see: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters
  */
 export default class MailingListSettings {
-  public asyncFetchInitOptions: RequestInit;
-  constructor(public data: MailingListSettingsData) {
-    this.asyncFetchInitOptions = {};
-  }
+  constructor(public data: MailingListSettingsData) {}
 }

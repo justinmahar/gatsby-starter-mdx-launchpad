@@ -1,9 +1,4 @@
-mailingListFormActionUrl: /
-mailingListFormMethod: POST
-mailingListFormNameAttribute: subscriptions
-mailingListEmailAddressFieldNameAttribute: emailAddress
-mailingListEmailAddressFieldPlaceholder: Enter your email
-mailingListAsyncEnabled: true
+mailingListFormId: mailing-list
 sidebarWidget:
   bodyText: Find out when new content comes out! Sign up now.
   buttonText: Subscribe

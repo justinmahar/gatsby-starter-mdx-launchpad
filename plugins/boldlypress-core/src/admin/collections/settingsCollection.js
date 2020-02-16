@@ -1,5 +1,5 @@
 import builtInPagesSettingsFile from './settings/builtInPagesSettingsFile';
-import contactFormSettingsFile from './settings/contactFormSettingsFile';
+import formSettingsFile from './settings/formSettingsFile';
 import customSettingsFiles from './settings/customSettingsFiles';
 import discussionSettingsFile from './settings/discussionSettingsFile';
 import mailingListSettingsFile from './settings/mailingListSettingsFile';
@@ -25,7 +25,7 @@ const settingsCollection = {
     siteSettingsFile,
     builtInPagesSettingsFile,
     siteSeoSettingsFile,
-    contactFormSettingsFile,
+    formSettingsFile,
     mailingListSettingsFile,
     discussionSettingsFile,
     navbarSettingsFile,

@@ -20,6 +20,7 @@ import SiteMetadata from '../../../data/SiteMetadata';
 import useMailingList from '../../../hooks/useMailingList';
 import MdxSEO from '../../configured/MdxSEO';
 import { LayoutProps } from '../getLayout';
+import FormSettings, { FormInfo } from '../../../data/settings/FormSettings';
 
 export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -33,6 +34,9 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
         siteMetadata {
           ...siteMetadataCommons
         }
+      }
+      formsYaml {
+        ...formSettings
       }
       seoYaml {
         ...siteSeoSettings
@@ -54,17 +58,26 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
   const siteMetadata: SiteMetadata = new SiteMetadata(data.site.siteMetadata);
+  const formSettings = new FormSettings(data.formsYaml);
   const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const postSettings = new PostSettings(data.postYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
-  const mailingList = useMailingList(
-    mailingListSettings.data.mailingListFormActionUrl,
-    mailingListSettings.data.mailingListAsyncEnabled,
-    mailingListSettings.asyncFetchInitOptions
-  );
+  const mailingListFormInfo: FormInfo = formSettings.data.forms.find((formInfo: FormInfo) => {
+    return formInfo.formId === mailingListSettings.data.mailingListFormId;
+  });
+
+  const mailingListFormId: string = mailingListFormInfo ? mailingListFormInfo.formId : 'undefined';
+  const mailingListFormAsyncEnabled: boolean = mailingListFormInfo ? mailingListFormInfo.formAsyncEnabled : true;
+  const mailingListFormAsyncRequestMode: RequestMode = mailingListFormInfo
+    ? mailingListFormInfo.formAsyncRequestMode
+    : 'cors';
+
+  const mailingList = useMailingList(mailingListFormId, mailingListFormAsyncEnabled, {
+    mode: mailingListFormAsyncRequestMode,
+  });
 
   const indexPagePostCount = postSettings.data.indexPagePostCount;
   const allPostsListSlug = postSettings.data.allPostsListSlug;

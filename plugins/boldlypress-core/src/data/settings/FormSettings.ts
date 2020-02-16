@@ -5,28 +5,33 @@ import { graphql } from 'gatsby';
   
   To use: 
   ```graphql
-    contactYaml {
-      ...contactSettings
+    formsYaml {
+      ...formSettings
     }
   ```
 */
-export const contactYamlQuery = graphql`
-  fragment contactSettings on ContactYaml {
-    contactFormActionUrl
-    contactFormMethod
-    contactFormNameAttribute
-    contactFormAsyncEnabled
-    contactFormControls {
-      fields {
-        initialValue
-        label
-        nameAttribute
-        placeholder
-        required
-        requiredErrorText
-        type
+export const formsYamlQuery = graphql`
+  fragment formSettings on FormsYaml {
+    forms {
+      formLabel
+      formId
+      formActionUrl
+      formMethod
+      formNameAttribute
+      formAsyncEnabled
+      formAsyncRequestMode
+      formControls {
+        fields {
+          initialValue
+          label
+          nameAttribute
+          placeholder
+          required
+          requiredErrorText
+          type
+        }
+        submitButtonText
       }
-      submitButtonText
     }
   }
 `;
@@ -34,19 +39,28 @@ export const contactYamlQuery = graphql`
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
-export type ContactSettingsData = {
-  contactFormActionUrl: string;
-  contactFormMethod: string;
-  contactFormNameAttribute: string;
+export type RequestMode = 'cors' | 'no-cors' | 'same-origin' | 'navigate';
+
+export type FormInfo = {
+  formLabel: string;
+  formId: string;
+  formActionUrl: string;
+  formMethod: string;
+  formNameAttribute: string;
   /** For all async `init` options, see: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters */
-  contactFormAsyncEnabled: boolean;
-  contactFormControls: {
-    fields: ContactFormFieldData[];
+  formAsyncEnabled: boolean;
+  formAsyncRequestMode: RequestMode;
+  formControls: {
+    fields: FormFieldData[];
     submitButtonText: string;
   };
 };
 
-export type ContactFormFieldData = {
+export type FormSettingsData = {
+  forms: FormInfo[];
+};
+
+export type FormFieldData = {
   initialValue: string;
   label: string;
   nameAttribute: string;
@@ -60,9 +74,6 @@ export type FieldType = 'text' | 'email' | 'textarea' | 'hidden';
 
 // === === === === === === === === ===
 
-export default class ContactSettings {
-  asyncFetchInitOptions: RequestInit;
-  constructor(public data: ContactSettingsData) {
-    this.asyncFetchInitOptions = {};
-  }
+export default class FormSettings {
+  constructor(public data: FormSettingsData) {}
 }

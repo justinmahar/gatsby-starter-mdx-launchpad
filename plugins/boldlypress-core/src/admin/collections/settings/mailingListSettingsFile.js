@@ -4,43 +4,10 @@ const mailingListSettingsFile = {
   file: 'settings/mailing-list/mailing-list-settings.yml',
   fields: [
     {
-      label: 'Form Action URL',
-      name: 'mailingListFormActionUrl',
+      label: 'Mailing List Form ID',
+      name: 'mailingListFormId',
       widget: 'string',
-      hint: 'The URL to which the mailing list form is submitted.',
-    },
-    {
-      label: 'Form Method Attribute (Synchronous Only)',
-      name: 'mailingListFormMethod',
-      widget: 'string',
-      hint:
-        'Set the HTTP method attribute for the form. Generally this will be POST (default) or GET. Does not apply if the form is sent asynchronously (see below). This attribute will be given to the HTML <form> tag itself.',
-    },
-    {
-      label: 'Form Name Attribute',
-      name: 'mailingListFormNameAttribute',
-      widget: 'string',
-      hint: 'The name attribute for the form. This attribute will be given to the HTML <form> tag itself.',
-    },
-    {
-      label: 'Email Address Name Attribute',
-      name: 'mailingListEmailAddressFieldNameAttribute',
-      widget: 'string',
-      hint:
-        'The name attribute for the email address input field. This attribute will be given to the HTML <input> tag itself.',
-    },
-    {
-      label: 'Email Address Field Placeholder',
-      name: 'mailingListEmailAddressFieldPlaceholder',
-      widget: 'string',
-      hint: 'The placeholder when no email has been entered yet.',
-    },
-    {
-      label: 'Send Form Asynchronously (No Page Reload)',
-      name: 'mailingListAsyncEnabled',
-      widget: 'boolean',
-      hint:
-        'When switched on, the form will be sent asynchronously with the POST method. Turning this on generally creates a better user experience. When off, the browser will submit using the method above and the page will do a full reload. (Async uses the browser Fetch API. For advanced configuration options, see the documentation)',
+      hint: 'The ID of the form to use for the mailing list. This is defined in Form Settings.',
     },
     {
       label: 'Sidebar Mailing List Widget',

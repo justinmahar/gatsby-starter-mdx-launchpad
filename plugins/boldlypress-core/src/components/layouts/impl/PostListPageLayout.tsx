@@ -1,7 +1,7 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import MdxContent from '../../../data/MdxContent';
-import BuiltInPagesSettings from '../../../data/settings/BuiltInPagesSettings';
 import DiscussionSettings from '../../../data/settings/DiscussionSettings';
 import MailingListSettings from '../../../data/settings/MailingListSettings';
 import PostSettings from '../../../data/settings/PostSettings';
@@ -11,6 +11,7 @@ import SiteMetadata from '../../../data/SiteMetadata';
 import useMailingList from '../../../hooks/useMailingList';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
+import Footer from '../../Footer';
 import MailingListSignupCard from '../../MailingListSignupCard';
 import MailingListSignupContainer from '../../MailingListSignupContainer';
 import PaginationComponent from '../../PaginationComponent';
@@ -19,8 +20,6 @@ import RecentPostsWidget from '../../RecentPostsWidget';
 import TopBar from '../../TopBar';
 import Wrapper from '../../Wrapper';
 import { LayoutProps } from '../getLayout';
-import Footer from '../../Footer';
-import { useStaticQuery, graphql } from 'gatsby';
 
 const ALL_POSTS_GLOB = '*';
 

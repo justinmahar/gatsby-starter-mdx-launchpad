@@ -1,0 +1,66 @@
+forms:
+  - formLabel: Contact Form
+    formId: contact-form
+    formActionUrl: /
+    formMethod: POST
+    formNameAttribute: contactForm
+    formAsyncEnabled: true
+    formAsyncRequestMode: cors
+    formControls:
+      fields:
+        - initialValue: none
+          label: Full Name
+          nameAttribute: fullName
+          placeholder: Enter your full name
+          required: true
+          requiredErrorText: This field is required.
+          type: text
+        - initialValue: none
+          label: Email
+          nameAttribute: emailAddress
+          placeholder: Enter your email
+          required: true
+          requiredErrorText: This field is required.
+          type: email
+        - initialValue: none
+          label: Message
+          nameAttribute: message
+          placeholder: Enter your message
+          required: true
+          requiredErrorText: This field is required.
+          type: textarea
+      submitButtonText: Send
+  - formLabel: Mailing List
+    formId: mailing-list
+    formActionUrl: /
+    formMethod: POST
+    formNameAttribute: subscriptions
+    formAsyncEnabled: true
+    formAsyncRequestMode: cors
+    formControls:
+      fields:
+        - initialValue: none
+          label: Email
+          nameAttribute: emailAddress
+          placeholder: Enter your email
+          required: true
+          requiredErrorText: This field is required.
+          type: email
+      submitButtonText: Send
+  - formLabel: Feedback Form
+    formId: feedback-form
+    formActionUrl: /
+    formMethod: POST
+    formNameAttribute: feedbackForm
+    formAsyncEnabled: true
+    formAsyncRequestMode: cors
+    formControls:
+      fields:
+        - initialValue: none
+          label: Message
+          nameAttribute: message
+          placeholder: Enter your message
+          required: true
+          requiredErrorText: This field is required.
+          type: textarea
+      submitButtonText: Send
