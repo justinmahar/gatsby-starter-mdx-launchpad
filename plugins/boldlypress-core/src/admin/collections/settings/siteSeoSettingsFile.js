@@ -34,14 +34,14 @@ const siteSeoSettingsFile = {
           name: 'seoTitle',
           widget: 'string',
           hint:
-            'The title shown in the browser tab and in Google search results. Use an attention-grabbing title and keep this to 50-60 characters or shorter for best results. You can use the tags {siteName}, {siteDescription}, {contentTitle}, and {contentSeoDescription}.',
+            'The title shown in the browser tab and in Google search results. Use an attention-grabbing title and keep this to 50-60 characters or shorter for best results. Supports template tags. Reference using: {configSeoTitle}',
         },
         {
           label: 'SEO Description',
           name: 'seoDescription',
           widget: 'string',
           hint:
-            'A description of the content. Can also be an excerpt, if you want. At least two sentences long is recommended, and it should entice users to click. You can use the tags {siteName}, {siteDescription}, {contentTitle}, and {contentSeoDescription}.',
+            'A description of the content. Can also be an excerpt, if you want. At least two sentences long is recommended, and it should entice users to click. Supports template tags. Reference using: {configSeoDescription}',
         },
       ],
     },

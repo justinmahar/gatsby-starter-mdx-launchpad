@@ -20,7 +20,7 @@ const pages = {
       name: 'title',
       widget: 'string',
       hint:
-        'The title of the page. Keep this to 50-60 characters or shorter for best results. Template tag for this setting: {contentTitle}',
+        'The title of the page. Keep this to 50-60 characters or shorter for best results. Supports template tags. Reference using: {contentTitle}',
     },
     {
       label: 'Slug',
@@ -53,7 +53,7 @@ const pages = {
       name: 'customExcerpt',
       widget: 'string',
       hint:
-        'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the page. Template tag for this setting: {contentExcerpt}',
+        'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the page. Supports template tags. Reference using: {contentExcerpt}',
       default: 'none',
     },
     FeaturedImageObject(),

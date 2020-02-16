@@ -20,7 +20,7 @@ const blogPosts = {
       name: 'title',
       widget: 'string',
       hint:
-        'Use an attention-grabbing title and keep this to 50-60 characters or shorter for best results (examples here: https://tinyurl.com/post-title-ideas). Template tag for this setting: {contentTitle}',
+        'Use an attention-grabbing title and keep this to 50-60 characters or shorter for best results (examples here: https://tinyurl.com/post-title-ideas). Supports template tags. Reference using: {contentTitle}',
     },
     {
       label: 'Slug',
@@ -42,7 +42,7 @@ const blogPosts = {
       name: 'category',
       widget: 'string',
       hint:
-        "If you don't want the post to be categorized, set this to none. Otherwise, set this to anything. Other posts with the same category will be grouped together. Template tag for this setting: {contentCategory}",
+        "If you don't want the post to be categorized, set this to none. Otherwise, set this to anything. Other posts with the same category will be grouped together. Reference using: {contentCategory}",
       default: 'none',
     },
     {
@@ -55,7 +55,7 @@ const blogPosts = {
       name: 'customExcerpt',
       widget: 'string',
       hint:
-        'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the post. Template tag for this setting: {contentExcerpt}',
+        'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the post. Supports template tags. Reference using: {contentExcerpt}',
       default: 'none',
     },
     FeaturedImageObject(),
