@@ -4,6 +4,12 @@ const postSettingsFile = {
   file: 'settings/post/post-settings.yml',
   fields: [
     {
+      label: 'Blog Enabled',
+      name: 'blogEnabled',
+      widget: 'boolean',
+      hint: 'Switch off to hide all blog posts and category post list pages.',
+    },
+    {
       label: 'Home Page Post Count',
       name: 'indexPagePostCount',
       widget: 'number',

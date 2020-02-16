@@ -63,14 +63,34 @@ export default function LandingPageLayout(props: LayoutProps): JSX.Element {
             />
           )}
         <TopBar />
-        <Container className="mt-5 mb-4">
-          <Row>
-            <Col>
-              <h1>Landing page layout!</h1>
-              <p>Build your landing page here.</p>
-            </Col>
-          </Row>
-        </Container>
+        <div className="pt-5 pb-4" style={{ backgroundColor: '#e0e0e0' }}>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Landing page layout!</h1>
+                <p>Build your landing page here.</p>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+        <div className="pt-5 pb-4" style={{ backgroundColor: '#f0f0f0' }}>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Section</h1>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+        <div className="pt-5 pb-4" style={{ backgroundColor: '#f0f0f0' }}>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Section</h1>
+              </Col>
+            </Row>
+          </Container>
+        </div>
         <Footer />
       </Wrapper>
     </>

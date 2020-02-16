@@ -28,6 +28,8 @@ const builtInPagesSettings = readYaml.sync(`${__dirname}/settings/built-in-pages
 const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
 /** Reporting configuration */
 const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting-settings.yml`);
+/** Post settings */
+const postSettings = readYaml.sync(`${__dirname}/settings/post/post-settings.yml`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a Yaml file and is configurable through NetlifyCMS.
@@ -72,6 +74,9 @@ const plugins = [
     options: {
       pagesPath: `${__dirname}/src/pages-mdx`,
       postsPath: `${__dirname}/src/posts-mdx`,
+      postSettings: {
+        blogEnabled: postSettings.blogEnabled,
+      },
       settingsPath: `${__dirname}/settings`,
       netlifyCmsOptions: {
         htmlTitle: `${siteMetadataConfig.siteName} Admin`,

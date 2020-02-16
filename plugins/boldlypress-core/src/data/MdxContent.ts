@@ -41,6 +41,7 @@ export const mdxFragmentQuery = graphql`
         dateEnabled
         discussionEnabled
         hidden
+        unlisted
         showTitle
         layout
         showSidebar
@@ -98,6 +99,7 @@ export type MdxData = {
       dateEnabled: boolean;
       discussionEnabled: boolean;
       hidden: boolean;
+      unlisted: boolean;
       showTitle: boolean;
       layout: string;
       showSidebar: boolean;

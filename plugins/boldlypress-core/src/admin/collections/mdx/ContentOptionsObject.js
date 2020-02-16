@@ -29,6 +29,13 @@ const ContentOptionsObject = options => {
         default: true,
       },
       {
+        label: 'Unlisted',
+        name: 'unlisted',
+        widget: 'boolean',
+        hint: 'When enabled, the content will not be shown in blog listings or in the sitemap.',
+        default: showDateDefault,
+      },
+      {
         label: 'Hidden',
         name: 'hidden',
         widget: 'boolean',

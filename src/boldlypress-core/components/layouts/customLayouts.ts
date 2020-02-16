@@ -3,10 +3,12 @@ import LandingPageLayout from './impl/LandingPageLayout';
 import AppLayout from './impl/AppLayout';
 import TemplateLayout from './impl/TemplateLayout';
 
-const customMdxLayouts: CustomLayouts = {
+const customLayouts: CustomLayouts = {
   'landing-page': LandingPageLayout,
   app: AppLayout,
   template: TemplateLayout,
 };
 
-export default customMdxLayouts;
+// IMPORTANT: Be sure to expose your layout to the user in: customLayoutOptions.js
+
+export default customLayouts;

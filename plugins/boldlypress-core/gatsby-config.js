@@ -75,6 +75,7 @@ module.exports = themeOptions => {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
+        exclude: [`/u/*`],
         ...sitemapOptions,
       },
     },
