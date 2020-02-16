@@ -60,7 +60,6 @@ const blogPosts = {
     },
     FeaturedImageObject(),
     ContentOptionsObject({
-      layoutDefault: 'post',
       showSidebarDefault: true,
       showDateDefault: true,
       enableDiscussionDefault: true,

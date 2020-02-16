@@ -58,7 +58,6 @@ const pages = {
     },
     FeaturedImageObject(),
     ContentOptionsObject({
-      layoutDefault: 'page',
       showSidebarDefault: false,
       showDateDefault: false,
       enableDiscussionDefault: false,

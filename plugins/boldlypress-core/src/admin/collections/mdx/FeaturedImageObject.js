@@ -31,14 +31,14 @@ const FeaturedImageObject = options => {
       {
         label: 'Show Card Image',
         name: 'showCardImage',
-        widget: 'string',
+        widget: 'boolean',
         hint: 'Switch on to show the featured image at the top of the content card.',
         default: false,
       },
       {
         label: 'Show Title Section',
         name: 'showTitleSection',
-        widget: 'string',
+        widget: 'boolean',
         hint: 'Switch on to show the title section.',
         default: false,
       },
