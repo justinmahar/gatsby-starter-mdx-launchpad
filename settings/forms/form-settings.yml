@@ -1,16 +1,16 @@
 forms:
   - formLabel: Contact Form
     formId: contact-form
-    formActionUrl: /
+    formActionUrl: https://docs.google.com/forms/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/viewform
     formMethod: POST
     formNameAttribute: contactForm
     formAsyncEnabled: true
-    formAsyncRequestMode: cors
+    formAsyncRequestMode: no-cors
     formControls:
       fields:
         - initialValue: none
           label: Full Name
-          nameAttribute: fullName
+          nameAttribute: entry.1490771840
           placeholder: Enter your full name
           required: true
           requiredErrorText: This field is required.
@@ -24,7 +24,7 @@ forms:
           type: email
         - initialValue: none
           label: Message
-          nameAttribute: message
+          nameAttribute: entry.1205850139
           placeholder: Enter your message
           required: true
           requiredErrorText: This field is required.

@@ -59,7 +59,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
           <Form.Control
             type={formField.type}
             as={formField.type === 'textarea' ? 'textarea' : 'input'}
-            rows="3"
+            rows={formField.type === 'textarea' ? 3 : undefined}
             placeholder={formField.placeholder}
             name={formField.nameAttribute}
             value={fieldValue}
