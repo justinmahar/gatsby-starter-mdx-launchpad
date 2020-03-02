@@ -1,27 +1,20 @@
 forms:
   - formLabel: Contact Form
     formId: contact-form
-    formActionUrl: /
+    formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/formResponse
     formMethod: POST
     formNameAttribute: contactForm
     formAsyncEnabled: true
-    formAsyncRequestMode: cors
+    formAsyncRequestMode: no-cors
     formControls:
       fields:
         - initialValue: none
           label: Full Name
-          nameAttribute: fullName
+          nameAttribute: entry.1490771840
           placeholder: Enter your full name
           required: true
           requiredErrorText: This field is required.
           type: text
-        - initialValue: contactForm
-          label: Netlify form name
-          nameAttribute: form-name
-          placeholder: Netlify form name
-          required: false
-          requiredErrorText: This field is required.
-          type: hidden
         - initialValue: none
           label: Email
           nameAttribute: emailAddress
@@ -31,7 +24,7 @@ forms:
           type: email
         - initialValue: none
           label: Message
-          nameAttribute: message
+          nameAttribute: entry.1205850139
           placeholder: Enter your message
           required: true
           requiredErrorText: This field is required.
