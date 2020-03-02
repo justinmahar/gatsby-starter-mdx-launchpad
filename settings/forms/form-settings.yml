@@ -1,7 +1,7 @@
 forms:
   - formLabel: Contact Form
     formId: contact-form
-    formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/formResponse
+    formActionUrl: /
     formMethod: POST
     formNameAttribute: contactForm
     formAsyncEnabled: false
@@ -10,7 +10,7 @@ forms:
       fields:
         - initialValue: none
           label: Full Name
-          nameAttribute: entry.1490771840
+          nameAttribute: fullName
           placeholder: Enter your full name
           required: true
           requiredErrorText: This field is required.
@@ -24,7 +24,7 @@ forms:
           type: email
         - initialValue: none
           label: Message
-          nameAttribute: entry.1205850139
+          nameAttribute: message
           placeholder: Enter your message
           required: true
           requiredErrorText: This field is required.
