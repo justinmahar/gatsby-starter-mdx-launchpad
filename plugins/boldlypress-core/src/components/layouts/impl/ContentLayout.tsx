@@ -171,7 +171,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             {showSidebar && (
               <Col md={{ span: 4 }}>
                 <div className="d-none d-md-block mb-4">
-                  <MailingListSignupCard mailingList={mailingList} />
+                  <MailingListSignupCard formId="mailing-list" />
                 </div>
                 <div className="mb-4">
                   <RecentPostsWidget />

@@ -18,7 +18,6 @@ export const mailingListYamlQuery = graphql`
       headerImage
       titleText
       bodyText
-      buttonText
       privacyText
       errorSubmittingText
       successImage
@@ -31,7 +30,6 @@ export const mailingListYamlQuery = graphql`
       backgroundImageBrightness
       titleText
       bodyText
-      buttonText
       privacyText
       errorSubmittingText
       successImage
@@ -51,7 +49,6 @@ export type MailingListSettingsData = {
     headerImage: string;
     titleText: string;
     bodyText: string;
-    buttonText: string;
     privacyText: string;
     errorSubmittingText: string;
     successImage: string;
@@ -64,7 +61,6 @@ export type MailingListSettingsData = {
     backgroundImageBrightness: number;
     titleText: string;
     bodyText: string;
-    buttonText: string;
     privacyText: string;
     errorSubmittingText: string;
     successImage: string;
