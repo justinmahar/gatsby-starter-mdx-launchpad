@@ -231,7 +231,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             </Row>
           </Container>
         )}
-        <MailingListSignupContainer mailingList={mailingList} />
+        <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
         <Footer />
       </Wrapper>
     </>

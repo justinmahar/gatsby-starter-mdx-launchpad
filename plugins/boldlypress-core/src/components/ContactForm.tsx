@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Alert, Button, Form, FormControlProps, Spinner } from 'react-bootstrap';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import FormSettings, { FormFieldData, FormInfo } from '../data/settings/FormSettings';
-import useContactForm, { ContactFormField } from '../hooks/useContactForm';
+import useContactForm, { ContactFormField, FormModel } from '../hooks/useContactForm';
 
 export interface ContactFormProps {
   formId: string;
@@ -39,17 +39,17 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
       })
     : [];
 
-  const fetchInitOptions = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
+  const fetchInitOptions: RequestInit = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
 
-  const formModel = useContactForm('/', formFields, fetchInitOptions);
+  const formModel: FormModel = useContactForm('/', formFields, fetchInitOptions);
 
-  const contactFormElements = formFields.map((formField: ContactFormField) => {
+  const contactFormElements: JSX.Element[] = formFields.map((formField: ContactFormField) => {
     const fieldError = formModel.formErrors[formField.nameAttribute];
     let fieldValue = formModel.formValues[formField.nameAttribute];
     fieldValue = fieldValue ? fieldValue : '';
     return (
       <div key={`field-${formField.nameAttribute}`}>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId={formField.nameAttribute}>
           <Form.Label>{formField.label}</Form.Label>
           {!!fieldError && (
             <p className="text-danger font-weight-bold">

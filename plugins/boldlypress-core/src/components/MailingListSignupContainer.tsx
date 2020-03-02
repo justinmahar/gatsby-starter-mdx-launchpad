@@ -4,28 +4,84 @@ import { Button, Col, Container, Form, FormControlProps, Row } from 'react-boots
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import MailingListSettings from '../data/settings/MailingListSettings';
 import { MailingList } from '../hooks/useMailingList';
+import FormSettings, { FormInfo, FormFieldData } from '../data/settings/FormSettings';
+import useContactForm, { ContactFormField, FormModel } from '../hooks/useContactForm';
 
 export interface MailingListSignupContainerProps {
+  formId: string;
   mailingList: MailingList;
 }
 
 export default function MailingListSignupContainer(props: MailingListSignupContainerProps): JSX.Element {
   const mailingList = props.mailingList;
 
+  const [successAlertVisible, setSuccessAlertVisible] = React.useState(false);
+  const [errorAlertVisible, setErrorAlertVisible] = React.useState(false);
+
   const data = useStaticQuery(graphql`
     query MailingListSignupContainerQuery {
       mailingListYaml {
         ...mailingListSettings
       }
+      formsYaml {
+        ...formSettings
+      }
     }
   `);
-
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
-  const formName = mailingListSettings.data.mailingListFormNameAttribute;
-  const formActionUrl = mailingListSettings.data.mailingListFormActionUrl;
-  const formMethod = mailingListSettings.data.mailingListFormMethod;
-  const emailAddressFieldName = mailingListSettings.data.mailingListEmailAddressFieldNameAttribute;
-  const emailAddressFieldPlaceholder = mailingListSettings.data.mailingListEmailAddressFieldPlaceholder;
+  const formSettings = new FormSettings(data.formsYaml);
+
+  const formInfo: FormInfo | undefined = formSettings.data.forms.find((value: FormInfo) => {
+    return value.formId === props.formId;
+  });
+
+  const formFields: ContactFormField[] = formInfo
+    ? formInfo.formControls.fields.map((value: FormFieldData) => {
+        return {
+          ...value,
+          validate: () => true,
+        };
+      })
+    : [];
+
+  const fetchInitOptions: RequestInit = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
+
+  const formModel: FormModel = useContactForm('/', formFields, fetchInitOptions);
+
+  const contactFormElements: JSX.Element[] = formFields.map((formField: ContactFormField) => {
+    const fieldError = formModel.formErrors[formField.nameAttribute];
+    let fieldValue = formModel.formValues[formField.nameAttribute];
+    fieldValue = fieldValue ? fieldValue : '';
+    return (
+      <div key={`field-${formField.nameAttribute}`}>
+        <Form.Group controlId={formField.nameAttribute}>
+          {/* <Form.Label>{formField.label}</Form.Label> */}
+          {!!fieldError && (
+            <Form.Text className="text-warning font-weight-bold mb-2">
+              {formModel.formErrors[formField.nameAttribute]}
+            </Form.Text>
+          )}
+          <Form.Control
+            type={formField.type}
+            as={formField.type === 'textarea' ? 'textarea' : 'input'}
+            rows={formField.type === 'textarea' ? 3 : undefined}
+            placeholder={formField.placeholder}
+            name={formField.nameAttribute}
+            value={fieldValue}
+            required={formField.required}
+            disabled={formModel.sending}
+            onChange={(e: React.FormEvent<ReplaceProps<'input', BsPrefixProps<'input'> & FormControlProps>>) =>
+              formModel.setFieldValue(formField.nameAttribute, e.currentTarget.value)
+            }
+          />
+          {formField.type === 'email' && (
+            <Form.Text>{mailingListSettings.data.footerMailingListSection.privacyText}</Form.Text>
+          )}
+        </Form.Group>
+      </div>
+    );
+  });
+
   const coverOpacity: number = 1 - mailingListSettings.data.footerMailingListSection.backgroundImageBrightness / 100;
 
   const containerStyles = {
@@ -43,9 +99,30 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
         }') no-repeat center center /cover`,
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (formInfo.formAsyncEnabled) {
+      e.preventDefault();
+      if (formModel.validate()) {
+        formModel
+          .submit()
+          .then(() => {
+            console.log('Submitted!');
+            formModel.clear();
+            setSuccessAlertVisible(true);
+          })
+          .catch(e => {
+            console.error(e);
+            setErrorAlertVisible(true);
+          });
+      } else {
+        console.error('Form is not valid');
+      }
+    }
+  };
+
   return (
     <Container fluid style={containerStyles} className="primary section">
-      {!mailingList.mailingListSubmitSuccess && (
+      {!successAlertVisible && (
         <Row>
           <Col
             xs={{ span: 10, offset: 1 }}
@@ -70,42 +147,41 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
               }}
             ></p>
             <div className="my-5">
-              <Form
-                id="subscribe-form"
-                name={formName}
-                action={formActionUrl}
-                method={formMethod}
-                onSubmit={mailingList.handleMailingListSubmit}
-                data-netlify="true"
-              >
-                <input type="hidden" name="form-name" value={formName} />
-                <Form.Group controlId="formBasicEmail">
-                  {mailingList.mailingListSubmitError && (
+              {!!formInfo && (
+                <Form
+                  id={formInfo.formNameAttribute}
+                  name={formInfo.formNameAttribute}
+                  action={formInfo.formActionUrl}
+                  method={formInfo.formMethod}
+                  onSubmit={handleSubmit}
+                  data-netlify="true"
+                >
+                  <input type="hidden" name="form-name" value={formInfo.formNameAttribute} />
+                  {errorAlertVisible && (
                     <Form.Text className="text-warning font-weight-bold mb-2">
                       {mailingListSettings.data.footerMailingListSection.errorSubmittingText}
                     </Form.Text>
                   )}
-                  <Form.Control
-                    type="email"
-                    name={emailAddressFieldName}
-                    placeholder={emailAddressFieldPlaceholder}
-                    value={mailingList.mailingListEmail}
-                    onChange={(e: React.FormEvent<ReplaceProps<'input', BsPrefixProps<'input'> & FormControlProps>>) =>
-                      mailingList.setMailingListEmail(e.currentTarget.value)
-                    }
-                    required
-                  />
-                  <Form.Text>{mailingListSettings.data.footerMailingListSection.privacyText}</Form.Text>
-                </Form.Group>
-                <Button variant="primary" type="submit" size="lg" disabled={mailingList.mailingListSubmitting}>
-                  {mailingListSettings.data.footerMailingListSection.buttonText}
-                </Button>
-              </Form>
+                  {contactFormElements}
+                  <Button variant="primary" type="submit" size="lg" disabled={formModel.sending}>
+                    {formInfo.formControls.submitButtonText}
+                  </Button>
+                </Form>
+              )}
+              {!formInfo && (
+                <div>
+                  Form{' '}
+                  <code>
+                    {props.formId ? props.formId : typeof props.formId === 'undefined' ? 'undefined' : 'falsy'}
+                  </code>{' '}
+                  not found.
+                </div>
+              )}
             </div>
           </Col>
         </Row>
       )}
-      {mailingList.mailingListSubmitSuccess && (
+      {successAlertVisible && (
         <Row>
           <Col md={{ span: 6, offset: 3 }} lg={{ span: 4, offset: 4 }} style={{ textAlign: 'center', color: 'white' }}>
             <h4

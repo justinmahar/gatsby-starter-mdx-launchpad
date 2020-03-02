@@ -154,7 +154,7 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
           )}
         </Row>
       </Container>
-      <MailingListSignupContainer mailingList={mailingList} />
+      <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
       <Footer />
     </Wrapper>
   );

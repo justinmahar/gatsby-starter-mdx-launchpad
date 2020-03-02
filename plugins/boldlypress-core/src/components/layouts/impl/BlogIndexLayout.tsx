@@ -192,7 +192,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
           </Col>
         </Row>
       </Container>
-      <MailingListSignupContainer mailingList={mailingList} />
+      <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
       <Footer />
     </Wrapper>
   );
