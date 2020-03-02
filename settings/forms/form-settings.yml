@@ -4,8 +4,8 @@ forms:
     formActionUrl: /
     formMethod: POST
     formNameAttribute: contactForm
-    formAsyncEnabled: false
-    formAsyncRequestMode: no-cors
+    formAsyncEnabled: true
+    formAsyncRequestMode: cors
     formControls:
       fields:
         - initialValue: none
