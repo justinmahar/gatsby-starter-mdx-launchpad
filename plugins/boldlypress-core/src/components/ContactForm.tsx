@@ -11,8 +11,6 @@ export interface ContactFormProps {
 }
 
 export default function ContactForm(props: ContactFormProps): JSX.Element {
-  const formRef = React.useRef(null);
-
   const [successAlertVisible, setSuccessAlertVisible] = React.useState(false);
   const [errorAlertVisible, setErrorAlertVisible] = React.useState(false);
 
@@ -97,12 +95,12 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
   return (
     <>
       {formInfo && (
-        <Form
+        <form
           onSubmit={handleSubmit}
-          ref={formRef}
           className={props.className}
           name={formInfo ? formInfo.formNameAttribute : 'undefined'}
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value={formInfo ? formInfo.formNameAttribute : 'undefined'} />
           {successAlertVisible && (
@@ -127,7 +125,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
             )}
             {!formModel.sending && <>{formInfo.formControls.submitButtonText}</>}
           </Button>
-        </Form>
+        </form>
       )}
       {!formInfo && (
         <div>

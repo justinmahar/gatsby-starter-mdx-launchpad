@@ -4,7 +4,7 @@ forms:
     formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/formResponse
     formMethod: POST
     formNameAttribute: contactForm
-    formAsyncEnabled: true
+    formAsyncEnabled: false
     formAsyncRequestMode: no-cors
     formControls:
       fields:
