@@ -2,10 +2,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Alert, Button, Form, FormControlProps, Spinner } from 'react-bootstrap';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
-import FormSettings, { FormFieldData } from '../data/settings/FormSettings';
+import FormSettings, { FormFieldData, FormInfo } from '../data/settings/FormSettings';
 import useContactForm, { ContactFormField } from '../hooks/useContactForm';
 
 export interface ContactFormProps {
+  formId: string;
   className?: string;
 }
 
@@ -25,14 +26,20 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const formSettings = new FormSettings(data.formsYaml);
 
-  const formFields: ContactFormField[] = formSettings.data.formControls.fields.map((value: FormFieldData) => {
-    return {
-      ...value,
-      validate: () => true,
-    };
+  const formInfo: FormInfo | undefined = formSettings.data.forms.find((value: FormInfo) => {
+    return value.formId === props.formId;
   });
 
-  const fetchInitOptions = formSettings.asyncFetchInitOptions;
+  const formFields: ContactFormField[] = formInfo
+    ? formInfo.formControls.fields.map((value: FormFieldData) => {
+        return {
+          ...value,
+          validate: () => true,
+        };
+      })
+    : [];
+
+  const fetchInitOptions = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
 
   const formModel = useContactForm('/', formFields, fetchInitOptions);
 
@@ -68,7 +75,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (formSettings.data.formAsyncEnabled) {
+    if (formInfo.formAsyncEnabled) {
       e.preventDefault();
       if (formModel.validate()) {
         formModel
@@ -88,36 +95,46 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
     }
   };
   return (
-    <Form
-      onSubmit={handleSubmit}
-      ref={formRef}
-      className={props.className}
-      name={formSettings.data.formNameAttribute}
-      data-netlify="true"
-    >
-      <input type="hidden" name="form-name" value={formSettings.data.formNameAttribute} />
-      {successAlertVisible && (
-        <Alert variant="success" onClose={() => setSuccessAlertVisible(false)} dismissible>
-          Your message has been sent.
-        </Alert>
+    <>
+      {formInfo && (
+        <Form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          className={props.className}
+          name={formInfo ? formInfo.formNameAttribute : 'undefined'}
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value={formInfo ? formInfo.formNameAttribute : 'undefined'} />
+          {successAlertVisible && (
+            <Alert variant="success" onClose={() => setSuccessAlertVisible(false)} dismissible>
+              Your message has been sent.
+            </Alert>
+          )}
+          {errorAlertVisible && (
+            <Alert variant="danger" onClose={() => setErrorAlertVisible(false)} dismissible>
+              Sorry, something went wrong. Please try again.
+            </Alert>
+          )}
+          {contactFormElements}
+          <Button variant="primary" type="submit" disabled={formModel.sending}>
+            {!!formModel.sending && (
+              <>
+                <Spinner animation="border" role="status" size="sm" as="span" className="mr-2">
+                  <span className="sr-only">Sending...</span>
+                </Spinner>
+                Sending...
+              </>
+            )}
+            {!formModel.sending && <>{formInfo.formControls.submitButtonText}</>}
+          </Button>
+        </Form>
       )}
-      {errorAlertVisible && (
-        <Alert variant="danger" onClose={() => setErrorAlertVisible(false)} dismissible>
-          Sorry, something went wrong. Please try again.
-        </Alert>
+      {!formInfo && (
+        <div>
+          Form <code>{props.formId ? props.formId : typeof props.formId === 'undefined' ? 'undefined' : 'falsy'}</code>{' '}
+          not found.
+        </div>
       )}
-      {contactFormElements}
-      <Button variant="primary" type="submit" disabled={formModel.sending}>
-        {!!formModel.sending && (
-          <>
-            <Spinner animation="border" role="status" size="sm" as="span" className="mr-2">
-              <span className="sr-only">Sending...</span>
-            </Spinner>
-            Sending...
-          </>
-        )}
-        {!formModel.sending && <>{formSettings.data.formControls.submitButtonText}</>}
-      </Button>
-    </Form>
+    </>
   );
 }
