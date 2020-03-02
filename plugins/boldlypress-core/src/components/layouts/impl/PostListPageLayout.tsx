@@ -3,12 +3,10 @@ import * as React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import MdxContent from '../../../data/MdxContent';
 import DiscussionSettings from '../../../data/settings/DiscussionSettings';
-import MailingListSettings from '../../../data/settings/MailingListSettings';
 import PostSettings from '../../../data/settings/PostSettings';
 import SiteSeoSettings from '../../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../../data/SiteMetadata';
-import useMailingList from '../../../hooks/useMailingList';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
 import Footer from '../../Footer';
@@ -34,9 +32,6 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
       seoYaml {
         ...siteSeoSettings
       }
-      mailingListYaml {
-        ...mailingListSettings
-      }
       postYaml {
         ...postSettings
       }
@@ -51,7 +46,6 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
 
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
-  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const postSettings = new PostSettings(data.postYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const socialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
@@ -65,12 +59,6 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
   const currentPage = pageContext.currentPage;
   const categorySlugGlob = pageContext.categorySlugGlob;
   const categoryName = pageContext.categoryName;
-
-  const mailingList = useMailingList(
-    mailingListSettings.data.mailingListFormActionUrl,
-    mailingListSettings.data.mailingListAsyncEnabled,
-    mailingListSettings.asyncFetchInitOptions
-  );
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
 
@@ -145,7 +133,7 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
           {showSidebar && (
             <Col md={{ span: 4 }}>
               <div className="d-none d-md-block mb-4">
-                <MailingListSignupCard mailingList={mailingList} />
+                <MailingListSignupCard formId="mailing-list" />
               </div>
               <div className="mb-4">
                 <RecentPostsWidget />
@@ -154,7 +142,7 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
           )}
         </Row>
       </Container>
-      <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
+      <MailingListSignupContainer formId="mailing-list" />
       <Footer />
     </Wrapper>
   );

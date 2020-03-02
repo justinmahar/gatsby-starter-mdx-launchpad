@@ -39,8 +39,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const fetchInitOptions: RequestInit = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
 
-  const urlEncoded = false;
-  const formModel: FormModel = useContactForm(formInfo.formActionUrl, formFields, fetchInitOptions, urlEncoded);
+  const formModel: FormModel = useContactForm(formInfo.formActionUrl, formFields, fetchInitOptions);
 
   const contactFormElements: JSX.Element[] = formFields.map((formField: ContactFormField) => {
     const fieldError = formModel.formErrors[formField.nameAttribute];
@@ -96,7 +95,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
   return (
     <>
       {formInfo && (
-        <form
+        <Form
           onSubmit={handleSubmit}
           className={props.className}
           name={formInfo ? formInfo.formNameAttribute : 'undefined'}
@@ -125,7 +124,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
             )}
             {!formModel.sending && <>{formInfo.formControls.submitButtonText}</>}
           </Button>
-        </form>
+        </Form>
       )}
       {!formInfo && (
         <div>

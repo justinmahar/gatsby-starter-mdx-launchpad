@@ -12,15 +12,12 @@ import TopBar from '../../../components/TopBar';
 import Wrapper from '../../../components/Wrapper';
 import MdxContent from '../../../data/MdxContent';
 import DiscussionSettings from '../../../data/settings/DiscussionSettings';
-import MailingListSettings from '../../../data/settings/MailingListSettings';
 import PostSettings from '../../../data/settings/PostSettings';
 import SiteSeoSettings from '../../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../../data/SiteMetadata';
-import useMailingList from '../../../hooks/useMailingList';
 import MdxSEO from '../../configured/MdxSEO';
 import { LayoutProps } from '../getLayout';
-import FormSettings, { FormInfo } from '../../../data/settings/FormSettings';
 
 export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -41,9 +38,6 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
       seoYaml {
         ...siteSeoSettings
       }
-      mailingListYaml {
-        ...mailingListSettings
-      }
       postYaml {
         ...postSettings
       }
@@ -58,26 +52,10 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
 
   const mdxContent: MdxContent = new MdxContent(props.mdx);
   const siteMetadata: SiteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const formSettings = new FormSettings(data.formsYaml);
   const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
-  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const postSettings = new PostSettings(data.postYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
-
-  const mailingListFormInfo: FormInfo = formSettings.data.forms.find((formInfo: FormInfo) => {
-    return formInfo.formId === mailingListSettings.data.mailingListFormId;
-  });
-
-  const mailingListFormId: string = mailingListFormInfo ? mailingListFormInfo.formId : 'undefined';
-  const mailingListFormAsyncEnabled: boolean = mailingListFormInfo ? mailingListFormInfo.formAsyncEnabled : true;
-  const mailingListFormAsyncRequestMode: RequestMode = mailingListFormInfo
-    ? mailingListFormInfo.formAsyncRequestMode
-    : 'cors';
-
-  const mailingList = useMailingList(mailingListFormId, mailingListFormAsyncEnabled, {
-    mode: mailingListFormAsyncRequestMode,
-  });
 
   const indexPagePostCount = postSettings.data.indexPagePostCount;
   const allPostsListSlug = postSettings.data.allPostsListSlug;
@@ -168,7 +146,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
           </Col>
           <Col xs={12} md={4}>
             <div className="d-none d-md-block">
-              <MailingListSignupCard mailingList={mailingList} />
+              <MailingListSignupCard formId="mailing-list" />
             </div>
             {socialSharingSettings.data.shareHomePageEnabled &&
               (socialSharingSettings.data.facebook.facebookPostSharingEnabled ||
@@ -192,7 +170,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
           </Col>
         </Row>
       </Container>
-      <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
+      <MailingListSignupContainer formId="mailing-list" />
       <Footer />
     </Wrapper>
   );

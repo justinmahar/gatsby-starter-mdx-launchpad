@@ -32,11 +32,11 @@ forms:
       submitButtonText: Send
   - formLabel: Mailing List
     formId: mailing-list
-    formActionUrl: /
+    formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSc5s3mOulygCILIycMDrGc8cKBjYBmm22Pxm8NV-9z1hg4PqQ/formResponse
     formMethod: POST
     formNameAttribute: subscriptions
     formAsyncEnabled: true
-    formAsyncRequestMode: cors
+    formAsyncRequestMode: no-cors
     formControls:
       fields:
         - initialValue: none
@@ -49,7 +49,7 @@ forms:
       submitButtonText: Send
   - formLabel: Feedback Form
     formId: feedback-form
-    formActionUrl: /
+    formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSe-J6w4dTCfveWU8BByodBklIqN4geC4VdtlLdF4IDTa7kyEg/formResponse
     formMethod: POST
     formNameAttribute: feedbackForm
     formAsyncEnabled: true
@@ -58,7 +58,7 @@ forms:
       fields:
         - initialValue: none
           label: Message
-          nameAttribute: message
+          nameAttribute: entry.1812331578
           placeholder: Enter your message
           required: true
           requiredErrorText: This field is required.

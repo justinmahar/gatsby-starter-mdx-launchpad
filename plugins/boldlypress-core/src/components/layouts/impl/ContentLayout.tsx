@@ -6,15 +6,14 @@ import * as React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import MdxContent from '../../../data/MdxContent';
 import DiscussionSettings from '../../../data/settings/DiscussionSettings';
-import MailingListSettings from '../../../data/settings/MailingListSettings';
 import PostSettings from '../../../data/settings/PostSettings';
 import SiteSeoSettings from '../../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../../data/SiteMetadata';
-import useMailingList from '../../../hooks/useMailingList';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
 import DiscussionComponent from '../../DiscussionComponent';
+import Footer from '../../Footer';
 import ImageHeaderContainer from '../../ImageHeaderContainer';
 import MailingListSignupCard from '../../MailingListSignupCard';
 import MailingListSignupContainer from '../../MailingListSignupContainer';
@@ -23,7 +22,6 @@ import SocialShareComponent from '../../SocialShareComponent';
 import TopBar from '../../TopBar';
 import Wrapper from '../../Wrapper';
 import { LayoutProps } from '../getLayout';
-import Footer from '../../Footer';
 
 export default function ContentLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -35,9 +33,6 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
       }
       seoYaml {
         ...siteSeoSettings
-      }
-      mailingListYaml {
-        ...mailingListSettings
       }
       postYaml {
         ...postSettings
@@ -54,18 +49,11 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
   const mdxContent: MdxContent = new MdxContent(props.mdx);
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const siteSeoSettings = new SiteSeoSettings(data.seoYaml);
-  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const postSettings = new PostSettings(data.postYaml);
   const discussionSettings = new DiscussionSettings(data.discussionYaml);
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const postCategoryListSlug = postSettings.data.postCategoryListSlug;
-
-  const mailingList = useMailingList(
-    mailingListSettings.data.mailingListFormActionUrl,
-    mailingListSettings.data.mailingListAsyncEnabled,
-    mailingListSettings.asyncFetchInitOptions
-  );
 
   if (!mdxContent) {
     return <p>No MDX content was provided.</p>;
@@ -231,7 +219,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             </Row>
           </Container>
         )}
-        <MailingListSignupContainer mailingList={mailingList} formId="mailing-list" />
+        <MailingListSignupContainer formId="mailing-list" />
         <Footer />
       </Wrapper>
     </>

@@ -9,12 +9,9 @@ import useContactForm, { ContactFormField, FormModel } from '../hooks/useContact
 
 export interface MailingListSignupContainerProps {
   formId: string;
-  mailingList: MailingList;
 }
 
 export default function MailingListSignupContainer(props: MailingListSignupContainerProps): JSX.Element {
-  const mailingList = props.mailingList;
-
   const [successAlertVisible, setSuccessAlertVisible] = React.useState(false);
   const [errorAlertVisible, setErrorAlertVisible] = React.useState(false);
 
@@ -93,7 +90,7 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
       rgba(0, 0, 0, ${coverOpacity}), 
       rgba(0, 0, 0, ${coverOpacity})
         ), url('${
-          !mailingList.mailingListSubmitSuccess
+          !successAlertVisible
             ? mailingListSettings.data.footerMailingListSection.backgroundImage
             : mailingListSettings.data.footerMailingListSection.successImage
         }') no-repeat center center /cover`,
@@ -155,8 +152,8 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
                   method={formInfo.formMethod}
                   onSubmit={handleSubmit}
                   data-netlify="true"
+                  data-netlify-honeypot="bot-field"
                 >
-                  <input type="hidden" name="form-name" value={formInfo.formNameAttribute} />
                   {errorAlertVisible && (
                     <Form.Text className="text-warning font-weight-bold mb-2">
                       {mailingListSettings.data.footerMailingListSection.errorSubmittingText}
