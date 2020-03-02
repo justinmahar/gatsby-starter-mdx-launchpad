@@ -15,6 +15,13 @@ forms:
           required: true
           requiredErrorText: This field is required.
           type: text
+        - initialValue: contactForm
+          label: Netlify form name
+          nameAttribute: form-name
+          placeholder: Netlify form name
+          required: true
+          requiredErrorText: This field is required.
+          type: hidden
         - initialValue: none
           label: Email
           nameAttribute: emailAddress

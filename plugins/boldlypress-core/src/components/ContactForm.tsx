@@ -48,8 +48,8 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
     return (
       <div key={`field-${formField.nameAttribute}`}>
         <Form.Group controlId={formField.nameAttribute}>
-          <Form.Label>{formField.label}</Form.Label>
-          {!!fieldError && (
+          {formField.type !== 'hidden' && <Form.Label>{formField.label}</Form.Label>}
+          {formField.type !== 'hidden' && !!fieldError && (
             <p className="text-danger font-weight-bold">
               <small>{formModel.formErrors[formField.nameAttribute]}</small>
             </p>
@@ -102,7 +102,6 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="form-name" value={formInfo ? formInfo.formNameAttribute : 'undefined'} />
           {successAlertVisible && (
             <Alert variant="success" onClose={() => setSuccessAlertVisible(false)} dismissible>
               Your message has been sent.
