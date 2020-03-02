@@ -39,7 +39,8 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const fetchInitOptions: RequestInit = formInfo ? { mode: formInfo.formAsyncRequestMode } : {};
 
-  const formModel: FormModel = useContactForm('/', formFields, fetchInitOptions);
+  const urlEncoded = true;
+  const formModel: FormModel = useContactForm(formInfo.formActionUrl, formFields, fetchInitOptions, urlEncoded);
 
   const contactFormElements: JSX.Element[] = formFields.map((formField: ContactFormField) => {
     const fieldError = formModel.formErrors[formField.nameAttribute];

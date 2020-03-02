@@ -19,7 +19,7 @@ forms:
           label: Netlify form name
           nameAttribute: form-name
           placeholder: Netlify form name
-          required: true
+          required: false
           requiredErrorText: This field is required.
           type: hidden
         - initialValue: none

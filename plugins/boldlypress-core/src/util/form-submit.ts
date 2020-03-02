@@ -4,7 +4,7 @@ const DEFAULT_METHOD = 'POST';
 
 export const submitFormData = (
   formActionUrl: string,
-  formData: FormData,
+  formData: FormData | string,
   fetchRequestInit: RequestInit = {}
 ): Promise<any> => {
   return new Promise((resolve: (value?: {} | PromiseLike<{}> | undefined) => void, reject: (reason?: any) => void) => {

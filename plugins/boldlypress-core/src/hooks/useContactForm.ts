@@ -59,7 +59,8 @@ export interface FormModel {
 export default function useContactForm(
   actionUrl: string,
   formFields: ContactFormField[],
-  fetchRequestInit: RequestInit = {}
+  fetchRequestInit: RequestInit = {},
+  urlEncoded?: boolean
 ): FormModel {
   const formFieldMap: { [key: string]: ContactFormField } = {};
   formFields = formFields.map((formField: ContactFormField) => {
@@ -129,15 +130,33 @@ export default function useContactForm(
   const isValid = (): boolean => {
     return Object.keys(formErrors).length <= 0;
   };
+
+  const urlEncode = (formValues: FormValues): string => {
+    return Object.keys(formValues)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formValues[key]))
+      .join('&');
+  };
+
   const submit = (): Promise<any> => {
-    const formData: FormData = new FormData();
-    Object.keys(formValues).forEach((key: string) => {
-      const value = formValues[key];
-      formData.append(key, value ? value : '');
-    });
+    let data: FormData | string;
+    let headers: { [x: string]: string } | undefined = undefined;
+    if (!urlEncoded) {
+      const formData: FormData | string = new FormData();
+      Object.keys(formValues).forEach((key: string) => {
+        const value = formValues[key];
+        formData.append(key, value ? value : '');
+      });
+      data = formData;
+    } else {
+      data = urlEncode(formValues);
+      headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    }
 
     setSending(true);
-    return FormSubmit.submitFormData(actionUrl, formData, fetchRequestInit)
+    return FormSubmit.submitFormData(actionUrl, data, {
+      headers: headers,
+      ...fetchRequestInit,
+    })
       .then(() => setSending(false))
       .catch(() => setSending(false));
   };
