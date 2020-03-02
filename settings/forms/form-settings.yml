@@ -1,7 +1,7 @@
 forms:
   - formLabel: Contact Form
     formId: contact-form
-    formActionUrl: https://docs.google.com/forms/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/viewform
+    formActionUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/formResponse
     formMethod: POST
     formNameAttribute: contactForm
     formAsyncEnabled: true

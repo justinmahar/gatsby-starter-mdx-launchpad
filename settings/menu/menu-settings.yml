@@ -49,7 +49,7 @@ footerMenus:
         name: Contact
       - class: none
         external: false
-        link: /site-status
+        link: /u/site-status
         name: Site Status
       - class: none
         external: true
