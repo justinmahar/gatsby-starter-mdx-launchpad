@@ -52,10 +52,16 @@ export default class SiteSeoSettings {
       }
     );
 
+    if (!foundConfiguration) {
+      console.error(`Config ID ${configurationId} not found`);
+    }
+
     return {
       seoTitleSeparator: this.data.seoTitleSeparator,
-      configSeoTitle: foundConfiguration ? foundConfiguration.seoTitle : '[SEO config not found]',
-      configSeoDescription: foundConfiguration ? foundConfiguration.seoDescription : '[SEO config not found]',
+      configSeoTitle: foundConfiguration ? foundConfiguration.seoTitle : `[SEO config not found: ${configurationId}]`,
+      configSeoDescription: foundConfiguration
+        ? foundConfiguration.seoDescription
+        : `[SEO config not found: ${configurationId}]`,
     };
   }
 }
