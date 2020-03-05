@@ -72,7 +72,7 @@ const formSettingsFile = {
               value: 'navigate',
             },
           ],
-          default: 'cors',
+          default: 'no-cors',
           hint:
             'The mode you want to use for the request, e.g., cors, no-cors, same-origin, or navigate. The default is cors. Use no-cors for services like Google Forms.',
         },
