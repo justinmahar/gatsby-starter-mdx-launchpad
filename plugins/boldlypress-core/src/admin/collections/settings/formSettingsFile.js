@@ -92,7 +92,7 @@ const formSettingsFile = {
                   label: 'Field Label Text',
                   name: 'label',
                   widget: 'string',
-                  default: 'Contact Form Field',
+                  default: '',
                   hint: 'The label text shown for the field. Examples: Name, Email, Subject, Message',
                 },
                 {
@@ -100,7 +100,7 @@ const formSettingsFile = {
                   name: 'nameAttribute',
                   widget: 'string',
                   hint:
-                    'The name attribute for this field. Must be unique among the other fields! Examples: name, emailAddress, subject, message',
+                    'The name attribute for this field. Must be unique among the other fields! Examples: name, emailAddress, subject, entry.12345',
                 },
                 {
                   label: 'Initial Value',
