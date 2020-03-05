@@ -57,7 +57,7 @@ forms:
           placeholder: Enter this field
           required: false
           requiredErrorText: This field is required.
-          type: text
+          type: hidden
       submitButtonText: Send
     formId: mailing-list
     formLabel: Mailing List
@@ -82,7 +82,7 @@ forms:
           placeholder: Enter this field
           required: false
           requiredErrorText: This field is required.
-          type: text
+          type: hidden
       submitButtonText: Send
     formId: feedback-form
     formLabel: Feedback Form
