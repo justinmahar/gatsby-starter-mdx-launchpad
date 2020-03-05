@@ -67,11 +67,16 @@ export default function useContactForm(
     formFieldMap[formField.nameAttribute] = formField;
     return { ...defaultContactFormFieldPartial, ...formField };
   });
+  const defaultFormValues: FormValues = {};
   formFields.forEach((formField: ContactFormField) => {
     formFieldMap[formField.nameAttribute] = formField;
+    const initialValue: string = formField.initialValue;
+    if (initialValue !== 'none') {
+      defaultFormValues[formField.nameAttribute] = formField.initialValue;
+    }
   });
 
-  const [formValues, setFormValues] = React.useState<FormValues>({});
+  const [formValues, setFormValues] = React.useState<FormValues>(defaultFormValues);
   const [formErrors, setFormErrors] = React.useState<FormErrors>({});
   const [sending, setSending] = React.useState<boolean>(false);
 

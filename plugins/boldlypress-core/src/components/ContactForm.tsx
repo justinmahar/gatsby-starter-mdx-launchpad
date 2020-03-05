@@ -4,6 +4,8 @@ import { Alert, Button, Form, FormControlProps, Spinner } from 'react-bootstrap'
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
 import FormSettings, { FormFieldData, FormInfo } from '../data/settings/FormSettings';
 import useContactForm, { ContactFormField, FormModel } from '../hooks/useContactForm';
+import renderTemplateTags from '../util/render-template-tags';
+import SiteMetadata from '../data/SiteMetadata';
 
 export interface ContactFormProps {
   formId: string;
@@ -16,13 +18,23 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const data = useStaticQuery(graphql`
     query ContactFormQuery {
+      site {
+        siteMetadata {
+          ...siteMetadataCommons
+        }
+      }
       formsYaml {
         ...formSettings
       }
     }
   `);
 
+  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const formSettings = new FormSettings(data.formsYaml);
+
+  const templateTags: { [x: string]: string } = {
+    ...siteMetadata.getTemplateTags(),
+  };
 
   const formInfo: FormInfo | undefined = formSettings.data.forms.find((value: FormInfo) => {
     return value.formId === props.formId;
@@ -30,8 +42,13 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
 
   const formFields: ContactFormField[] = formInfo
     ? formInfo.formControls.fields.map((value: FormFieldData) => {
+        let initialValue = value.initialValue;
+        if (templateTags) {
+          initialValue = renderTemplateTags(initialValue, templateTags);
+        }
         return {
           ...value,
+          initialValue: initialValue,
           validate: () => true,
         };
       })

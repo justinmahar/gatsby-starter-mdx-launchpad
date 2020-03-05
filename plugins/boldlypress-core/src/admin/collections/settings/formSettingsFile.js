@@ -86,7 +86,8 @@ const formSettingsFile = {
                   widget: 'string',
                   required: false,
                   default: '',
-                  hint: 'The initial value for the field.',
+                  hint:
+                    'The initial value for the field. Supports all template tags from Site Settings, such as {siteName}.',
                 },
                 {
                   label: 'Field Type',

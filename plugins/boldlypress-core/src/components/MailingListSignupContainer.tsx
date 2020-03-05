@@ -2,10 +2,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Button, Col, Container, Form, FormControlProps, Row } from 'react-bootstrap';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
+import FormSettings, { FormFieldData, FormInfo } from '../data/settings/FormSettings';
 import MailingListSettings from '../data/settings/MailingListSettings';
-import { MailingList } from '../hooks/useMailingList';
-import FormSettings, { FormInfo, FormFieldData } from '../data/settings/FormSettings';
+import SiteMetadata from '../data/SiteMetadata';
 import useContactForm, { ContactFormField, FormModel } from '../hooks/useContactForm';
+import renderTemplateTags from '../util/render-template-tags';
 
 export interface MailingListSignupContainerProps {
   formId: string;
@@ -17,6 +18,11 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
 
   const data = useStaticQuery(graphql`
     query MailingListSignupContainerQuery {
+      site {
+        siteMetadata {
+          ...siteMetadataCommons
+        }
+      }
       mailingListYaml {
         ...mailingListSettings
       }
@@ -25,8 +31,13 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
       }
     }
   `);
+  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const mailingListSettings = new MailingListSettings(data.mailingListYaml);
   const formSettings = new FormSettings(data.formsYaml);
+
+  const templateTags: { [x: string]: string } = {
+    ...siteMetadata.getTemplateTags(),
+  };
 
   const formInfo: FormInfo | undefined = formSettings.data.forms.find((value: FormInfo) => {
     return value.formId === props.formId;
@@ -34,8 +45,13 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
 
   const formFields: ContactFormField[] = formInfo
     ? formInfo.formControls.fields.map((value: FormFieldData) => {
+        let initialValue = value.initialValue;
+        if (templateTags) {
+          initialValue = renderTemplateTags(initialValue, templateTags);
+        }
         return {
           ...value,
+          initialValue: initialValue,
           validate: () => true,
         };
       })
@@ -53,7 +69,7 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
       <div key={`field-${formField.nameAttribute}`}>
         <Form.Group controlId={formField.nameAttribute}>
           {/* <Form.Label>{formField.label}</Form.Label> */}
-          {!!fieldError && (
+          {formField.type !== 'hidden' && !!fieldError && (
             <Form.Text className="text-warning font-weight-bold mb-2">
               {formModel.formErrors[formField.nameAttribute]}
             </Form.Text>
