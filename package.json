@@ -12,8 +12,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "overwrite-local-core-with-starter": "node ./scripts/overwrite-local-core-with-starter.js",
-    "overwrite-starter-core-with-local": "node ./scripts/overwrite-starter-core-with-local.js"
+    "overwrite-local-core-with-starter": "node ./plugins/boldlypress-core/scripts/overwrite-local-core-with-starter.js",
+    "overwrite-starter-core-with-local": "node ./plugins/boldlypress-core/scripts/overwrite-starter-core-with-local.js"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
@@ -59,7 +59,9 @@
     "eslint-plugin-react": "^7.18.1",
     "eslint-plugin-react-app": "^6.1.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "prettier": "^1.19.1"
+    "ncp": "^2.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2"
   },
   "repository": {
     "type": "git",
