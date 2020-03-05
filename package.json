@@ -11,7 +11,9 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "overwrite-local-core-with-starter": "node ./scripts/overwrite-local-core-with-starter.js",
+    "overwrite-starter-core-with-local": "node ./scripts/overwrite-starter-core-with-local.js"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
