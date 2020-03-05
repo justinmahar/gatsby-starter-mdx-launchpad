@@ -66,7 +66,7 @@ forms:
   - formActionUrl: >-
       https://docs.google.com/forms/u/0/d/e/1FAIpQLSe-J6w4dTCfveWU8BByodBklIqN4geC4VdtlLdF4IDTa7kyEg/formResponse
     formAsyncEnabled: true
-    formAsyncRequestMode: cors
+    formAsyncRequestMode: no-cors
     formControls:
       fields:
         - initialValue: none
