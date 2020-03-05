@@ -24,7 +24,7 @@ if (isDevelopment) {
 const initOptions = {
   config: {
     ...setup,
-    collections: [pagesCollection, postsCollection, settingsCollection],
+    collections: [settingsCollection, pagesCollection, postsCollection],
   },
 };
 
