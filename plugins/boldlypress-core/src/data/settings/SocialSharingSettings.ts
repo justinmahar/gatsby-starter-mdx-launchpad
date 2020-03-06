@@ -14,6 +14,10 @@ import { Tags } from '../../util/render-template-tags';
 export const socialSharingYamlQuery = graphql`
   fragment socialSharingSettings on SocialSharingYaml {
     shareHomePageEnabled
+    instagram {
+      connectViaInstagramEnabled
+      connectViaInstagramUrl
+    }
     facebook {
       connectViaFacebookEnabled
       connectViaFacebookUrl
@@ -40,6 +44,10 @@ export const socialSharingYamlQuery = graphql`
 
 export type SocialSharingSettingsData = {
   shareHomePageEnabled: boolean;
+  instagram: {
+    connectViaInstagramEnabled: boolean;
+    connectViaInstagramUrl: string;
+  };
   facebook: {
     connectViaFacebookEnabled: boolean;
     connectViaFacebookUrl: string;

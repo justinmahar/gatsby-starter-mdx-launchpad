@@ -11,6 +11,25 @@ const socialSharingSettingsFile = {
         'When enabled, the above buttons will appear in a sidebar widget on the home page, allowing the user to share the home page itself.',
     },
     {
+      label: 'Instagram',
+      name: 'instagram',
+      widget: 'object',
+      fields: [
+        {
+          label: 'Connect Via Instagram (In Footer)',
+          name: 'connectViaInstagramEnabled',
+          widget: 'boolean',
+          hint: 'When enabled, the footer will contain a link to your Instagram profile.',
+        },
+        {
+          label: 'Connect Via Instagram URL',
+          name: 'connectViaInstagramUrl',
+          widget: 'string',
+          hint: 'The URL to your Instagram profile.',
+        },
+      ],
+    },
+    {
       label: 'Facebook',
       name: 'facebook',
       widget: 'object',

@@ -1,7 +1,8 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import * as React from 'react';
 import { EmailIcon, FacebookIcon, TwitterIcon } from 'react-share';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import { SocialIcon } from 'react-social-icons';
 
 const ICON_SIZE = 32;
 
@@ -12,9 +13,6 @@ const divStyles: React.CSSProperties = {
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
   alignContent: 'flex-start',
-};
-const buttonStyles: React.CSSProperties = {
-  cursor: 'pointer',
 };
 
 export interface SocialConnectComponentProps {
@@ -35,20 +33,39 @@ export default function SocialConnectComponent(props: SocialConnectComponentProp
 
   return (
     <div className={props.className} style={{ ...divStyles, ...props.styles }}>
+      {!!socialSharingSettings.data.instagram.connectViaInstagramEnabled && (
+        <SocialIcon
+          url={socialSharingSettings.data.instagram.connectViaInstagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ width: ICON_SIZE - 1, height: ICON_SIZE - 1 }}
+          className="mr-2 mb-2"
+        />
+      )}
       {!!socialSharingSettings.data.facebook.connectViaFacebookEnabled && (
-        <a href={socialSharingSettings.data.facebook.connectViaFacebookUrl} className="mr-2 mb-2">
+        <a
+          href={socialSharingSettings.data.facebook.connectViaFacebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mr-2 mb-2"
+        >
           <FacebookIcon size={ICON_SIZE} round />
         </a>
       )}
       {!!socialSharingSettings.data.twitter.connectViaTwitterEnabled && (
-        <a href={socialSharingSettings.data.twitter.connectViaTwitterUrl} className="mr-2 mb-2">
+        <a
+          href={socialSharingSettings.data.twitter.connectViaTwitterUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mr-2 mb-2"
+        >
           <TwitterIcon size={ICON_SIZE} round />
         </a>
       )}
       {!!socialSharingSettings.data.email.connectViaEmailEnabled && (
-        <a href={socialSharingSettings.data.email.connectViaEmailUrl} className="mr-2 mb-2">
+        <Link to={socialSharingSettings.data.email.connectViaEmailUrl} className="mr-2 mb-2">
           <EmailIcon size={ICON_SIZE} round />
-        </a>
+        </Link>
       )}
     </div>
   );
