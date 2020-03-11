@@ -118,6 +118,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
           name={formInfo ? formInfo.formNameAttribute : 'undefined'}
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          method={formInfo.formMethod}
         >
           {successAlertVisible && (
             <Alert variant="success" onClose={() => setSuccessAlertVisible(false)} dismissible>

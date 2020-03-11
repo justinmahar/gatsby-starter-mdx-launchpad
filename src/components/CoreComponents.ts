@@ -14,5 +14,8 @@ import { default as CC } from '../../plugins/boldlypress-core/src/components/Cor
  * MDX files that reference it to use the new location because, in VSCode, imports in MDX files
  * aren't automatically updated like imports are in TS and TSX files.
  */
-const CoreComponents = CC;
+const CoreComponents = {
+  ...CC,
+};
+
 export default CoreComponents;
