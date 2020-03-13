@@ -61,6 +61,13 @@ const menuSettingsFile = {
               hint:
                 'Switch this on if the link takes the visitor away from this site. Applies to mailto links as well.',
             },
+            {
+              label: 'Open In New Window',
+              name: 'openInNewWindow',
+              widget: 'boolean',
+              default: false,
+              hint: 'Switch this on to open the link in a new window.',
+            },
           ],
         },
       ],
@@ -117,6 +124,13 @@ const menuSettingsFile = {
               hint:
                 'Switch this on if the link takes the visitor away from this site. Applies to mailto links as well.',
             },
+            {
+              label: 'Open In New Window',
+              name: 'openInNewWindow',
+              widget: 'boolean',
+              default: false,
+              hint: 'Switch this on to open the link in a new window.',
+            },
           ],
         },
       ],
@@ -154,6 +168,13 @@ const menuSettingsFile = {
           widget: 'boolean',
           default: false,
           hint: 'Switch this on if the link takes the visitor away from this site. Applies to mailto links as well.',
+        },
+        {
+          label: 'Open In New Window',
+          name: 'openInNewWindow',
+          widget: 'boolean',
+          default: false,
+          hint: 'Switch this on to open the link in a new window.',
         },
       ],
       hint: 'The menu items appearing next to the copyright statement, such as links to terms and privacy pages.',
