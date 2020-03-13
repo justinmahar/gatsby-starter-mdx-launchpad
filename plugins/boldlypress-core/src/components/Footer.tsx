@@ -32,18 +32,8 @@ export default function Footer(props: {}): JSX.Element {
           </Link>
         );
       } else {
-        const newWindowAttributes = menuItem.openInNewWindow
-          ? {
-              target: '_blank',
-              rel: 'noopener noreferrer',
-            }
-          : {};
         linkElement = (
-          <a
-            href={menuItem.link}
-            className={menuItem.class !== 'none' ? menuItem.class : undefined}
-            {...newWindowAttributes}
-          >
+          <a href={menuItem.link} className={menuItem.class !== 'none' ? menuItem.class : undefined}>
             {menuItem.name}
           </a>
         );
@@ -74,17 +64,10 @@ export default function Footer(props: {}): JSX.Element {
         </Link>
       );
     } else {
-      const newWindowAttributes = menuItem.openInNewWindow
-        ? {
-            target: '_blank',
-            rel: 'noopener noreferrer',
-          }
-        : {};
       linkElement = (
         <a
           href={menuItem.link}
           className={`text-muted text-nowrap ${menuItem.class !== 'none' ? menuItem.class : undefined}`}
-          {...newWindowAttributes}
         >
           {menuItem.name}
         </a>

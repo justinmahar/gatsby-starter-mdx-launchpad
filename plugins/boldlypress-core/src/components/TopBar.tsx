@@ -71,19 +71,8 @@ export default function TopBar(props: {}): JSX.Element {
             </Link>
           );
         } else {
-          const newWindowAttributes = menuItem.openInNewWindow
-            ? {
-                target: '_blank',
-                rel: 'noopener noreferrer',
-              }
-            : {};
           menuElement = (
-            <Nav.Link
-              href={link}
-              className={`${className !== 'none' ? className : ''}`}
-              key={menuItemKey}
-              {...newWindowAttributes}
-            >
+            <Nav.Link href={link} className={`${className !== 'none' ? className : ''}`} key={menuItemKey}>
               {menuItemName}
             </Nav.Link>
           );
@@ -110,18 +99,11 @@ export default function TopBar(props: {}): JSX.Element {
                   </Link>
                 );
               } else {
-                const newWindowAttributes = menuItem.openInNewWindow
-                  ? {
-                      target: '_blank',
-                      rel: 'noopener noreferrer',
-                    }
-                  : {};
                 dropdownItem = (
                   <NavDropdown.Item
                     href={subMenuItem.link}
                     key={subMenuItemKey}
                     className={`${subMenuItem.class !== 'none' ? subMenuItem.class : ''}`}
-                    {...newWindowAttributes}
                   >
                     {subMenuItem.name}
                   </NavDropdown.Item>
