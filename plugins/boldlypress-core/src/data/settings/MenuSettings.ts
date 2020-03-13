@@ -20,6 +20,7 @@ export const menuYamlQuery = graphql`
         link
         class
         external
+        openInNewWindow
       }
     }
     footerMenus {
@@ -29,6 +30,7 @@ export const menuYamlQuery = graphql`
         link
         class
         external
+        openInNewWindow
       }
     }
     footerLegalMenuItems {
@@ -36,6 +38,7 @@ export const menuYamlQuery = graphql`
       link
       class
       external
+      openInNewWindow
     }
   }
 `;
@@ -52,6 +55,7 @@ export type MenuSettingsData = {
       link: string;
       class: string;
       external: boolean;
+      openInNewWindow: boolean;
     }[];
   }[];
   footerMenus: {
@@ -61,6 +65,7 @@ export type MenuSettingsData = {
       link: string;
       class: string;
       external: boolean;
+      openInNewWindow: boolean;
     }[];
   }[];
   footerLegalMenuItems: {
@@ -68,6 +73,7 @@ export type MenuSettingsData = {
     link: string;
     class: string;
     external: boolean;
+    openInNewWindow: boolean;
   }[];
 };
 

@@ -4,18 +4,22 @@ navbarMenus:
         external: false
         link: /start-here
         name: Start Here
+        openInNewWindow: false
       - class: none
         external: false
         link: '#'
         name: Categories
+        openInNewWindow: false
       - class: none
         external: false
         link: /about
         name: About
+        openInNewWindow: false
       - class: none
         external: false
         link: /contact
         name: Contact
+        openInNewWindow: false
     name: Main Menu
     parentMenuItemName: none
   - menuItems:
@@ -23,14 +27,17 @@ navbarMenus:
         external: false
         link: /posts
         name: All Posts
+        openInNewWindow: false
       - class: none
         external: false
         link: '#'
         name: '---'
+        openInNewWindow: false
       - class: none
         external: false
         link: /posts/category/uncategorized
         name: Uncategorized
+        openInNewWindow: false
     name: Categories Submenu
     parentMenuItemName: Categories
 footerMenus:
@@ -39,43 +46,53 @@ footerMenus:
         external: false
         link: /start-here
         name: Start Here
+        openInNewWindow: false
       - class: none
         external: false
         link: /about
         name: About
+        openInNewWindow: false
       - class: none
         external: false
         link: /contact
         name: Contact
+        openInNewWindow: false
       - class: none
         external: false
         link: /u/site-status
         name: Site Status
+        openInNewWindow: false
       - class: none
         external: true
         link: /admin/
         name: Admin
+        openInNewWindow: true
     name: Navigation
   - menuItems:
       - class: none
         external: false
         link: /posts
         name: All Posts
+        openInNewWindow: false
       - class: none
         external: false
         link: /posts/category/uncategorized
         name: Uncategorized
+        openInNewWindow: false
     name: Categories
 footerLegalMenuItems:
   - class: none
     external: true
     link: /sitemap.xml
     name: Sitemap
+    openInNewWindow: true
   - class: none
     external: false
     link: /privacy
     name: Privacy Policy
+    openInNewWindow: false
   - class: none
     external: false
     link: /terms
     name: Terms of Service
+    openInNewWindow: false

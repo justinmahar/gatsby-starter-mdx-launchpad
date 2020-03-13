@@ -35,14 +35,10 @@ require('bootstrap/dist/css/bootstrap.min.css');
 // == Theme Styles ==
 require('./src/styles/styles.scss');
 
-const offlineSupportEnabled = true;
-const showPromptWhenUpdateAvailable = true;
-const updateAvailablePromptMessage = 'This application has been updated.\n\nReload to display the latest version?';
-
 // Offline support - Configure the prompt to update.
 const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext, pluginOptions) => {
-  if (offlineSupportEnabled && showPromptWhenUpdateAvailable) {
-    const answer = window.confirm(updateAvailablePromptMessage);
+  if (!!pluginOptions.offlineSupportEnabled && !!pluginOptions.showPromptWhenUpdateAvailable) {
+    const answer = window.confirm(pluginOptions.updateAvailablePromptMessage);
     if (answer === true) {
       window.location.reload();
     }
