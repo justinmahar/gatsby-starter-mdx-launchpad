@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import NavbarSettings from '../data/settings/NavbarSettings';
 import ThemeSettings from '../data/settings/ThemeSettings';
 
