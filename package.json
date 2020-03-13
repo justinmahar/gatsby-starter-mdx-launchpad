@@ -12,10 +12,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "overwrite-local-core-with-starter": "node ./plugins/boldlypress-core/scripts/overwrite-local-core-with-starter.js",
-    "ltos": "npm run overwrite-local-core-with-starter",
-    "overwrite-starter-core-with-local": "node ./plugins/boldlypress-core/scripts/overwrite-starter-core-with-local.js",
-    "stol": "npm run overwrite-starter-core-with-local"
+    "starter-core-to-local-core": "node ./plugins/boldlypress-core/scripts/starter-core-to-local-core.js",
+    "stol": "npm run starter-core-to-local-core",
+    "local-core-to-starter-core": "node ./plugins/boldlypress-core/scripts/local-core-to-starter-core.js",
+    "ltos": "npm run local-core-to-starter-core"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
