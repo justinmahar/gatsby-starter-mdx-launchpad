@@ -5,6 +5,7 @@ import MenuSettings from '../data/settings/MenuSettings';
 import NavbarSettings from '../data/settings/NavbarSettings';
 import ThemeSettings from '../data/settings/ThemeSettings';
 import SiteMetadata from '../data/SiteMetadata';
+import renderTemplateTags from '../util/render-template-tags';
 
 export default function TopBar(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -26,10 +27,20 @@ export default function TopBar(props: {}): JSX.Element {
     }
   `);
 
+  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const menuSettings: MenuSettings = new MenuSettings(data.menuYaml);
   const themeSettings = new ThemeSettings(data.themeYaml);
   const navbarSettings = new NavbarSettings(data.navbarYaml);
-  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
+
+  const templateTags: { [x: string]: string } = {
+    ...siteMetadata.getTemplateTags(),
+  };
+
+  const navbarLogoText = renderTemplateTags(navbarSettings.data.navbarLogo.navbarLogoText, templateTags);
+  const navbarLogoDescriptionText = renderTemplateTags(
+    navbarSettings.data.navbarLogo.navbarLogoDescriptionText,
+    templateTags
+  );
 
   const topLevelMenus = menuSettings.data.navbarMenus.filter(menu => {
     return menu.parentMenuItemName === 'none';
@@ -281,7 +292,7 @@ export default function TopBar(props: {}): JSX.Element {
               {!!navbarSettings.data.navbarLogo.navbarLogoTextEnabled && (
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: navbarSettings.data.navbarLogo.navbarLogoText,
+                    __html: navbarLogoText,
                   }}
                 />
               )}
@@ -292,7 +303,7 @@ export default function TopBar(props: {}): JSX.Element {
             <div
               className="mb-2 block d-none d-md-block"
               dangerouslySetInnerHTML={{
-                __html: navbarSettings.data.navbarLogo.navbarLogoDescriptionText,
+                __html: navbarLogoDescriptionText,
               }}
             />
           )}
@@ -303,7 +314,7 @@ export default function TopBar(props: {}): JSX.Element {
             <div
               className="my-2 mr-2 block d-md-none"
               dangerouslySetInnerHTML={{
-                __html: navbarSettings.data.navbarLogo.navbarLogoDescriptionText,
+                __html: navbarLogoDescriptionText,
               }}
             />
           )}
