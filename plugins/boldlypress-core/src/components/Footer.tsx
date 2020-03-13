@@ -5,6 +5,7 @@ import MenuSettings from '../data/settings/MenuSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import BuildStatusBadge from './configured/BuildStatusBadge';
 import SocialConnectComponent from './SocialConnectComponent';
+import SiteName from './configured/SiteName';
 
 export default function Footer(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -149,7 +150,9 @@ export default function Footer(props: {}): JSX.Element {
         </div>
         <Row className="mt-2">
           <Col md={{ span: 5 }}>
-            <p className="text-muted text-center">Copyright &copy; {new Date().getFullYear()}. All rights reserved.</p>
+            <p className="text-muted text-center">
+              Copyright &copy; {new Date().getFullYear()}, <SiteName />. All rights reserved.
+            </p>
           </Col>
           <Col md={{ span: 5, offset: 2 }}>
             <div className="text-muted text-center">{legalMenuElements}</div>
