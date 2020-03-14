@@ -3,6 +3,7 @@ import ConfiguredBootswatchOverride from './configured/ConfiguredBootswatchOverr
 import SiteName from './configured/SiteName';
 import ContactForm from './ContactForm';
 import CurrentYear from './CurrentYear';
+import ToggleAdminButton from './ToggleAdminButton';
 
 const CoreComponents = {
   CurrentYear: CurrentYear,
@@ -10,6 +11,7 @@ const CoreComponents = {
   ContactForm: ContactForm,
   SiteName: SiteName,
   ConfiguredBootswatchOverride: ConfiguredBootswatchOverride,
+  ToggleAdminButton: ToggleAdminButton,
 };
 
 export default CoreComponents;
