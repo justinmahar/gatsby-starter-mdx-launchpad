@@ -58,7 +58,10 @@ const blogPosts = {
         'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the post. Supports template tags. Reference using: {contentExcerpt}',
       default: 'none',
     },
-    FeaturedImageObject(),
+    FeaturedImageObject({
+      showCardImageDefault: true,
+      showTitleSectionDefault: true,
+    }),
     ContentOptionsObject({
       showSidebarDefault: true,
       showDateDefault: true,

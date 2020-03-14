@@ -56,7 +56,10 @@ const pages = {
         'Specify a custom excerpt here, or set to none to automatically use the first few sentences of the page. Supports template tags. Reference using: {contentExcerpt}',
       default: 'none',
     },
-    FeaturedImageObject(),
+    FeaturedImageObject({
+      showCardImageDefault: false,
+      showTitleSectionDefault: false,
+    }),
     ContentOptionsObject({
       showSidebarDefault: false,
       showDateDefault: false,

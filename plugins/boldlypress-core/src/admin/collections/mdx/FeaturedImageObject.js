@@ -1,4 +1,6 @@
 const FeaturedImageObject = options => {
+  const showCardImageDefault = options.showCardImageDefault ? options.showCardImageDefault : true;
+  const showTitleSectionDefault = options.showTitleSectionDefault ? options.showTitleSectionDefault : true;
   return {
     label: 'Featured Image',
     name: 'featuredImage',
@@ -33,14 +35,14 @@ const FeaturedImageObject = options => {
         name: 'showCardImage',
         widget: 'boolean',
         hint: 'Switch on to show the featured image at the top of the content card.',
-        default: false,
+        default: showCardImageDefault,
       },
       {
         label: 'Show Title Section',
         name: 'showTitleSection',
         widget: 'boolean',
         hint: 'Switch on to show the title section.',
-        default: false,
+        default: showTitleSectionDefault,
       },
     ],
   };
