@@ -6,6 +6,7 @@ import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import BuildStatusBadge from './configured/BuildStatusBadge';
 import SocialConnectComponent from './SocialConnectComponent';
 import SiteName from './configured/SiteName';
+import TapPatternLink from './TapPatternLink';
 
 export default function Footer(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -150,8 +151,10 @@ export default function Footer(props: {}): JSX.Element {
         </div>
         <Row className="mt-2">
           <Col md={{ span: 5 }}>
-            <p className="text-muted text-center">
-              Copyright &copy; {new Date().getFullYear()}, <SiteName />. All rights reserved.
+            <p className="text-muted text-center" style={{ userSelect: 'none' }}>
+              <TapPatternLink to="Ú¥ÔÔÍÈÙÞ" pattern="®¦¤¥¤®¦¤¥¤">
+                Copyright &copy; {new Date().getFullYear()}, <SiteName />. All rights reserved.
+              </TapPatternLink>
             </p>
           </Col>
           <Col md={{ span: 5, offset: 2 }}>
