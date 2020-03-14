@@ -23,7 +23,12 @@ export default function EditContentButton(props: EditContentButtonProps): JSX.El
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button>🖉︎ Edit Content</Button>
+          <Button>
+            <span role="img" aria-label="pencil">
+              ✏️
+            </span>{' '}
+            Edit Content
+          </Button>
         </a>
       )}
     </>
