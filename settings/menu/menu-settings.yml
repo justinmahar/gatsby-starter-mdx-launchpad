@@ -58,11 +58,6 @@ footerMenus:
         name: Contact
         openInNewWindow: false
       - class: none
-        external: false
-        link: /u/site-status
-        name: Site Status
-        openInNewWindow: false
-      - class: none
         external: true
         link: /admin/
         name: Admin
