@@ -13,6 +13,7 @@ import SiteMetadata from '../../../data/SiteMetadata';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
 import DiscussionComponent from '../../DiscussionComponent';
+import EditContentButton from '../../EditContentButton';
 import Footer from '../../Footer';
 import ImageHeaderContainer from '../../ImageHeaderContainer';
 import MailingListSignupCard from '../../MailingListSignupCard';
@@ -139,6 +140,12 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                     <MDXRenderer scope={undefined} components={undefined}>
                       {mdxContent.data.body}
                     </MDXRenderer>
+                    <div className="mt-5">
+                      <EditContentButton
+                        collection={mdxContent.data.frontmatter.group}
+                        slug={mdxContent.data.fields.slug}
+                      />
+                    </div>
                   </Card.Body>
                 </Card>
               </div>
