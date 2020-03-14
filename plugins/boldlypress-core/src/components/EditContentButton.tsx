@@ -7,7 +7,13 @@ interface EditContentButtonProps {
 }
 
 export default function EditContentButton(props: EditContentButtonProps): JSX.Element {
-  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && !!localStorage) {
+      setIsAdmin(localStorage.getItem('isAdmin') === 'true');
+    }
+  }, [isAdmin, setIsAdmin]);
 
   return (
     <>

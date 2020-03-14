@@ -140,7 +140,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                     <MDXRenderer scope={undefined} components={undefined}>
                       {mdxContent.data.body}
                     </MDXRenderer>
-                    <div className="mt-5">
+                    <div className="mt-4">
                       <EditContentButton
                         collection={mdxContent.data.frontmatter.group}
                         slug={mdxContent.data.fields.slug}

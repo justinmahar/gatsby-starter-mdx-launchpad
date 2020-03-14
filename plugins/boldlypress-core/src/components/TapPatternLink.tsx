@@ -54,7 +54,9 @@ export default function TapPatternLink(props: TapPatternLinkProps): JSX.Element 
         }
       }
       if (succeeded) {
-        localStorage.setItem('isAdmin', 'true');
+        if (typeof window !== 'undefined' && !!localStorage) {
+          localStorage.setItem('isAdmin', 'true');
+        }
         reset();
         navTo(destination, props.external, props.useNewWindow);
       }
