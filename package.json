@@ -18,6 +18,7 @@
     "ltos": "npm run local-core-to-starter-core"
   },
   "dependencies": {
+    "@devboldly/react-timed-renderer": "0.0.1",
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
     "@mdx-js/tag": "^0.20.3",
