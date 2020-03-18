@@ -31,10 +31,8 @@ export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
       )}
       {ready && (
         <div>
-          <div id="embed-api-auth-container"></div>
-          <div id="chart-container"></div>
-          <div id="main-chart-container"></div>
-          <div id="breakdown-chart-container"></div>
+          <EmbedApiAuthContainer id="embed-api-auth-container" />
+          <div id="chart-container" />
           <ViewSelectorContainer id="view-selector-container" />
         </div>
       )}
@@ -42,9 +40,13 @@ export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
   );
 }
 
+const EmbedApiAuthContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
 const ViewSelectorContainer = styled.div`
   td:first-child {
-    width: 120px !important;
+    width: 100px !important;
   }
 `;
 
@@ -86,104 +88,5 @@ const createDashboard = gapi => {
    */
   viewSelector.on('change', function(ids) {
     dataChart.set({ query: { ids: ids } }).execute();
-  });
-
-  /**
-   * Create a table chart showing top browsers for users to interact with.
-   * Clicking on a row in the table will update a second timeline chart with
-   * data from the selected browser.
-   */
-  const mainChart = new gapi.analytics.googleCharts.DataChart({
-    query: {
-      dimensions: 'ga:browser',
-      metrics: 'ga:sessions',
-      sort: '-ga:sessions',
-      'max-results': '6',
-    },
-    chart: {
-      type: 'TABLE',
-      container: 'main-chart-container',
-      options: {
-        width: '100%',
-      },
-    },
-  });
-
-  /**
-   * Create a timeline chart showing sessions over time for the browser the
-   * user selected in the main chart.
-   */
-  const breakdownChart = new gapi.analytics.googleCharts.DataChart({
-    query: {
-      dimensions: 'ga:date',
-      metrics: 'ga:sessions',
-      'start-date': '7daysAgo',
-      'end-date': 'yesterday',
-    },
-    chart: {
-      type: 'LINE',
-      container: 'breakdown-chart-container',
-      options: {
-        width: '100%',
-      },
-    },
-  });
-
-  /**
-   * Store a refernce to the row click listener variable so it can be
-   * removed later to prevent leaking memory when the chart instance is
-   * replaced.
-   */
-  let mainChartRowClickListener;
-
-  /**
-   * Update both charts whenever the selected view changes.
-   */
-  viewSelector.on('change', function(ids) {
-    const options = { query: { ids: ids } };
-
-    // Clean up any event listeners registered on the main chart before
-    // rendering a new one.
-    if (mainChartRowClickListener) {
-      google.visualization.events.removeListener(mainChartRowClickListener);
-    }
-
-    mainChart.set(options).execute();
-    breakdownChart.set(options);
-
-    // Only render the breakdown chart if a browser filter has been set.
-    if (breakdownChart.get().query.filters) breakdownChart.execute();
-  });
-
-  /**
-   * Each time the main chart is rendered, add an event listener to it so
-   * that when the user clicks on a row, the line chart is updated with
-   * the data from the browser in the clicked row.
-   */
-  mainChart.on('success', function(response) {
-    const chart = response.chart;
-    const dataTable = response.dataTable;
-
-    // Store a reference to this listener so it can be cleaned up later.
-    mainChartRowClickListener = google.visualization.events.addListener(chart, 'select', function(event) {
-      // When you unselect a row, the "select" event still fires
-      // but the selection is empty. Ignore that case.
-      if (!chart.getSelection().length) return;
-
-      const row = chart.getSelection()[0].row;
-      const browser = dataTable.getValue(row, 0);
-      const options = {
-        query: {
-          filters: 'ga:browser==' + browser,
-        },
-        chart: {
-          options: {
-            title: browser,
-          },
-        },
-      };
-
-      breakdownChart.set(options).execute();
-    });
   });
 };
