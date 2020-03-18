@@ -148,10 +148,10 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
             <div className="d-none d-md-block">
               <MailingListSignupCard formId="mailing-list" />
             </div>
-            {socialSharingSettings.data.shareHomePageEnabled &&
-              (socialSharingSettings.data.facebook.facebookPostSharingEnabled ||
-                socialSharingSettings.data.linkedIn.linkedInPostSharingEnabled ||
-                socialSharingSettings.data.twitter.twitterPostSharingEnabled) && (
+            {socialSharingSettings.data.sharing.shareHomePageEnabled &&
+              (socialSharingSettings.data.sharing.facebookPostSharingEnabled ||
+                socialSharingSettings.data.sharing.linkedInPostSharingEnabled ||
+                socialSharingSettings.data.sharing.twitterPostSharingEnabled) && (
                 <div className="mt-4">
                   <h4 className="mb-2">Share {siteMetadata.data.siteName} with your friends:</h4>
                   <Location>

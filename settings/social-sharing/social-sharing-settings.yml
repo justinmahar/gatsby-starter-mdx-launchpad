@@ -1,18 +1,16 @@
-shareHomePageEnabled: true
-facebook:
-  connectViaFacebookEnabled: false
-  connectViaFacebookUrl: 'none'
+sharing:
   facebookPostSharingEnabled: true
-twitter:
-  connectViaTwitterEnabled: false
-  connectViaTwitterUrl: 'none'
   twitterPostSharingEnabled: true
-  twitterSiteUsername: 'none'
-linkedIn:
   linkedInPostSharingEnabled: true
-email:
-  connectViaEmailEnabled: true
-  connectViaEmailUrl: /contact
-instagram: 
-  connectViaInstagramEnabled: true
-  connectViaInstagramUrl: 'https://www.instagram.com/justintothemoon/'
+  shareHomePageEnabled: true
+socialAccounts:
+  - name: Instagram
+    link: 'https://www.instagram.com/justintothemoon/'
+    enabled: true
+  - name: GitHub
+    link: 'https://github.com/devboldly'
+    enabled: true
+  - name: Contact
+    link: '/contact'
+    enabled: true
+twitterSiteUsername: 'none'

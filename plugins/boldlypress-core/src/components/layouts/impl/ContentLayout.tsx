@@ -150,9 +150,9 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                 </Card>
               </div>
               {!!mdxContent.data.frontmatter.sharing.sharingEnabled &&
-                (socialSharingSettings.data.facebook.facebookPostSharingEnabled ||
-                  socialSharingSettings.data.linkedIn.linkedInPostSharingEnabled ||
-                  socialSharingSettings.data.twitter.twitterPostSharingEnabled) && (
+                (socialSharingSettings.data.sharing.facebookPostSharingEnabled ||
+                  socialSharingSettings.data.sharing.linkedInPostSharingEnabled ||
+                  socialSharingSettings.data.sharing.twitterPostSharingEnabled) && (
                   <div className="mb-4">
                     <Card className="secondary">
                       <Card.Body>
@@ -184,9 +184,9 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                   <RecentPostsWidget />
                 </div>
                 {!!mdxContent.data.frontmatter.sharing.sharingEnabled &&
-                  (socialSharingSettings.data.facebook.facebookPostSharingEnabled ||
-                    socialSharingSettings.data.linkedIn.linkedInPostSharingEnabled ||
-                    socialSharingSettings.data.twitter.twitterPostSharingEnabled) && (
+                  (socialSharingSettings.data.sharing.facebookPostSharingEnabled ||
+                    socialSharingSettings.data.sharing.linkedInPostSharingEnabled ||
+                    socialSharingSettings.data.sharing.twitterPostSharingEnabled) && (
                     <div className="d-none d-md-block">
                       <h3 className="mb-2">Share it:</h3>
                       <Location>

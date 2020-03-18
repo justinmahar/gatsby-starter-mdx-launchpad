@@ -13,29 +13,18 @@ import { Tags } from '../../util/render-template-tags';
 */
 export const socialSharingYamlQuery = graphql`
   fragment socialSharingSettings on SocialSharingYaml {
-    shareHomePageEnabled
-    instagram {
-      connectViaInstagramEnabled
-      connectViaInstagramUrl
-    }
-    facebook {
-      connectViaFacebookEnabled
-      connectViaFacebookUrl
+    sharing {
       facebookPostSharingEnabled
-    }
-    twitter {
-      connectViaTwitterEnabled
-      connectViaTwitterUrl
       twitterPostSharingEnabled
-      twitterSiteUsername
-    }
-    linkedIn {
       linkedInPostSharingEnabled
+      shareHomePageEnabled
     }
-    email {
-      connectViaEmailEnabled
-      connectViaEmailUrl
+    socialAccounts {
+      name
+      link
+      enabled
     }
+    twitterSiteUsername
   }
 `;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
@@ -43,29 +32,18 @@ export const socialSharingYamlQuery = graphql`
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 
 export type SocialSharingSettingsData = {
-  shareHomePageEnabled: boolean;
-  instagram: {
-    connectViaInstagramEnabled: boolean;
-    connectViaInstagramUrl: string;
-  };
-  facebook: {
-    connectViaFacebookEnabled: boolean;
-    connectViaFacebookUrl: string;
+  sharing: {
     facebookPostSharingEnabled: boolean;
-  };
-  twitter: {
-    connectViaTwitterEnabled: boolean;
-    connectViaTwitterUrl: string;
     twitterPostSharingEnabled: boolean;
-    twitterSiteUsername: string;
-  };
-  linkedIn: {
     linkedInPostSharingEnabled: boolean;
+    shareHomePageEnabled: boolean;
   };
-  email: {
-    connectViaEmailEnabled: boolean;
-    connectViaEmailUrl: string;
-  };
+  socialAccounts: {
+    name: string;
+    link: string;
+    enabled: boolean;
+  }[];
+  twitterSiteUsername: string;
 };
 
 // === === === === === === === === ===
@@ -75,7 +53,7 @@ export default class SocialSharingSettings {
 
   getTemplateTags(): Tags {
     return {
-      twitterSiteUsername: this.data.twitter.twitterSiteUsername,
+      twitterSiteUsername: this.data.twitterSiteUsername,
     };
   }
 }

@@ -31,42 +31,33 @@ export default function SocialConnectComponent(props: SocialConnectComponentProp
 
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
+  const socialIconElements: JSX.Element[] = socialSharingSettings.data.socialAccounts
+    .filter(socialAccount => socialAccount.enabled)
+    .map(socialAccount => {
+      const key = `${socialAccount.name}-account`;
+      if (socialAccount.link.endsWith('/contact')) {
+        return (
+          <Link to={socialAccount.link} className="mr-2 mb-2" key={key}>
+            <EmailIcon size={ICON_SIZE} round />
+          </Link>
+        );
+      } else {
+        return (
+          <SocialIcon
+            url={socialAccount.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ width: ICON_SIZE - 1, height: ICON_SIZE - 1 }}
+            className="mr-2 mb-2"
+            key={key}
+          />
+        );
+      }
+    });
+
   return (
     <div className={props.className} style={{ ...divStyles, ...props.styles }}>
-      {!!socialSharingSettings.data.instagram.connectViaInstagramEnabled && (
-        <SocialIcon
-          url={socialSharingSettings.data.instagram.connectViaInstagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ width: ICON_SIZE - 1, height: ICON_SIZE - 1 }}
-          className="mr-2 mb-2"
-        />
-      )}
-      {!!socialSharingSettings.data.facebook.connectViaFacebookEnabled && (
-        <a
-          href={socialSharingSettings.data.facebook.connectViaFacebookUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mr-2 mb-2"
-        >
-          <FacebookIcon size={ICON_SIZE} round />
-        </a>
-      )}
-      {!!socialSharingSettings.data.twitter.connectViaTwitterEnabled && (
-        <a
-          href={socialSharingSettings.data.twitter.connectViaTwitterUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mr-2 mb-2"
-        >
-          <TwitterIcon size={ICON_SIZE} round />
-        </a>
-      )}
-      {!!socialSharingSettings.data.email.connectViaEmailEnabled && (
-        <Link to={socialSharingSettings.data.email.connectViaEmailUrl} className="mr-2 mb-2">
-          <EmailIcon size={ICON_SIZE} round />
-        </Link>
-      )}
+      {socialIconElements}
     </div>
   );
 }

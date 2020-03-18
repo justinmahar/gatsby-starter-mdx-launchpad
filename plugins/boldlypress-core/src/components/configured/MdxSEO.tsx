@@ -63,9 +63,11 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
     default:
   }
 
-  let twitterSiteUsername = socialSharingSettings.data.twitter.twitterSiteUsername;
   // If the twitter site username is none, set it to undefined.
-  twitterSiteUsername = twitterSiteUsername !== 'none' ? twitterSiteUsername : undefined;
+  const twitterSiteUsername =
+    socialSharingSettings.data.twitterSiteUsername !== 'none'
+      ? socialSharingSettings.data.twitterSiteUsername
+      : undefined;
 
   const openGraph = {
     ogTitle: seoTitle,

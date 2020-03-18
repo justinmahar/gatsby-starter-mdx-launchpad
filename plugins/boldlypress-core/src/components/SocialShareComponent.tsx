@@ -61,10 +61,7 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
     mdxContent.data.frontmatter.sharing.twitterTitle !== 'none'
       ? renderTemplateTags(mdxContent.data.frontmatter.sharing.twitterTitle, props.templateTags)
       : undefined;
-  const twitterVia =
-    mdxContent.data.frontmatter.sharing.twitterVia !== 'none'
-      ? renderTemplateTags(mdxContent.data.frontmatter.sharing.twitterVia, props.templateTags)
-      : undefined;
+  const twitterVia = renderTemplateTags(mdxContent.data.frontmatter.sharing.twitterVia, props.templateTags);
   // Create an array of twitter hashtags
   const twitterHashtags =
     mdxContent.data.frontmatter.sharing.twitterHashtags !== 'none'
@@ -76,7 +73,7 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
 
   return (
     <div className={props.className} style={{ ...divStyles, ...props.styles }}>
-      {socialSharingSettings.data.facebook.facebookPostSharingEnabled && (
+      {socialSharingSettings.data.sharing.facebookPostSharingEnabled && (
         <FacebookShareButton
           className="mr-2"
           url={props.url}
@@ -87,17 +84,17 @@ export default function SocialShareComponent(props: SocialShareComponentProps): 
           <FacebookIcon size={ICON_SIZE} round />
         </FacebookShareButton>
       )}
-      {socialSharingSettings.data.linkedIn.linkedInPostSharingEnabled && (
+      {socialSharingSettings.data.sharing.linkedInPostSharingEnabled && (
         <LinkedinShareButton className="mr-2" url={props.url} style={buttonStyles}>
           <LinkedinIcon size={ICON_SIZE} round />
         </LinkedinShareButton>
       )}
-      {socialSharingSettings.data.twitter.twitterPostSharingEnabled && (
+      {socialSharingSettings.data.sharing.twitterPostSharingEnabled && (
         <TwitterShareButton
           url={props.url}
           style={buttonStyles}
           title={twitterTitle}
-          via={twitterVia.startsWith('@') ? twitterVia.slice(1) : twitterVia}
+          via={twitterVia !== 'none' ? (twitterVia.startsWith('@') ? twitterVia.slice(1) : twitterVia) : undefined}
           hashtags={twitterHashtags}
         >
           <TwitterIcon size={ICON_SIZE} round />

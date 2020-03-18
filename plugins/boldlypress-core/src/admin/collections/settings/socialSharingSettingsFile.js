@@ -4,120 +4,78 @@ const socialSharingSettingsFile = {
   file: 'settings/social-sharing/social-sharing-settings.yml',
   fields: [
     {
-      label: 'Sharing On Home Page',
-      name: 'shareHomePageEnabled',
-      widget: 'boolean',
-      hint:
-        'When enabled, the above buttons will appear in a sidebar widget on the home page, allowing the user to share the home page itself.',
-    },
-    {
-      label: 'Instagram',
-      name: 'instagram',
-      widget: 'object',
-      fields: [
-        {
-          label: 'Connect Via Instagram (In Footer)',
-          name: 'connectViaInstagramEnabled',
-          widget: 'boolean',
-          hint: 'When enabled, the footer will contain a link to your Instagram profile.',
-        },
-        {
-          label: 'Connect Via Instagram URL',
-          name: 'connectViaInstagramUrl',
-          widget: 'string',
-          hint: 'The URL to your Instagram profile.',
-        },
-      ],
-    },
-    {
-      label: 'Facebook',
-      name: 'facebook',
+      label: 'Sharing',
+      name: 'sharing',
       widget: 'object',
       fields: [
         {
           label: 'Facebook Post Sharing',
           name: 'facebookPostSharingEnabled',
           widget: 'boolean',
-          hint: 'When enabled, the Facebook share button will appear next to posts.',
-        },
-        {
-          label: 'Connect Via Facebook (In Footer)',
-          name: 'connectViaFacebookEnabled',
-          widget: 'boolean',
-          hint: 'When enabled, the footer will contain a link to your Facebook page, profile, etc.',
-        },
-        {
-          label: 'Connect Via Facebook URL',
-          name: 'connectViaFacebookUrl',
-          widget: 'string',
-          hint: 'The URL to your Facebook page, profile, etc.',
-        },
-      ],
-    },
-    {
-      label: 'Twitter',
-      name: 'twitter',
-      widget: 'object',
-      fields: [
-        {
-          label: 'Twitter Site Username',
-          name: 'twitterSiteUsername',
-          widget: 'string',
-          hint:
-            'Used as the attribution username when linking to the site in Twitter. Use the @ symbol, e.g. @devboldly. Set to none to disable.',
+          hint: 'When enabled, the Facebook share button will appear.',
         },
         {
           label: 'Twitter Post Sharing',
           name: 'twitterPostSharingEnabled',
           widget: 'boolean',
-          hint: 'When enabled, the Twitter share button will appear next to posts.',
+          hint: 'When enabled, the Twitter share button will appear.',
         },
-        {
-          label: 'Connect Via Twitter (In Footer)',
-          name: 'connectViaTwitterEnabled',
-          widget: 'boolean',
-          hint: 'When enabled, the footer will contain a link to the Twitter profile specified below.',
-        },
-        {
-          label: 'Connect Via Twitter URL',
-          name: 'connectViaTwitterUrl',
-          widget: 'string',
-          hint: 'The URL to your Twitter profile.',
-        },
-      ],
-    },
-    {
-      label: 'LinkedIn',
-      name: 'linkedIn',
-      widget: 'object',
-      fields: [
         {
           label: 'LinkedIn Post Sharing',
           name: 'linkedInPostSharingEnabled',
           widget: 'boolean',
-          hint: 'When enabled, the LinkedIn share button will appear next to posts.',
+          hint: 'When enabled, the LinkedIn share button will appear.',
+        },
+        {
+          label: 'Sharing On Home Page',
+          name: 'shareHomePageEnabled',
+          widget: 'boolean',
+          hint:
+            'When enabled, sharing buttons will appear on the home page, allowing the user to share the home page itself.',
         },
       ],
     },
     {
-      label: 'Email',
-      name: 'email',
-      widget: 'object',
+      label: 'Social Accounts',
+      name: 'socialAccounts',
+      widget: 'list',
+      hint: 'Social accounts shown in the footer.',
       fields: [
         {
-          label: 'Connect Via Email (In Footer)',
-          name: 'connectViaEmailEnabled',
-          widget: 'boolean',
-          hint: 'When enabled, the footer will contain a link to contact you via email or a contact form.',
+          label: 'Name',
+          name: 'name',
+          widget: 'string',
+          hint: 'Name of social account.',
         },
         {
-          label: 'Connect Via Email URL',
-          name: 'connectViaEmailUrl',
+          label: 'Link',
+          name: 'link',
           widget: 'string',
           hint:
-            'The URL to a contact page, or a mailto email link. Examples: "/contact", "mailtocontact@me.com" (without quotes)',
+            'The URL to the social account, or a mailto: for email addresses. Any link ending with /contact will use a mail icon that links locally.',
+        },
+        {
+          label: 'External',
+          name: 'external',
+          widget: 'boolean',
+          default: true,
+          hint: 'Switch on if this link takes the user off-site. Switch off if the link is local to this site.',
+        },
+        {
+          label: 'Enabled',
+          name: 'enabled',
+          widget: 'boolean',
+          default: true,
+          hint: 'Switch on if the social account should be enabled. Switching off will hide it.',
         },
       ],
+    },
+    {
+      label: 'Twitter Site Username',
+      name: 'twitterSiteUsername',
+      widget: 'string',
+      hint:
+        'Used as the attribution username when linking to the site in Twitter. Use the @ symbol, e.g. @devboldly. Set to none to disable.',
     },
   ],
 };

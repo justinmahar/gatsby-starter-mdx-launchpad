@@ -107,9 +107,7 @@ export default function Footer(props: {}): JSX.Element {
       <Container>
         <div className="d-flex flex-wrap justify-content-around">
           {footerMenuElements}
-          {(socialSharingSettings.data.facebook.connectViaFacebookEnabled ||
-            socialSharingSettings.data.twitter.connectViaTwitterEnabled ||
-            socialSharingSettings.data.email.connectViaEmailEnabled) && (
+          {socialSharingSettings.data.socialAccounts.length > 0 && (
             <div className="m-2">
               <h5>Connect</h5>
               <div>
