@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import ReportingSettings from '../../data/settings/ReportingSettings';
-import TimedRenderComponent from '../TimedRenderComponent';
+import TimedRenderer from '../TimedRenderer';
 
 export default function BuildStatusBadge(props: {}): JSX.Element {
   const RENDER_INTERVAL_IN_MS = 5000;
@@ -34,5 +34,5 @@ export default function BuildStatusBadge(props: {}): JSX.Element {
     );
   };
 
-  return <TimedRenderComponent interval={RENDER_INTERVAL_IN_MS} render={badgeRender} />;
+  return <TimedRenderer interval={RENDER_INTERVAL_IN_MS} render={badgeRender} />;
 }
