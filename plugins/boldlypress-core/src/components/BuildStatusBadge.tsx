@@ -18,7 +18,7 @@ export default function BuildStatusBadge(props: NetlifyDeployStatusBadgeProps): 
 
   if (typeof props.children === 'string') {
     // Regex matches on: [![alt](src)](href)
-    // It looks complicated because there's so much [] and () escaping needed.
+    // It looks more complicated that it is, because there's so much [] and () escaping needed.
     // Groups are named by putting ?<name> immediately after the opening paren.
     const imageLinkRegex = /\[!\[(?<alt>[^\]]*)\]\((?<src>[^)]+)\)\]\((?<href>[^)]+)\)/;
     const match = props.children.match(imageLinkRegex);
