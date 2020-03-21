@@ -206,6 +206,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             )}
           </Row>
         </Container>
+        <span id="discussion" style={{ position: 'relative', top: -50 }} />
         {!!discussionSettings.data.siteWideCommentsEnabled && !!mdxContent.data.frontmatter.options.discussionEnabled && (
           <Container className="pb-5">
             <Row>

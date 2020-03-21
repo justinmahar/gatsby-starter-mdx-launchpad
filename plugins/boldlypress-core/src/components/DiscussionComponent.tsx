@@ -19,7 +19,6 @@ export default function DiscussionComponent(props: DiscussionComponentProps): JS
 
   return (
     <>
-      <a id="discussion" />
       {props.shortname && (
         <>
           <Disqus.DiscussionEmbed {...disqusConfig} />
