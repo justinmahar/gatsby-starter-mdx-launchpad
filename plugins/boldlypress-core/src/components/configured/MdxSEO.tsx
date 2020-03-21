@@ -6,7 +6,7 @@ import SiteSeoSettings from '../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../data/SiteMetadata';
 import renderTemplateTags from '../../util/render-template-tags';
-import SEO from '../SEO';
+import SEO, { OpenGraphMetadata, TwitterMetadata, TwitterSummaryCardType } from '../SEO';
 
 export interface MdxSEOProps {
   mdxContent: MdxContent;
@@ -69,7 +69,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
       ? socialSharingSettings.data.twitterSiteUsername
       : undefined;
 
-  const openGraph = {
+  const openGraph: OpenGraphMetadata = {
     ogTitle: seoTitle,
     ogTypeObject: {},
     ogImage: {
@@ -79,7 +79,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
     ogDescription: seoDescription,
     ogSiteName: siteMetadata.data.siteName,
   };
-  const twitterCard = {
+  const twitterCard: TwitterSummaryCardType = {
     summaryCardSiteUsername: twitterSiteUsername,
     summaryCardTitle: seoTitle,
     summaryCardDescription: seoDescription,

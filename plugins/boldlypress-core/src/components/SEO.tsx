@@ -136,16 +136,13 @@ function createOpenGraphMetadataObjects(
   if (data.ogType) {
     switch (data.ogType) {
       case 'article':
-        const article = data.ogTypeObject as OpenGraphTypeArticle;
-        meta.push(...createOpenGraphTypeArticleMetadataObjects(article));
+        meta.push(...createOpenGraphTypeArticleMetadataObjects(data.ogTypeObject as OpenGraphTypeArticle));
         break;
       case 'book':
-        const book = data.ogTypeObject as OpenGraphTypeBook;
-        meta.push(...createOpenGraphTypeBookMetadataObjects(book));
+        meta.push(...createOpenGraphTypeBookMetadataObjects(data.ogTypeObject as OpenGraphTypeBook));
         break;
       case 'profile':
-        const profile = data.ogTypeObject as OpenGraphTypeProfile;
-        meta.push(...createOpenGraphTypeProfileMetadataObjects(profile));
+        meta.push(...createOpenGraphTypeProfileMetadataObjects(data.ogTypeObject as OpenGraphTypeProfile));
         break;
       case 'website':
         // No additional properties needed for website.
