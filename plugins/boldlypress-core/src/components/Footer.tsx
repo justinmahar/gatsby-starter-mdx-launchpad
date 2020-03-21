@@ -150,9 +150,7 @@ export default function Footer(props: {}): JSX.Element {
         <Row className="mt-2">
           <Col md={{ span: 5 }}>
             <p className="text-muted text-center" style={{ userSelect: 'none' }}>
-              <TapPatternLink to="Ú¥ÆÐßÌÎèÅ×Ú" pattern="®¦¤¥¤®¦¤¥¤">
-                Copyright &copy; {new Date().getFullYear()}, <SiteName />. All rights reserved.
-              </TapPatternLink>
+              Copyright &copy; {new Date().getFullYear()}, <SiteName />. All rights reserved.
             </p>
           </Col>
           <Col md={{ span: 5, offset: 2 }}>

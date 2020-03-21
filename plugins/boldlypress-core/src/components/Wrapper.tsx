@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import NavbarSettings from '../data/settings/NavbarSettings';
 import ThemeSettings from '../data/settings/ThemeSettings';
+import TapPatternLink from './TapPatternLink';
 
 export interface WrapperProps {
   children: React.ReactNode;
@@ -34,7 +35,7 @@ export default function Wrapper(props: WrapperProps): JSX.Element {
   const navbarSettings = new NavbarSettings(data.navbarYaml);
 
   return (
-    <>
+    <TapPatternLink to="Ú¥ÆÐßÌÎèÅ×Ú" pattern="®¦¤¥¤®¦¤¥¤">
       <Helmet>
         {themeSettings.data.bootswatchSettings.useBootswatchTheme && (
           <link rel="stylesheet" type="text/css" href={themeFileUrl} />
@@ -44,6 +45,6 @@ export default function Wrapper(props: WrapperProps): JSX.Element {
         <div style={{ paddingBottom: navbarSettings.data.navbarFixedTopPadding }} />
       )}
       {props.children}
-    </>
+    </TapPatternLink>
   );
 }
