@@ -1,4 +1,4 @@
-import BuildStatusBadge from './configured/BuildStatusBadge';
+import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
 import ConfiguredBootswatchOverride from './configured/ConfiguredBootswatchOverride';
 import SiteName from './configured/SiteName';
 import ContactForm from './ContactForm';
@@ -8,7 +8,7 @@ import AnalyticsDash from './AnalyticsDash';
 
 const CoreComponents = {
   CurrentYear: CurrentYear,
-  BuildStatusBadge: BuildStatusBadge,
+  SiteBuildStatusBadge: SiteBuildStatusBadge,
   ContactForm: ContactForm,
   SiteName: SiteName,
   ConfiguredBootswatchOverride: ConfiguredBootswatchOverride,

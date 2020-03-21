@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import MenuSettings from '../data/settings/MenuSettings';
 import SocialSharingSettings from '../data/settings/SocialSharingSettings';
-import BuildStatusBadge from './configured/BuildStatusBadge';
+import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
 import SocialConnectComponent from './SocialConnectComponent';
 import SiteName from './configured/SiteName';
 import TapPatternLink from './TapPatternLink';
@@ -138,7 +138,7 @@ export default function Footer(props: {}): JSX.Element {
                   </a>
                 </li>
                 <li>
-                  <BuildStatusBadge />
+                  <SiteBuildStatusBadge />
                 </li>
                 <li className="text-muted">
                   <small>These links are only visible in a development environment.</small>
