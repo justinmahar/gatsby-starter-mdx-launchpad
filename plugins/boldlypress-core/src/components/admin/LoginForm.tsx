@@ -20,7 +20,7 @@ export default function LoginForm(props: LoginFormProps) {
           <Card.Text>
             <div style={{ marginTop: '20px', marginBottom: '10px' }}>
               <Form.Control
-                type="text"
+                type="password"
                 placeholder="Passcode"
                 value={passcode}
                 onChange={e => setPasscode(e.target.value)}
