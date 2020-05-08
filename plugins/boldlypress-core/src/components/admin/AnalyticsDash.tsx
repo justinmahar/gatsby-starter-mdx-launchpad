@@ -16,7 +16,7 @@ export interface AnalyticsDashProps {}
 
 export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
   const data = useStaticQuery(graphql`
-    query BuildStatusBadgeQuery {
+    query AnalyticsDashQuery {
       reportingYaml {
         ...reportingSettings
       }
