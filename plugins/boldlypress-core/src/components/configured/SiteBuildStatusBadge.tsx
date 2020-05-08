@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import ReportingSettings from '../../data/settings/ReportingSettings';
-import BuildStatusBadge from '../BuildStatusBadge';
+import { BuildStatusBadge } from 'react-build-status-badge';
 
 export default function SiteBuildStatusBadge(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -24,5 +24,5 @@ export default function SiteBuildStatusBadge(props: {}): JSX.Element {
     ? reportingSettings.data.buildStatusBadge.buildStatusBadgeImageLink
     : undefined;
 
-  return <BuildStatusBadge timed={true} interval={5000} alt={alt} src={src} href={href} useLink={true} />;
+  return <BuildStatusBadge alt={alt} src={src} href={href} linkDisabled={false} />;
 }

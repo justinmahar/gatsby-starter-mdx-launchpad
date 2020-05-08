@@ -6,12 +6,13 @@ interface ToggleAdminButtonProps {}
 export default function ToggleAdminButton(props: ToggleAdminButtonProps): JSX.Element {
   const [firstRender, setFirstRender] = React.useState(true);
   const [isAdmin, setIsAdmin] = React.useState(false);
+  const keyName = 'NetlifyCMS.isAdmin';
 
   React.useEffect(() => {
     if (firstRender) {
       setFirstRender(false);
       if (typeof window !== 'undefined' && !!localStorage) {
-        setIsAdmin(localStorage.getItem('isAdmin') === 'true');
+        setIsAdmin(localStorage.getItem(keyName) === 'true');
       }
     }
   }, [firstRender, isAdmin, setIsAdmin]);
@@ -19,7 +20,7 @@ export default function ToggleAdminButton(props: ToggleAdminButtonProps): JSX.El
   React.useEffect(() => {
     if (!firstRender) {
       if (typeof window !== 'undefined' && !!localStorage) {
-        localStorage.setItem('isAdmin', `${isAdmin}`);
+        localStorage.setItem(keyName, `${isAdmin}`);
       }
     }
   }, [firstRender, isAdmin, setIsAdmin]);

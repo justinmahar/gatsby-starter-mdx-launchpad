@@ -1,7 +1,7 @@
 ---
 title: Dashboard
 rawSlug: dashboard
-date: '2020-03-13'
+date: '2020-05-05'
 category: none
 customExcerpt: none
 featuredImage:
@@ -17,7 +17,7 @@ options:
   layout: content
   showSidebar: false
   showTitle: true
-  unlisted: true
+  unlisted: false
 sharing:
   facebookHashtag: none
   facebookQuote: '{contentSeoTitle}'
@@ -35,19 +35,7 @@ seoSettings:
   seoTitle: '{configSeoTitle}'
 group: pages
 ---
-import { Link } from 'gatsby';
+
 import CoreComponents from "../components/CoreComponents";
 
-Below is the build status of <CoreComponents.SiteName/>:
-
-<CoreComponents.SiteBuildStatusBadge/>
-
-<br/>
-
-<small>(Refreshes every 5 seconds)</small>
-
-Links:
-- <Link to="/u/readme">Readme</Link>
-- <Link to="/u/analytics">Analytics</Link>
-
-<CoreComponents.ToggleAdminButton/>
+<CoreComponents.Dashboard />

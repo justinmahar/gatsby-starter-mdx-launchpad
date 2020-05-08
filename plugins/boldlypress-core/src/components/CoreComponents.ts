@@ -1,19 +1,24 @@
-import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
+import { AdminOnly, NonAdminOnly } from 'react-authless-admin';
+import Dashboard from './admin/Dashboard';
+import LoginForm from './admin/LoginForm';
 import ConfiguredBootswatchOverride from './configured/ConfiguredBootswatchOverride';
+import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
 import SiteName from './configured/SiteName';
 import ContactForm from './ContactForm';
 import CurrentYear from './CurrentYear';
 import ToggleAdminButton from './ToggleAdminButton';
-import AnalyticsDash from './AnalyticsDash';
 
 const CoreComponents = {
-  CurrentYear: CurrentYear,
-  SiteBuildStatusBadge: SiteBuildStatusBadge,
-  ContactForm: ContactForm,
-  SiteName: SiteName,
-  ConfiguredBootswatchOverride: ConfiguredBootswatchOverride,
-  ToggleAdminButton: ToggleAdminButton,
-  AnalyticsDash: AnalyticsDash,
+  CurrentYear,
+  SiteBuildStatusBadge,
+  ContactForm,
+  SiteName,
+  ConfiguredBootswatchOverride,
+  ToggleAdminButton,
+  LoginForm,
+  AdminOnly,
+  NonAdminOnly,
+  Dashboard,
 };
 
 export default CoreComponents;

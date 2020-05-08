@@ -3,7 +3,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import moment from 'moment';
 import * as React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import MdxContent from '../../../data/MdxContent';
 import DiscussionSettings from '../../../data/settings/DiscussionSettings';
 import PostSettings from '../../../data/settings/PostSettings';
@@ -13,7 +13,6 @@ import SiteMetadata from '../../../data/SiteMetadata';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
 import DiscussionComponent from '../../DiscussionComponent';
-import EditContentButton from '../../EditContentButton';
 import Footer from '../../Footer';
 import ImageHeaderContainer from '../../ImageHeaderContainer';
 import MailingListSignupCard from '../../MailingListSignupCard';
@@ -23,6 +22,7 @@ import SocialShareComponent from '../../SocialShareComponent';
 import TopBar from '../../TopBar';
 import Wrapper from '../../Wrapper';
 import { LayoutProps } from '../getLayout';
+import { AdminOnly, NetlifyCMSButton } from 'react-authless-admin';
 
 export default function ContentLayout(props: LayoutProps): JSX.Element {
   const data = useStaticQuery(graphql`
@@ -140,12 +140,18 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                     <MDXRenderer scope={undefined} components={undefined}>
                       {mdxContent.data.body}
                     </MDXRenderer>
-                    <div className="mt-4">
-                      <EditContentButton
-                        collection={mdxContent.data.frontmatter.group}
-                        slug={mdxContent.data.fields.slug}
-                      />
-                    </div>
+                    <AdminOnly>
+                      <div className="mt-4">
+                        <NetlifyCMSButton
+                          collection={mdxContent.data.frontmatter.group}
+                          entry={mdxContent.data.fields.slug}
+                          component={Button}
+                          componentProps={{ variant: 'secondary' }}
+                        >
+                          ✏️ Edit Content
+                        </NetlifyCMSButton>
+                      </div>
+                    </AdminOnly>
                   </Card.Body>
                 </Card>
               </div>

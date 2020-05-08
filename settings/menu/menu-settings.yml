@@ -58,10 +58,10 @@ footerMenus:
         name: Contact
         openInNewWindow: false
       - class: none
-        external: true
-        link: /admin/
+        external: false
+        link: /dashboard/
         name: Admin
-        openInNewWindow: true
+        openInNewWindow: false
     name: Navigation
   - menuItems:
       - class: none
