@@ -20,59 +20,60 @@ export default function Dashboard(props: DashboardProps): JSX.Element {
       </NonAdminOnly>
 
       <AdminOnly>
-        <div className="mb-2">
-          <SiteBuildStatusBadge />
-        </div>
-        <div className="mb-2">
-          <div>
-            <div style={{ marginBottom: '10px' }}>
-              <NetlifyCMSButton
-                openInNewWindow
-                component={Button}
-                componentProps={{ variant: 'primary', style: { marginRight: '5px' } }}
-              >
-                Admin
-              </NetlifyCMSButton>
-              <NetlifyCMSButton
-                openInNewWindow
-                collection="settings"
-                component={Button}
-                componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
-              >
-                Settings
-              </NetlifyCMSButton>
-              <NetlifyCMSButton
-                openInNewWindow
-                collection="pages"
-                component={Button}
-                componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
-              >
-                Pages
-              </NetlifyCMSButton>
-              <NetlifyCMSButton
-                openInNewWindow
-                collection="posts"
-                component={Button}
-                componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
-              >
-                Posts
-              </NetlifyCMSButton>
+        <div className="mb-2 mt-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="mb-2">
+            <div>
+              <div style={{ marginBottom: '10px' }}>
+                <NetlifyCMSButton
+                  openInNewWindow
+                  component={Button}
+                  componentProps={{ variant: 'primary', style: { marginRight: '5px' } }}
+                >
+                  CMS
+                </NetlifyCMSButton>
+                <NetlifyCMSButton
+                  openInNewWindow
+                  collection="settings"
+                  component={Button}
+                  componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
+                >
+                  Settings
+                </NetlifyCMSButton>
+                <NetlifyCMSButton
+                  openInNewWindow
+                  collection="pages"
+                  component={Button}
+                  componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
+                >
+                  Pages
+                </NetlifyCMSButton>
+                <NetlifyCMSButton
+                  openInNewWindow
+                  collection="posts"
+                  component={Button}
+                  componentProps={{ variant: 'outline-primary', style: { marginRight: '5px' } }}
+                >
+                  Posts
+                </NetlifyCMSButton>
+                <Button
+                  onClick={e => {
+                    setIsAdmin(false);
+                    scrollTo(0, 0);
+                  }}
+                  variant="link"
+                  style={{ marginRight: '5px' }}
+                >
+                  Logout
+                </Button>
+              </div>
             </div>
+          </div>
+          <div>
+            <SiteBuildStatusBadge />
           </div>
         </div>
         <div className="mb-2">
           <AnalyticsDash />
-        </div>
-        <div className="mb-2">
-          <Button
-            onClick={e => {
-              setIsAdmin(false);
-              scrollTo(0, 0);
-            }}
-            variant="link"
-          >
-            Logout
-          </Button>
         </div>
       </AdminOnly>
     </div>

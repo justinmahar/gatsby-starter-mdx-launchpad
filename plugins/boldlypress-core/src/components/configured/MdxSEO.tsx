@@ -1,12 +1,11 @@
 import { Location } from '@reach/router';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
+import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super-seo';
 import MdxContent from '../../data/MdxContent';
-import SiteSeoSettings from '../../data/settings/SiteSeoSettings';
 import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
 import SiteMetadata from '../../data/SiteMetadata';
 import renderTemplateTags from '../../util/render-template-tags';
-import SEO, { OpenGraphMetadata, TwitterMetadata, TwitterSummaryCardType } from '../SEO';
 
 export interface MdxSEOProps {
   mdxContent: MdxContent;
@@ -91,9 +90,9 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
     <Location>
       {locationProps => {
         return (
-          <SEO
-            pageTitle={seoTitle}
-            metaDescription={seoDescription}
+          <SuperSEO
+            title={seoTitle}
+            description={seoDescription}
             lang={lang}
             openGraph={{
               ...openGraph,

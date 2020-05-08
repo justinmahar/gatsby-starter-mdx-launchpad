@@ -6,7 +6,6 @@ import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
 import SocialConnectComponent from './SocialConnectComponent';
 import SiteName from './configured/SiteName';
-import TapPatternLink from './TapPatternLink';
 
 export default function Footer(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
