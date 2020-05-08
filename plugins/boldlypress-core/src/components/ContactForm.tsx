@@ -96,7 +96,6 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
         formModel
           .submit()
           .then(() => {
-            console.log('Submitted!');
             formModel.clear();
             setSuccessAlertVisible(true);
           })

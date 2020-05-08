@@ -17,7 +17,6 @@ export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
   const [days, setDays] = React.useState(28);
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('Setting days to', selectedDays);
       setDays(selectedDays);
     }, 1000);
     return () => {

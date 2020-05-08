@@ -119,7 +119,6 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
         formModel
           .submit()
           .then(() => {
-            console.log('Submitted!');
             formModel.clear();
             setSuccessAlertVisible(true);
           })

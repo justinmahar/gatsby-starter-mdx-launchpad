@@ -102,7 +102,6 @@ export default function MailingListSignupCard(props: MailingListSignupCardProps)
         formModel
           .submit()
           .then(() => {
-            console.log('Submitted!');
             formModel.clear();
             setSuccessAlertVisible(true);
           })
