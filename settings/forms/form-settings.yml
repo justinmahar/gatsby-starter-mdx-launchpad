@@ -1,6 +1,7 @@
 forms:
   - formActionUrl: >-
       https://docs.google.com/forms/u/0/d/e/1FAIpQLSenSNIEJTxJN2tGx9wwATrmVJPZfvqfGJIRkWxiEchDoRGBrw/formResponse
+    formResponsesUrl: https://docs.google.com/forms/d/193cNx0g08IcrvZl1dhtTkvx_zq8igVRQhoezcUh0bJg/edit#responses
     formAsyncEnabled: true
     formAsyncRequestMode: no-cors
     formControls:
@@ -40,6 +41,7 @@ forms:
     formNameAttribute: contactForm
   - formActionUrl: >-
       https://docs.google.com/forms/u/0/d/e/1FAIpQLSc5s3mOulygCILIycMDrGc8cKBjYBmm22Pxm8NV-9z1hg4PqQ/formResponse
+    formResponsesUrl: https://docs.google.com/forms/d/1qldui86pw5lDAuDeDYqJYFxMEj3KmeuaRdnCHXASvK4/edit#responses
     formAsyncEnabled: true
     formAsyncRequestMode: no-cors
     formControls:
@@ -65,6 +67,7 @@ forms:
     formNameAttribute: subscriptions
   - formActionUrl: >-
       https://docs.google.com/forms/u/0/d/e/1FAIpQLSe-J6w4dTCfveWU8BByodBklIqN4geC4VdtlLdF4IDTa7kyEg/formResponse
+    formResponsesUrl: https://docs.google.com/forms/d/1uJa6gGUpaUlUjxpt6QWrsmX54dZfEl4h8Kz6nMkwkvo/edit#responses
     formAsyncEnabled: true
     formAsyncRequestMode: no-cors
     formControls:

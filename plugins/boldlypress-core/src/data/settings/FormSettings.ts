@@ -15,6 +15,7 @@ export const formsYamlQuery = graphql`
     forms {
       formLabel
       formId
+      formResponsesUrl
       formActionUrl
       formMethod
       formNameAttribute
@@ -44,6 +45,7 @@ export type RequestMode = 'cors' | 'no-cors' | 'same-origin' | 'navigate';
 export type FormInfo = {
   formLabel: string;
   formId: string;
+  formResponsesUrl: string;
   formActionUrl: string;
   formMethod: string;
   formNameAttribute: string;

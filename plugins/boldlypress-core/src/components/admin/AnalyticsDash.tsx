@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import {
   AnalyticsDashboard,
@@ -7,10 +8,9 @@ import {
   SessionsBySourceChart,
   SessionsGeoChart,
 } from 'react-analytics-charts';
-import { Form, Card, Button } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
 import styled from 'styled-components';
 import ReportingSettings from '../../data/settings/ReportingSettings';
-import { useStaticQuery, graphql } from 'gatsby';
 
 export interface AnalyticsDashProps {}
 
@@ -48,73 +48,75 @@ export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
             </div>
           </div>
         </Card.Title>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-          <Form.Control
-            style={{ width: '100px', marginRight: '5px' }}
-            type="number"
-            min={1}
-            max={90}
-            step={1}
-            value={selectedDays + ''}
-            onChange={e => setSelectedDays(parseInt(e.target.value))}
-          />
-          <div>days</div>
-        </div>
-        {days === selectedDays && (
-          <ViewSelectorContainer>
-            <AnalyticsDashboard
-              authOptions={{ clientId }}
-              renderCharts={(gapi, viewId) => {
-                const chartStyles = {
-                  margin: '15px',
-                  maxWidth: 400,
-                };
-                return (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    <SessionsByDateChart
-                      gapi={gapi}
-                      viewId={viewId}
-                      style={chartStyles}
-                      showPageViews
-                      showUsers
-                      days={days}
-                      options={{ title: `Sessions` }}
-                    />
-                    <SessionsGeoChart
-                      gapi={gapi}
-                      viewId={viewId}
-                      style={chartStyles}
-                      showPageViews
-                      options={{ width: 400 }}
-                      days={days}
-                    />
-                    <SessionsBySourceChart
-                      gapi={gapi}
-                      viewId={viewId}
-                      style={chartStyles}
-                      days={days}
-                      options={{ title: `Sessions By Source` }}
-                    />
-                    <SessionsByHourChart
-                      gapi={gapi}
-                      viewId={viewId}
-                      style={chartStyles}
-                      days={days}
-                      options={{ title: `Sessions By Hour` }}
-                    />
-                    <PageViewsPerPathChart
-                      gapi={gapi}
-                      viewId={viewId}
-                      style={{ margin: '15px' }}
-                      options={{ pageSize: 10 }}
-                      days={days}
-                    />
-                  </div>
-                );
-              }}
+        <Card.Text>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+            <Form.Control
+              style={{ width: '100px', marginRight: '5px' }}
+              type="number"
+              min={1}
+              max={90}
+              step={1}
+              value={selectedDays + ''}
+              onChange={e => setSelectedDays(parseInt(e.target.value))}
             />
-          </ViewSelectorContainer>
-        )}
+            <div>days</div>
+          </div>
+          {days === selectedDays && (
+            <ViewSelectorContainer>
+              <AnalyticsDashboard
+                authOptions={{ clientId }}
+                renderCharts={(gapi, viewId) => {
+                  const chartStyles = {
+                    margin: '15px',
+                    maxWidth: 400,
+                  };
+                  return (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      <SessionsByDateChart
+                        gapi={gapi}
+                        viewId={viewId}
+                        style={chartStyles}
+                        showPageViews
+                        showUsers
+                        days={days}
+                        options={{ title: `Sessions` }}
+                      />
+                      <SessionsGeoChart
+                        gapi={gapi}
+                        viewId={viewId}
+                        style={chartStyles}
+                        showPageViews
+                        options={{ width: 400 }}
+                        days={days}
+                      />
+                      <SessionsBySourceChart
+                        gapi={gapi}
+                        viewId={viewId}
+                        style={chartStyles}
+                        days={days}
+                        options={{ title: `Sessions By Source` }}
+                      />
+                      <SessionsByHourChart
+                        gapi={gapi}
+                        viewId={viewId}
+                        style={chartStyles}
+                        days={days}
+                        options={{ title: `Sessions By Hour` }}
+                      />
+                      <PageViewsPerPathChart
+                        gapi={gapi}
+                        viewId={viewId}
+                        style={{ margin: '15px' }}
+                        options={{ pageSize: 10 }}
+                        days={days}
+                      />
+                    </div>
+                  );
+                }}
+              />
+            </ViewSelectorContainer>
+          )}
+        </Card.Text>
       </Card.Body>
     </Card>
   );

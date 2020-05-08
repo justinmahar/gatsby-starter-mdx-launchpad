@@ -1,16 +1,36 @@
 import * as React from 'react';
 import { AdminOnly, NetlifyCMSButton, NonAdminOnly, useAdmin } from 'react-authless-admin';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { useScrollTo } from 'react-use-window-scroll';
 import SiteBuildStatusBadge from '../configured/SiteBuildStatusBadge';
 import AnalyticsDash from './AnalyticsDash';
 import LoginForm from './LoginForm';
+import { useStaticQuery, graphql } from 'gatsby';
+import FormSettings from '../../data/settings/FormSettings';
 
 export interface DashboardProps {}
 
 export default function Dashboard(props: DashboardProps): JSX.Element {
+  const data = useStaticQuery(graphql`
+    query DashboardQuery {
+      formsYaml {
+        ...formSettings
+      }
+    }
+  `);
+  const formSettings = new FormSettings(data.formsYaml);
   const [, setIsAdmin] = useAdmin();
   const scrollTo = useScrollTo();
+
+  const formListItems = formSettings.data.forms.map((form, index) => {
+    return (
+      <li key={`form-${index}`}>
+        <a href={form.formResponsesUrl} target="_blank" rel="noopener noreferrer">
+          {form.formLabel}
+        </a>
+      </li>
+    );
+  });
   return (
     <div>
       <NonAdminOnly>
@@ -20,6 +40,7 @@ export default function Dashboard(props: DashboardProps): JSX.Element {
       </NonAdminOnly>
 
       <AdminOnly>
+        <h1>Dashboard</h1>
         <div className="mb-2 mt-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="mb-2">
             <div>
@@ -68,9 +89,19 @@ export default function Dashboard(props: DashboardProps): JSX.Element {
               </div>
             </div>
           </div>
-          <div>
+          <div className="mb-2">
             <SiteBuildStatusBadge />
           </div>
+        </div>
+        <div className="mb-2">
+          <Card>
+            <Card.Body>
+              <Card.Title>Form Responses</Card.Title>
+              <Card.Text>
+                <ul>{formListItems}</ul>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </div>
         <div className="mb-2">
           <AnalyticsDash />
