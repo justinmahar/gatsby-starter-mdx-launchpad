@@ -45,6 +45,13 @@ const reportingSettingsFile = {
       ],
     },
     {
+      label: 'Google OAuth Client ID',
+      name: 'googleOAuthClientId',
+      widget: 'string',
+      hint:
+        'OAuth Client ID for the Google Analytics API. Used for analytics charts shown on admin dashboard. See: https://devboldly.github.io/react-analytics-charts/google-oauth-client-id',
+    },
+    {
       label: 'Build Status Badge',
       name: 'buildStatusBadge',
       widget: 'object',

@@ -9,10 +9,22 @@ import {
 } from 'react-analytics-charts';
 import { Form, Card, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import ReportingSettings from '../../data/settings/ReportingSettings';
+import { useStaticQuery, graphql } from 'gatsby';
 
 export interface AnalyticsDashProps {}
 
 export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
+  const data = useStaticQuery(graphql`
+    query BuildStatusBadgeQuery {
+      reportingYaml {
+        ...reportingSettings
+      }
+    }
+  `);
+  const reportingSettings = new ReportingSettings(data.reportingYaml);
+  const clientId = reportingSettings.data.googleOAuthClientId;
+
   const [selectedDays, setSelectedDays] = React.useState(28);
   const [days, setDays] = React.useState(28);
   React.useEffect(() => {
@@ -51,7 +63,7 @@ export default function AnalyticsDash(props: AnalyticsDashProps): JSX.Element {
         {days === selectedDays && (
           <ViewSelectorContainer>
             <AnalyticsDashboard
-              authOptions={{ clientId: '932669268667-ptpd9g2buqb0qv56rk8ki8cpavedku83.apps.googleusercontent.com' }}
+              authOptions={{ clientId }}
               renderCharts={(gapi, viewId) => {
                 const chartStyles = {
                   margin: '15px',

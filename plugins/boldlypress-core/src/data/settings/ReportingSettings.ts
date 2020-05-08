@@ -20,6 +20,7 @@ export const reportingYamlQuery = graphql`
       respectDNT
       scriptInHead
     }
+    googleOAuthClientId
     buildStatusBadge {
       buildStatusBadgeImageUrl
       buildStatusBadgeImageAlt
@@ -39,6 +40,7 @@ type ReportingSettingsData = {
     respectDNT: boolean;
     scriptInHead: boolean;
   };
+  googleOAuthClientId: string;
   buildStatusBadge: {
     buildStatusBadgeImageUrl: string;
     buildStatusBadgeImageAlt: string;
