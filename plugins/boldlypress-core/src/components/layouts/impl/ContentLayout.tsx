@@ -145,6 +145,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                         <NetlifyCMSButton
                           collection={mdxContent.data.frontmatter.group}
                           entry={mdxContent.data.fields.slug}
+                          openInNewWindow
                           component={Button}
                           componentProps={{ variant: 'secondary' }}
                         >
