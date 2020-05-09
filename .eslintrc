@@ -8,7 +8,7 @@
     "@typescript-eslint",
     "prettier"
   ],
-  "extends": [ 
+  "extends": [
     "eslint:recommended",
     "plugin:json/recommended",
     "plugin:react/recommended",
@@ -21,7 +21,7 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 120,
+        "printWidth": 118,
         "tabWidth": 2,
         "endOfLine": "lf",
         "semi": true
@@ -38,6 +38,7 @@
         "ignoreTrailingComments": true
       }
     ],
+    "react-app/react-hooks/exhaustive-deps": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
     "react-app/jsx-a11y/accessible-emoji": "off",
@@ -46,13 +47,17 @@
     "@typescript-eslint/explicit-member-accessibility": "off",
     "@typescript-eslint/no-angle-bracket-type-assertion": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/explicit-function-return-type": [
       "warn",
       {
         "allowExpressions": true
       }
     ],
-    "linebreak-style": ["warn", "unix"]
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ]
   },
   "overrides": [
     {
