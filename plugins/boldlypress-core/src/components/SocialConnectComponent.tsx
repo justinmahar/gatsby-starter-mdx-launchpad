@@ -32,8 +32,8 @@ export default function SocialConnectComponent(props: SocialConnectComponentProp
   const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
 
   const socialIconElements: JSX.Element[] = socialSharingSettings.data.socialAccounts
-    .filter(socialAccount => socialAccount.enabled)
-    .map(socialAccount => {
+    .filter((socialAccount) => socialAccount.enabled)
+    .map((socialAccount) => {
       const key = `${socialAccount.name}-account`;
       if (socialAccount.link.endsWith('/contact')) {
         return (

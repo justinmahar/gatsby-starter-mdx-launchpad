@@ -29,7 +29,6 @@ export default function ImageHeaderContainer(props: ImageHeaderContainerProps): 
             <h1
               className="text-uppercase"
               style={{
-                fontSize: '3.5rem',
                 color: 'white',
                 textDecoration: 'none',
               }}

@@ -92,9 +92,8 @@ export default function Footer(props: {}): JSX.Element {
       );
     }
     return (
-      <span key={'footer-menu-item-' + index}>
+      <span key={'footer-menu-item-' + index} className="mx-3 mb-2">
         {linkElement}
-        {index < menuSettings.data.footerLegalMenuItems.length - 1 && <Divider />}
       </span>
     );
   });
@@ -153,7 +152,12 @@ export default function Footer(props: {}): JSX.Element {
             </p>
           </Col>
           <Col md={{ span: 5, offset: 2 }}>
-            <div className="text-muted text-center">{legalMenuElements}</div>
+            <div
+              className="text-muted text-center"
+              style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
+            >
+              {legalMenuElements}
+            </div>
           </Col>
         </Row>
       </Container>
