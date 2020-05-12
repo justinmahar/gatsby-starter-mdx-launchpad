@@ -11,7 +11,6 @@ import reportingSettingsFile from './settings/reportingSettingsFile';
 import siteSeoSettingsFile from './settings/siteSeoSettingsFile';
 import siteSettingsFile from './settings/siteSettingsFile';
 import socialSharingSettingsFile from './settings/socialSharingSettingsFile';
-import themeSettingsFile from './settings/themeSettingsFile';
 
 const settingsCollection = {
   label: 'Settings',
@@ -31,7 +30,6 @@ const settingsCollection = {
     navbarSettingsFile,
     menuSettingsFile,
     socialSharingSettingsFile,
-    themeSettingsFile,
     postSettingsFile,
     reportingSettingsFile,
     offlineSupportSettingsFile,

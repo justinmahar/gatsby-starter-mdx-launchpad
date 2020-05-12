@@ -41,6 +41,8 @@
     "react-app/react-hooks/exhaustive-deps": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
+    "react/no-unescaped-entities": "off",
+    "eslintreact/no-unescaped-entities": "off",
     "react-app/jsx-a11y/accessible-emoji": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

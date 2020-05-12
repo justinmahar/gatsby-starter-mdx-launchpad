@@ -1,8 +1,8 @@
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import * as React from 'react';
-import { EmailIcon, FacebookIcon, TwitterIcon } from 'react-share';
-import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import { EmailIcon } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
+import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 
 const ICON_SIZE = 32;
 

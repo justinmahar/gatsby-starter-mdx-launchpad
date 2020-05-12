@@ -2,9 +2,7 @@ import { Location } from '@reach/router';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import FeaturedPostContainer from '../../../components/FeaturedPostContainer';
 import Footer from '../../../components/Footer';
-import MailingListSignupCard from '../../../components/MailingListSignupCard';
 import MailingListSignupContainer from '../../../components/MailingListSignupContainer';
 import PostCard from '../../../components/PostCard';
 import SocialShareComponent from '../../../components/SocialShareComponent';
@@ -64,7 +62,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   const featuredPostSlug: string = postSettings.data.featuredPost.featuredPostSlug;
 
   const posts: MdxContent[] = data.allMdxPosts.nodes
-    .map(node => new MdxContent(node))
+    .map((node) => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
   const postElements: JSX.Element[] = posts.slice(0, indexPagePostCount).map((post: MdxContent, index: number) => {
@@ -104,34 +102,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
   return (
     <Wrapper>
       <MdxSEO mdxContent={mdxContent} templateTags={templateTags} />
-
-      {/* Only show the featured post if that feature is enabled */}
-      {!!featuredPost && (
-        <FeaturedPostContainer
-          featuredPost={featuredPost}
-          contentCueText={postSettings.data.featuredPost.contentCueText}
-          titleText={
-            postSettings.data.featuredPost.customTitleText !== 'none'
-              ? postSettings.data.featuredPost.customTitleText
-              : featuredPost.data.frontmatter.title
-          }
-          teaserText={
-            postSettings.data.featuredPost.customTeaser !== 'none'
-              ? postSettings.data.featuredPost.customTeaser
-              : featuredPost.getExcerpt()
-          }
-          buttonText={postSettings.data.featuredPost.buttonText}
-          leftQuote={postSettings.data.featuredPost.leftQuote}
-          rightQuote={postSettings.data.featuredPost.rightQuote}
-          featuredImageUrl={
-            featuredPost.data.frontmatter.featuredImage.featuredImageEnabled
-              ? featuredPost.data.frontmatter.featuredImage.featuredImageUrl
-              : siteMetadata.data.siteImage
-          }
-        />
-      )}
       <TopBar />
-
       <Container className="mt-5 mb-4">
         <Row>
           <Col xs={12} md={8}>
@@ -145,9 +116,6 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
             </div>
           </Col>
           <Col xs={12} md={4}>
-            <div className="d-none d-md-block">
-              <MailingListSignupCard formId="mailing-list" />
-            </div>
             {socialSharingSettings.data.sharing.shareHomePageEnabled &&
               (socialSharingSettings.data.sharing.facebookPostSharingEnabled ||
                 socialSharingSettings.data.sharing.linkedInPostSharingEnabled ||
@@ -155,7 +123,7 @@ export default function BlogIndexLayout(props: LayoutProps): JSX.Element {
                 <div className="mt-4">
                   <h4 className="mb-2">Share {siteMetadata.data.siteName} with your friends:</h4>
                   <Location>
-                    {locationProps => {
+                    {(locationProps) => {
                       return (
                         <SocialShareComponent
                           url={locationProps.location.href}

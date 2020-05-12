@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 import MdxContent from '../data/MdxContent';
 import PostSettings from '../data/settings/PostSettings';
 
+// Don't delete this yet. Save it for the query below.
 export default function RecentPostsWidget(props: {}): JSX.Element {
   const data = useStaticQuery(graphql`
     query RecentPostsQuery {
@@ -22,11 +23,11 @@ export default function RecentPostsWidget(props: {}): JSX.Element {
   const postCount = postSettings.data.recentPostsWidgetPostCount;
 
   const posts: MdxContent[] = data.allMdx.nodes
-    .map(node => new MdxContent(node))
+    .map((node) => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
   const categories: string[] = postSettings.data.recentPostsWidgetPostCategories.map(
-    postCategory => postCategory.categoryName
+    (postCategory) => postCategory.categoryName
   );
 
   // Filter and collect the posts to show

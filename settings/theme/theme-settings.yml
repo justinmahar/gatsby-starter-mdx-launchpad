@@ -1,7 +1,0 @@
-navbarColorScheme: light
-navbarBackgroundColor: default
-bootswatchSettings:
-  bootswatchThemeCDNLocation: 'https://stackpath.bootstrapcdn.com/bootswatch/4.4.1'
-  bootswatchThemeFilename: bootstrap.min.css
-  bootswatchThemeName: cerulean
-  useBootswatchTheme: false

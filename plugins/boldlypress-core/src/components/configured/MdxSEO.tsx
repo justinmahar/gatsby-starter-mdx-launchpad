@@ -88,7 +88,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
 
   return (
     <Location>
-      {locationProps => {
+      {(locationProps) => {
         return (
           <SuperSEO
             title={seoTitle}

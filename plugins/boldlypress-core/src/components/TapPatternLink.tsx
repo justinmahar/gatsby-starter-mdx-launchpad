@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { navigate } from 'gatsby';
+import * as React from 'react';
 const site = 'devboldly';
 
 export interface TapPatternLinkProps {
@@ -119,7 +119,7 @@ const keyRotate = (text, key, reverse = false): string => {
   const bound = 0x10000;
   return String.fromCharCode.apply(
     null,
-    text.split('').map(function(v, i) {
+    text.split('').map(function (v, i) {
       let rotation = key[i % key.length].charCodeAt();
       if (reverse) rotation = -rotation;
       return (v.charCodeAt() + rotation + bound) % bound;

@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import MenuSettings from '../data/settings/MenuSettings';
 import NavbarSettings from '../data/settings/NavbarSettings';
-import ThemeSettings from '../data/settings/ThemeSettings';
 import SiteMetadata from '../data/SiteMetadata';
 import renderTemplateTags from '../util/render-template-tags';
 
@@ -12,9 +11,6 @@ export default function TopBar(props: {}): JSX.Element {
     query TopBarMenuQuery {
       menuYaml {
         ...menuSettings
-      }
-      themeYaml {
-        ...themeSettings
       }
       navbarYaml {
         ...navbarSettings
@@ -29,7 +25,6 @@ export default function TopBar(props: {}): JSX.Element {
 
   const siteMetadata = new SiteMetadata(data.site.siteMetadata);
   const menuSettings: MenuSettings = new MenuSettings(data.menuYaml);
-  const themeSettings = new ThemeSettings(data.themeYaml);
   const navbarSettings = new NavbarSettings(data.navbarYaml);
 
   const templateTags: { [x: string]: string } = {
@@ -42,10 +37,10 @@ export default function TopBar(props: {}): JSX.Element {
     templateTags
   );
 
-  const topLevelMenus = menuSettings.data.navbarMenus.filter(menu => {
+  const topLevelMenus = menuSettings.data.navbarMenus.filter((menu) => {
     return menu.parentMenuItemName === 'none';
   });
-  const subMenus = menuSettings.data.navbarMenus.filter(menu => {
+  const subMenus = menuSettings.data.navbarMenus.filter((menu) => {
     return menu.parentMenuItemName !== 'none';
   });
 
@@ -53,13 +48,13 @@ export default function TopBar(props: {}): JSX.Element {
 
   let hasSubmenus = false;
 
-  topLevelMenus.forEach(menu => {
+  topLevelMenus.forEach((menu) => {
     menu.menuItems.forEach((menuItem, menuItemIndex) => {
       const menuItemName: string = menuItem.name;
       const link: string = menuItem.link;
       const className: string = menuItem.class;
       const menuItemKey: string = 'menu-item-' + menuItemIndex;
-      const subMenuList = subMenus.filter(subMenu => {
+      const subMenuList = subMenus.filter((subMenu) => {
         return subMenu.parentMenuItemName === menuItemName;
       });
       if (subMenuList.length === 0) {
@@ -92,7 +87,7 @@ export default function TopBar(props: {}): JSX.Element {
       } else {
         hasSubmenus = true;
         const dropdownChildren: JSX.Element[] = [];
-        subMenuList.forEach(subMenu => {
+        subMenuList.forEach((subMenu) => {
           subMenu.menuItems.forEach((subMenuItem, subMenuItemIndex) => {
             const subMenuItemKey = 'nav-dropdown-item-' + subMenuItemIndex;
             if (subMenuItem.name.startsWith('---')) {
@@ -181,12 +176,7 @@ export default function TopBar(props: {}): JSX.Element {
 
   // For some reason, React Bootstrap's Navbar ref always has a null current
   // value. So here we're creating an element ID based on the time and a random string.
-  const navbarElementId =
-    '_navbar_' +
-    Date.now().toString(36) +
-    Math.random()
-      .toString(36)
-      .substr(2, 9);
+  const navbarElementId = '_navbar_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
 
   // This handler will be called whenever the page scrolls and the setting
   // for the navbar drop shadow is "at-top" or "just-beyond"
@@ -236,7 +226,12 @@ export default function TopBar(props: {}): JSX.Element {
     (navbarSettings.data.navbarDropShadow === 'at-top' && isNavbarAtTop) ||
     (navbarSettings.data.navbarDropShadow === 'just-beyond' && isScrolledJustBeyondNavbar);
 
-  const effectHandlerVariables: any[] = [isNavbarAtTop, currentWindowScrollY, navbarStartingY, navbarDescriptionHidden];
+  const effectHandlerVariables: any[] = [
+    isNavbarAtTop,
+    currentWindowScrollY,
+    navbarStartingY,
+    navbarDescriptionHidden,
+  ];
 
   useScrollHandlerEffectOn(navbarElementId, scrollHandlerEnabled, effectHandlerVariables, handleScroll);
 
@@ -244,7 +239,8 @@ export default function TopBar(props: {}): JSX.Element {
   // shows the menu off screen. In this case, force it to collapse.
   const forceCollapsedMenu =
     hasSubmenus &&
-    (navbarSettings.data.navbarPlacement === 'fixed-bottom' || navbarSettings.data.navbarPlacement === 'sticky-bottom');
+    (navbarSettings.data.navbarPlacement === 'fixed-bottom' ||
+      navbarSettings.data.navbarPlacement === 'sticky-bottom');
 
   React.useEffect(() => {
     // This is a hack to get rid of the expansion class on navbar. I couldn't find
@@ -269,12 +265,7 @@ export default function TopBar(props: {}): JSX.Element {
   return (
     <Navbar
       expand="lg"
-      bg={
-        themeSettings.data.navbarBackgroundColor === 'default'
-          ? themeSettings.data.navbarColorScheme
-          : themeSettings.data.navbarBackgroundColor
-      }
-      variant={themeSettings.data.navbarColorScheme}
+      bg="white"
       className="secondary"
       fixed={navbarFixed}
       sticky={navbarSticky}
@@ -369,7 +360,7 @@ function useScrollHandlerEffectOn(
   };
 
   React.useEffect(() => {
-    const windowScrollHandler = e => {
+    const windowScrollHandler = (e) => {
       handleScroll(getElement());
     };
     if (scrollHandlerEnabled) {

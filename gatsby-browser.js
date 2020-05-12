@@ -29,10 +29,6 @@
 
 // === CSS/LESS/SASS imports ===
 
-// == Bootswatch Theme ==
-// Copy your theme to ./static and uncomment this to avoid using the CDN.
-// require("./static/bootswatch-4.3.1/cerulean/bootstrap.min.css")
-
 // == PrismJS code syntax highlighting themes ==
 // require("prismjs/themes/prism.css")
 // require("prismjs/themes/prism-coy.css")

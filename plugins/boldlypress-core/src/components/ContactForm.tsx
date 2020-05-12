@@ -89,7 +89,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
     );
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     if (formInfo.formAsyncEnabled) {
       e.preventDefault();
       if (formModel.validate()) {
@@ -99,7 +99,7 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
             formModel.clear();
             setSuccessAlertVisible(true);
           })
-          .catch(e => {
+          .catch((e) => {
             console.error(e);
             setErrorAlertVisible(true);
           });
@@ -145,8 +145,9 @@ export default function ContactForm(props: ContactFormProps): JSX.Element {
       )}
       {!formInfo && (
         <div>
-          Form <code>{props.formId ? props.formId : typeof props.formId === 'undefined' ? 'undefined' : 'falsy'}</code>{' '}
-          not found.
+          Form{' '}
+          <code>{props.formId ? props.formId : typeof props.formId === 'undefined' ? 'undefined' : 'falsy'}</code> not
+          found.
         </div>
       )}
     </>

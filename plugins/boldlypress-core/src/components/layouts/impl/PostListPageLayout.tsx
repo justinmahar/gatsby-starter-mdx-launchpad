@@ -10,7 +10,6 @@ import SiteMetadata from '../../../data/SiteMetadata';
 import renderTemplateTags from '../../../util/render-template-tags';
 import MdxSEO from '../../configured/MdxSEO';
 import Footer from '../../Footer';
-import MailingListSignupCard from '../../MailingListSignupCard';
 import MailingListSignupContainer from '../../MailingListSignupContainer';
 import PaginationComponent from '../../PaginationComponent';
 import PostCard from '../../PostCard';
@@ -66,7 +65,7 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
 
   const mdxPosts = props.pageQueryData.mdxPosts ? props.pageQueryData.mdxPosts : [];
   const posts: MdxContent[] = mdxPosts.nodes
-    .map(node => new MdxContent(node))
+    .map((node) => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
   const postElements: JSX.Element[] = posts.map((post: MdxContent, index) => {
@@ -132,9 +131,6 @@ export default function PostListPageLayout(props: LayoutProps): JSX.Element {
           </Col>
           {showSidebar && (
             <Col md={{ span: 4 }}>
-              <div className="d-none d-md-block mb-4">
-                <MailingListSignupCard formId="mailing-list" />
-              </div>
               <div className="mb-4">
                 <RecentPostsWidget />
               </div>

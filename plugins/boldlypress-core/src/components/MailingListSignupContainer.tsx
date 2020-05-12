@@ -112,7 +112,7 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
         }') no-repeat center center /cover`,
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     if (formInfo.formAsyncEnabled) {
       e.preventDefault();
       if (formModel.validate()) {
@@ -122,7 +122,7 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
             formModel.clear();
             setSuccessAlertVisible(true);
           })
-          .catch(e => {
+          .catch((e) => {
             console.error(e);
             setErrorAlertVisible(true);
           });
@@ -195,7 +195,11 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
       )}
       {successAlertVisible && (
         <Row>
-          <Col md={{ span: 6, offset: 3 }} lg={{ span: 4, offset: 4 }} style={{ textAlign: 'center', color: 'white' }}>
+          <Col
+            md={{ span: 6, offset: 3 }}
+            lg={{ span: 4, offset: 4 }}
+            style={{ textAlign: 'center', color: 'white' }}
+          >
             <h4
               className="text-uppercase"
               style={{

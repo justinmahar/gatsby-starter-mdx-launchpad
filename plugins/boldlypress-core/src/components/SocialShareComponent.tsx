@@ -8,8 +8,8 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
-import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import MdxContent from '../data/MdxContent';
+import SocialSharingSettings from '../data/settings/SocialSharingSettings';
 import renderTemplateTags from '../util/render-template-tags';
 
 const ICON_SIZE = 32;

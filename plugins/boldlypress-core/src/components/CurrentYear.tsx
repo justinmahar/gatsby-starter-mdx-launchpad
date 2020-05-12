@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-export default function CurrentYear(props: {}): JSX.Element {
+export default function CurrentYear(): JSX.Element {
   return <>{new Date().getFullYear()}</>;
 }

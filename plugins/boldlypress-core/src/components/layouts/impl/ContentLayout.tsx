@@ -15,7 +15,6 @@ import MdxSEO from '../../configured/MdxSEO';
 import DiscussionComponent from '../../DiscussionComponent';
 import Footer from '../../Footer';
 import ImageHeaderContainer from '../../ImageHeaderContainer';
-import MailingListSignupCard from '../../MailingListSignupCard';
 import MailingListSignupContainer from '../../MailingListSignupContainer';
 import RecentPostsWidget from '../../RecentPostsWidget';
 import SocialShareComponent from '../../SocialShareComponent';
@@ -84,15 +83,6 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             />
           )}
         <TopBar />
-        <a
-          id="content"
-          style={{
-            display: 'block',
-            position: 'relative',
-            top: '-50px',
-            visibility: 'hidden',
-          }}
-        />
         <Container className="mt-5 mb-4">
           <Row>
             <Col lg={{ span: 8, offset: showSidebar ? 0 : 2 }}>
@@ -167,7 +157,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                           <h3 className="mb-2">Share it:</h3>
                         </Card.Title>
                         <Location>
-                          {locationProps => {
+                          {(locationProps) => {
                             return (
                               <SocialShareComponent
                                 url={locationProps.location.href}
@@ -184,9 +174,6 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
             </Col>
             {showSidebar && (
               <Col md={{ span: 4 }}>
-                <div className="d-none d-md-block mb-4">
-                  <MailingListSignupCard formId="mailing-list" />
-                </div>
                 <div className="mb-4">
                   <RecentPostsWidget />
                 </div>
@@ -197,7 +184,7 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
                     <div className="d-none d-md-block">
                       <h3 className="mb-2">Share it:</h3>
                       <Location>
-                        {locationProps => {
+                        {(locationProps) => {
                           return (
                             <SocialShareComponent
                               url={locationProps.location.href}
@@ -214,26 +201,27 @@ export default function ContentLayout(props: LayoutProps): JSX.Element {
           </Row>
         </Container>
         <span id="discussion" style={{ position: 'relative', top: -50 }} />
-        {!!discussionSettings.data.siteWideCommentsEnabled && !!mdxContent.data.frontmatter.options.discussionEnabled && (
-          <Container className="pb-5">
-            <Row>
-              <Col md={{ span: showSidebar ? 12 : 8, offset: showSidebar ? 0 : 2 }}>
-                <Card className="secondary">
-                  <Card.Body>
-                    <Card.Title>
-                      <h3 className="mb-2">Leave a comment:</h3>
-                    </Card.Title>
-                    <DiscussionComponent
-                      title={contentTitle}
-                      identifier={mdxContent.data.fields.slug}
-                      shortname={discussionSettings.data.disqusShortname}
-                    />
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        )}
+        {!!discussionSettings.data.siteWideCommentsEnabled &&
+          !!mdxContent.data.frontmatter.options.discussionEnabled && (
+            <Container className="pb-5">
+              <Row>
+                <Col md={{ span: showSidebar ? 12 : 8, offset: showSidebar ? 0 : 2 }}>
+                  <Card className="secondary">
+                    <Card.Body>
+                      <Card.Title>
+                        <h3 className="mb-2">Leave a comment:</h3>
+                      </Card.Title>
+                      <DiscussionComponent
+                        title={contentTitle}
+                        identifier={mdxContent.data.fields.slug}
+                        shortname={discussionSettings.data.disqusShortname}
+                      />
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          )}
         <MailingListSignupContainer formId="mailing-list" />
         <Footer />
       </Wrapper>

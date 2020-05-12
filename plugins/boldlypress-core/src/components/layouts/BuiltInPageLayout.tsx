@@ -21,7 +21,7 @@ export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.El
   `);
 
   const mdxContent: MdxContent = new MdxContent(
-    data.allMdxPages.nodes.find(node => {
+    data.allMdxPages.nodes.find((node) => {
       const mdxContent: MdxContent = new MdxContent(node);
       return mdxContent.data.frontmatter.rawSlug === props.rawPageSlug;
     })

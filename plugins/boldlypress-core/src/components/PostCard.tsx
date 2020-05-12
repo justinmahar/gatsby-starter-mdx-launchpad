@@ -22,8 +22,8 @@ export default function PostCard(props: PostCardProps): JSX.Element {
 
   const hasCardFooter: boolean =
     post.data.frontmatter.category !== 'none' ||
-    !!post.data.frontmatter.dateEnabled ||
-    post.data.frontmatter.discussionEnabled;
+    !!post.data.frontmatter.options.dateEnabled ||
+    post.data.frontmatter.options.discussionEnabled;
 
   return (
     <Card key={post.data.id} className="mb-5 secondary">
@@ -65,10 +65,12 @@ export default function PostCard(props: PostCardProps): JSX.Element {
                   <Badge variant="info">{post.data.frontmatter.category}</Badge>
                 </Link>
               )}{' '}
-              {!!post.data.frontmatter.dateEnabled && <Badge variant="light">{post.data.frontmatter.date}</Badge>}
+              {!!post.data.frontmatter.options.dateEnabled && (
+                <Badge variant="light">{post.data.frontmatter.date}</Badge>
+              )}
             </div>
             <div>
-              {!!props.showCommentCount && post.data.frontmatter.discussionEnabled && (
+              {!!props.showCommentCount && post.data.frontmatter.options.discussionEnabled && (
                 <a href={`${post.data.fields.slug}#discussion`}>
                   <Badge variant="secondary">
                     <CommentCountComponent
