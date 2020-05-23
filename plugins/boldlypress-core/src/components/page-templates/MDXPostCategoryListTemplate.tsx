@@ -1,16 +1,18 @@
 import * as React from 'react';
 import BuiltInPageLayout from '../layouts/BuiltInPageLayout';
+import { useSettings } from '../../data/useSettings';
 
-export interface MDXPostListPageTemplateProps {
+export interface MDXPostCategoryListTemplateProps {
   pageContext: any;
   data: any;
 }
 
-export default function MDXPostListPageTemplate(props: MDXPostListPageTemplateProps): JSX.Element {
+export default function MDXPostCategoryListTemplate(props: MDXPostCategoryListTemplateProps): JSX.Element {
+  const settings = useSettings();
   const pageQueryData = props.data;
   return (
     <BuiltInPageLayout
-      rawPageSlug={pageQueryData.builtInPagesYaml.rawCategoryPostListPageSlug}
+      rawPageSlug={settings.data.builtInPagesYaml.rawCategoryPostListPageSlug}
       pageQueryData={pageQueryData}
       pageContext={props.pageContext}
     />

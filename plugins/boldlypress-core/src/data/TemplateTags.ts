@@ -14,7 +14,7 @@ export class TemplateTags {
     let foundMatch = false;
     Object.keys(this.tags).forEach((key: string) => {
       const tag = TemplateTags.createTag(key);
-      const value = tags[key];
+      const value = this.tags[key];
       if (template.indexOf(tag) >= 0) {
         foundMatch = true;
         template = template.replace(tag, value);
