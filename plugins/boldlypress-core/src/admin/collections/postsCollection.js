@@ -63,7 +63,6 @@ const blogPosts = {
       showTitleSectionDefault: true,
     }),
     ContentOptionsObject({
-      showSidebarDefault: true,
       showDateDefault: true,
       enableDiscussionDefault: true,
     }),

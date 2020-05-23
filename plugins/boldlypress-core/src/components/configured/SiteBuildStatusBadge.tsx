@@ -1,27 +1,18 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
-import ReportingSettings from '../../data/settings/ReportingSettings';
 import { BuildStatusBadge } from 'react-build-status-badge';
+import Settings, { useSettings } from '../../data/useSettings';
 
 export default function SiteBuildStatusBadge(props: {}): JSX.Element {
-  const data = useStaticQuery(graphql`
-    query BuildStatusBadgeQuery {
-      reportingYaml {
-        ...reportingSettings
-      }
-    }
-  `);
-  const reportingSettings = new ReportingSettings(data.reportingYaml);
-
-  const useLink = reportingSettings.data.buildStatusBadge.buildStatusBadgeImageLink !== 'none';
+  const settings: Settings = useSettings();
+  const useLink = settings.data.reportingYaml.buildStatusBadge.buildStatusBadgeImageLink !== 'none';
 
   const alt: string | undefined =
-    reportingSettings.data.buildStatusBadge.buildStatusBadgeImageAlt !== 'none'
-      ? reportingSettings.data.buildStatusBadge.buildStatusBadgeImageAlt
+    settings.data.reportingYaml.buildStatusBadge.buildStatusBadgeImageAlt !== 'none'
+      ? settings.data.reportingYaml.buildStatusBadge.buildStatusBadgeImageAlt
       : undefined;
-  const src: string = reportingSettings.data.buildStatusBadge.buildStatusBadgeImageUrl;
+  const src: string = settings.data.reportingYaml.buildStatusBadge.buildStatusBadgeImageUrl;
   const href: string | undefined = useLink
-    ? reportingSettings.data.buildStatusBadge.buildStatusBadgeImageLink
+    ? settings.data.reportingYaml.buildStatusBadge.buildStatusBadgeImageLink
     : undefined;
 
   return <BuildStatusBadge alt={alt} src={src} href={href} linkDisabled={false} />;

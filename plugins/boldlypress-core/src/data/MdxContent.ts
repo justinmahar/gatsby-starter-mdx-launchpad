@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby';
-import { Tags } from '../util/render-template-tags';
+import { TemplateTags } from './TemplateTags';
+import Settings, { SeoConfiguration } from './useSettings';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).
@@ -44,7 +45,6 @@ export const mdxFragmentQuery = graphql`
         unlisted
         showTitle
         layout
-        showSidebar
       }
       sharing {
         sharingEnabled
@@ -102,7 +102,6 @@ export type MdxData = {
       unlisted: boolean;
       showTitle: boolean;
       layout: string;
-      showSidebar: boolean;
     };
     sharing: {
       sharingEnabled: boolean;
@@ -145,14 +144,35 @@ export default class MdxContent {
     return this.data.frontmatter.customExcerpt !== 'none' ? this.data.frontmatter.customExcerpt : this.data.excerpt;
   }
 
-  public getTemplateTags(): Tags {
-    return {
+  public getTemplateTags(settings: Settings, overriddenTags: { [key: string]: string } = {}): TemplateTags {
+    const configurationId: string = this.data.frontmatter.seoSettings.seoConfigurationId;
+    const foundConfiguration: SeoConfiguration | undefined = settings.data.seoYaml.seoConfigurations.find(
+      (value: SeoConfiguration): boolean => {
+        return value.seoConfigurationId === configurationId;
+      }
+    );
+
+    if (!foundConfiguration) {
+      console.error(`Config ID ${configurationId} not found`);
+    }
+
+    return new TemplateTags({
+      year: `${new Date().getFullYear()}`,
+      siteName: settings.data.site.siteMetadata.siteName,
+      siteDescription: settings.data.site.siteMetadata.siteDescription,
+      twitterSiteUsername: settings.data.socialSharingYaml.twitterSiteUsername,
+      seoTitleSeparator: settings.data.seoYaml.seoTitleSeparator,
+      configSeoTitle: foundConfiguration ? foundConfiguration.seoTitle : `[SEO config not found: ${configurationId}]`,
+      configSeoDescription: foundConfiguration
+        ? foundConfiguration.seoDescription
+        : `[SEO config not found: ${configurationId}]`,
       contentTitle: this.data.frontmatter.title,
       contentExcerpt: this.getExcerpt(),
       contentCategory: this.data.frontmatter.category,
       contentSeoTitle: this.data.frontmatter.seoSettings.seoTitle,
       contentSeoDescription: this.data.frontmatter.seoSettings.seoDescription,
-    };
+      ...overriddenTags,
+    });
   }
 
   public isPost(): boolean {
@@ -161,12 +181,5 @@ export default class MdxContent {
 
   public isPage(): boolean {
     return this.data.frontmatter.group === 'pages';
-  }
-
-  /**
-   * Returns true if this MDX uses the post layout, false otherwise.
-   */
-  public hasSidebar(): boolean {
-    return this.data.frontmatter.options.showSidebar;
   }
 }

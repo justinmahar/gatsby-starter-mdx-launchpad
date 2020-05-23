@@ -1,12 +1,5 @@
-const customLayoutOptions = [
-  {
-    label: 'Landing Page',
-    value: 'landing-page',
-  },
-  {
-    label: 'App',
-    value: 'app',
-  },
-];
+import { layoutOptions } from '../../../components/layouts/customLayouts';
+
+const customLayoutOptions = [...layoutOptions];
 
 export default customLayoutOptions;

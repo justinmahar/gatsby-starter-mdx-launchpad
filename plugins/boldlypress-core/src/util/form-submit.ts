@@ -7,21 +7,23 @@ export const submitFormData = (
   formData: FormData | string,
   fetchRequestInit: RequestInit = {}
 ): Promise<any> => {
-  return new Promise((resolve: (value?: {} | PromiseLike<{}> | undefined) => void, reject: (reason?: any) => void) => {
-    const mergedFetchRequestInit: any = {
-      body: formData,
-      method: DEFAULT_METHOD,
-      ...fetchRequestInit,
-    };
+  return new Promise(
+    (resolve: (value?: {} | PromiseLike<{}> | undefined) => void, reject: (reason?: any) => void) => {
+      const mergedFetchRequestInit: any = {
+        body: formData,
+        method: DEFAULT_METHOD,
+        ...fetchRequestInit,
+      };
 
-    fetch(formActionUrl, mergedFetchRequestInit)
-      .then(response => {
-        resolve(response);
-      })
-      .catch(err => {
-        reject(err);
-      });
-  });
+      fetch(formActionUrl, mergedFetchRequestInit)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    }
+  );
 };
 
 export const submitForm = (

@@ -1,46 +1,19 @@
 import { Location } from '@reach/router';
-import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super-seo';
 import MdxContent from '../../data/MdxContent';
-import SocialSharingSettings from '../../data/settings/SocialSharingSettings';
-import SiteMetadata from '../../data/SiteMetadata';
-import renderTemplateTags from '../../util/render-template-tags';
+import { LayoutProps } from '../layouts/getLayout';
 
-export interface MdxSEOProps {
-  mdxContent: MdxContent;
-  templateTags: { [x: string]: string };
-}
-
-export default function MdxSEO(props: MdxSEOProps): JSX.Element {
-  const data = useStaticQuery(graphql`
-    query PageLayoutQuery {
-      site {
-        siteMetadata {
-          ...siteMetadataCommons
-        }
-      }
-      seoYaml {
-        ...siteSeoSettings
-      }
-      socialSharingYaml {
-        ...socialSharingSettings
-      }
-    }
-  `);
-
+export default function MdxSEO(props: LayoutProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
-  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
-
   const templateTags = props.templateTags;
 
-  const lang = siteMetadata.data.siteLanguage;
+  const lang = props.settings.data.site.siteMetadata.siteLanguage;
 
-  const seoTitle = renderTemplateTags(mdxContent.data.frontmatter.seoSettings.seoTitle, templateTags);
-  const seoDescription = renderTemplateTags(mdxContent.data.frontmatter.seoSettings.seoDescription, templateTags);
-  let seoImageUrl = siteMetadata.data.siteImage;
-  let seoImageAlt = siteMetadata.data.siteImageAlt;
+  const seoTitle = templateTags.render(mdxContent.data.frontmatter.seoSettings.seoTitle);
+  const seoDescription = templateTags.render(mdxContent.data.frontmatter.seoSettings.seoDescription);
+  let seoImageUrl = props.settings.data.site.siteMetadata.siteImage;
+  let seoImageAlt = props.settings.data.site.siteMetadata.siteImageAlt;
 
   switch (mdxContent.data.frontmatter.seoSettings.seoImage.seoImageSelection) {
     case 'featured-image-if-enabled':
@@ -48,7 +21,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
         seoImageUrl = mdxContent.data.frontmatter.featuredImage.featuredImageUrl;
         seoImageAlt =
           mdxContent.data.frontmatter.featuredImage.featuredImageAlt !== 'none'
-            ? renderTemplateTags(mdxContent.data.frontmatter.featuredImage.featuredImageAlt, templateTags)
+            ? templateTags.render(mdxContent.data.frontmatter.featuredImage.featuredImageAlt)
             : undefined;
       }
       break;
@@ -56,7 +29,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
       seoImageUrl = mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImage;
       seoImageAlt =
         mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt !== 'none'
-          ? renderTemplateTags(mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt, templateTags)
+          ? templateTags.render(mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt)
           : undefined;
       break;
     default:
@@ -64,8 +37,8 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
 
   // If the twitter site username is none, set it to undefined.
   const twitterSiteUsername =
-    socialSharingSettings.data.twitterSiteUsername !== 'none'
-      ? socialSharingSettings.data.twitterSiteUsername
+    props.settings.data.socialSharingYaml.twitterSiteUsername !== 'none'
+      ? props.settings.data.socialSharingYaml.twitterSiteUsername
       : undefined;
 
   const openGraph: OpenGraphMetadata = {
@@ -76,7 +49,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
       ogImageAlt: seoImageAlt,
     },
     ogDescription: seoDescription,
-    ogSiteName: siteMetadata.data.siteName,
+    ogSiteName: props.settings.data.site.siteMetadata.siteName,
   };
   const twitterCard: TwitterSummaryCardType = {
     summaryCardSiteUsername: twitterSiteUsername,

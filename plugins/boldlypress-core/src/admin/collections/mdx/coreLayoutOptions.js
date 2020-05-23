@@ -9,7 +9,7 @@ const coreLayoutOptions = [
   },
   {
     label: 'Category Post List Page',
-    value: 'category-post-list',
+    value: 'post-category-list',
   },
 ];
 export default coreLayoutOptions;

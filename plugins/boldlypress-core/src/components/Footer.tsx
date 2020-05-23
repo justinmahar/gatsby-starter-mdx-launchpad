@@ -1,28 +1,15 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import MenuSettings from '../data/settings/MenuSettings';
-import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import Settings, { useSettings } from '../data/useSettings';
 import SiteBuildStatusBadge from './configured/SiteBuildStatusBadge';
-import SocialConnectComponent from './SocialConnectComponent';
 import SiteName from './configured/SiteName';
+import SocialConnectComponent from './SocialConnectComponent';
 
 export default function Footer(props: {}): JSX.Element {
-  const data = useStaticQuery(graphql`
-    query FooterMenuQuery {
-      menuYaml {
-        ...menuSettings
-      }
-      socialSharingYaml {
-        ...socialSharingSettings
-      }
-    }
-  `);
+  const settings: Settings = useSettings();
 
-  const menuSettings: MenuSettings = new MenuSettings(data.menuYaml);
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
-
-  const footerMenuElements: JSX.Element[] = menuSettings.data.footerMenus.map((footerMenu, menuIndex) => {
+  const footerMenuElements: JSX.Element[] = settings.data.menuYaml.footerMenus.map((footerMenu, menuIndex) => {
     const menuKey = 'footer-menu-' + menuIndex;
     const menuItemElements: JSX.Element[] = footerMenu.menuItems.map((menuItem, menuItemIndex) => {
       let linkElement = <span>Error!</span>;
@@ -63,40 +50,42 @@ export default function Footer(props: {}): JSX.Element {
 
   const Divider = () => <span className="mx-3" />;
 
-  const legalMenuElements: JSX.Element[] = menuSettings.data.footerLegalMenuItems.map((menuItem, index: number) => {
-    let linkElement = <span>Error!</span>;
-    if (!menuItem.external) {
-      linkElement = (
-        <Link
-          to={menuItem.link}
-          className={`text-muted text-nowrap ${menuItem.class !== 'none' ? menuItem.class : undefined}`}
-        >
-          {menuItem.name}
-        </Link>
-      );
-    } else {
-      const openInNewWindowAttributes = menuItem.openInNewWindow
-        ? {
-            target: '_blank',
-            rel: 'noopener noreferrer',
-          }
-        : {};
-      linkElement = (
-        <a
-          href={menuItem.link}
-          className={`text-muted text-nowrap ${menuItem.class !== 'none' ? menuItem.class : undefined}`}
-          {...openInNewWindowAttributes}
-        >
-          {menuItem.name}
-        </a>
+  const legalMenuElements: JSX.Element[] = settings.data.menuYaml.footerLegalMenuItems.map(
+    (menuItem, index: number) => {
+      let linkElement = <span>Error!</span>;
+      if (!menuItem.external) {
+        linkElement = (
+          <Link
+            to={menuItem.link}
+            className={`text-muted text-nowrap ${menuItem.class !== 'none' ? menuItem.class : undefined}`}
+          >
+            {menuItem.name}
+          </Link>
+        );
+      } else {
+        const openInNewWindowAttributes = menuItem.openInNewWindow
+          ? {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            }
+          : {};
+        linkElement = (
+          <a
+            href={menuItem.link}
+            className={`text-muted text-nowrap ${menuItem.class !== 'none' ? menuItem.class : undefined}`}
+            {...openInNewWindowAttributes}
+          >
+            {menuItem.name}
+          </a>
+        );
+      }
+      return (
+        <span key={'footer-menu-item-' + index} className="mx-3 mb-2">
+          {linkElement}
+        </span>
       );
     }
-    return (
-      <span key={'footer-menu-item-' + index} className="mx-3 mb-2">
-        {linkElement}
-      </span>
-    );
-  });
+  );
 
   const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -105,7 +94,7 @@ export default function Footer(props: {}): JSX.Element {
       <Container>
         <div className="d-flex flex-wrap justify-content-around">
           {footerMenuElements}
-          {socialSharingSettings.data.socialAccounts.length > 0 && (
+          {settings.data.socialSharingYaml.socialAccounts.length > 0 && (
             <div className="m-2">
               <h5>Connect</h5>
               <div>

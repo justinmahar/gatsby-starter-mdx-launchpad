@@ -41,7 +41,7 @@ const showPromptWhenUpdateAvailable = true;
 const updateAvailablePromptMessage = 'This application has been updated. Reload to display the latest version?';
 
 // Offline support - Configure the prompt to update.
-const onServiceWorkerUpdateReadyFunction = _apiCallbackContext => {
+const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
   if (offlineSupportEnabled && (forceReload || showPromptWhenUpdateAvailable)) {
     const answer = forceReload ? true : window.confirm(updateAvailablePromptMessage);
     if (answer === true) {

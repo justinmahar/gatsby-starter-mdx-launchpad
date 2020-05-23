@@ -1,10 +1,8 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Button, Col, Container, Form, FormControlProps, Row } from 'react-bootstrap';
 import { BsPrefixProps, ReplaceProps } from 'react-bootstrap/helpers';
-import FormSettings, { FormFieldData, FormInfo } from '../data/settings/FormSettings';
-import MailingListSettings from '../data/settings/MailingListSettings';
-import SiteMetadata from '../data/SiteMetadata';
+import { FormFieldData, FormInfo } from '../data/settings/FormSettings';
+import Settings, { useSettings } from '../data/useSettings';
 import useContactForm, { ContactFormField, FormModel } from '../hooks/useContactForm';
 import renderTemplateTags from '../util/render-template-tags';
 
@@ -16,30 +14,11 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
   const [successAlertVisible, setSuccessAlertVisible] = React.useState(false);
   const [errorAlertVisible, setErrorAlertVisible] = React.useState(false);
 
-  const data = useStaticQuery(graphql`
-    query MailingListSignupContainerQuery {
-      site {
-        siteMetadata {
-          ...siteMetadataCommons
-        }
-      }
-      mailingListYaml {
-        ...mailingListSettings
-      }
-      formsYaml {
-        ...formSettings
-      }
-    }
-  `);
-  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const mailingListSettings = new MailingListSettings(data.mailingListYaml);
-  const formSettings = new FormSettings(data.formsYaml);
+  const settings: Settings = useSettings();
 
-  const templateTags: { [x: string]: string } = {
-    ...siteMetadata.getTemplateTags(),
-  };
+  const templateTags = undefined;
 
-  const formInfo: FormInfo | undefined = formSettings.data.forms.find((value: FormInfo) => {
+  const formInfo: FormInfo | undefined = settings.data.formsYaml.forms.find((value: FormInfo) => {
     return value.formId === props.formId;
   });
 
@@ -88,14 +67,15 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
             }
           />
           {formField.type === 'email' && (
-            <Form.Text>{mailingListSettings.data.footerMailingListSection.privacyText}</Form.Text>
+            <Form.Text>{settings.data.mailingListYaml.footerMailingListSection.privacyText}</Form.Text>
           )}
         </Form.Group>
       </div>
     );
   });
 
-  const coverOpacity: number = 1 - mailingListSettings.data.footerMailingListSection.backgroundImageBrightness / 100;
+  const coverOpacity: number =
+    1 - settings.data.mailingListYaml.footerMailingListSection.backgroundImageBrightness / 100;
 
   const containerStyles = {
     paddingTop: '6rem',
@@ -107,8 +87,8 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
       rgba(0, 0, 0, ${coverOpacity})
         ), url('${
           !successAlertVisible
-            ? mailingListSettings.data.footerMailingListSection.backgroundImage
-            : mailingListSettings.data.footerMailingListSection.successImage
+            ? settings.data.mailingListYaml.footerMailingListSection.backgroundImage
+            : settings.data.mailingListYaml.footerMailingListSection.successImage
         }') no-repeat center center /cover`,
   };
 
@@ -150,12 +130,12 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
                 textDecoration: 'none',
               }}
             >
-              {mailingListSettings.data.footerMailingListSection.titleText}
+              {settings.data.mailingListYaml.footerMailingListSection.titleText}
             </h4>
             <p
               className="my-4 font-weight-bold"
               dangerouslySetInnerHTML={{
-                __html: mailingListSettings.data.footerMailingListSection.bodyText,
+                __html: settings.data.mailingListYaml.footerMailingListSection.bodyText,
               }}
             ></p>
             <div className="my-5">
@@ -171,7 +151,7 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
                 >
                   {errorAlertVisible && (
                     <Form.Text className="text-warning font-weight-bold mb-2">
-                      {mailingListSettings.data.footerMailingListSection.errorSubmittingText}
+                      {settings.data.mailingListYaml.footerMailingListSection.errorSubmittingText}
                     </Form.Text>
                   )}
                   {contactFormElements}
@@ -207,11 +187,11 @@ export default function MailingListSignupContainer(props: MailingListSignupConta
                 textDecoration: 'none',
               }}
             >
-              {mailingListSettings.data.footerMailingListSection.successTitleText}
+              {settings.data.mailingListYaml.footerMailingListSection.successTitleText}
             </h4>
             <p
               dangerouslySetInnerHTML={{
-                __html: mailingListSettings.data.footerMailingListSection.successBodyText,
+                __html: settings.data.mailingListYaml.footerMailingListSection.successBodyText,
               }}
             ></p>
           </Col>

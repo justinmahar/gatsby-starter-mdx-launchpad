@@ -3,11 +3,15 @@ import MdxContent from '../../data/MdxContent';
 import coreLayouts from './coreLayouts';
 import customLayouts from './customLayouts';
 import NoLayout from './NoLayout';
+import Settings from '../../data/useSettings';
+import { TemplateTags } from '../../data/TemplateTags';
 
 export interface LayoutProps {
-  mdx: any;
   pageQueryData: any;
   pageContext: any;
+  mdxContent: MdxContent;
+  settings: Settings;
+  templateTags: TemplateTags;
 }
 
 export type CustomLayouts = { [id: string]: React.FC<LayoutProps> };

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import TemplateTag from './TemplateTag';
+import { useSettings } from '../../data/useSettings';
 
 export default function SiteName(): JSX.Element {
-  return <TemplateTag value="{siteName}" />;
+  return <>{useSettings().data.site.siteMetadata.siteName}</>;
 }

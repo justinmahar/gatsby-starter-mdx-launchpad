@@ -1,11 +1,10 @@
 import customLayoutOptions from './customLayoutOptions';
 import coreLayoutOptions from './coreLayoutOptions';
 
-const ContentOptionsObject = options => {
+const ContentOptionsObject = (options) => {
   const layoutDefault = options && options.layoutDefault ? options.layoutDefault : 'content';
-  const showSidebarDefault =
-    options && typeof (options.showSidebarDefault !== 'undefined') ? options.showSidebarDefault : true;
-  const showDateDefault = options && typeof (options.showDateDefault !== 'undefined') ? options.showDateDefault : true;
+  const showDateDefault =
+    options && typeof (options.showDateDefault !== 'undefined') ? options.showDateDefault : true;
   const enableDiscussionDefault =
     options && typeof (options.enableDiscussionDefault !== 'undefined') ? options.enableDiscussionDefault : true;
 
@@ -21,13 +20,6 @@ const ContentOptionsObject = options => {
         hint: 'Select the layout type.',
         default: layoutDefault,
         options: [...coreLayoutOptions, ...customLayoutOptions],
-      },
-      {
-        label: 'Show Sidebar',
-        name: 'showSidebar',
-        widget: 'boolean',
-        hint: "You can show or hide the sidebar if you'd like.",
-        default: showSidebarDefault,
       },
       {
         label: 'Show Title',

@@ -61,7 +61,6 @@ const pages = {
       showTitleSectionDefault: false,
     }),
     ContentOptionsObject({
-      showSidebarDefault: false,
       showDateDefault: false,
       enableDiscussionDefault: false,
     }),

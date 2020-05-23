@@ -1,9 +1,9 @@
 ---
-title: '{contentCategory} Posts'
-rawSlug: category-post-list-page
+title: Page Not Found
+rawSlug: not-found
 date: '2019-11-02'
 category: none
-customExcerpt: none
+customExcerpt: 'Sorry, we couldn''t find what you were looking for.'
 featuredImage:
   featuredImageAlt: none
   featuredImageEnabled: false
@@ -12,12 +12,11 @@ featuredImage:
   showTitleSection: false
 options:
   dateEnabled: false
-  unlisted: false
   discussionEnabled: false
-  hidden: true
-  showTitle: true
-  layout: category-post-list
-  showSidebar: true
+  hidden: false
+  layout: content
+  showTitle: false
+  unlisted: false
 sharing:
   facebookHashtag: none
   facebookQuote: '{contentSeoTitle}'
@@ -35,4 +34,30 @@ seoSettings:
   seoTitle: '{configSeoTitle}'
 group: pages
 ---
-Category post listing page.
+import { Link } from "gatsby";
+
+import { Button, Image } from "react-bootstrap";
+
+<div class="text-center">
+
+  # Well, shoot.
+
+  <br/>
+
+  ##### We couldn't find what you were looking for, so here's a kitten instead.
+
+  <br/>
+
+  <Image
+    class="w-50"
+    src="/media/not-found-image.jpg"
+    alt="A tiny, cute kitten."
+    title="Kitten"
+    thumbnail
+  />
+
+  <br/><br/>
+
+  <Link to="/"><Button variant="outline-primary">&laquo; Home</Button></Link>
+
+</div>

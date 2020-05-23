@@ -1,5 +1,5 @@
-import Dashboard from './admin/Dashboard';
-import LoginForm from './admin/LoginForm';
+import Dashboard from './configured/admin/Dashboard';
+import LoginForm from './configured/admin/LoginForm';
 import SiteName from './configured/SiteName';
 import ContactForm from './ContactForm';
 import CurrentYear from './CurrentYear';

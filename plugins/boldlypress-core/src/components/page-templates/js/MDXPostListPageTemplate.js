@@ -24,8 +24,5 @@ export const query = graphql`
         ...mdxContent
       }
     }
-    builtInPagesYaml {
-      ...builtInPagesSettings
-    }
   }
 `;

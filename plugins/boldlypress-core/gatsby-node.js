@@ -143,7 +143,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
         postCategoryListSlug
       }
     }
-  `).then(result => {
+  `).then((result) => {
     // This is some boilerlate to handle errors
     if (result.errors) {
       console.error(result.errors);
@@ -155,7 +155,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
     const mdxPageTemplate = path.resolve(`${__dirname}/src/components/page-templates/js/MDXPageTemplate.js`);
 
     // We'll call `createPage` for each result, creating each post page.
-    mdxNodes.forEach(node => {
+    mdxNodes.forEach((node) => {
       // Skip creating blog posts if the blog is disabled
       const skipCreation = !blogEnabled && node.frontmatter.group === 'posts';
 
@@ -187,7 +187,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
 
       // Collect all posts together.
       // These will be in the "posts" group defined in the frontmatter.
-      const posts = mdxNodes.filter(mdxNode => {
+      const posts = mdxNodes.filter((mdxNode) => {
         return (
           mdxNode.frontmatter.group === 'posts' &&
           // Don't list hidden, unlisted, or built-in ones
@@ -202,8 +202,8 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       // All posts with the category slug "none" are ignored.
       const postCategorySlugsToNames = {};
       posts
-        .filter(post => !!post.fields.categorySlug && post.fields.categorySlug !== NONE_CATEGORY)
-        .forEach(post => {
+        .filter((post) => !!post.fields.categorySlug && post.fields.categorySlug !== NONE_CATEGORY)
+        .forEach((post) => {
           if (!postCategorySlugsToNames[post.fields.categorySlug]) {
             postCategorySlugsToNames[post.fields.categorySlug] = post.frontmatter.category;
           }
@@ -234,8 +234,8 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       });
 
       // Now we'll create listing pages for each categorySlug.
-      postCategorySlugs.forEach(categorySlug => {
-        const posts = mdxNodes.filter(node => node.fields.categorySlug === categorySlug);
+      postCategorySlugs.forEach((categorySlug) => {
+        const posts = mdxNodes.filter((node) => node.fields.categorySlug === categorySlug);
         const numCategoryPages = Math.ceil(posts.length / postsPerPage);
         Array.from({ length: numCategoryPages }).forEach((_, i) => {
           createPage({

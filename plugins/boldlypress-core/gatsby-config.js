@@ -1,5 +1,5 @@
 /** Site metadata configuration */
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
   const reactHelmetOptions = themeOptions.reactHelmetOptions ? themeOptions.reactHelmetOptions : {};
   const sitemapOptions = themeOptions.sitemapOptions ? themeOptions.sitemapOptions : {};
   const robotsTxtOptions = themeOptions.robotsTxtOptions ? themeOptions.robotsTxtOptions : {};

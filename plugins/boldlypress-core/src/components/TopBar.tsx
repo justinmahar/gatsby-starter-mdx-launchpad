@@ -1,46 +1,26 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import * as React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import MenuSettings from '../data/settings/MenuSettings';
-import NavbarSettings from '../data/settings/NavbarSettings';
-import SiteMetadata from '../data/SiteMetadata';
-import renderTemplateTags from '../util/render-template-tags';
+import { useSettings } from '../data/useSettings';
+import { TemplateTags } from '../data/TemplateTags';
 
-export default function TopBar(props: {}): JSX.Element {
-  const data = useStaticQuery(graphql`
-    query TopBarMenuQuery {
-      menuYaml {
-        ...menuSettings
-      }
-      navbarYaml {
-        ...navbarSettings
-      }
-      site {
-        siteMetadata {
-          ...siteMetadataCommons
-        }
-      }
-    }
-  `);
+export interface TopBarProps {
+  templateTags: TemplateTags;
+}
+export default function TopBar(props: TopBarProps): JSX.Element {
+  const settings = useSettings();
 
-  const siteMetadata = new SiteMetadata(data.site.siteMetadata);
-  const menuSettings: MenuSettings = new MenuSettings(data.menuYaml);
-  const navbarSettings = new NavbarSettings(data.navbarYaml);
+  const templateTags: TemplateTags = props.templateTags;
 
-  const templateTags: { [x: string]: string } = {
-    ...siteMetadata.getTemplateTags(),
-  };
-
-  const navbarLogoText = renderTemplateTags(navbarSettings.data.navbarLogo.navbarLogoText, templateTags);
-  const navbarLogoDescriptionText = renderTemplateTags(
-    navbarSettings.data.navbarLogo.navbarLogoDescriptionText,
-    templateTags
+  const navbarLogoText = templateTags.render(settings.data.navbarYaml.navbarLogo.navbarLogoText);
+  const navbarLogoDescriptionText = templateTags.render(
+    settings.data.navbarYaml.navbarLogo.navbarLogoDescriptionText
   );
 
-  const topLevelMenus = menuSettings.data.navbarMenus.filter((menu) => {
+  const topLevelMenus = settings.data.menuYaml.navbarMenus.filter((menu) => {
     return menu.parentMenuItemName === 'none';
   });
-  const subMenus = menuSettings.data.navbarMenus.filter((menu) => {
+  const subMenus = settings.data.menuYaml.navbarMenus.filter((menu) => {
     return menu.parentMenuItemName !== 'none';
   });
 
@@ -139,7 +119,7 @@ export default function TopBar(props: {}): JSX.Element {
 
   let navbarFixed = undefined;
   let navbarSticky = undefined;
-  switch (navbarSettings.data.navbarPlacement) {
+  switch (settings.data.navbarYaml.navbarPlacement) {
     case 'fixed-top':
       navbarFixed = 'top';
       break;
@@ -163,8 +143,8 @@ export default function TopBar(props: {}): JSX.Element {
   };
   let shadowStyle: React.CSSProperties = shadowStyleTop;
   if (
-    navbarSettings.data.navbarPlacement === 'sticky-bottom' ||
-    navbarSettings.data.navbarPlacement === 'fixed-bottom'
+    settings.data.navbarYaml.navbarPlacement === 'sticky-bottom' ||
+    settings.data.navbarYaml.navbarPlacement === 'fixed-bottom'
   ) {
     shadowStyle = shadowStyleBottom;
   }
@@ -189,23 +169,23 @@ export default function TopBar(props: {}): JSX.Element {
       }
 
       // Hide navbar description
-      if (navbarSettings.data.navbarLogo.navbarHideDescriptionWhenScrolling) {
+      if (settings.data.navbarYaml.navbarLogo.navbarHideDescriptionWhenScrolling) {
         const overlap = 80;
         // Description is showing
         if (!navbarDescriptionHidden) {
           let shouldHide = false;
-          if (navbarSettings.data.navbarPlacement === 'sticky-top') {
+          if (settings.data.navbarYaml.navbarPlacement === 'sticky-top') {
             shouldHide = currentWindowScrollY > navbarStartingY + overlap;
-          } else if (navbarSettings.data.navbarPlacement !== 'default') {
+          } else if (settings.data.navbarYaml.navbarPlacement !== 'default') {
             shouldHide = currentWindowScrollY > overlap;
           }
           setNavbarDescriptionHidden(shouldHide);
         } else {
           // Description is hidden
           let shouldShow = false;
-          if (navbarSettings.data.navbarPlacement === 'sticky-top') {
+          if (settings.data.navbarYaml.navbarPlacement === 'sticky-top') {
             shouldShow = currentWindowScrollY <= Math.max(0, navbarStartingY - overlap);
-          } else if (navbarSettings.data.navbarPlacement !== 'default') {
+          } else if (settings.data.navbarYaml.navbarPlacement !== 'default') {
             shouldShow = currentWindowScrollY <= 0;
           }
 
@@ -217,14 +197,14 @@ export default function TopBar(props: {}): JSX.Element {
   };
 
   const scrollHandlerEnabled: boolean =
-    navbarSettings.data.navbarDropShadow === 'at-top' ||
-    navbarSettings.data.navbarDropShadow === 'just-beyond' ||
-    navbarSettings.data.navbarLogo.navbarHideDescriptionWhenScrolling;
+    settings.data.navbarYaml.navbarDropShadow === 'at-top' ||
+    settings.data.navbarYaml.navbarDropShadow === 'just-beyond' ||
+    settings.data.navbarYaml.navbarLogo.navbarHideDescriptionWhenScrolling;
   const isScrolledJustBeyondNavbar = currentWindowScrollY > 0 && isNavbarAtTop;
   const showShadow =
-    navbarSettings.data.navbarDropShadow === 'always' ||
-    (navbarSettings.data.navbarDropShadow === 'at-top' && isNavbarAtTop) ||
-    (navbarSettings.data.navbarDropShadow === 'just-beyond' && isScrolledJustBeyondNavbar);
+    settings.data.navbarYaml.navbarDropShadow === 'always' ||
+    (settings.data.navbarYaml.navbarDropShadow === 'at-top' && isNavbarAtTop) ||
+    (settings.data.navbarYaml.navbarDropShadow === 'just-beyond' && isScrolledJustBeyondNavbar);
 
   const effectHandlerVariables: any[] = [
     isNavbarAtTop,
@@ -239,8 +219,8 @@ export default function TopBar(props: {}): JSX.Element {
   // shows the menu off screen. In this case, force it to collapse.
   const forceCollapsedMenu =
     hasSubmenus &&
-    (navbarSettings.data.navbarPlacement === 'fixed-bottom' ||
-      navbarSettings.data.navbarPlacement === 'sticky-bottom');
+    (settings.data.navbarYaml.navbarPlacement === 'fixed-bottom' ||
+      settings.data.navbarYaml.navbarPlacement === 'sticky-bottom');
 
   React.useEffect(() => {
     // This is a hack to get rid of the expansion class on navbar. I couldn't find
@@ -251,15 +231,15 @@ export default function TopBar(props: {}): JSX.Element {
     }
   }, [forceCollapsedMenu, navbarElementId]);
 
-  const logoImage = navbarSettings.data.navbarLogo.navbarUseSiteIcon
-    ? siteMetadata.data.siteIcon
-    : navbarSettings.data.navbarLogo.navbarCustomLogoImage;
-  const logoImageAlt = navbarSettings.data.navbarLogo.navbarUseSiteIcon
-    ? siteMetadata.data.siteIconAlt !== 'none'
-      ? siteMetadata.data.siteIconAlt
+  const logoImage = settings.data.navbarYaml.navbarLogo.navbarUseSiteIcon
+    ? settings.data.site.siteMetadata.siteIcon
+    : settings.data.navbarYaml.navbarLogo.navbarCustomLogoImage;
+  const logoImageAlt = settings.data.navbarYaml.navbarLogo.navbarUseSiteIcon
+    ? settings.data.site.siteMetadata.siteIconAlt !== 'none'
+      ? settings.data.site.siteMetadata.siteIconAlt
       : undefined
-    : navbarSettings.data.navbarLogo.navbarCustomLogoImage !== 'none'
-    ? navbarSettings.data.navbarLogo.navbarCustomLogoImage
+    : settings.data.navbarYaml.navbarLogo.navbarCustomLogoImage !== 'none'
+    ? settings.data.navbarYaml.navbarLogo.navbarCustomLogoImage
     : undefined;
 
   return (
@@ -277,28 +257,28 @@ export default function TopBar(props: {}): JSX.Element {
           <div
             className={
               'd-inline-flex align-items-center' +
-              (navbarSettings.data.navbarLogo.navbarLogoOrderReversed ? ' flex-row-reverse' : '') +
+              (settings.data.navbarYaml.navbarLogo.navbarLogoOrderReversed ? ' flex-row-reverse' : '') +
               ' mt-2'
             }
             style={{ userSelect: 'none' }}
           >
             <div className="d-flex align-items-center">
-              {!!navbarSettings.data.navbarLogo.navbarLogoImageEnabled && (
+              {!!settings.data.navbarYaml.navbarLogo.navbarLogoImageEnabled && (
                 <img
                   src={logoImage}
                   alt={logoImageAlt}
-                  width={navbarSettings.data.navbarLogo.navbarLogoImageWidth}
-                  height={navbarSettings.data.navbarLogo.navbarLogoImageHeight}
+                  width={settings.data.navbarYaml.navbarLogo.navbarLogoImageWidth}
+                  height={settings.data.navbarYaml.navbarLogo.navbarLogoImageHeight}
                   className="d-inline-block align-top"
                 />
               )}
             </div>
-            {!!navbarSettings.data.navbarLogo.navbarLogoImageEnabled &&
-              !!navbarSettings.data.navbarLogo.navbarLogoTextEnabled && (
-                <div style={{ width: navbarSettings.data.navbarLogo.navbarLogoGap }} />
+            {!!settings.data.navbarYaml.navbarLogo.navbarLogoImageEnabled &&
+              !!settings.data.navbarYaml.navbarLogo.navbarLogoTextEnabled && (
+                <div style={{ width: settings.data.navbarYaml.navbarLogo.navbarLogoGap }} />
               )}
             <div>
-              {!!navbarSettings.data.navbarLogo.navbarLogoTextEnabled && (
+              {!!settings.data.navbarYaml.navbarLogo.navbarLogoTextEnabled && (
                 <span
                   dangerouslySetInnerHTML={{
                     __html: navbarLogoText,
@@ -308,7 +288,7 @@ export default function TopBar(props: {}): JSX.Element {
             </div>
           </div>
 
-          {!navbarDescriptionHidden && navbarSettings.data.navbarLogo.navbarLogoDescriptionEnabled && (
+          {!navbarDescriptionHidden && settings.data.navbarYaml.navbarLogo.navbarLogoDescriptionEnabled && (
             <div
               className="mb-2 block d-none d-md-block"
               dangerouslySetInnerHTML={{
@@ -319,7 +299,7 @@ export default function TopBar(props: {}): JSX.Element {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          {navbarSettings.data.navbarLogo.navbarLogoDescriptionEnabled && (
+          {settings.data.navbarYaml.navbarLogo.navbarLogoDescriptionEnabled && (
             <div
               className="my-2 mr-2 block d-md-none"
               dangerouslySetInnerHTML={{
@@ -350,7 +330,7 @@ function useScrollHandlerEffectOn(
   scrollHandlerEnabled: boolean,
   effectHandlerVariables: any[],
   handleScroll: (element: HTMLElement | null) => void
-) {
+): void {
   const getElement = (): HTMLElement | null => {
     if (typeof targetElementRefOrId === 'string') {
       return document.getElementById(targetElementRefOrId) as HTMLElement;

@@ -2,7 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
 import MdxContent from '../data/MdxContent';
-import PostSettings from '../data/settings/PostSettings';
+import Settings, { useSettings } from '../data/useSettings';
 
 // Don't delete this yet. Save it for the query below.
 export default function RecentPostsWidget(props: {}): JSX.Element {
@@ -13,20 +13,17 @@ export default function RecentPostsWidget(props: {}): JSX.Element {
           ...mdxContent
         }
       }
-      postYaml {
-        ...postSettings
-      }
     }
   `);
 
-  const postSettings = new PostSettings(data.postYaml);
-  const postCount = postSettings.data.recentPostsWidgetPostCount;
+  const settings: Settings = useSettings();
+  const postCount = settings.data.postYaml.recentPostsWidgetPostCount;
 
   const posts: MdxContent[] = data.allMdx.nodes
     .map((node) => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
-  const categories: string[] = postSettings.data.recentPostsWidgetPostCategories.map(
+  const categories: string[] = settings.data.postYaml.recentPostsWidgetPostCategories.map(
     (postCategory) => postCategory.categoryName
   );
 

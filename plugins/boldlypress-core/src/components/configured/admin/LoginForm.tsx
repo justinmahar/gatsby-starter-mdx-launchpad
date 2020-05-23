@@ -4,7 +4,7 @@ import { useAdmin } from 'react-authless-admin';
 
 export interface LoginFormProps {}
 
-export default function LoginForm(props: LoginFormProps) {
+export default function LoginForm(props: LoginFormProps): JSX.Element {
   const [passcode, setPasscode] = React.useState('');
   const [, setIsAdmin] = useAdmin();
   const handleLogin = (): void => {
@@ -23,8 +23,8 @@ export default function LoginForm(props: LoginFormProps) {
                 type="password"
                 placeholder="Passcode"
                 value={passcode}
-                onChange={e => setPasscode(e.target.value)}
-                onKeyPress={e => e.key === 'Enter' && handleLogin()}
+                onChange={(e) => setPasscode(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
               />
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

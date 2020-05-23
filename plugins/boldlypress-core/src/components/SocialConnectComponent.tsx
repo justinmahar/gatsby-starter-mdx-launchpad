@@ -2,7 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import { EmailIcon } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
-import SocialSharingSettings from '../data/settings/SocialSharingSettings';
+import Settings, { useSettings } from '../data/useSettings';
 
 const ICON_SIZE = 32;
 
@@ -21,17 +21,9 @@ export interface SocialConnectComponentProps {
 }
 
 export default function SocialConnectComponent(props: SocialConnectComponentProps): JSX.Element {
-  const data = useStaticQuery(graphql`
-    query SocialConnectComponentQuery {
-      socialSharingYaml {
-        ...socialSharingSettings
-      }
-    }
-  `);
+  const settings: Settings = useSettings();
 
-  const socialSharingSettings: SocialSharingSettings = new SocialSharingSettings(data.socialSharingYaml);
-
-  const socialIconElements: JSX.Element[] = socialSharingSettings.data.socialAccounts
+  const socialIconElements: JSX.Element[] = settings.data.socialSharingYaml.socialAccounts
     .filter((socialAccount) => socialAccount.enabled)
     .map((socialAccount) => {
       const key = `${socialAccount.name}-account`;
