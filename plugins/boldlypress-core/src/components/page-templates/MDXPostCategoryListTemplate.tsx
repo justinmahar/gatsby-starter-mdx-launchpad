@@ -9,11 +9,10 @@ export interface MDXPostCategoryListTemplateProps {
 
 export default function MDXPostCategoryListTemplate(props: MDXPostCategoryListTemplateProps): JSX.Element {
   const settings = useSettings();
-  const pageQueryData = props.data;
   return (
     <BuiltInPageLayout
       rawPageSlug={settings.data.builtInPagesYaml.rawCategoryPostListPageSlug}
-      pageQueryData={pageQueryData}
+      pageQueryData={props.data}
       pageContext={props.pageContext}
     />
   );

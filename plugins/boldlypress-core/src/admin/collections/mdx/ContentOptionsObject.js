@@ -1,5 +1,4 @@
-import customLayoutOptions from './customLayoutOptions';
-import coreLayoutOptions from './coreLayoutOptions';
+import layoutOptions from './layoutOptions';
 
 const ContentOptionsObject = (options) => {
   const layoutDefault = options && options.layoutDefault ? options.layoutDefault : 'content';
@@ -19,7 +18,7 @@ const ContentOptionsObject = (options) => {
         widget: 'select',
         hint: 'Select the layout type.',
         default: layoutDefault,
-        options: [...coreLayoutOptions, ...customLayoutOptions],
+        options: layoutOptions,
       },
       {
         label: 'Show Title',

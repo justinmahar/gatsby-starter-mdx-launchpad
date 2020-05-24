@@ -1,4 +1,4 @@
-const FeaturedImageObject = options => {
+const FeaturedImageObject = (options) => {
   const showCardImageDefault = options.showCardImageDefault ? options.showCardImageDefault : true;
   const showTitleSectionDefault = options.showTitleSectionDefault ? options.showTitleSectionDefault : true;
   return {

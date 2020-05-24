@@ -1,6 +1,8 @@
-const SeoSettingsObject = options => {
+const SeoSettingsObject = (options) => {
   const seoConfigurationIdDefault =
-    options && options.seoConfigurationIdDefault ? options.seoConfigurationIdDefault : 'default-page-seo-configuration';
+    options && options.seoConfigurationIdDefault
+      ? options.seoConfigurationIdDefault
+      : 'default-page-seo-configuration';
 
   return {
     label: 'SEO Settings',

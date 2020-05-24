@@ -7,10 +7,9 @@ interface IndexProps {
 }
 
 export default function Index(props: IndexProps): JSX.Element {
-  const settings = useSettings();
   return (
     <BuiltInPageLayout
-      rawPageSlug={settings.data.builtInPagesYaml.rawIndexSlug}
+      rawPageSlug={useSettings().data.builtInPagesYaml.rawIndexSlug}
       pageQueryData={props.data}
       pageContext={{}}
     />

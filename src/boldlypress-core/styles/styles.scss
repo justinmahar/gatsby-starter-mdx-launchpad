@@ -1,4 +1,14 @@
-// Put custom styles here
+// Put your styles here
+
+// Add gentle shadows to navbar, cards and sections
+.section { // .navbar, .section, .card
+  &.primary {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+  }
+  &.secondary {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+  }
+}
 
 // Remove horizonal scrollbars for code blocks
 .gatsby-highlight pre code {
