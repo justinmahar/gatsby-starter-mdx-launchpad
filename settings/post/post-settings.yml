@@ -1,6 +1,6 @@
 blogEnabled: true
 indexPagePostCount: 5
-listPagePostCount: 5
+postCategoryListPostCount: 5
 recentPostsWidgetPostCount: 5
 recentPostsWidgetPostCategories:
   - categoryName: all

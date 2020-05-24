@@ -27,7 +27,8 @@ const siteSeoSettingsFile = {
           label: 'Configuration ID',
           name: 'seoConfigurationId',
           widget: 'string',
-          hint: 'A unique ID used to reference this SEO configuration. This will only be visible in this admin portal.',
+          hint:
+            'A unique ID used to reference this SEO configuration. This will only be visible in this admin portal.',
         },
         {
           label: 'SEO Title',

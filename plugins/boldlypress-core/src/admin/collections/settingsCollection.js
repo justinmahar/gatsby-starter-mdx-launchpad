@@ -2,9 +2,6 @@ import builtInPagesSettingsFile from './settings/builtInPagesSettingsFile';
 import formSettingsFile from './settings/formSettingsFile';
 import customSettingsFiles from './settings/customSettingsFiles';
 import discussionSettingsFile from './settings/discussionSettingsFile';
-import mailingListSettingsFile from './settings/mailingListSettingsFile';
-import menuSettingsFile from './settings/menuSettingsFile';
-import navbarSettingsFile from './settings/navbarSettingsFile';
 import offlineSupportSettingsFile from './settings/offlineSupportSettingsFile';
 import postSettingsFile from './settings/postSettingsFile';
 import reportingSettingsFile from './settings/reportingSettingsFile';
@@ -25,10 +22,7 @@ const settingsCollection = {
     builtInPagesSettingsFile,
     siteSeoSettingsFile,
     formSettingsFile,
-    mailingListSettingsFile,
     discussionSettingsFile,
-    navbarSettingsFile,
-    menuSettingsFile,
     socialSharingSettingsFile,
     postSettingsFile,
     reportingSettingsFile,

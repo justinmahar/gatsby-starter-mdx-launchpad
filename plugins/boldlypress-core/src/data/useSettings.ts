@@ -136,7 +136,7 @@ export const settingsQuery = graphql`
         buttonText
       }
       indexPagePostCount
-      listPagePostCount
+      postCategoryListPostCount
       postCategoryListSlug
       recentPostsWidgetPostCount
       recentPostsWidgetPostCategories {
@@ -302,7 +302,7 @@ export type SettingsData = {
       buttonText: string;
     };
     indexPagePostCount: number;
-    listPagePostCount: number;
+    postCategoryListPostCount: number;
     postCategoryListSlug;
     recentPostsWidgetPostCount: number;
     recentPostsWidgetPostCategories: {

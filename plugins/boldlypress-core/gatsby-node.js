@@ -138,7 +138,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
         }
       }
       postYaml {
-        listPagePostCount
+        postCategoryListPostCount
         allPostsListSlug
         postCategoryListSlug
       }
@@ -181,7 +181,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
     // Next, we need to create listing pages for all the posts.
     if (blogEnabled) {
       // Collect all the post settings we'll need
-      const postsPerPage = result.data.postYaml.listPagePostCount;
+      const postsPerPage = result.data.postYaml.postCategoryListPostCount;
       const allPostsListSlug = trimSlashes(result.data.postYaml.allPostsListSlug);
       const postCategoryListSlug = trimSlashes(result.data.postYaml.postCategoryListSlug);
 
