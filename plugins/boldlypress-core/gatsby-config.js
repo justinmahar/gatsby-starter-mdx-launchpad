@@ -97,14 +97,14 @@ module.exports = (themeOptions) => {
         ...sassOptions,
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        modulePath: `${__dirname}/src/admin/cms.js`,
-        manualInit: true,
-        ...netlifyCmsOptions,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-netlify-cms`,
+    //   options: {
+    //     modulePath: `${__dirname}/src/admin/cms.js`,
+    //     manualInit: true,
+    //     ...netlifyCmsOptions,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
