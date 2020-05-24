@@ -39,5 +39,10 @@ require('prismjs/themes/prism-okaidia.css');
 // require("prismjs/themes/prism-tomorrow.css")
 // require("prismjs/themes/prism-twilight.css")
 
+// == Argon Design System Styles ==
+require('./static/assets/vendor/nucleo/css/nucleo.css');
+require('./static/assets/vendor/font-awesome/css/font-awesome.min.css');
+require('./static/assets/css/argon-design-system-react.css');
+
 // == Custom Styles ==
 require('./src/styles/styles.scss');
