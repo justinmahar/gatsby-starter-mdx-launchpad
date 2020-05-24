@@ -48,101 +48,11 @@ export const settingsQuery = graphql`
         }
       }
     }
-    mailingListYaml {
-      mailingListFormId
-      sidebarWidget {
-        enabled
-        headerImage
-        titleText
-        bodyText
-        privacyText
-        errorSubmittingText
-        successImage
-        successTitleText
-        successBodyText
-      }
-      footerMailingListSection {
-        enabled
-        backgroundImage
-        backgroundImageBrightness
-        titleText
-        bodyText
-        privacyText
-        errorSubmittingText
-        successImage
-        successTitleText
-        successBodyText
-      }
-    }
-    menuYaml {
-      navbarMenus {
-        parentMenuItemName
-        name
-        menuItems {
-          name
-          link
-          class
-          external
-          openInNewWindow
-        }
-      }
-      footerMenus {
-        name
-        menuItems {
-          name
-          link
-          class
-          external
-          openInNewWindow
-        }
-      }
-      footerLegalMenuItems {
-        name
-        link
-        class
-        external
-        openInNewWindow
-      }
-    }
-    navbarYaml {
-      navbarLogo {
-        navbarCustomLogoImage
-        navbarLogoDescriptionEnabled
-        navbarLogoDescriptionText
-        navbarLogoGap
-        navbarLogoImageEnabled
-        navbarLogoImageHeight
-        navbarLogoImageWidth
-        navbarLogoText
-        navbarLogoTextEnabled
-        navbarUseSiteIcon
-        navbarHideDescriptionWhenScrolling
-        navbarLogoOrderReversed
-      }
-      navbarPlacement
-      navbarFixedTopPadding
-      navbarDropShadow
-    }
     postYaml {
-      featuredPost {
-        featuredPostEnabled
-        featureNewestPostEnabled
-        featuredPostSlug
-        contentCueText
-        customTitleText
-        customTeaser
-        leftQuote
-        rightQuote
-        buttonText
-      }
-      indexPagePostCount
+      blogEnabled
       postCategoryListPostCount
-      postCategoryListSlug
-      recentPostsWidgetPostCount
-      recentPostsWidgetPostCategories {
-        categoryName
-      }
       allPostsListSlug
+      postCategoryListSlug
     }
     reportingYaml {
       googleAnalytics {
@@ -214,101 +124,11 @@ export type SettingsData = {
   formsYaml: {
     forms: FormInfo[];
   };
-  mailingListYaml: {
-    mailingListFormId: string;
-    sidebarWidget: {
-      enabled: boolean;
-      headerImage: string;
-      titleText: string;
-      bodyText: string;
-      privacyText: string;
-      errorSubmittingText: string;
-      successImage: string;
-      successTitleText: string;
-      successBodyText: string;
-    };
-    footerMailingListSection: {
-      enabled: boolean;
-      backgroundImage: string;
-      backgroundImageBrightness: number;
-      titleText: string;
-      bodyText: string;
-      privacyText: string;
-      errorSubmittingText: string;
-      successImage: string;
-      successTitleText: string;
-      successBodyText: string;
-    };
-  };
-  menuYaml: {
-    navbarMenus: {
-      parentMenuItemName: string;
-      name: string;
-      menuItems: {
-        name: string;
-        link: string;
-        class: string;
-        external: boolean;
-        openInNewWindow: boolean;
-      }[];
-    }[];
-    footerMenus: {
-      name: string;
-      menuItems: {
-        name: string;
-        link: string;
-        class: string;
-        external: boolean;
-        openInNewWindow: boolean;
-      }[];
-    }[];
-    footerLegalMenuItems: {
-      name: string;
-      link: string;
-      class: string;
-      external: boolean;
-      openInNewWindow: boolean;
-    }[];
-  };
-  navbarYaml: {
-    navbarLogo: {
-      navbarCustomLogoImage: string;
-      navbarLogoDescriptionEnabled: boolean;
-      navbarLogoDescriptionText: string;
-      navbarLogoGap: number;
-      navbarLogoImageEnabled: boolean;
-      navbarLogoImageHeight: number;
-      navbarLogoImageWidth: number;
-      navbarLogoText: string;
-      navbarLogoTextEnabled: boolean;
-      navbarUseSiteIcon: string;
-      navbarHideDescriptionWhenScrolling: boolean;
-      navbarLogoOrderReversed: boolean;
-    };
-    navbarPlacement: NavbarPlacement;
-    navbarFixedTopPadding: number;
-    navbarDropShadow: NavbarDropShadow;
-  };
   postYaml: {
-    featuredPost: {
-      featuredPostEnabled: boolean;
-      featureNewestPostEnabled: boolean;
-      featuredPostSlug: string;
-      contentCueText: string;
-      customTitleText: string;
-      customTeaser: string;
-      leftQuote: string;
-      rightQuote: string;
-      buttonText: string;
-    };
-    indexPagePostCount: number;
+    blogEnabled: boolean;
     postCategoryListPostCount: number;
-    postCategoryListSlug;
-    recentPostsWidgetPostCount: number;
-    recentPostsWidgetPostCategories: {
-      categoryName: string;
-    }[];
     allPostsListSlug: string;
+    postCategoryListSlug: string;
   };
   reportingYaml: {
     googleAnalytics: {

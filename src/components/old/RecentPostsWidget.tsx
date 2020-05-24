@@ -16,16 +16,13 @@ export default function RecentPostsWidget(props: {}): JSX.Element {
     }
   `);
 
-  const settings: Settings = useSettings();
-  const postCount = settings.data.postYaml.recentPostsWidgetPostCount;
+  const postCount = 5;
 
   const posts: MdxContent[] = data.allMdx.nodes
     .map((node) => new MdxContent(node))
     .filter((post: MdxContent) => !post.data.frontmatter.options.hidden);
 
-  const categories: string[] = settings.data.postYaml.recentPostsWidgetPostCategories.map(
-    (postCategory) => postCategory.categoryName
-  );
+  const categories: string[] = [];
 
   // Filter and collect the posts to show
   let filteredPosts: MdxContent[] = [];

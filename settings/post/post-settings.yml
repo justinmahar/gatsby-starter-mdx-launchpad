@@ -1,18 +1,4 @@
 blogEnabled: true
-indexPagePostCount: 5
 postCategoryListPostCount: 5
-recentPostsWidgetPostCount: 5
-recentPostsWidgetPostCategories:
-  - categoryName: all
 allPostsListSlug: /posts
 postCategoryListSlug: /posts/category
-featuredPost:
-  buttonText: Read More »
-  contentCueText: Featured Post
-  customTeaser: none
-  customTitleText: none
-  featureNewestPostEnabled: false
-  featuredPostEnabled: true
-  featuredPostSlug: hello-world
-  leftQuote: “
-  rightQuote: ”
