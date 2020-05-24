@@ -14,7 +14,7 @@ const builtInPageSettingsFile = {
       hint: 'Page to show as the index, or homepage, of the site.',
     },
     {
-      label: 'Category Post List Page',
+      label: 'Post Category List Page',
       name: 'rawCategoryPostListPageSlug',
       widget: 'relation',
       collection: 'pages',

@@ -7,7 +7,7 @@ const pages = {
   label: 'Pages',
   label_singular: 'Page',
   description:
-    "Pages contain content separate from your blog posts and are not listed on the home page, category pages, or recent posts widget. Examples: About page, contact page, legal pages. If you're a technical person, they use MDX format and support JSX components.",
+    'Pages contain content separate from your blog posts and are not listed on the home page, category pages, or recent posts widget. Examples: About page, contact page, legal pages. They use MDX format and support JSX components.',
   name: 'pages',
   folder: 'src/pages-mdx',
   delete: true,

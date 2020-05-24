@@ -13,4 +13,4 @@ const layouts: Layouts = {
 
 export default layouts;
 
-// Be sure to update layoutOptions.js
+// Be sure to update admin/collections/mdx/layoutOptions.js

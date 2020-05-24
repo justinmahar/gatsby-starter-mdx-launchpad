@@ -6,8 +6,7 @@ import SharingObject from './mdx/SharingObject';
 const blogPosts = {
   label: 'Blog Posts',
   label_singular: 'Blog Post',
-  description:
-    "Blog posts are the content that makes up your site. If you're a technical person, they use MDX format and support JSX components.",
+  description: 'Blog posts are the content that makes up your site. They use MDX format and support JSX components.',
   name: 'posts',
   folder: 'src/posts-mdx',
   delete: true,
