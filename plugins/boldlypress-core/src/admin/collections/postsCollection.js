@@ -1,7 +1,7 @@
-import FeaturedImageObject from './mdx/FeaturedImageObject';
 import ContentOptionsObject from './mdx/ContentOptionsObject';
-import SharingObject from './mdx/SharingObject';
+import FeaturedImageObject from './mdx/FeaturedImageObject';
 import SeoSettingsObject from './mdx/SeoSettingsObject';
+import SharingObject from './mdx/SharingObject';
 
 const blogPosts = {
   label: 'Blog Posts',

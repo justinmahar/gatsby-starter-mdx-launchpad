@@ -1,2 +1,1 @@
-const layoutOptions = [];
-export default layoutOptions;
+export const layoutOptions = [];

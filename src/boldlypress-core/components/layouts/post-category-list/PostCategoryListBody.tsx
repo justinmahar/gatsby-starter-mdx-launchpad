@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
-import { LayoutProps } from '../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
-import MdxContent from '../../../../plugins/boldlypress-core/src/data/MdxContent';
+import { LayoutProps } from '../../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
+import MdxContent from '../../../../../plugins/boldlypress-core/src/data/MdxContent';
 
 const ALL_POSTS_GLOB = '*';
 
