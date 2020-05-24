@@ -7,10 +7,7 @@ export default function NotFoundBody(props: LayoutProps): JSX.Element {
     <div className="text-center">
       <h1>Well, shoot.</h1>
       <br />
-      <h5>We couldn't find what you were looking for, so here's a kitten instead.</h5>
-      <br />
-      <img src="/media/not-found-image.jpg" alt="A tiny, cute kitten." title="Kitten" />
-      <br />
+      <h5>We couldn't find what you were looking for.</h5>
       <br />
       <Link to="/">&laquo; Home</Link>
     </div>
