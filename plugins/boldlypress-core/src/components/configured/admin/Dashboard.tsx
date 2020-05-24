@@ -32,7 +32,6 @@ export default function Dashboard(props: DashboardProps): JSX.Element {
       </NonAdminOnly>
 
       <AdminOnly>
-        <h1>Dashboard</h1>
         <div className="mb-2 mt-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="mb-2">
             <div>
