@@ -1,3 +1,9 @@
-import Library from '../boldlypress-core/components/Library';
+import SiteName from './SiteName';
+import CurrentYear from './CurrentYear';
+
+const Library = {
+  SiteName: SiteName,
+  CurrentYear: CurrentYear,
+};
 
 export default Library;

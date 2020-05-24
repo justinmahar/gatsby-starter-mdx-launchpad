@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LayoutProps } from '../../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
+import { LayoutProps } from '../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
 import { Link } from 'gatsby';
 
 export default function NotFoundBody(props: LayoutProps): JSX.Element {

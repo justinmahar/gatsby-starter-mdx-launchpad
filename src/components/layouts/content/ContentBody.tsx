@@ -1,6 +1,6 @@
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import * as React from 'react';
-import { LayoutProps } from '../../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
+import { LayoutProps } from '../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
 
 export default function ContentBody(props: LayoutProps): JSX.Element {
   const contentTitle = props.templateTags.render(props.mdxContent.data.frontmatter.title);
