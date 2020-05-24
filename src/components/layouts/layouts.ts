@@ -4,6 +4,7 @@ import AppLayout from './index/IndexLayout';
 import PostCategoryListLayout from './post-category-list/PostCategoryListLayout';
 import NotFoundLayout from './not-found/NotFoundLayout';
 
+// These layouts will be available by keyname via the layout option in all MDX pages.
 const layouts: Layouts = {
   content: ContentLayout,
   app: AppLayout,
@@ -13,4 +14,4 @@ const layouts: Layouts = {
 
 export default layouts;
 
-// Be sure to update the boldlypress-code shadowed layoutOptions.js
+// Be sure to update the boldlypress-core layoutOptions.js (shadowed) to make these selectable via the CMS
