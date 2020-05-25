@@ -29,7 +29,14 @@ export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.El
     })
   );
   const settings: Settings = useSettings();
-  const templateTags: TemplateTags = mdxContent.getTemplateTags(settings);
+  const templateTags: TemplateTags = mdxContent.getTemplateTags(
+    settings,
+    props.pageContext?.categoryName
+      ? {
+          contentCategory: props.pageContext.categoryName,
+        }
+      : undefined
+  );
   const Layout: React.FC<LayoutProps> = getMdxContentLayout(mdxContent);
   return (
     <Layout

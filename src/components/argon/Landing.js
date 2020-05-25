@@ -15,10 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react';
 // nodejs library that concatenates classes
 import classnames from 'classnames';
-
+import React from 'react';
 // reactstrap components
 import {
   Badge,
@@ -26,16 +25,15 @@ import {
   Card,
   CardBody,
   CardImg,
+  Col,
+  Container,
   FormGroup,
   Input,
+  InputGroup,
   InputGroupAddon,
   InputGroupText,
-  InputGroup,
-  Container,
   Row,
-  Col,
 } from 'reactstrap';
-import DemoNavbar from './DemoNavbar';
 import CardsFooter from './CardsFooter';
 
 class Landing extends React.Component {
