@@ -1,8 +1,8 @@
 siteIcon: "/media/default-site-icon.png"
-siteUrl: https://boldlypress.netlify.com
-siteIconAlt: Dots arranged in a spiral pattern.
+siteUrl: https://boldlypress.netlify.app
+siteIconAlt: Rocket blasting off
 siteName: BoldlyPress
 siteImage: "/media/default-site-image.jpg"
-siteDescription: The serverless CMS for React developers.
+siteDescription: The React starter for DevBoldly.
 siteImageAlt: Cute and cuddly kittens.
 siteLanguage: en
