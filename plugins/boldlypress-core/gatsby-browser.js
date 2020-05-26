@@ -32,9 +32,6 @@
 // == Bootstrap Base ==
 require('bootstrap/dist/css/bootstrap.min.css');
 
-// == Theme Styles ==
-require('./src/styles/styles.scss');
-
 const offlineSupportEnabled = true;
 const forceReload = true;
 const showPromptWhenUpdateAvailable = true;

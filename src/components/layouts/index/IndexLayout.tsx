@@ -1,17 +1,21 @@
 import * as React from 'react';
+import { Col, Container, Row } from 'reactstrap';
 import { LayoutProps } from '../../../../plugins/boldlypress-core/src/components/layouts/getLayout';
-import MdxSEO from '../../../../plugins/boldlypress-core/src/components/MdxSEO';
-import Footer from '../Footer';
-import Header from '../Header';
-import AppBody from './IndexBody';
+import Body from '../Body';
+import DefaultWrapper from '../DefaultWrapper';
 
-export default function AppLayout(props: LayoutProps): JSX.Element {
+export default function IndexLayout(props: LayoutProps): JSX.Element {
   return (
-    <>
-      <MdxSEO {...props} />
-      <Header {...props} />
-      <AppBody {...props} />
-      <Footer {...props} />
-    </>
+    <DefaultWrapper {...props}>
+      <Body {...props}>
+        <Container className="content">
+          <Row>
+            <Col>
+              <p>Index content.</p>
+            </Col>
+          </Row>
+        </Container>
+      </Body>
+    </DefaultWrapper>
   );
 }

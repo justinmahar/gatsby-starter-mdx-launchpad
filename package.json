@@ -2,8 +2,15 @@
   "name": "boldlypress",
   "private": true,
   "description": "The serverless CMS for React developers. React + TypeScript + MDX + NetlifyCMS + SEO + More",
-  "version": "0.1.1",
-  "license": "No License",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devboldly/boldlypress"
+  },
+  "bugs": {
+    "url": "https://github.com/devboldly/boldlypress/issues"
+  },
+  "version": "1.0.0",
+  "license": "Private",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -18,7 +25,6 @@
     "ltos": "npm run local-core-to-starter-core"
   },
   "dependencies": {
-    "@devboldly/react-timed-renderer": "0.0.3",
     "@mdx-js/mdx": "^1.6.4",
     "@mdx-js/react": "^1.6.4",
     "@mdx-js/tag": "^0.20.3",
@@ -75,12 +81,5 @@
     "prettier": "^2.0.5",
     "react-social-icons": "^4.1.0",
     "rimraf": "^3.0.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/devboldly/boldlypress"
-  },
-  "bugs": {
-    "url": "https://github.com/devboldly/boldlypress/issues"
   }
 }

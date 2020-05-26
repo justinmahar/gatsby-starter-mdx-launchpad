@@ -1,20 +1,4 @@
-// Put custom styles here
+@import "./gatsby-tweaks.scss";
+@import "./argon-tweaks.scss";
 
-// Remove horizonal scrollbars for code blocks
-.gatsby-highlight pre code {
-  white-space: pre-wrap;
-}
-
-// Style Markdown tables
-.card-body table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.card-body table td, th {
-  border: 1px solid #cccccc;
-  text-align: left;
-  padding: 8px;
-}
+// Add custom styles here
