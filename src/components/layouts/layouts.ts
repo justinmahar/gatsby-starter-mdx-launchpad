@@ -8,7 +8,6 @@ import NotFoundLayout from './not-found/NotFoundLayout';
 const layouts: Layouts = {
   content: ContentLayout,
   index: IndexLayout,
-  'post-category-list': PostCategoryListLayout,
   'not-found': NotFoundLayout,
 };
 

@@ -4,26 +4,6 @@ const offlineSupportSettingsFile = {
   file: 'settings/offline/offline-settings.yml',
   fields: [
     {
-      label: 'Offline Support (One-Click PWA)',
-      name: 'offlineSupportEnabled',
-      widget: 'boolean',
-      hint:
-        "When switched on, your website will become a progressive web app (PWA) that can be installed on a user's device. The user will be prompted to install upon visiting the site. Once installed, an icon for the site will be added to the home screen, and the site will behave like a native app and can be used offline.",
-    },
-    {
-      label: 'Show Prompt When Update Available',
-      name: 'showPromptWhenUpdateAvailable',
-      widget: 'boolean',
-      hint: 'When on, the user will be prompted when there are updates to your app.',
-    },
-    {
-      label: 'Update Prompt',
-      name: 'updateAvailablePromptMessage',
-      widget: 'string',
-      hint:
-        'The prompt shown to the user when an update to your app is available. To test this, open your app on your phone, then make a change to the site. You should see the prompt to reload within a few minutes.',
-    },
-    {
       label: 'Offline Support Options',
       name: 'gatsbyPluginManifestOptions',
       widget: 'object',

@@ -1,8 +1,9 @@
-siteIcon: "/media/default-site-icon.png"
+siteIcon: "/media/site-icon.png"
 siteUrl: https://boldlypress.netlify.app
 siteIconAlt: Rocket blasting off
 siteName: BoldlyPress
-siteImage: "https://boldlypress.netlify.app/media/default-site-image.jpg"
+siteImage: "https://boldlypress.netlify.app/media/site-image.jpg"
+siteImageWidth: 1200
+siteImageHeight: 630
 siteDescription: The React starter for DevBoldly.
 siteImageAlt: Cute and cuddly kittens.
-siteLanguage: en

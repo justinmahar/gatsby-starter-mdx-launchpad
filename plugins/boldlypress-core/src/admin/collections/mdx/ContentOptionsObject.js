@@ -21,18 +21,11 @@ const ContentOptionsObject = (options) => {
         options: [...layoutOptions],
       },
       {
-        label: 'Show Title',
-        name: 'showTitle',
-        widget: 'boolean',
-        hint: "You can show or hide the title if you'd like.",
-        default: true,
-      },
-      {
         label: 'Unlisted',
         name: 'unlisted',
         widget: 'boolean',
         hint:
-          'When enabled, the content will only be accessible with a link. It will not be shown in blog listings or in the sitemap, and its path will be prefixed with /u/ (i.e. /u/my-post).',
+          'When enabled, the content will only be accessible with a link. It will not be shown in blog listings or in the sitemap, and its path will be prefixed with /private/ (i.e. /private/my-page).',
         default: false,
       },
       {
@@ -42,20 +35,6 @@ const ContentOptionsObject = (options) => {
         hint:
           "If you hide content, it won't be visible to users on the site, and it will not be accessible via a link. Use this to pull down content, and to hide pages referenced in Built-In Page Settings.",
         default: false,
-      },
-      {
-        label: 'Show Date',
-        name: 'dateEnabled',
-        widget: 'boolean',
-        hint: 'When disabled, the date will not be shown for the content.',
-        default: showDateDefault,
-      },
-      {
-        label: 'Enable Discussion',
-        name: 'discussionEnabled',
-        widget: 'boolean',
-        hint: 'When disabled, the comments section will not be shown.',
-        default: enableDiscussionDefault,
       },
     ],
   };

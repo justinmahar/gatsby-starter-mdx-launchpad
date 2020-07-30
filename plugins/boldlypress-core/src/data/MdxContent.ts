@@ -21,38 +21,17 @@ export const mdxFragmentQuery = graphql`
     id
     fields {
       slug
-      categorySlug
     }
     timeToRead
     excerpt
     frontmatter {
       title
       rawSlug
-      date
-      category
       customExcerpt
-      featuredImage {
-        featuredImageEnabled
-        featuredImageUrl
-        featuredImageAlt
-        showTitleSection
-        showCardImage
-      }
       options {
-        dateEnabled
-        discussionEnabled
         hidden
         unlisted
-        showTitle
         layout
-      }
-      sharing {
-        sharingEnabled
-        facebookQuote
-        facebookHashtag
-        twitterTitle
-        twitterVia
-        twitterHashtags
       }
       seoSettings {
         seoConfigurationId
@@ -60,6 +39,8 @@ export const mdxFragmentQuery = graphql`
         seoDescription
         seoImage {
           customSeoImage
+          customSeoImageWidth
+          customSeoImageHeight
           customSeoImageAlt
           seoImageSelection
         }
@@ -78,38 +59,17 @@ export type MdxData = {
   id: string;
   fields: {
     slug: string;
-    categorySlug: string;
   };
   timeToRead: string;
   excerpt: string;
   frontmatter: {
     title: string;
     rawSlug: string;
-    date: string;
-    category: string;
     customExcerpt: string;
-    featuredImage: {
-      featuredImageEnabled: boolean;
-      featuredImageUrl: string;
-      featuredImageAlt: string;
-      showTitleSection: boolean;
-      showCardImage: boolean;
-    };
     options: {
-      dateEnabled: boolean;
-      discussionEnabled: boolean;
       hidden: boolean;
       unlisted: boolean;
-      showTitle: boolean;
       layout: string;
-    };
-    sharing: {
-      sharingEnabled: boolean;
-      facebookQuote: string;
-      facebookHashtag: string;
-      twitterTitle: string;
-      twitterVia: string;
-      twitterHashtags: string;
     };
     seoSettings: {
       seoConfigurationId: string;
@@ -117,18 +77,19 @@ export type MdxData = {
       seoDescription: string;
       seoImage: {
         customSeoImage: string;
+        customSeoImageWidth: number;
+        customSeoImageHeight: number;
         customSeoImageAlt: string;
         seoImageSelection: MdxSeoImageSelection;
       };
     };
-    group: MdxGroup;
+    group: 'pages' | 'builtin';
   };
   body: string;
   fileAbsolutePath: string;
 };
 
-export type MdxGroup = 'posts' | 'pages';
-export type MdxSeoImageSelection = 'site-image' | 'featured-image-if-enabled' | 'custom-image';
+export type MdxSeoImageSelection = 'site-image' | 'custom-image';
 
 // === === === === === === === === ===
 
@@ -160,7 +121,7 @@ export default class MdxContent {
       year: `${new Date().getFullYear()}`,
       siteName: settings.data.site.siteMetadata.siteName,
       siteDescription: settings.data.site.siteMetadata.siteDescription,
-      twitterSiteUsername: settings.data.socialSharingYaml.twitterSiteUsername,
+      twitterSiteUsername: settings.data.seoYaml.twitterSiteUsername,
       seoTitleSeparator: settings.data.seoYaml.seoTitleSeparator,
       configSeoTitle: foundConfiguration ? foundConfiguration.seoTitle : `[SEO config not found: ${configurationId}]`,
       configSeoDescription: foundConfiguration
@@ -168,18 +129,9 @@ export default class MdxContent {
         : `[SEO config not found: ${configurationId}]`,
       contentTitle: this.data.frontmatter.title,
       contentExcerpt: this.getExcerpt(),
-      contentCategory: this.data.frontmatter.category,
       contentSeoTitle: this.data.frontmatter.seoSettings.seoTitle,
       contentSeoDescription: this.data.frontmatter.seoSettings.seoDescription,
       ...overriddenTags,
     });
-  }
-
-  public isPost(): boolean {
-    return this.data.frontmatter.group === 'posts';
-  }
-
-  public isPage(): boolean {
-    return this.data.frontmatter.group === 'pages';
   }
 }

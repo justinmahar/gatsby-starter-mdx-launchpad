@@ -4,12 +4,6 @@ const discussionSettingsFile = {
   file: 'settings/discussion/discussion-settings.yml',
   fields: [
     {
-      label: 'Site-Wide Comments',
-      name: 'siteWideCommentsEnabled',
-      widget: 'boolean',
-      hint: 'Use this to turn comments on/off for the entire site.',
-    },
-    {
       label: 'Disqus Shortname',
       name: 'disqusShortname',
       widget: 'string',

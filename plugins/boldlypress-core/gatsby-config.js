@@ -7,23 +7,17 @@ module.exports = (themeOptions) => {
   const sassOptions = themeOptions.sassOptions ? themeOptions.sassOptions : {};
   const netlifyCmsOptions = themeOptions.netlifyCmsOptions ? themeOptions.netlifyCmsOptions : {};
   const offlineConfig = themeOptions.offlineConfig;
-  const offlineSupportEnabled = offlineConfig ? !!offlineConfig.offlineSupportEnabled : false;
   const manifestOptions = offlineConfig ? (offlineConfig.manifestOptions ? offlineConfig.manifestOptions : {}) : {};
   const offlineOptions = offlineConfig ? (offlineConfig.offlineOptions ? offlineConfig.offlineOptions : {}) : {};
-  const removeServiceworkerOptions = offlineConfig
-    ? offlineConfig.removeServiceworkerOptions
-      ? themeOptions.removeServiceworkerOptions
-      : {}
-    : {};
   const reportingConfig = themeOptions.reportingConfig;
   const googleAnalyticsOptions = reportingConfig
     ? reportingConfig.googleAnalytics.googleAnalyticsOptions
       ? reportingConfig.googleAnalytics.googleAnalyticsOptions
       : {}
     : {};
+  const imageOptions = themeOptions.imageOptions ? themeOptions.imageOptions : {};
 
   const pagesPath = themeOptions.pagesPath;
-  const postsPath = themeOptions.postsPath;
   const settingsPath = themeOptions.settingsPath;
 
   // Fix path to icon:
@@ -32,8 +26,22 @@ module.exports = (themeOptions) => {
   if (manifestOptions.icon) {
     manifestOptions.icon = 'static' + (manifestOptions.icon.startsWith('/') ? '' : '/') + manifestOptions.icon;
   }
-  // These plugins are used to enable offline PWA features.
-  const offlineSupportEnabledPlugins = [
+
+  const imagesPlugins = [];
+  if (Array.isArray(imageOptions.imagesPaths)) {
+    for (let i = 0; i < imageOptions.imagesPaths.length; i++) {
+      const imagesPath = imageOptions.imagesPaths[i];
+      imagesPlugins.push({
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `images`,
+          path: imagesPath,
+        },
+      });
+    }
+  }
+
+  const plugins = [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -48,24 +56,6 @@ module.exports = (themeOptions) => {
         ...offlineOptions,
       },
     },
-  ];
-  // These plugins are used to disable offline PWA features.
-  // See: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
-  const offlineSupportDisabledPlugins = [
-    {
-      resolve: `gatsby-plugin-remove-serviceworker`,
-      options: {
-        ...removeServiceworkerOptions,
-      },
-    },
-  ];
-  // Switch on/off offline support based on the current settings.
-  const offlineSupportPlugins = offlineSupportEnabled ? offlineSupportEnabledPlugins : offlineSupportDisabledPlugins;
-  // == END Offline Support Settings Setup ==
-
-  const plugins = [
-    // Offline support is configurable.
-    ...offlineSupportPlugins,
     {
       resolve: `gatsby-plugin-react-helmet`,
       options: {
@@ -132,13 +122,6 @@ module.exports = (themeOptions) => {
         path: pagesPath,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts-mdx`,
-        path: postsPath,
-      },
-    },
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -147,6 +130,9 @@ module.exports = (themeOptions) => {
         path: settingsPath,
       },
     },
+    ...imagesPlugins,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ];
 
   // == Google Analytics ==

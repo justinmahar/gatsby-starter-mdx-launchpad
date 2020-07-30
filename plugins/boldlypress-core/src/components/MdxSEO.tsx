@@ -8,45 +8,43 @@ export default function MdxSEO(props: LayoutProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
   const templateTags = props.templateTags;
 
-  const lang = props.settings.data.site.siteMetadata.siteLanguage;
+  const lang = 'en';
 
   const seoTitle = templateTags.render(mdxContent.data.frontmatter.seoSettings.seoTitle);
   const seoDescription = templateTags.render(mdxContent.data.frontmatter.seoSettings.seoDescription);
   let seoImageUrl = props.settings.data.site.siteMetadata.siteImage;
-  let seoImageAlt = props.settings.data.site.siteMetadata.siteImageAlt;
+  let seoImageWidth = props.settings.data.site.siteMetadata.siteImageWidth;
+  let seoImageHeight = props.settings.data.site.siteMetadata.siteImageHeight;
+  let seoImageAlt: string | undefined =
+    props.settings.data.site.siteMetadata.siteImageAlt !== 'none'
+      ? templateTags.render(props.settings.data.site.siteMetadata.siteImageAlt)
+      : undefined;
 
-  switch (mdxContent.data.frontmatter.seoSettings.seoImage.seoImageSelection) {
-    case 'featured-image-if-enabled':
-      if (mdxContent.data.frontmatter.featuredImage.featuredImageEnabled) {
-        seoImageUrl = mdxContent.data.frontmatter.featuredImage.featuredImageUrl;
-        seoImageAlt =
-          mdxContent.data.frontmatter.featuredImage.featuredImageAlt !== 'none'
-            ? templateTags.render(mdxContent.data.frontmatter.featuredImage.featuredImageAlt)
-            : undefined;
-      }
-      break;
-    case 'custom-image':
-      seoImageUrl = mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImage;
-      seoImageAlt =
-        mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt !== 'none'
-          ? templateTags.render(mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt)
-          : undefined;
-      break;
-    default:
+  if (mdxContent.data.frontmatter.seoSettings.seoImage.seoImageSelection === 'custom-image') {
+    seoImageUrl = mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImage;
+    seoImageWidth = mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageWidth;
+    seoImageHeight = mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageHeight;
+    seoImageAlt =
+      mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt !== 'none'
+        ? templateTags.render(mdxContent.data.frontmatter.seoSettings.seoImage.customSeoImageAlt)
+        : undefined;
   }
 
   // If the twitter site username is none, set it to undefined.
   const twitterSiteUsername =
-    props.settings.data.socialSharingYaml.twitterSiteUsername !== 'none'
-      ? props.settings.data.socialSharingYaml.twitterSiteUsername
+    props.settings.data.seoYaml.twitterSiteUsername !== 'none'
+      ? props.settings.data.seoYaml.twitterSiteUsername
       : undefined;
 
   const openGraph: OpenGraphMetadata = {
+    ogUrl: typeof window !== 'undefined' ? window.location.href : '',
     ogTitle: seoTitle,
     ogTypeObject: {},
     ogImage: {
       ogImage: seoImageUrl,
       ogImageAlt: seoImageAlt,
+      ogImageWidth: seoImageWidth,
+      ogImageHeight: seoImageHeight,
     },
     ogDescription: seoDescription,
     ogSiteName: props.settings.data.site.siteMetadata.siteName,

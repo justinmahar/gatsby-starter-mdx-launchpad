@@ -1,6 +1,6 @@
 
 
-# <a href="https://boldlypress.netlify.com/start-here"><img alt="BoldlyPress" src="https://github.com/devboldly/boldlypress/raw/master/static/media/default-site-icon.png" width="30" /></a> **Boldly**Press
+# <a href="https://boldlypress.netlify.com/start-here"><img alt="BoldlyPress" src="https://github.com/devboldly/boldlypress/raw/master/static/media/site-icon.png" width="30" /></a> **Boldly**Press
 
 <h3>The React starter for DevBoldly.</h3>
 

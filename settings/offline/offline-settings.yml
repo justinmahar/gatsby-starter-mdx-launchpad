@@ -1,7 +1,3 @@
-offlineSupportEnabled: true
-showPromptWhenUpdateAvailable: true
-updateAvailablePromptMessage: This application has been updated. Reload to display
-  the latest version?
 gatsbyPluginManifestOptions:
   name: "{siteName}"
   shortName: "{siteName}"

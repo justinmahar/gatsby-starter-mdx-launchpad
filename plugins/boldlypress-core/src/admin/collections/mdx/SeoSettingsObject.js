@@ -44,16 +44,12 @@ const SeoSettingsObject = (options) => {
             name: 'seoImageSelection',
             widget: 'select',
             hint:
-              'Specify which image should be used for SEO. ⮞ Site Image: The site image defined in Site Settings will be used for SEO. ⮞ Featured Image (If Enabled): The featured image will be used for SEO. If "Featured Image » Use Featured Image" is disabled, it will fall back to the Site Image specifed in Site Settings. ⮞ Custom Image: The image specified below will be used for SEO. Choose this option if you want a different SEO image from the featured or fallback site-wide one.',
-            default: 'featured-image-if-enabled',
+              'Specify which image should be used for SEO. ⮞ Site Image: The site image defined in Site Settings will be used for SEO. ⮞ Custom Image: The image specified below will be used for SEO.',
+            default: 'site-image',
             options: [
               {
                 label: 'Site Image',
                 value: 'site-image',
-              },
-              {
-                label: 'Featured Image (If Enabled)',
-                value: 'featured-image-if-enabled',
               },
               {
                 label: 'Custom Image',
@@ -66,8 +62,22 @@ const SeoSettingsObject = (options) => {
             name: 'customSeoImage',
             widget: 'image',
             hint:
-              "To use a custom SEO image, you must select Use Custom Image above. Select an image that's bigger than 1200×630 and looks good when cropped into a square. Facebook recommends a 1200×630 (1.91:1) and will crop the top and bottom of larger images. Reddit will crop and resize images to 70×70. Twitter Cards can use either square or wide images depending on the card type being used, but the default is a square. Use a different URL for new images or the image won't be updated by Facebook.",
+              "To use a custom SEO image, you must select Use Custom Image above. Select an image that's 1200×630 or larger, and looks good when cropped into a square. Facebook recommends a 1200×630 (1.91:1) and will crop the top and bottom of larger images. Reddit will crop and resize images to 70×70. Twitter Cards can use either square or wide images depending on the card type being used, but the default is a square. Use a different URL for new images or the image won't be updated by Facebook, unless you scrape it via the Facebook Sharing Debugger.",
             default: '/media/no-image.png',
+          },
+          {
+            label: 'Custom SEO Image Width',
+            name: 'customSeoImageWidth',
+            widget: 'number',
+            hint: 'Specify the width of the selected image.',
+            default: 1200,
+          },
+          {
+            label: 'Custom SEO Image Height',
+            name: 'customSeoImageHeight',
+            widget: 'number',
+            hint: 'Specify the height of the selected image.',
+            default: 630,
           },
           {
             label: 'Custom SEO Image Alt',

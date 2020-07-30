@@ -15,7 +15,7 @@ const siteSeoSettingsFile = {
       name: 'seoConfigurations',
       widget: 'list',
       hint:
-        '↑ SEO (Search Engine Optimization) configurations can be used to quickly change SEO and sharing settings for all posts and pages that reference them.',
+        '↑ SEO (Search Engine Optimization) configurations can be used to quickly change SEO and sharing settings for all pages that reference them.',
       fields: [
         {
           label: 'Configuration Name',
@@ -45,6 +45,13 @@ const siteSeoSettingsFile = {
             'A description of the content. Can also be an excerpt, if you want. At least two sentences long is recommended, and it should entice users to click. Supports template tags. Reference using: {configSeoDescription}',
         },
       ],
+    },
+    {
+      label: 'Twitter Site Username',
+      name: 'twitterSiteUsername',
+      widget: 'string',
+      hint:
+        'Used as the attribution username when linking to the site in Twitter. Use the @ symbol, e.g. @devboldly. Set to none to disable.',
     },
   ],
 };

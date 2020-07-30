@@ -32,19 +32,9 @@
 // == Bootstrap Base ==
 require('bootstrap/dist/css/bootstrap.min.css');
 
-const offlineSupportEnabled = true;
-const forceReload = true;
-const showPromptWhenUpdateAvailable = true;
-const updateAvailablePromptMessage = 'This application has been updated. Reload to display the latest version?';
-
-// Offline support - Configure the prompt to update.
+// Offline support - Reload when there's an update
 const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
-  if (offlineSupportEnabled && (forceReload || showPromptWhenUpdateAvailable)) {
-    const answer = forceReload ? true : window.confirm(updateAvailablePromptMessage);
-    if (answer === true) {
-      window.location.reload();
-    }
-  }
+  window.location.reload();
 };
 
 export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

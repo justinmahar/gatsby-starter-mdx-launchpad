@@ -1,5 +1,3 @@
-import languageOptions from './languageOptions';
-
 const siteSettingsFile = {
   label: 'Site Settings',
   name: 'siteMetadataSettings',
@@ -22,7 +20,21 @@ const siteSettingsFile = {
       name: 'siteImage',
       widget: 'image',
       hint:
-        "An image for your site. This is used by default when sharing pages of your site. Select an image that's bigger than 1200×630 and looks good when cropped into a square. Facebook recommends a 1200×630 (1.91:1) and will crop the top and bottom of larger images. Reddit will crop and resize images to 70×70. Twitter Cards can use either square or wide images depending on the card type being used, but the default is a square. Use a different URL for new images or the image won't be updated by Facebook.",
+        "An image for your site. This is used by default when sharing pages of your site. Select an image that's 1200×630 or larger, and looks good when cropped into a square. Facebook recommends a 1200×630 (1.91:1) and will crop the top and bottom of larger images. Reddit will crop and resize images to 70×70. Twitter Cards can use either square or wide images depending on the card type being used, but the default is a square. Use a different URL for new images or the image won't be updated by Facebook, unless you scrape it via the Facebook Sharing Debugger.",
+    },
+    {
+      label: 'Site Image Width',
+      name: 'siteImageWidth',
+      widget: 'number',
+      hint: 'Specify the width of the selected image.',
+      default: 1200,
+    },
+    {
+      label: 'Site Image Height',
+      name: 'siteImageHeight',
+      widget: 'number',
+      hint: 'Specify the width of the selected image.',
+      default: 630,
     },
     {
       label: 'Site Image Alt',
@@ -44,13 +56,6 @@ const siteSettingsFile = {
       widget: 'string',
       hint:
         "Alt text for the site icon. Describes what's happening in the icon for the visually impaired. Set to none to disable.",
-    },
-    {
-      label: 'Site Language',
-      name: 'siteLanguage',
-      widget: 'select',
-      options: languageOptions,
-      hint: 'The site language.',
     },
     {
       label: 'Site URL',

@@ -8,14 +8,13 @@ import { TemplateTags } from '../../data/TemplateTags';
 export interface BuiltInPageLayoutProps {
   pageContext: any;
   pageQueryData: any;
-  rawPageSlug: string;
+  rawSlug: string;
 }
 
 export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.Element {
-  /* For all posts: allMdxPosts: allMdx(filter: { frontmatter: { group: { eq: "posts" } } }) */
   const data = useStaticQuery(graphql`
     query BuiltInPageLayoutQuery {
-      allMdxPages: allMdx(filter: { frontmatter: { group: { eq: "pages" } } }) {
+      builtInPages: allMdx(filter: { frontmatter: { rawSlug: { in: ["index", "not-found"] } } }) {
         nodes {
           ...mdxContent
         }
@@ -23,20 +22,13 @@ export default function BuiltInPageLayout(props: BuiltInPageLayoutProps): JSX.El
     }
   `);
   const mdxContent: MdxContent = new MdxContent(
-    data.allMdxPages.nodes.find((node) => {
+    data.builtInPages.nodes.find((node: any) => {
       const mdxContent: MdxContent = new MdxContent(node);
-      return mdxContent.data.frontmatter.rawSlug === props.rawPageSlug;
+      return mdxContent.data.frontmatter.rawSlug === props.rawSlug;
     })
   );
   const settings: Settings = useSettings();
-  const templateTags: TemplateTags = mdxContent.getTemplateTags(
-    settings,
-    props.pageContext?.categoryName
-      ? {
-          contentCategory: props.pageContext.categoryName,
-        }
-      : undefined
-  );
+  const templateTags: TemplateTags = mdxContent.getTemplateTags(settings);
   const Layout: React.FC<LayoutProps> = getMdxContentLayout(mdxContent);
   return (
     <Layout

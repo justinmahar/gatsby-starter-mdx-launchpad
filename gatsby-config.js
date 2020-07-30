@@ -22,14 +22,10 @@
 const readYaml = require('read-yaml');
 /** Site metadata configuration */
 const siteMetadataConfig = readYaml.sync(`${__dirname}/settings/site-metadata/site-metadata-settings.yml`);
-/** Settings for built-in pages */
-const builtInPagesSettings = readYaml.sync(`${__dirname}/settings/built-in-pages/built-in-pages-settings.yml`);
 /** Offline/PWA configuration */
 const offlineConfig = readYaml.sync(`${__dirname}/settings/offline/offline-settings.yml`);
 /** Reporting configuration */
 const reportingConfig = readYaml.sync(`${__dirname}/settings/reporting/reporting-settings.yml`);
-/** Post settings */
-const postSettings = readYaml.sync(`${__dirname}/settings/post/post-settings.yml`);
 
 // == Offline Support Settings Setup ==
 // Offline support configuration lives in a Yaml file and is configurable through NetlifyCMS.
@@ -73,24 +69,12 @@ const plugins = [
     resolve: 'boldlypress-core',
     options: {
       pagesPath: `${__dirname}/src/pages-mdx`,
-      postsPath: `${__dirname}/src/posts-mdx`,
-      postSettings: {
-        blogEnabled: postSettings.blogEnabled,
-      },
       settingsPath: `${__dirname}/settings`,
       netlifyCmsOptions: {
         htmlTitle: `${siteMetadataConfig.siteName} Admin`,
       },
       offlineConfig: {
-        offlineSupportEnabled: offlineConfig.offlineSupportEnabled,
-        showPromptWhenUpdateAvailable: offlineConfig.showPromptWhenUpdateAvailable,
-        updateAvailablePromptMessage: offlineConfig.updateAvailablePromptMessage,
         manifestOptions: gatsbyPluginManifestOptions,
-      },
-      builtInPagesSettings: {
-        rawIndexSlug: builtInPagesSettings.rawIndexSlug,
-        rawCategoryPostListPageSlug: builtInPagesSettings.rawCategoryPostListPageSlug,
-        rawNotFoundPageSlug: builtInPagesSettings.rawNotFoundPageSlug,
       },
       reportingConfig: {
         googleAnalytics: {
@@ -101,15 +85,16 @@ const plugins = [
           scriptInHead: reportingConfig.googleAnalytics.scriptInHead,
         },
       },
+      // imageOptions: {
+      //   imagesPaths: [`${__dirname}/static/media/image-dir`, `${__dirname}/static/media/another-image-dir`],
+      // },
     },
   },
 ];
 
 module.exports = {
   siteMetadata: {
-    // Site metadata lives in a Yaml file and is configurable through NetlifyCMS.
     ...siteMetadataConfig,
-    // Add additional site metadata here
   },
   plugins: plugins,
 };
