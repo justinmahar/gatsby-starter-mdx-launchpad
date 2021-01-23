@@ -1,11 +1,12 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
-import { LayoutProps } from '../../../plugins/boldlypress-core/src/components/layouts/getLayout';
-import { useSettings } from '../../../plugins/boldlypress-core/src/data/useSettings';
+import { Col, Container, Row } from 'react-bootstrap';
+import Settings, { useSettings } from '../../data/useSettings';
 
-export default function Footer(props: LayoutProps): JSX.Element {
-  const settings = useSettings();
+export interface FooterProps {}
+
+export default function Footer(props: FooterProps): JSX.Element {
+  const settings: Settings = useSettings();
   return (
     <div className="bg-gradient-dark position-relative" style={{ paddingTop: '8em', paddingBottom: '8em' }}>
       {/* SVG separator */}

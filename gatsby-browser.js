@@ -29,6 +29,9 @@
 
 // === CSS/LESS/SASS imports ===
 
+// == Bootstrap Base ==
+require('bootstrap/dist/css/bootstrap.min.css');
+
 // == PrismJS code syntax highlighting themes ==
 // require("prismjs/themes/prism.css")
 // require("prismjs/themes/prism-coy.css")
@@ -39,10 +42,15 @@ require('prismjs/themes/prism-okaidia.css');
 // require("prismjs/themes/prism-tomorrow.css")
 // require("prismjs/themes/prism-twilight.css")
 
-// == Argon Design System Styles ==
-require('./static/assets/vendor/nucleo/css/nucleo.css');
-require('./static/assets/vendor/font-awesome/css/font-awesome.min.css');
-require('./static/assets/css/argon-design-system-react.css');
+// == Bootstrap Style Override ==
+// None
 
 // == Custom Styles ==
 require('./src/styles/styles.scss');
+
+// Offline support - Reload when there's an update
+const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
+  window.location.reload();
+};
+
+export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

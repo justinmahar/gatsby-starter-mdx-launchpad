@@ -1,0 +1,23 @@
+siteMetadata:
+  siteIcon: "/media/site-icon.png"
+  siteUrl: https://placeholder.netlify.app
+  siteIconAlt: placeholder
+  siteName: placeholder
+  siteImage: "{siteUrl}/media/site-image.jpg"
+  siteImageWidth: 1200
+  siteImageHeight: 630
+  siteDescription: placeholder
+  siteImageAlt: placeholder
+gatsbyPluginManifestOptions:
+  name: placeholder
+  shortName: placeholder
+  startUrl: "/"
+  themeColor: "#1167b1"
+  backgroundColor: "#03254c"
+  display: standalone
+  customIcon: none # "/media/pwa-icon.png"
+seoTitleSeparator: ' - '
+unlistedPagePathPrefix: none
+googleAnalyticsTrackingId: none
+disqusShortname: none
+twitterSiteUsername: none

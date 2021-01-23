@@ -1,6 +1,0 @@
-googleAnalytics:
-  analyticsEnabled: true
-  trackingId: UA-123456789-1
-  anonymize: false
-  respectDNT: false
-  scriptInHead: false
