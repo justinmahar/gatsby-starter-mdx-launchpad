@@ -19,10 +19,10 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
     const pathname: string = props.location.pathname.replace(/^\//, '');
     let redirectPathname: string | undefined = pathname;
     for (let i = 0; i < 10; i++) {
-      if (!redirects[pathname]) {
+      if (!redirects[redirectPathname]) {
         break;
       }
-      redirectPathname = redirects[pathname];
+      redirectPathname = redirects[redirectPathname];
     }
     if (pathname !== redirectPathname) {
       navigate(`/${redirectPathname}`);
