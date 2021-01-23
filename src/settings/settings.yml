@@ -1,16 +1,16 @@
 siteMetadata:
   siteIcon: "/media/site-icon.png"
-  siteUrl: https://placeholder.netlify.app
-  siteIconAlt: placeholder
-  siteName: placeholder
+  siteUrl: https://gatsby-starship.netlify.app
+  siteIconAlt: gatsby-starship
+  siteName: gatsby-starship
   siteImage: "{siteUrl}/media/site-image.jpg"
   siteImageWidth: 1200
   siteImageHeight: 630
-  siteDescription: placeholder
-  siteImageAlt: placeholder
+  siteDescription: gatsby-starship
+  siteImageAlt: gatsby-starship
 gatsbyPluginManifestOptions:
-  name: placeholder
-  shortName: placeholder
+  name: gatsby-starship
+  shortName: gatsby-starship
   startUrl: "/"
   themeColor: "#1167b1"
   backgroundColor: "#03254c"

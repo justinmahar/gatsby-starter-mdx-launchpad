@@ -90,10 +90,10 @@ export default class MdxContent {
     return new TemplateTagRenderer({
       contentTitle: this.data.frontmatter.title,
       contentExcerpt: this.getExcerpt(),
-      contentSeoTitle: this.data.frontmatter.seo.title
+      contentSeoTitle: this.data.frontmatter.seo?.title
         ? this.data.frontmatter.seo.title
         : this.data.frontmatter.title,
-      contentSeoDescription: this.data.frontmatter.seo.description
+      contentSeoDescription: this.data.frontmatter.seo?.description
         ? this.data.frontmatter.seo.description
         : this.getExcerpt(),
     });

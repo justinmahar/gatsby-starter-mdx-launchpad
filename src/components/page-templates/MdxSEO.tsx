@@ -10,7 +10,7 @@ export interface MdxSEOProps {
 export default function MdxSEO(props: MdxSEOProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
 
-  const seoTitle: string = mdxContent.data.frontmatter.title;
+  const seoTitle = `${mdxContent.data.frontmatter.title}{seoTitleSeparator}{siteName}`;
   const seoDescription: string | undefined =
     mdxContent.data.frontmatter.seo?.description && mdxContent.data.frontmatter.seo.description !== 'none'
       ? mdxContent.data.frontmatter.seo.description

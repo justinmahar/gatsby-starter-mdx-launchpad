@@ -8,20 +8,7 @@ export interface FooterProps {}
 export default function Footer(props: FooterProps): JSX.Element {
   const settings: Settings = useSettings();
   return (
-    <div className="bg-gradient-dark position-relative" style={{ paddingTop: '8em', paddingBottom: '8em' }}>
-      {/* SVG separator */}
-      <div className="separator separator-top separator-skew">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon className="fill-white" points="0 100 0 0 2560 0" />
-        </svg>
-      </div>
+    <div style={{ paddingTop: '8em', paddingBottom: '8em', backgroundColor: '#202020' }}>
       <Container>
         <Row>
           <Col>
