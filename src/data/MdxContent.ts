@@ -75,7 +75,7 @@ export type MdxData = {
 // === === === === === === === === ===
 
 /**
- * `MdxContent` is an MDX page that includes commonly used fields.
+ * `MdxContent` is MDX content that includes frontmatter and commonly used fields.
  * Use the `...mdxContent` graphql fragment to get all fields needed
  * to construct one. Then pass each MDX node into the constructor.
  */

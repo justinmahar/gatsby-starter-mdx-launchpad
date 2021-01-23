@@ -39,15 +39,17 @@ const gatsbyPluginManifestOptions = {
   theme_color: settings.gatsbyPluginManifestOptions.themeColor,
   background_color: settings.gatsbyPluginManifestOptions.backgroundColor,
   display: settings.gatsbyPluginManifestOptions.display,
-  icon: settings.gatsbyPluginManifestOptions.customIcon !== 'none'
-    ? settings.gatsbyPluginManifestOptions.customIcon
-    : settings.siteMetadata.siteIcon,
+  icon:
+    settings.gatsbyPluginManifestOptions.customIcon !== 'none'
+      ? settings.gatsbyPluginManifestOptions.customIcon
+      : settings.siteMetadata.siteIcon,
 };
 // Fix path to icon:
 // Gatsby serves content in static without "static" in the path, but here
 // the path must be relative to the project root. So we add in static before the path.
 if (gatsbyPluginManifestOptions.icon) {
-  gatsbyPluginManifestOptions.icon = 'static' + (gatsbyPluginManifestOptions.icon.startsWith('/') ? '' : '/') + gatsbyPluginManifestOptions.icon;
+  gatsbyPluginManifestOptions.icon =
+    'static' + (gatsbyPluginManifestOptions.icon.startsWith('/') ? '' : '/') + gatsbyPluginManifestOptions.icon;
 }
 // == END PWA Manifest Plugin Setup ==
 
@@ -63,7 +65,7 @@ const plugins = [
   {
     resolve: `gatsby-plugin-sitemap`,
     options: {
-      exclude: [`/private/*`]
+      exclude: [`/${settings.privatePagePathPrefix}/*`],
     },
   },
   `gatsby-plugin-robots-txt`,

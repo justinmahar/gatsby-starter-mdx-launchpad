@@ -47,7 +47,9 @@ export default function SEO(props: SEOProps): JSX.Element {
 
   // If the twitter site username is none, set it to undefined.
   const twitterSiteUsername =
-    settings.data.twitterSiteUsername !== 'none' ? settings.data.twitterSiteUsername : undefined;
+    settings.data.settingsYaml.twitterSiteUsername !== 'none'
+      ? settings.data.settingsYaml.twitterSiteUsername
+      : undefined;
 
   const openGraph: OpenGraphMetadata = {
     ogUrl: typeof window !== 'undefined' ? window.location.href : '',

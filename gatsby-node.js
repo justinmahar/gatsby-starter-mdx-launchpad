@@ -28,8 +28,6 @@
 
 const path = require('path');
 
-const BUILT_IN_PAGE_SLUGS = ['index', 'not-found'];
-
 exports.onCreateNode = ({ node, actions }, pluginOptions) => {
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
   const { createNodeField } = actions;
@@ -71,6 +69,9 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
           }
         }
       }
+      settingsYaml {
+        privatePagePathPrefix
+      }
     }
   `).then((result) => {
     // This is some boilerlate to handle errors
@@ -79,7 +80,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       Promise.reject(result.errors);
     }
 
-    const privatePagePathPrefix = 'private/';
+    const privatePagePathPrefix = result.data.settingsYaml.privatePagePathPrefix;
 
     const mdxNodes = result.data.allMdx.nodes;
 
@@ -90,12 +91,11 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       // Don't create pages for partials
       if (!node.frontmatter.partial) {
         const pageConfig = {
-          // This is the slug we created in onCreateNode
-          path: `${node.frontmatter.private ? privatePagePathPrefix : ''}${node.fields.slug}`,
+          // We'll use the slug we created in onCreateNode, in addition to a private path prefix if private
+          path: `${node.frontmatter.private ? `${privatePagePathPrefix}/` : ''}${node.fields.slug}`,
           // This component will wrap our MDX content
           component: mdxPageTemplate,
-          // Data passed to context is available in props and
-          // page queries as GraphQL variables.
+          // Data passed to context is available in props, and in page queries as GraphQL variables.
           context: {
             slug: node.fields.slug,
           },

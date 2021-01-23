@@ -16,11 +16,13 @@ export const settingsQuery = graphql`
         siteUrl
       }
     }
-    seoTitleSeparator
-    privatePagePathPrefix
-    googleAnalyticsTrackingId
-    disqusShortname
-    twitterSiteUsername
+    settingsYaml {
+      seoTitleSeparator
+      privatePagePathPrefix
+      googleAnalyticsTrackingId
+      disqusShortname
+      twitterSiteUsername
+    }
   }
 `;
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
@@ -40,11 +42,13 @@ export type SettingsData = {
       siteUrl: string;
     };
   };
-  seoTitleSeparator: string;
-  privatePagePathPrefix: string;
-  googleAnalyticsTrackingId: string;
-  disqusShortname: string;
-  twitterSiteUsername: string;
+  settingsYaml: {
+    seoTitleSeparator: string;
+    privatePagePathPrefix: string;
+    googleAnalyticsTrackingId: string;
+    disqusShortname: string;
+    twitterSiteUsername: string;
+  };
 };
 
 // === === === === === === === === ===
@@ -61,11 +65,11 @@ export default class Settings {
       siteIcon: this.data.site.siteMetadata.siteIcon,
       siteIconAlt: this.data.site.siteMetadata.siteIconAlt,
       siteUrl: this.data.site.siteMetadata.siteUrl,
-      seoTitleSeparator: this.data.seoTitleSeparator,
-      privatePagePathPrefix: this.data.privatePagePathPrefix,
-      googleAnalyticsTrackingId: this.data.googleAnalyticsTrackingId,
-      disqusShortname: this.data.disqusShortname,
-      twitterSiteUsername: this.data.twitterSiteUsername,
+      seoTitleSeparator: this.data.settingsYaml.seoTitleSeparator,
+      privatePagePathPrefix: this.data.settingsYaml.privatePagePathPrefix,
+      googleAnalyticsTrackingId: this.data.settingsYaml.googleAnalyticsTrackingId,
+      disqusShortname: this.data.settingsYaml.disqusShortname,
+      twitterSiteUsername: this.data.settingsYaml.twitterSiteUsername,
       year: `${new Date().getFullYear()}`,
     });
   }

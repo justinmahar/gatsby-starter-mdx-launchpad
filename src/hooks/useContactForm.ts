@@ -31,7 +31,7 @@ const defaultContactFormFieldPartial: Partial<ContactFormField> = {
 };
 
 /** Used to validate emails when no email validation is provided. */
-const emailValidate = (email: any) => {
+const emailValidate = (email: any): string | boolean => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase()) ? true : 'Please enter a valid email.';
 };
@@ -95,7 +95,7 @@ export default function useContactForm(
   const validate = (): boolean => {
     let newFormErrors: FormErrors = {};
 
-    Object.keys(formFieldMap).forEach(key => {
+    Object.keys(formFieldMap).forEach((key) => {
       const field: ContactFormField = formFieldMap[key];
       const fieldValue: any = formValues[key];
       if (!!field.required && !fieldValue && fieldValue !== 0) {
@@ -138,7 +138,7 @@ export default function useContactForm(
 
   const urlEncode = (formValues: FormValues): string => {
     return Object.keys(formValues)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formValues[key]))
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(formValues[key]))
       .join('&');
   };
 

@@ -17,7 +17,7 @@ gatsbyPluginManifestOptions:
   display: standalone
   customIcon: none # "/media/pwa-icon.png"
 seoTitleSeparator: ' - '
-privatePagePathPrefix: none
+privatePagePathPrefix: private # Must not start or end with a slash
 googleAnalyticsTrackingId: none
 disqusShortname: none
 twitterSiteUsername: none
