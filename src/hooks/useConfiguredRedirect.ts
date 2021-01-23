@@ -26,8 +26,9 @@ export const useConfiguredRedirect = (locationPathname: string): boolean => {
     }
     if (fixedPathname !== redirectPathname) {
       navigate(`/${redirectPathname}`);
+    } else {
+      setReady(true);
     }
-    setReady(true);
   }, [locationPathname]);
 
   return ready;
