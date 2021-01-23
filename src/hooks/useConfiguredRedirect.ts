@@ -2,7 +2,15 @@ import React from 'react';
 import { redirects } from '../settings/redirects';
 import { navigate } from '@reach/router';
 
-export const useConfiguredRedirect = (locationPathname: string): void => {
+/**
+ * Redirects to the configured pathname, or does nothing otherwise.
+ *
+ * Returns true when finished.
+ *
+ * @param locationPathname The location pathname from reach router. This is `props.location.pathname` for the page component.
+ */
+export const useConfiguredRedirect = (locationPathname: string): boolean => {
+  const [ready, setReady] = React.useState(false);
   // Handle configured Redirects
   React.useEffect(() => {
     // Pathname (minus starting slash)
@@ -17,5 +25,8 @@ export const useConfiguredRedirect = (locationPathname: string): void => {
     if (fixedPathname !== redirectPathname) {
       navigate(`/${redirectPathname}`);
     }
+    setReady(true);
   }, [locationPathname]);
+
+  return ready;
 };

@@ -13,27 +13,31 @@ interface NotFoundProps {
 
 export default function NotFound(props: NotFoundProps): JSX.Element {
   // Redirect elsewhere if configured in settings/redirects.ts
-  useConfiguredRedirect(props.location.pathname);
+  const ready = useConfiguredRedirect(props.location.pathname);
 
   const pageTitle = '404 Not Found';
 
-  return (
-    <Layout>
-      <SEO seo={{ title: `${pageTitle}{seoTitleSeparator}{siteDescription}` }} />
-      <Body>
-        <Container className="text-center">
-          <div style={{ fontSize: '600%' }}>404</div>
-          <h1>Well, shoot.</h1>
-          <br />
-          <h5>We couldn't find what you were looking for.</h5>
-          <br />
-          <Link to="/">
-            <Button variant="secondary">&laquo; Home</Button>
-          </Link>
-        </Container>
-      </Body>
-    </Layout>
-  );
+  if (ready) {
+    return (
+      <Layout>
+        <SEO seo={{ title: `${pageTitle}{seoTitleSeparator}{siteDescription}` }} />
+        <Body>
+          <Container className="text-center">
+            <div style={{ fontSize: '600%' }}>404</div>
+            <h1>Well, shoot.</h1>
+            <br />
+            <h5>We couldn't find what you were looking for.</h5>
+            <br />
+            <Link to="/">
+              <Button variant="secondary">&laquo; Home</Button>
+            </Link>
+          </Container>
+        </Body>
+      </Layout>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 // Page query goes here
