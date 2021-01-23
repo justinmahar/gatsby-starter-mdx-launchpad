@@ -60,7 +60,20 @@ const plugins = [
       ...gatsbyPluginManifestOptions,
     },
   },
-  `gatsby-plugin-offline`,
+  {
+    resolve: 'gatsby-plugin-offline',
+    options: {
+      workboxConfig: {
+        importWorkboxFrom: `cdn`,
+        runtimeCaching: [
+          {
+            urlPattern: /.*/,
+            handler: `NetworkFirst`,
+          },
+        ],
+      },
+    },
+  },
   // `gatsby-plugin-remove-serviceworker`, // Uncomment when gatsby-plugin-offline disabled
   `gatsby-plugin-react-helmet`,
   {
