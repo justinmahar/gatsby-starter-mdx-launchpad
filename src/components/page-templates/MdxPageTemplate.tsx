@@ -23,9 +23,9 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
   const contentTitle = templateTagRenderer.render(mdxContent.data.frontmatter.title);
 
   return (
-    <Layout {...props}>
+    <Layout>
       <MdxHead mdxContent={mdxContent} />
-      <Body {...props}>
+      <Body>
         <Container className="content-container">
           <h1>{contentTitle}</h1>
           <MDXRenderer scope={undefined} components={undefined}>
