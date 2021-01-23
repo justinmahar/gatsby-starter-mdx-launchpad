@@ -3,7 +3,9 @@ import { redirects } from '../settings/redirects';
 import { navigate } from '@reach/router';
 
 /**
- * Redirects to the configured pathname, or does nothing otherwise.
+ * Checks if a redirect is configured for the provided pathname, and redirects.
+ *
+ * Does nothing otherwise.
  *
  * Returns true when finished.
  *
