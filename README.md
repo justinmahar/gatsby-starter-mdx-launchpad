@@ -6,6 +6,19 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
 
+
+### Adding Pages and Content
+
+- Add component pages to `pages`
+- Add MDX markdown pages to `mdx-pages`
+- Add MDX content partials to `mdx-partials`
+
+See `src/mdx-partials/_defaults.mdx` for all frontmatter available and additional information on MDX.
+### Configuring Redirects
+
+Add redirects to `src/settings/redirects.ts`. 
+
+Redirects occur from the 404 not found page.
 ### Template Tags
 
 In your site's various settings, you can reference other settings using template tags.
