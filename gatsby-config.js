@@ -139,13 +139,15 @@ const plugins = [
 ];
 
 // == Google Analytics ==
-// Only add the analytics plugin if there's a tracking ID
-if (settings.googleAnalyticsTrackingId !== 'none') {
+// https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
+// Only add the analytics plugin if there's a measurement ID specified
+if (settings.googleAnalyticsMeasurementId !== 'none') {
   plugins.push({
-    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    resolve: `gatsby-plugin-google-analytics`,
+    resolve: `gatsby-plugin-google-gtag`,
     options: {
-      trackingId: settings.googleAnalyticsTrackingId,
+      trackingIds: [
+        settings.googleAnalyticsMeasurementId, // Google Analytics / GA
+      ],
     },
   });
 }

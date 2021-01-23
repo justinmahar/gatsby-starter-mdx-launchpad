@@ -43,7 +43,7 @@ The following template tags are available:
 | <small> `{siteUrl}` </small>                   | Site URL                         |
 | <small> `{seoTitleSeparator}` </small>         | Title separator for SEO          |
 | <small> `{privatePagePathPrefix}` </small>     | Prefix used before private pages |
-| <small> `{googleAnalyticsTrackingId}` </small> | Google Analytics tracking ID     |
+| <small> `{googleAnalyticsMeasurementId}` </small> | Google Analytics tracking ID     |
 | <small> `{disqusShortname}` </small>           | Discus shortname                 |
 | <small> `{twitterSiteUsername}` </small>       | Twitter site username            |
 | <small> `{year}` </small>                      | Current year (i.e. 2021)         |

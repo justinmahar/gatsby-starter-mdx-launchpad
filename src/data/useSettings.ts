@@ -19,7 +19,7 @@ export const settingsQuery = graphql`
     settingsYaml {
       seoTitleSeparator
       privatePagePathPrefix
-      googleAnalyticsTrackingId
+      googleAnalyticsMeasurementId
       disqusShortname
       twitterSiteUsername
     }
@@ -45,7 +45,7 @@ export type SettingsData = {
   settingsYaml: {
     seoTitleSeparator: string;
     privatePagePathPrefix: string;
-    googleAnalyticsTrackingId: string;
+    googleAnalyticsMeasurementId: string;
     disqusShortname: string;
     twitterSiteUsername: string;
   };
@@ -67,7 +67,7 @@ export default class Settings {
       siteUrl: this.data.site.siteMetadata.siteUrl,
       seoTitleSeparator: this.data.settingsYaml.seoTitleSeparator,
       privatePagePathPrefix: this.data.settingsYaml.privatePagePathPrefix,
-      googleAnalyticsTrackingId: this.data.settingsYaml.googleAnalyticsTrackingId,
+      googleAnalyticsMeasurementId: this.data.settingsYaml.googleAnalyticsMeasurementId,
       disqusShortname: this.data.settingsYaml.disqusShortname,
       twitterSiteUsername: this.data.settingsYaml.twitterSiteUsername,
       year: `${new Date().getFullYear()}`,
