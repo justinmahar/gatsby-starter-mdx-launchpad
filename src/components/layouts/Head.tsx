@@ -1,4 +1,3 @@
-import { Location } from '@reach/router';
 import * as React from 'react';
 import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super-seo';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
