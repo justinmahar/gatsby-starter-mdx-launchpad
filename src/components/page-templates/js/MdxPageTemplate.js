@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import TsxMdxPageTemplate from '../MdxPageTemplate2';
+import TsxMdxPageTemplate from '../MdxPageTemplate';
 
 // This component is a wrapper for the TSX layout component of the
 // same name.
