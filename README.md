@@ -4,7 +4,7 @@
 
 **[Live Starter](https://gatsby-starship.netlify.app/)**.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6c4493db-5263-469c-a0d2-4e3194086bb3/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
 
 ### Template Tags
 
