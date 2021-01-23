@@ -1,19 +1,22 @@
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
-import Layout from '../components/layouts/Layout';
 import Head from '../components/layouts/Head';
+import Layout from '../components/layouts/Layout';
 
 interface IndexProps {
   data: any;
 }
 
 export default function Index(props: IndexProps): JSX.Element {
+  const pageTitle = `{siteName}`;
+  const description = `{siteDescription}`;
+
+  const seoTitle = `${pageTitle}`;
+
   return (
     <Layout>
-      <Head seo={{ title: `{siteName}{seoTitleSeparator}{siteDescription}` }} />
+      <Head seo={{ title: seoTitle, description: description }} />
       <Body>
         <Container className="content">
           <Row>

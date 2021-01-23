@@ -12,15 +12,18 @@ interface NotFoundProps {
 }
 
 export default function NotFound(props: NotFoundProps): JSX.Element {
+  const pageTitle = `404 Not Found`;
+  const description = `Sorry, we couldn't find what you were looking for.`;
+
+  const seoTitle = `${pageTitle}{seoTitleSeparator}{siteName}`;
+
   // Redirect elsewhere if configured in settings/redirects.ts
   const ready = useConfiguredRedirect(props.location.pathname);
-
-  const pageTitle = '404 Not Found';
 
   if (ready) {
     return (
       <Layout>
-        <Head seo={{ title: `${pageTitle}{seoTitleSeparator}{siteDescription}` }} />
+        <Head seo={{ title: seoTitle, description: description }} />
         <Body>
           <Container className="content text-center">
             <div style={{ fontSize: '600%' }}>404</div>
