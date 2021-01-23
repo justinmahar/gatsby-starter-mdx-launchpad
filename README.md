@@ -6,7 +6,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
 
-
 ### Adding Pages and Content
 
 - Add component pages to `pages`
@@ -14,38 +13,49 @@
 - Add MDX content partials to `mdx-partials`
 
 See `src/mdx-partials/_defaults.mdx` for all frontmatter available and additional information on MDX.
+
 ### Configuring Redirects
 
-Add redirects to `src/settings/redirects.ts`. 
+Add redirects to `src/settings/redirects.ts`.
 
 Redirects occur from the 404 not found page.
+
 ### Template Tags
 
-In your site's various settings, you can reference other settings using template tags.
+A template tag system exists that allows you to reference site and content information using template tags.
 
-That way, if you change one setting, all others update automatically. Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in Site Settings. Circular references are not allowed.
+Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in Site Settings. Circular references are not allowed.
+
+`Settings` (from `useSettings` hook) and `MdxContent` (wraps MDX data) both have a getter for a `TemplateTagRenderer` which can be used to render their respective template tags. Template tags for settings are automatically applied to SEO values, and SEO can accept a prop for an additional `TemplateTagRenderer` (this is how the MDX tags are passed into SEO).
 
 The following template tags are available:
 
-| Template Tag                                   | Value                            | Source        |
-| ---------------------------------------------- | -------------------------------- | ------------- |
-| <small> `{siteName}` </small>                  | Name of site                     | Site Settings |
-| <small> `{siteDescription}` </small>           | Description of site              | Site Settings |
-| <small> `{siteImage}` </small>                 | Site image URL                   | Site Settings |
-| <small> `{siteImageAlt}` </small>              | Site image alt text              | Site Settings |
-| <small> `{siteIcon}` </small>                  | Site icon URL                    | Site Settings |
-| <small> `{siteIconAlt}` </small>               | Site icon alt text               | Site Settings |
-| <small> `{siteUrl}` </small>                   | Site URL                         | Site Settings |
-| <small> `{seoTitleSeparator}` </small>         | Title separator for SEO          | Site Settings |
-| <small> `{privatePagePathPrefix}` </small>     | Prefix used before private pages | Site Settings |
-| <small> `{googleAnalyticsTrackingId}` </small> | Google Analytics tracking ID     | Site Settings |
-| <small> `{disqusShortname}` </small>           | Discus shortname                 | Site Settings |
-| <small> `{twitterSiteUsername}` </small>       | Twitter site username            | Site Settings |
-| <small> `{year}` </small>                      | Current year (i.e. 2021)         | Site Settings |
-| <small> `{contentTitle}` </small>              | Title of current content         | MDX Content   |
-| <small> `{contentExcerpt}` </small>            | Excerpt from current content     | MDX Content   |
-| <small> `{contentSeoTitle}` </small>           | SEO title of the content         | MDX Content   |
-| <small> `{contentSeoDescription}` </small>     | SEO description of the content   | MDX Content   |
+### Settings
+
+| Template Tag                                   | Value                            |
+| ---------------------------------------------- | -------------------------------- |
+| <small> `{siteName}` </small>                  | Name of site                     |
+| <small> `{siteDescription}` </small>           | Description of site              |
+| <small> `{siteImage}` </small>                 | Site image URL                   |
+| <small> `{siteImageAlt}` </small>              | Site image alt text              |
+| <small> `{siteIcon}` </small>                  | Site icon URL                    |
+| <small> `{siteIconAlt}` </small>               | Site icon alt text               |
+| <small> `{siteUrl}` </small>                   | Site URL                         |
+| <small> `{seoTitleSeparator}` </small>         | Title separator for SEO          |
+| <small> `{privatePagePathPrefix}` </small>     | Prefix used before private pages |
+| <small> `{googleAnalyticsTrackingId}` </small> | Google Analytics tracking ID     |
+| <small> `{disqusShortname}` </small>           | Discus shortname                 |
+| <small> `{twitterSiteUsername}` </small>       | Twitter site username            |
+| <small> `{year}` </small>                      | Current year (i.e. 2021)         |
+
+### MDX Content
+
+| Template Tag                               | Value                          |
+| ------------------------------------------ | ------------------------------ |
+| <small> `{contentTitle}` </small>          | Title of current content       |
+| <small> `{contentExcerpt}` </small>        | Excerpt from current content   |
+| <small> `{contentSeoTitle}` </small>       | SEO title of the content       |
+| <small> `{contentSeoDescription}` </small> | SEO description of the content |
 
 # Copyright
 
