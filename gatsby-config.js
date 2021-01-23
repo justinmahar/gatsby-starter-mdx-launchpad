@@ -94,8 +94,15 @@ const plugins = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-      name: `pages-mdx`,
-      path: `${__dirname}/src/pages-mdx`,
+      name: `mdx-pages`,
+      path: `${__dirname}/src/mdx-pages`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `mdx-partials`,
+      path: `${__dirname}/src/mdx-partials`,
     },
   },
   `gatsby-transformer-yaml`,
