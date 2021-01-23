@@ -57,8 +57,15 @@ export default class Settings {
       siteName: this.data.site.siteMetadata.siteName,
       siteDescription: this.data.site.siteMetadata.siteDescription,
       siteImage: this.data.site.siteMetadata.siteImage,
+      siteImageAlt: this.data.site.siteMetadata.siteImageAlt,
       siteIcon: this.data.site.siteMetadata.siteIcon,
+      siteIconAlt: this.data.site.siteMetadata.siteIconAlt,
       siteUrl: this.data.site.siteMetadata.siteUrl,
+      seoTitleSeparator: this.data.seoTitleSeparator,
+      unlistedPagePathPrefix: this.data.unlistedPagePathPrefix,
+      googleAnalyticsTrackingId: this.data.googleAnalyticsTrackingId,
+      disqusShortname: this.data.disqusShortname,
+      twitterSiteUsername: this.data.twitterSiteUsername,
       year: `${new Date().getFullYear()}`,
     });
   }

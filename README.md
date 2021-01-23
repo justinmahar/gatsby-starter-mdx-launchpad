@@ -14,20 +14,25 @@ That way, if you change one setting, all others update automatically. Template t
 
 The following template tags are available:
 
-| Template Tag                               | Value                                                 | Source                        |
-| ------------------------------------------ | ----------------------------------------------------- | ----------------------------- |
-| <small> `{year}` </small>                  | Current year (i.e. 2020)                              | Calendar                      |
-| <small> `{siteName}` </small>              | Name of site                                          | Site Settings                 |
-| <small> `{siteDescription}` </small>       | Description of site                                   | Site Settings                 |
-| <small> `{contentTitle}` </small>          | Title of current content                              | Posts and Pages               |
-| <small> `{contentExcerpt}` </small>        | Excerpt from current content                          | Posts and Pages               |
-| <small> `{contentCategory}` </small>       | Category of current content (or none if not relevant) | Posts and Pages               |
-| <small> `{contentSeoTitle}` </small>       | SEO title of the content                              | Posts and Pages               |
-| <small> `{contentSeoDescription}` </small> | SEO description of the content                        | Posts and Pages               |
-| <small> `{twitterSiteUsername}` </small>   | Twitter username for site                             | Social &amp; Sharing Settings |
-| <small> `{seoTitleSeparator}` </small>     | Separator for use in SEO titles.                      | Site SEO Settings             |
-| <small> `{configSeoTitle}` </small>        | SEO title for a particular configuration              | Site SEO Settings             |
-| <small> `{configSeoDescription}` </small>  | SEO description for a particular configuration        | Site SEO Settings             |
+| Template Tag                                   | Value                             | Source        |
+| ---------------------------------------------- | --------------------------------- | ------------- |
+| <small> `{siteName}` </small>                  | Name of site                      | Site Settings |
+| <small> `{siteDescription}` </small>           | Description of site               | Site Settings |
+| <small> `{siteImage}` </small>                 | Site image URL                    | Site Settings |
+| <small> `{siteImageAlt}` </small>              | Site image alt text               | Site Settings |
+| <small> `{siteIcon}` </small>                  | Site icon URL                     | Site Settings |
+| <small> `{siteIconAlt}` </small>               | Site icon alt text                | Site Settings |
+| <small> `{siteUrl}` </small>                   | Site URL                          | Site Settings |
+| <small> `{seoTitleSeparator}` </small>         | Title separator for SEO           | Site Settings |
+| <small> `{unlistedPagePathPrefix}` </small>    | Prefix used before unlisted pages | Site Settings |
+| <small> `{googleAnalyticsTrackingId}` </small> | Google Analytics tracking ID      | Site Settings |
+| <small> `{disqusShortname}` </small>           | Discus shortname                  | Site Settings |
+| <small> `{twitterSiteUsername}` </small>       | Twitter site username             | Site Settings |
+| <small> `{year}` </small>                      | Current year (i.e. 2021)          | Site Settings |
+| <small> `{contentTitle}` </small>              | Title of current content          | MDX Content   |
+| <small> `{contentExcerpt}` </small>            | Excerpt from current content      | MDX Content   |
+| <small> `{contentSeoTitle}` </small>           | SEO title of the content          | MDX Content   |
+| <small> `{contentSeoDescription}` </small>     | SEO description of the content    | MDX Content   |
 
 # Copyright
 
