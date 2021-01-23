@@ -79,7 +79,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       Promise.reject(result.errors);
     }
 
-    const unlistedPagePathPrefix = 'private/';
+    const privatePagePathPrefix = 'private/';
 
     const mdxNodes = result.data.allMdx.nodes;
 
@@ -91,7 +91,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
       if (!node.frontmatter.partial) {
         const pageConfig = {
           // This is the slug we created in onCreateNode
-          path: `${node.frontmatter.private ? unlistedPagePathPrefix : ''}${node.fields.slug}`,
+          path: `${node.frontmatter.private ? privatePagePathPrefix : ''}${node.fields.slug}`,
           // This component will wrap our MDX content
           component: mdxPageTemplate,
           // Data passed to context is available in props and

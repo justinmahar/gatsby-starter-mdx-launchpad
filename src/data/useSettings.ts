@@ -17,7 +17,7 @@ export const settingsQuery = graphql`
       }
     }
     seoTitleSeparator
-    unlistedPagePathPrefix
+    privatePagePathPrefix
     googleAnalyticsTrackingId
     disqusShortname
     twitterSiteUsername
@@ -41,7 +41,7 @@ export type SettingsData = {
     };
   };
   seoTitleSeparator: string;
-  unlistedPagePathPrefix: string;
+  privatePagePathPrefix: string;
   googleAnalyticsTrackingId: string;
   disqusShortname: string;
   twitterSiteUsername: string;
@@ -62,7 +62,7 @@ export default class Settings {
       siteIconAlt: this.data.site.siteMetadata.siteIconAlt,
       siteUrl: this.data.site.siteMetadata.siteUrl,
       seoTitleSeparator: this.data.seoTitleSeparator,
-      unlistedPagePathPrefix: this.data.unlistedPagePathPrefix,
+      privatePagePathPrefix: this.data.privatePagePathPrefix,
       googleAnalyticsTrackingId: this.data.googleAnalyticsTrackingId,
       disqusShortname: this.data.disqusShortname,
       twitterSiteUsername: this.data.twitterSiteUsername,
