@@ -1,12 +1,12 @@
 siteMetadata:
-  siteIcon: "/media/site-icon.png"
-  siteUrl: https://gatsby-starship.netlify.app
-  siteIconAlt: gatsby-starship
   siteName: gatsby-starship
+  siteDescription: gatsby-starship
+  siteUrl: https://gatsby-starship.netlify.app
+  siteIcon: "/media/site-icon.png"
+  siteIconAlt: gatsby-starship
   siteImage: "{siteUrl}/media/site-image.jpg"
   siteImageWidth: 1200
   siteImageHeight: 630
-  siteDescription: gatsby-starship
   siteImageAlt: gatsby-starship
 gatsbyPluginManifestOptions:
   name: gatsby-starship
