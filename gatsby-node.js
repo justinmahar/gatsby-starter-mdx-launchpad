@@ -83,7 +83,7 @@ exports.createPages = ({ graphql, actions }, pluginOptions) => {
 
     const mdxNodes = result.data.allMdx.nodes;
 
-    const mdxPageTemplate = path.resolve(`${__dirname}/src/components/page-templates/js/MDXPageTemplate.js`);
+    const mdxPageTemplate = path.resolve(`${__dirname}/src/components/page-templates/js/MdxPageTemplate.js`);
 
     // We'll call `createPage` for each result, creating each page.
     mdxNodes.forEach((node) => {

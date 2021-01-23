@@ -8,12 +8,12 @@ import Body from '../layouts/Body';
 import Layout from '../layouts/Layout';
 import MdxSEO from './MdxSEO';
 
-export interface MDXPageTemplateProps {
+export interface MdxPageTemplateProps {
   pageContext: any;
   data: any;
 }
 
-export default function MDXPageTemplate(props: MDXPageTemplateProps): JSX.Element {
+export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Element {
   const mdxContent: MdxContent = new MdxContent(props.data.mdx);
   const settings: Settings = useSettings();
 
@@ -37,4 +37,4 @@ export default function MDXPageTemplate(props: MDXPageTemplateProps): JSX.Elemen
   );
 }
 
-// Page query is located in js/MDXPageTemplate.js
+// Page query is located in js/MdxPageTemplate.js
