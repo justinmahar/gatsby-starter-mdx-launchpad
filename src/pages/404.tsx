@@ -13,20 +13,21 @@ interface NotFoundProps {
 }
 
 export default function NotFound(props: NotFoundProps): JSX.Element {
-  // == Configured Redirects ==
-  // Pathname (minus starting slash)
-  const pathname: string = props.location.pathname.replace(/^\//, '');
-  let redirectPathname: string | undefined = pathname;
-  for (let i = 0; i < 10; i++) {
-    if (!redirects[pathname]) {
-      break;
+  // Handle configured Redirects
+  React.useEffect(() => {
+    // Pathname (minus starting slash)
+    const pathname: string = props.location.pathname.replace(/^\//, '');
+    let redirectPathname: string | undefined = pathname;
+    for (let i = 0; i < 10; i++) {
+      if (!redirects[pathname]) {
+        break;
+      }
+      redirectPathname = redirects[pathname];
     }
-    redirectPathname = redirects[pathname];
-  }
-  if (pathname !== redirectPathname) {
-    navigate(`/${redirectPathname}`);
-  }
-  // == END Configured Redirects ==
+    if (pathname !== redirectPathname) {
+      navigate(`/${redirectPathname}`);
+    }
+  }, [props.location.pathname]);
 
   const pageTitle = '404 Not Found';
 
