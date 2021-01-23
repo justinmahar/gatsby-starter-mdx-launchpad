@@ -52,5 +52,4 @@ require('./src/styles/styles.scss');
 // const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
 //   window.location.reload();
 // };
-
 // export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

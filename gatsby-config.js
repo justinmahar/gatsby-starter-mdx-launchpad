@@ -30,7 +30,7 @@ settings.siteMetadata.siteUrl = settings.siteMetadata.siteUrl.replace(/(.*)[/]+$
 settings.siteMetadata.siteImage = settings.siteMetadata.siteImage.replace('{siteUrl}', settings.siteMetadata.siteUrl);
 
 // == PWA Manifest Plugin Setup ==
-// For more info on PWA support, see: https://gatsby.app/offline
+// For more info on PWA support, see: https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/
 /** These options are passed directly into the manifest plugin. */
 const gatsbyPluginManifestOptions = {
   name: settings.gatsbyPluginManifestOptions.name,
@@ -60,8 +60,8 @@ const plugins = [
       ...gatsbyPluginManifestOptions,
     },
   },
-  // `gatsby-plugin-offline`,
-  `gatsby-plugin-remove-serviceworker`, // Remove when gatsby-plugin-offline enabled
+  `gatsby-plugin-offline`,
+  // `gatsby-plugin-remove-serviceworker`, // Uncomment when gatsby-plugin-offline disabled
   `gatsby-plugin-react-helmet`,
   {
     resolve: `gatsby-plugin-sitemap`,
