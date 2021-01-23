@@ -74,25 +74,18 @@ export default function Head(props: HeadProps): JSX.Element {
   };
 
   return (
-    <Location>
-      {(locationProps) => {
-        return (
-          <SuperSEO
-            title={seoTitle}
-            description={seoDescription}
-            lang={lang}
-            openGraph={{
-              ...openGraph,
-              ogUrl: locationProps.location.href,
-            }}
-            twitter={{
-              twitterSummaryCard: twitterCard,
-            }}
-          >
-            {props.children}
-          </SuperSEO>
-        );
+    <SuperSEO
+      title={seoTitle}
+      description={seoDescription}
+      lang={lang}
+      openGraph={{
+        ...openGraph,
       }}
-    </Location>
+      twitter={{
+        twitterSummaryCard: twitterCard,
+      }}
+    >
+      {props.children}
+    </SuperSEO>
   );
 }
