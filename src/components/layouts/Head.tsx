@@ -78,9 +78,7 @@ export default function Head(props: HeadProps): JSX.Element {
       title={seoTitle}
       description={seoDescription}
       lang={lang}
-      openGraph={{
-        ...openGraph,
-      }}
+      openGraph={openGraph}
       twitter={{
         twitterSummaryCard: twitterCard,
       }}
