@@ -1,5 +1,5 @@
 ---
-title: Placeholder
+title: MDX Defaults
 slug: none
 excerpt: none
 seo:
@@ -13,8 +13,10 @@ partial: true
 private: false
 ---
 
-This file has all frontmatter fields defined so that their types can be inferred by Gatsby's GraphQL system. It is marked as partial, so it will not be generated as a page. Add all new frontmatter specs to this file.
+This file has all frontmatter fields defined so that their types can be inferred by Gatsby's GraphQL system. 
+It is marked as partial, so it will not be generated as a page. Add all new frontmatter specs to this file.
 
+In any MDX file except this one:
 - All fields except `title` are optional and fall back on defaults.
 - Anything not specified, or set to `none`, is ignored.
 - When not specified, slugs are created from titles. They are made lowercase and all non-alphanumerics are converted to dashes.

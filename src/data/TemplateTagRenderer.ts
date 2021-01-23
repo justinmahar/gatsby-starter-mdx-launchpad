@@ -1,5 +1,5 @@
 export class TemplateTagRenderer {
-  constructor(public tagMap: { [key: string]: string }) { }
+  constructor(public tagMap: { [key: string]: string }) {}
 
   public render(template: string, depth = 0): string {
     // If we've rerendered 10 or more times, there's probably a cyclical reference.

@@ -4,8 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Layout from '../components/layouts/Layout';
 import SEO from '../components/layouts/SEO';
-import { redirects } from '../settings/redirects';
-import { navigate } from '@reach/router';
+import { useConfiguredRedirect } from '../hooks/useConfiguredRedirect';
 
 interface NotFoundProps {
   data: any;
@@ -13,21 +12,8 @@ interface NotFoundProps {
 }
 
 export default function NotFound(props: NotFoundProps): JSX.Element {
-  // Handle configured Redirects
-  React.useEffect(() => {
-    // Pathname (minus starting slash)
-    const pathname: string = props.location.pathname.replace(/^\//, '');
-    let redirectPathname: string | undefined = pathname;
-    for (let i = 0; i < 10; i++) {
-      if (!redirects[redirectPathname]) {
-        break;
-      }
-      redirectPathname = redirects[redirectPathname];
-    }
-    if (pathname !== redirectPathname) {
-      navigate(`/${redirectPathname}`);
-    }
-  }, [props.location.pathname]);
+  // Redirect elsewhere if configured in settings/redirects.ts
+  useConfiguredRedirect(props.location.pathname);
 
   const pageTitle = '404 Not Found';
 
