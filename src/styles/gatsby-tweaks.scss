@@ -3,16 +3,15 @@
   white-space: pre-wrap;
 }
 
-// Style Markdown tables
-.card-body table {
+// Style tables
+table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 5px;
 }
-
-.card-body table td,
-th {
+table td,
+table th {
   border: 1px solid #cccccc;
   text-align: left;
   padding: 8px;

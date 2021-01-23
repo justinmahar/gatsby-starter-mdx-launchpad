@@ -4,7 +4,7 @@ import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../data/useSettings';
 
-export interface SEOProps {
+export interface HeadProps {
   seo: {
     title: string;
     description?: string;
@@ -14,9 +14,10 @@ export interface SEOProps {
     imageAlt?: string;
   };
   templateTagRenderer?: TemplateTagRenderer;
+  children?: React.ReactNode;
 }
 
-export default function SEO(props: SEOProps): JSX.Element {
+export default function Head(props: HeadProps): JSX.Element {
   const settings: Settings = useSettings();
   const settingsTemplateTagRenderer = settings.getTemplateTagRenderer();
   const templateTagRenderer = props.templateTagRenderer
@@ -87,7 +88,9 @@ export default function SEO(props: SEOProps): JSX.Element {
             twitter={{
               twitterSummaryCard: twitterCard,
             }}
-          />
+          >
+            {props.children}
+          </SuperSEO>
         );
       }}
     </Location>

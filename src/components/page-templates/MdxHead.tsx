@@ -1,13 +1,14 @@
 import * as React from 'react';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import SEO from '../layouts/SEO';
+import Head from '../layouts/Head';
 
-export interface MdxSEOProps {
+export interface MdxHeadProps {
   mdxContent: MdxContent;
+  children?: React.ReactNode;
 }
 
-export default function MdxSEO(props: MdxSEOProps): JSX.Element {
+export default function MdxHead(props: MdxHeadProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
 
   const seoTitle = `${mdxContent.data.frontmatter.title}{seoTitleSeparator}{siteName}`;
@@ -29,7 +30,7 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
   const mdxTemplateTagRenderer: TemplateTagRenderer = mdxContent.getTemplateTagRenderer();
 
   return (
-    <SEO
+    <Head
       seo={{
         title: seoTitle,
         description: seoDescription,
@@ -39,6 +40,8 @@ export default function MdxSEO(props: MdxSEOProps): JSX.Element {
         imageAlt: seoImageAlt,
       }}
       templateTagRenderer={mdxTemplateTagRenderer}
-    />
+    >
+      {props.children}
+    </Head>
   );
 }

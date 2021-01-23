@@ -80,10 +80,12 @@ export type MdxData = {
  * to construct one. Then pass each MDX node into the constructor.
  */
 export default class MdxContent {
-  constructor(public data: MdxData) { }
+  constructor(public data: MdxData) {}
 
   public getExcerpt(): string {
-    return this.data.frontmatter.excerpt !== 'none' ? this.data.frontmatter.excerpt : this.data.excerpt;
+    return this.data.frontmatter.excerpt && this.data.frontmatter.excerpt !== 'none'
+      ? this.data.frontmatter.excerpt
+      : this.data.excerpt;
   }
 
   public getTemplateTagRenderer(): TemplateTagRenderer {

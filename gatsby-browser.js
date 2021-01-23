@@ -33,14 +33,14 @@
 require('bootstrap/dist/css/bootstrap.min.css');
 
 // == PrismJS code syntax highlighting themes ==
-// require("prismjs/themes/prism.css")
-// require("prismjs/themes/prism-coy.css")
-// require("prismjs/themes/prism-dark.css")
-// require("prismjs/themes/prism-funky.css")
-require('prismjs/themes/prism-okaidia.css');
+require('prismjs/themes/prism.css');
+// require('prismjs/themes/prism-coy.css');
+// require('prismjs/themes/prism-dark.css');
+// require('prismjs/themes/prism-funky.css');
+// require('prismjs/themes/prism-okaidia.css');
 // require("prismjs/themes/prism-solarizedlight.css")
-// require("prismjs/themes/prism-tomorrow.css")
-// require("prismjs/themes/prism-twilight.css")
+// require('prismjs/themes/prism-tomorrow.css');
+// require('prismjs/themes/prism-twilight.css');
 
 // == Bootstrap Style Override ==
 // None
@@ -48,9 +48,9 @@ require('prismjs/themes/prism-okaidia.css');
 // == Custom Styles ==
 require('./src/styles/styles.scss');
 
-// Offline support - Reload when there's an update
-const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
-  window.location.reload();
-};
+// // Offline support - Reload when there's an update
+// const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
+//   window.location.reload();
+// };
 
-export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;
+// export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

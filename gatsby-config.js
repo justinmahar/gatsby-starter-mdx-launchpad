@@ -60,7 +60,8 @@ const plugins = [
       ...gatsbyPluginManifestOptions,
     },
   },
-  `gatsby-plugin-offline`,
+  // `gatsby-plugin-offline`,
+  `gatsby-plugin-remove-serviceworker`, // Remove when gatsby-plugin-offline enabled
   `gatsby-plugin-react-helmet`,
   {
     resolve: `gatsby-plugin-sitemap`,

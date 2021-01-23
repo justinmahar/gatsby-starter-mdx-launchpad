@@ -4,7 +4,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Layout from '../components/layouts/Layout';
-import SEO from '../components/layouts/SEO';
+import Head from '../components/layouts/Head';
 
 interface IndexProps {
   data: any;
@@ -13,14 +13,13 @@ interface IndexProps {
 export default function Index(props: IndexProps): JSX.Element {
   return (
     <Layout>
-      <SEO seo={{ title: '{siteName}{seoTitleSeparator}{siteDescription}' }} />
+      <Head seo={{ title: `{siteName}{seoTitleSeparator}{siteDescription}` }} />
       <Body>
         <Container className="content">
           <Row>
             <Col>
-              <MDXRenderer scope={undefined} components={undefined}>
-                {props.data.contentExample.body}
-              </MDXRenderer>
+              <h1>Home</h1>
+              <p>This is the index. Build something awesome.</p>
             </Col>
           </Row>
         </Container>
@@ -28,12 +27,3 @@ export default function Index(props: IndexProps): JSX.Element {
     </Layout>
   );
 }
-
-// Page query goes here
-export const query = graphql`
-  query IndexPageQuery {
-    contentExample: mdx(fields: { slug: { eq: "content-example" } }) {
-      ...mdxContent
-    }
-  }
-`;

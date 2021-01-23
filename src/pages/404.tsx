@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Layout from '../components/layouts/Layout';
-import SEO from '../components/layouts/SEO';
+import Head from '../components/layouts/Head';
 import { useConfiguredRedirect } from '../hooks/useConfiguredRedirect';
 
 interface NotFoundProps {
@@ -20,9 +20,9 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
   if (ready) {
     return (
       <Layout>
-        <SEO seo={{ title: `${pageTitle}{seoTitleSeparator}{siteDescription}` }} />
+        <Head seo={{ title: `${pageTitle}{seoTitleSeparator}{siteDescription}` }} />
         <Body>
-          <Container className="text-center">
+          <Container className="content text-center">
             <div style={{ fontSize: '600%' }}>404</div>
             <h1>Well, shoot.</h1>
             <br />

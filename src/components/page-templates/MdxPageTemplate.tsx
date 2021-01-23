@@ -6,7 +6,7 @@ import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../data/useSettings';
 import Body from '../layouts/Body';
 import Layout from '../layouts/Layout';
-import MdxSEO from './MdxSEO';
+import MdxHead from './MdxHead';
 
 export interface MdxPageTemplateProps {
   pageContext: any;
@@ -24,7 +24,7 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
 
   return (
     <Layout {...props}>
-      <MdxSEO mdxContent={mdxContent} />
+      <MdxHead mdxContent={mdxContent} />
       <Body {...props}>
         <Container className="content-container">
           <h1>{contentTitle}</h1>
