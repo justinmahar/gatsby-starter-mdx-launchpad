@@ -24,7 +24,7 @@ export default function Footer(props: FooterProps): JSX.Element {
                 </a>
                 .
               </div>
-              <div className="d-flex justify-content-center">
+              <div className="d-flex flex-wrap justify-content-center">
                 <div className="mx-4 my-2">
                   <Link className="heading" to="/terms">
                     Terms
