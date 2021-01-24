@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super-seo';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../data/useSettings';

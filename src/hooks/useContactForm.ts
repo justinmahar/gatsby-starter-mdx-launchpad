@@ -1,5 +1,5 @@
 import FormData from 'form-data';
-import * as React from 'react';
+import React from 'react';
 import FormSubmit from '../util/form-submit';
 
 /**

@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby';
 import { TemplateTagRenderer } from './TemplateTagRenderer';
-import Settings from './useSettings';
 
 /**
   This fragment will be available globally using [Gatsby's GraphQL API](https://www.gatsbyjs.org/docs/graphql-reference/#fragments).

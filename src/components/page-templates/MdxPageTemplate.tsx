@@ -1,5 +1,5 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import * as React from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';

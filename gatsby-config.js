@@ -154,6 +154,13 @@ if (settings.googleAnalyticsMeasurementId !== 'none') {
 // == End Analytics ==
 
 module.exports = {
+  // https://github.com/gatsbyjs/gatsby/discussions/28331%E2%80%8B
+  flags: {
+    // Enable all experiments aimed at improving develop server start time
+    FAST_DEV: true,
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
+    FAST_REFRESH: true,
+  },
   siteMetadata: {
     ...settings.siteMetadata,
   },

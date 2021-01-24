@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Head from '../layouts/Head';
