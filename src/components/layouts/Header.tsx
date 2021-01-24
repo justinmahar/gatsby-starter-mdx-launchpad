@@ -16,10 +16,20 @@ export default function Header(props: HeaderProps): JSX.Element {
           <Col>
             <div className="text-center">
               <div className="mt-6 mb-4">
-                <strong>{templateTagRenderer.render('{siteName}')}</strong>
+                <Link to="/">
+                  <strong>{templateTagRenderer.render('{siteName}')}</strong>
+                </Link>
               </div>
-              <div>
-                <Link to="/">Home</Link> | <Link to="/about">About</Link> | <Link to="/contact">Contact</Link>
+              <div className="d-flex flex-wrap justify-content-center">
+                <div className="mx-4 my-2">
+                  <Link to="/">Home</Link>
+                </div>
+                <div className="mx-4 my-2">
+                  <Link to="/about">About</Link>
+                </div>
+                <div className="mx-4 my-2">
+                  <Link to="/contact">Contact</Link>
+                </div>
               </div>
             </div>
           </Col>
