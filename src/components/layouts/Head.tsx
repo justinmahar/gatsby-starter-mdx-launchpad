@@ -17,19 +17,33 @@ export interface HeadProps {
   children?: React.ReactNode;
 }
 
+/**
+ * Any of the SEO values can be overridden via the `seo` prop. Otherwise, they fall back on defaults from the site settings, where possible.
+ *
+ * When not specified, the SEO title will use the `seoTitleFormat` defined in settings, which by default combines the content title
+ * with the site name, using a separator between the two. In this case, the content title should be provided
+ * either via the `contentTitle` prop, or as a mapping in the `templateTagRenderer` prop.
+ */
 export default function Head(props: HeadProps): JSX.Element {
   const settings: Settings = useSettings();
   const settingsTemplateTagRenderer = settings.getTemplateTagRenderer();
-  const templateTagRenderer = props.templateTagRenderer
+  let templateTagRenderer = props.templateTagRenderer
     ? settingsTemplateTagRenderer.combineWith(props.templateTagRenderer)
     : settingsTemplateTagRenderer;
+
+  // If a contentTitle was provided, add it to the template tag renderer.
+  if (typeof props.contentTitle !== 'undefined') {
+    templateTagRenderer = templateTagRenderer.combineWith(
+      new TemplateTagRenderer({ contentTitle: props.contentTitle })
+    );
+  }
 
   const lang = 'en';
 
   const seoTitleFormat = settings.data.settingsYaml.seoTitleFormat;
   const seoTitle = props.seo?.title
     ? templateTagRenderer.render(props.seo.title)
-    : TemplateTagRenderer.renderTag(templateTagRenderer.render(seoTitleFormat), 'contentTitle', props.contentTitle);
+    : templateTagRenderer.render(seoTitleFormat);
   const seoDescription = props.seo?.description ? templateTagRenderer.render(props.seo?.description) : undefined;
   let seoImageUrl = settings.data.site.siteMetadata.siteImage;
   let seoImageWidth = settings.data.site.siteMetadata.siteImageWidth;
