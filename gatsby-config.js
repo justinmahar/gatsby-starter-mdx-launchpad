@@ -68,6 +68,7 @@ const plugins = [
         runtimeCaching: [
           {
             urlPattern: /.*/,
+            // https://developers.google.com/web/tools/workbox/modules/workbox-strategies#network_first_network_falling_back_to_cache
             handler: `NetworkFirst`,
           },
         ],
