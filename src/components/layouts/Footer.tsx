@@ -3,6 +3,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../data/useSettings';
+import { BuildStatusBadge } from 'react-build-status-badge';
 
 export interface FooterProps {}
 
@@ -38,6 +39,12 @@ export default function Footer(props: FooterProps): JSX.Element {
                   <a className="heading" href="/sitemap.xml">
                     Sitemap
                   </a>
+                </div>
+                <div className="mx-4 my-2">
+                  <BuildStatusBadge>
+                    [![Netlify
+                    Status](https://api.netlify.com/api/v1/badges/ede63be4-6d43-4eb3-9a73-ee7adaaa7c4d/deploy-status)](https://app.netlify.com/sites/hustlebase/deploys)
+                  </BuildStatusBadge>
                 </div>
               </div>
             </div>
