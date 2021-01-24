@@ -1,21 +1,22 @@
 siteMetadata:
   siteName: gatsby-starship
+  siteUrl: 'https://gatsby-starship.netlify.app'
   siteDescription: gatsby-starship
-  siteUrl: https://gatsby-starship.netlify.app
-  siteIcon: "/media/site-icon.png"
+  siteIcon: /media/site-icon.png
   siteIconAlt: gatsby-starship
-  siteImage: "{siteUrl}/media/site-image.jpg"
+  siteImage: '{siteUrl}/media/site-image.jpg'
   siteImageWidth: 1200
   siteImageHeight: 630
   siteImageAlt: gatsby-starship
 gatsbyPluginManifestOptions:
   name: gatsby-starship
   shortName: gatsby-starship
-  startUrl: "/"
-  themeColor: "#1167b1"
-  backgroundColor: "#03254c"
+  startUrl: /
+  themeColor: '#1167b1'
+  backgroundColor: '#03254c'
   display: standalone
-  customIcon: none # "/media/pwa-icon.png"
+  customIcon: none # '/media/pwa-icon.png'
+seoTitleFormat: '{contentTitle}{seoTitleSeparator}{siteName}'
 seoTitleSeparator: ' - '
 privatePagePathPrefix: private # Must not start or end with a slash
 googleAnalyticsMeasurementId: none

@@ -11,14 +11,12 @@ interface ContactProps {
 }
 
 export default function Contact(props: ContactProps): JSX.Element {
-  const pageTitle = `Contact`;
+  const contentTitle = `Contact`;
   const description = `If you'd like to reach out, just shoot me an email.`;
-
-  const seoTitle = `${pageTitle}{seoTitleSeparator}{siteName}`;
 
   return (
     <Layout>
-      <Head seo={{ title: seoTitle, description: description }} />
+      <Head contentTitle={contentTitle} seo={{ description: description }} />
       <Body>
         <Container className="content">
           <Row>

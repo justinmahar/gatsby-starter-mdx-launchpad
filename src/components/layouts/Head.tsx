@@ -4,8 +4,9 @@ import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../data/useSettings';
 
 export interface HeadProps {
-  seo: {
-    title: string;
+  contentTitle?: string;
+  seo?: {
+    title?: string;
     description?: string;
     imageUrl?: string;
     imageWidth?: number;
@@ -25,8 +26,11 @@ export default function Head(props: HeadProps): JSX.Element {
 
   const lang = 'en';
 
-  const seoTitle = templateTagRenderer.render(props.seo.title);
-  const seoDescription = props.seo.description ? templateTagRenderer.render(props.seo.description) : undefined;
+  const seoTitleFormat = settings.data.settingsYaml.seoTitleFormat;
+  const seoTitle = props.seo?.title
+    ? templateTagRenderer.render(props.seo.title)
+    : TemplateTagRenderer.renderTag(templateTagRenderer.render(seoTitleFormat), 'contentTitle', props.contentTitle);
+  const seoDescription = props.seo?.description ? templateTagRenderer.render(props.seo?.description) : undefined;
   let seoImageUrl = settings.data.site.siteMetadata.siteImage;
   let seoImageWidth = settings.data.site.siteMetadata.siteImageWidth;
   let seoImageHeight = settings.data.site.siteMetadata.siteImageHeight;
@@ -35,13 +39,13 @@ export default function Head(props: HeadProps): JSX.Element {
       ? templateTagRenderer.render(settings.data.site.siteMetadata.siteImageAlt)
       : undefined;
 
-  if (props.seo.imageUrl && props.seo.imageUrl !== 'none' && props.seo.imageWidth && props.seo.imageHeight) {
-    seoImageUrl = props.seo.imageUrl;
-    seoImageWidth = props.seo.imageWidth;
-    seoImageHeight = props.seo.imageHeight;
+  if (props.seo?.imageUrl && props.seo?.imageUrl !== 'none' && props.seo?.imageWidth && props.seo?.imageHeight) {
+    seoImageUrl = props.seo?.imageUrl;
+    seoImageWidth = props.seo?.imageWidth;
+    seoImageHeight = props.seo?.imageHeight;
     seoImageAlt =
-      props.seo.imageAlt && props.seo.imageAlt !== 'none'
-        ? templateTagRenderer.render(props.seo.imageAlt)
+      props.seo?.imageAlt && props.seo?.imageAlt !== 'none'
+        ? templateTagRenderer.render(props.seo?.imageAlt)
         : undefined;
   }
 

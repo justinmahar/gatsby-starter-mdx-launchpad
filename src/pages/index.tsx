@@ -12,11 +12,9 @@ export default function Index(props: IndexProps): JSX.Element {
   const pageTitle = `{siteName}`;
   const description = `{siteDescription}`;
 
-  const seoTitle = `${pageTitle}`;
-
   return (
     <Layout>
-      <Head seo={{ title: seoTitle, description: description }} />
+      <Head seo={{ title: pageTitle, description: description }} />
       <Body>
         <Container className="content">
           <Row>

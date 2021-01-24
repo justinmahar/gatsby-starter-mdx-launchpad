@@ -40,4 +40,13 @@ export class TemplateTagRenderer {
   static createTag(tagName: string): string {
     return `{${tagName}}`;
   }
+
+  /** Replace a single template tag with a value. */
+  static renderTag(template: string, tagName: string, tagValue: string): string {
+    const tag = TemplateTagRenderer.createTag(tagName);
+    if (template.indexOf(tag) >= 0) {
+      template = template.replace(tag, tagValue);
+    }
+    return template;
+  }
 }

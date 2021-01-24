@@ -11,7 +11,6 @@ export interface MdxHeadProps {
 export default function MdxHead(props: MdxHeadProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
 
-  const seoTitle = `${mdxContent.data.frontmatter.title}{seoTitleSeparator}{siteName}`;
   const seoDescription: string | undefined =
     mdxContent.data.frontmatter.seo?.description && mdxContent.data.frontmatter.seo.description !== 'none'
       ? mdxContent.data.frontmatter.seo.description
@@ -32,7 +31,6 @@ export default function MdxHead(props: MdxHeadProps): JSX.Element {
   return (
     <Head
       seo={{
-        title: seoTitle,
         description: seoDescription,
         imageUrl: seoImageUrl,
         imageWidth: seoImageWidth,

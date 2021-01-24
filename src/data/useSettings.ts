@@ -17,6 +17,7 @@ export const settingsQuery = graphql`
       }
     }
     settingsYaml {
+      seoTitleFormat
       seoTitleSeparator
       privatePagePathPrefix
       googleAnalyticsMeasurementId
@@ -43,6 +44,7 @@ export type SettingsData = {
     };
   };
   settingsYaml: {
+    seoTitleFormat: string;
     seoTitleSeparator: string;
     privatePagePathPrefix: string;
     googleAnalyticsMeasurementId: string;
@@ -54,7 +56,7 @@ export type SettingsData = {
 // === === === === === === === === ===
 
 export default class Settings {
-  constructor(public data: SettingsData) { }
+  constructor(public data: SettingsData) {}
 
   public getTemplateTagRenderer(): TemplateTagRenderer {
     return new TemplateTagRenderer({
@@ -65,6 +67,7 @@ export default class Settings {
       siteIcon: this.data.site.siteMetadata.siteIcon,
       siteIconAlt: this.data.site.siteMetadata.siteIconAlt,
       siteUrl: this.data.site.siteMetadata.siteUrl,
+      seoTitleFormat: this.data.settingsYaml.seoTitleFormat,
       seoTitleSeparator: this.data.settingsYaml.seoTitleSeparator,
       privatePagePathPrefix: this.data.settingsYaml.privatePagePathPrefix,
       googleAnalyticsMeasurementId: this.data.settingsYaml.googleAnalyticsMeasurementId,
