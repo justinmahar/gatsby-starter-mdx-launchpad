@@ -43,7 +43,7 @@ export default function Footer(props: FooterProps): JSX.Element {
                 <div className="mx-4 my-2">
                   <BuildStatusBadge>
                     [![Netlify
-                    Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
+                    Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
                   </BuildStatusBadge>
                 </div>
               </div>

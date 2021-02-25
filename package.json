@@ -1,13 +1,13 @@
 {
-  "name": "gatsby-starship",
+  "name": "gatsby-starter-mdx-launchpad",
   "private": true,
-  "description": "Gatsby starter using React, TypeScript, and MDX.",
+  "description": "Lightweight Gatsby starter using React, TypeScript, and MDX.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devboldly/gatsby-starship"
+    "url": "https://github.com/devboldly/gatsby-starter-mdx-launchpad"
   },
   "bugs": {
-    "url": "https://github.com/devboldly/gatsby-starship/issues"
+    "url": "https://github.com/devboldly/gatsby-starter-mdx-launchpad/issues"
   },
   "version": "0.0.1",
   "license": "None",

@@ -1,16 +1,16 @@
 siteMetadata:
-  siteName: gatsby-starship
-  siteUrl: 'https://gatsby-starship.netlify.app'
-  siteDescription: gatsby-starship
+  siteName: gatsby-starter-mdx-launchpad
+  siteUrl: 'https://gatsby-starter-mdx-launchpad.netlify.app'
+  siteDescription: gatsby-starter-mdx-launchpad
   siteIcon: /media/site-icon.png
-  siteIconAlt: gatsby-starship
+  siteIconAlt: gatsby-starter-mdx-launchpad
   siteImage: '{siteUrl}/media/site-image.jpg'
   siteImageWidth: 1200
   siteImageHeight: 630
-  siteImageAlt: gatsby-starship
+  siteImageAlt: gatsby-starter-mdx-launchpad
 gatsbyPluginManifestOptions:
-  name: gatsby-starship
-  shortName: gatsby-starship
+  name: gatsby-starter-mdx-launchpad
+  shortName: gatsby-starter-mdx-launchpad
   startUrl: /
   themeColor: '#1167b1'
   backgroundColor: '#03254c'

@@ -1,10 +1,10 @@
-# <a href="https://gatsby-starship.netlify.com/start-here"><img alt="Gatsby-Starship" src="https://github.com/devboldly/gatsby-starship/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby-Starship**
+# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/start-here"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/devboldly/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
 
-<h3>Gatsby starter supporting React, TypeScript, and MDX.</h3>
+<h3>Unopinionated Gatsby starter supporting React, TypeScript, and MDX.</h3>
 
-**[Live Starter](https://gatsby-starship.netlify.app/)**.
+**[Live Starter](https://gatsby-starter-mdx-launchpad.netlify.app/)**.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starship/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
 
 ### Adding Pages and Content
 
@@ -32,21 +32,21 @@ The following template tags are available:
 
 ### Settings
 
-| Template Tag                                   | Value                            |
-| ---------------------------------------------- | -------------------------------- |
-| <small> `{siteName}` </small>                  | Name of site                     |
-| <small> `{siteDescription}` </small>           | Description of site              |
-| <small> `{siteImage}` </small>                 | Site image URL                   |
-| <small> `{siteImageAlt}` </small>              | Site image alt text              |
-| <small> `{siteIcon}` </small>                  | Site icon URL                    |
-| <small> `{siteIconAlt}` </small>               | Site icon alt text               |
-| <small> `{siteUrl}` </small>                   | Site URL                         |
-| <small> `{seoTitleSeparator}` </small>         | Title separator for SEO          |
-| <small> `{privatePagePathPrefix}` </small>     | Prefix used before private pages |
+| Template Tag                                      | Value                            |
+| ------------------------------------------------- | -------------------------------- |
+| <small> `{siteName}` </small>                     | Name of site                     |
+| <small> `{siteDescription}` </small>              | Description of site              |
+| <small> `{siteImage}` </small>                    | Site image URL                   |
+| <small> `{siteImageAlt}` </small>                 | Site image alt text              |
+| <small> `{siteIcon}` </small>                     | Site icon URL                    |
+| <small> `{siteIconAlt}` </small>                  | Site icon alt text               |
+| <small> `{siteUrl}` </small>                      | Site URL                         |
+| <small> `{seoTitleSeparator}` </small>            | Title separator for SEO          |
+| <small> `{privatePagePathPrefix}` </small>        | Prefix used before private pages |
 | <small> `{googleAnalyticsMeasurementId}` </small> | Google Analytics tracking ID     |
-| <small> `{disqusShortname}` </small>           | Discus shortname                 |
-| <small> `{twitterSiteUsername}` </small>       | Twitter site username            |
-| <small> `{year}` </small>                      | Current year (i.e. 2021)         |
+| <small> `{disqusShortname}` </small>              | Discus shortname                 |
+| <small> `{twitterSiteUsername}` </small>          | Twitter site username            |
+| <small> `{year}` </small>                         | Current year (i.e. 2021)         |
 
 ### MDX Content
 
