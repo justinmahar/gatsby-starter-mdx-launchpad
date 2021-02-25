@@ -1,6 +1,6 @@
-# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/start-here"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/devboldly/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
+# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/start-here"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
 
-<h3>Unopinionated Gatsby starter supporting React, TypeScript, and MDX.</h3>
+<h3>Lightweight Gatsby starter supporting TypeScript, and MDX. Launch your next big project!</h3>
 
 **[Live Starter](https://gatsby-starter-mdx-launchpad.netlify.app/)**.
 
@@ -59,9 +59,7 @@ The following template tags are available:
 
 # Copyright
 
-Copyright (c) 2021 [DevBoldly](https://devboldly.com)
-
-# Gatsby Copyright
+Copyright (c) 2021 [Justin Mahar](https://justinmahar.com)
 
 Copyright (c) 2018 gatsbyjs
 
