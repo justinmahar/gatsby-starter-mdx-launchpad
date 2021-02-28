@@ -16,9 +16,6 @@
   <a href="https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys">
     <img src="https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status" alt="Deploy Status"/>
   </a>
-  <a href="https://github1s.com/justinmahar/gatsby-starter-mdx-launchpad">
-    <img src="https://img.shields.io/badge/View%20in%20VSCode-readonly-blue" alt="View in VSCode"/>
-  </a>
 </p>
 
 ## Documentation
