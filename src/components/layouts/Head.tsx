@@ -34,7 +34,7 @@ export default function Head(props: HeadProps): JSX.Element {
   // If a contentTitle was provided, add it to the template tag renderer.
   if (typeof props.contentTitle !== 'undefined') {
     templateTagRenderer = templateTagRenderer.combineWith(
-      new TemplateTagRenderer({ contentTitle: props.contentTitle })
+      new TemplateTagRenderer({ contentTitle: props.contentTitle }),
     );
   }
 

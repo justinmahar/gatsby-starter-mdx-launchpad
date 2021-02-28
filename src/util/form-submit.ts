@@ -5,10 +5,10 @@ const DEFAULT_METHOD = 'POST';
 export const submitFormData = (
   formActionUrl: string,
   formData: FormData | string,
-  fetchRequestInit: RequestInit = {}
+  fetchRequestInit: RequestInit = {},
 ): Promise<any> => {
   return new Promise(
-    (resolve: (value?: {} | PromiseLike<{}> | undefined) => void, reject: (reason?: any) => void) => {
+    (resolve: (value?: any | PromiseLike<any> | undefined) => void, reject: (reason?: any) => void) => {
       const mergedFetchRequestInit: any = {
         body: formData,
         method: DEFAULT_METHOD,
@@ -22,14 +22,14 @@ export const submitFormData = (
         .catch((err) => {
           reject(err);
         });
-    }
+    },
   );
 };
 
 export const submitForm = (
   formActionUrl: string,
   form: HTMLFormElement,
-  fetchRequestInit: RequestInit = {}
+  fetchRequestInit: RequestInit = {},
 ): Promise<any> => {
   return submitFormData(formActionUrl, new FormData(form), fetchRequestInit);
 };

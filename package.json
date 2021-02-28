@@ -15,10 +15,10 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "rm -rf .cache && rm -rf public",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -59,12 +59,12 @@
     "typescript": "^4.1.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "eslint": "^7.18.0",
-    "eslint-plugin-json": "^2.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-app": "^6.2.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1"
   }

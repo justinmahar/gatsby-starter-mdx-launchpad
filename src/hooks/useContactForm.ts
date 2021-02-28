@@ -60,7 +60,7 @@ export default function useContactForm(
   actionUrl: string,
   formFields: ContactFormField[],
   fetchRequestInit: RequestInit = {},
-  urlEncoded?: boolean
+  urlEncoded?: boolean,
 ): FormModel {
   const formFieldMap: { [key: string]: ContactFormField } = {};
   formFields = formFields.map((formField: ContactFormField) => {
