@@ -1,4 +1,4 @@
-# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/start-here"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
+# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
 
 <h3>Lightweight Gatsby starter supporting TypeScript and MDX. Launch your next big project!</h3>
 

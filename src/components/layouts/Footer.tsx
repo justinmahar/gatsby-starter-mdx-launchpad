@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../data/useSettings';
-import { BuildStatusBadge } from 'react-build-status-badge';
+import { Link } from "gatsby";
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { TemplateTagRenderer } from "../../data/TemplateTagRenderer";
+import Settings, { useSettings } from "../../data/useSettings";
+import { BuildStatusBadge } from "react-build-status-badge";
 
 export interface FooterProps {}
 
@@ -11,15 +11,26 @@ export default function Footer(props: FooterProps): JSX.Element {
   const settings: Settings = useSettings();
   const templateTagRenderer: TemplateTagRenderer = settings.getTemplateTagRenderer();
   return (
-    <div style={{ paddingTop: '8em', paddingBottom: '8em', backgroundColor: '#202020' }}>
+    <div
+      style={{
+        paddingTop: "8em",
+        paddingBottom: "8em",
+        backgroundColor: "#202020",
+      }}
+    >
       <Container>
         <Row>
           <Col>
             <div className="d-flex flex-column justify-content-center">
-              <div className="text-center mt-6 mb-4" style={{ color: 'white' }}>
-                Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}.
-                All rights reserved. Logo by{' '}
-                <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener noreferrer">
+              <div className="text-center mt-6 mb-4" style={{ color: "white" }}>
+                Copyright &copy; {templateTagRenderer.render("{year}")},{" "}
+                {templateTagRenderer.render("{siteName}")}. All rights reserved.
+                Logo by{" "}
+                <a
+                  href="https://twemoji.twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Twemoji
                 </a>
                 .
@@ -43,7 +54,7 @@ export default function Footer(props: FooterProps): JSX.Element {
                 <div className="mx-4 my-2">
                   <BuildStatusBadge>
                     [![Netlify
-                    Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
+                    Status](https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
                   </BuildStatusBadge>
                 </div>
               </div>
