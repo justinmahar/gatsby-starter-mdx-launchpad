@@ -1,10 +1,29 @@
-# <a href="https://gatsby-starter-mdx-launchpad.netlify.com/"><img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" /></a> **Gatsby Starter: MDX Launchpad**
+<h2 align="center">
+  <a href="https://github.com/justinmahar/gatsby-starter-mdx-launchpad">
+    <img alt="Gatsby Starter: MDX Launchpad" src="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/raw/master/static/media/site-icon.png" width="30" />
+  </a>
+  <a href="https://github.com/justinmahar/gatsby-starter-mdx-launchpad">
+    Gatsby Starter: MDX Launchpad
+  </a>
+</h2>
+<h3 align="center">
+  Lightweight Gatsby starter supporting TypeScript and MDX. Easily launch your content!
+</h3>
+<p align="center">
+  <a href="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/generate">
+    <img src="https://img.shields.io/badge/GitHub-Use%20this%20template-brightgreen"/>
+  </a>
+  <a href="https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status" alt="Deploy Status"/>
+  </a>
+  <a href="https://github1s.com/justinmahar/gatsby-starter-mdx-launchpad">
+    <img src="https://img.shields.io/badge/View%20in%20VSCode-readonly-blue" alt="View in VSCode"/>
+  </a>
+</p>
 
-<h3>Lightweight Gatsby starter supporting TypeScript and MDX. Launch your next big project!</h3>
+## Documentation
 
-**[Live Starter](https://gatsby-starter-mdx-launchpad.netlify.app/)**.
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
+👁️ **[Live Demo](https://gatsby-starter-mdx-launchpad.netlify.app/)**
 
 ### Adding Pages and Content
 
