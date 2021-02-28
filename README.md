@@ -4,7 +4,7 @@
 
 **[Live Starter](https://gatsby-starter-mdx-launchpad.netlify.app/)**.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/03403e88-6c49-48e4-a210-a26657449e50/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
 
 ### Adding Pages and Content
 
