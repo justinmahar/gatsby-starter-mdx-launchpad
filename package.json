@@ -71,7 +71,8 @@
     "font awesome",
     "yaml",
     "esm",
-    "prismjs"
+    "prismjs",
+    "gatsby starter"
   ],
   "license": "0BSD",
   "scripts": {
