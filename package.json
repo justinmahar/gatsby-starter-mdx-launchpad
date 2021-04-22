@@ -2,26 +2,8 @@
   "name": "gatsby-starter-mdx-launchpad",
   "private": true,
   "description": "Lightweight Gatsby starter supporting TypeScript, and MDX. Launch your next big project!",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/justinmahar/gatsby-starter-mdx-launchpad"
-  },
-  "bugs": {
-    "url": "https://github.com/justinmahar/gatsby-starter-mdx-launchpad/issues"
-  },
   "version": "0.0.1",
-  "license": "MIT License",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "clean": "rm -rf .cache && rm -rf public",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "lint": "eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix",
-    "preship": "npm run build && git diff-index --quiet HEAD || git commit -m \"Build, version, and publish.\" && npm version patch -m \"Build, version, and publish.\"",
-    "ship": "npm publish --access public"
-  },
+  "author": "Justin Mahar <contact@justinmahar.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -63,8 +45,7 @@
     "react-helmet": "^6.1.0",
     "react-super-seo": "^1.0.6",
     "read-yaml": "^1.1.0",
-    "styled-components": "^5.2.3",
-    "typescript": "^4.2.4"
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -74,6 +55,39 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-starter",
+    "gatsby-v3",
+    "typescript",
+    "mdx",
+    "seo",
+    "template tags",
+    "redirects",
+    "bootstrap",
+    "font awesome",
+    "yaml",
+    "esm",
+    "prismjs"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "rm -rf .cache && rm -rf public",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justinmahar/gatsby-starter-mdx-launchpad"
+  },
+  "bugs": {
+    "url": "https://github.com/justinmahar/gatsby-starter-mdx-launchpad/issues"
   }
 }
