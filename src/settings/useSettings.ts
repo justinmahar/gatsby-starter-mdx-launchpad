@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { TemplateTagRenderer } from './TemplateTagRenderer';
+import { TemplateTagRenderer } from '../data/TemplateTagRenderer';
 
 export const settingsQuery = graphql`
   query SettingsQuery {
@@ -14,6 +14,7 @@ export const settingsQuery = graphql`
         siteIcon
         siteIconAlt
         siteUrl
+        siteVersion
       }
     }
     settingsYaml {
@@ -23,6 +24,10 @@ export const settingsQuery = graphql`
       googleAnalyticsMeasurementId
       disqusShortname
       twitterSiteUsername
+      redirects {
+        from
+        to
+      }
     }
   }
 `;
@@ -41,6 +46,7 @@ export type SettingsData = {
       siteIcon: string;
       siteIconAlt: string;
       siteUrl: string;
+      siteVersion: string;
     };
   };
   settingsYaml: {
@@ -50,6 +56,7 @@ export type SettingsData = {
     googleAnalyticsMeasurementId: string;
     disqusShortname: string;
     twitterSiteUsername: string;
+    redirects: { from: string; to: string }[];
   };
 };
 
@@ -67,6 +74,7 @@ export default class Settings {
       siteIcon: this.data.site.siteMetadata.siteIcon,
       siteIconAlt: this.data.site.siteMetadata.siteIconAlt,
       siteUrl: this.data.site.siteMetadata.siteUrl,
+      siteVersion: this.data.site.siteMetadata.siteVersion,
       seoTitleFormat: this.data.settingsYaml.seoTitleFormat,
       seoTitleSeparator: this.data.settingsYaml.seoTitleSeparator,
       privatePagePathPrefix: this.data.settingsYaml.privatePagePathPrefix,

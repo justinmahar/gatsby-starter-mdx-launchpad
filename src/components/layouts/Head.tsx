@@ -1,7 +1,7 @@
 import React from 'react';
 import { OpenGraphMetadata, SuperSEO, TwitterSummaryCardType } from 'react-super-seo';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../data/useSettings';
+import Settings, { useSettings } from '../../settings/useSettings';
 
 export interface HeadProps {
   contentTitle?: string;

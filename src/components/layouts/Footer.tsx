@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../data/useSettings';
+import Settings, { useSettings } from '../../settings/useSettings';
 import { BuildStatusBadge } from 'react-build-status-badge';
 
 export interface FooterProps {}
@@ -23,8 +23,8 @@ export default function Footer(props: FooterProps): JSX.Element {
           <Col>
             <div className="d-flex flex-column justify-content-center">
               <div className="text-center mt-6 mb-4" style={{ color: 'white' }}>
-                Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}. All
-                rights reserved. Logo by{' '}
+                Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}. MIT
+                License. Logo by{' '}
                 <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener noreferrer">
                   Twemoji
                 </a>

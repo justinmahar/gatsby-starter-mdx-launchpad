@@ -3,7 +3,7 @@
  *
  * This file is where your styles go!
  *
- * APIs:
+ * Gatsby 3 Browser APIs:
  *   - disableCorePrefetching
  *   - onClientEntry
  *   - onInitialClientRender
@@ -18,7 +18,6 @@
  *   - onServiceWorkerUpdateFound
  *   - onServiceWorkerUpdateReady
  *   - registerServiceWorker
- *   - replaceComponentRenderer
  *   - replaceHydrateFunction
  *   - shouldUpdateScroll
  *   - wrapPageElement

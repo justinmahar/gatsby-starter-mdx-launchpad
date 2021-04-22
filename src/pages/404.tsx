@@ -15,7 +15,7 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
   const contentTitle = `404 Not Found`;
   const description = `Sorry, we couldn't find what you were looking for.`;
 
-  // Redirect elsewhere if configured in settings/redirects.ts
+  // Redirect elsewhere if configured in settings
   const ready = useConfiguredRedirect(props.location.pathname);
 
   if (ready) {

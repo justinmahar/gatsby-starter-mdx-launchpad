@@ -25,16 +25,19 @@
 ### Adding Pages and Content
 
 - Add component pages to `pages`
-- Add MDX markdown pages to `mdx-pages`
-- Add MDX content partials to `mdx-partials`
+- Add MDX markdown pages to `mdx/pages`
+- Add MDX content partials to `mdx/partials`
+- Add MDX frontmatter specs to `mdx/defaults.mdx`
 
-See `src/mdx-partials/_defaults.mdx` for all frontmatter available and additional information on MDX.
+See `src/mdx/defaults.mdx` for all frontmatter available and additional information on MDX.
 
 ### Configuring Redirects
 
-Add redirects to `src/settings/redirects.ts`.
+If you change the path for any of your pages, you can maintain old links using a simple redirects configuration.
 
-Redirects occur from the 404 not found page.
+Add redirects to the `redirects` field in `src/settings/settings.yml`. This is an array of objects, each having a `from` and a `to` field used to specify the redirect.
+
+Redirects occur from the 404 not found page. A check is done there to see if the path has a redirect configured before the 404 page is shown. If a redirect is found, a Gatsby navigate call is made to redirect to the new path.
 
 ### Template Tags
 
@@ -57,6 +60,7 @@ The following template tags are available:
 | <small> `{siteIcon}` </small>                     | Site icon URL                    |
 | <small> `{siteIconAlt}` </small>                  | Site icon alt text               |
 | <small> `{siteUrl}` </small>                      | Site URL                         |
+| <small> `{siteVersion}` </small>                  | Site version from `package.json` |
 | <small> `{seoTitleSeparator}` </small>            | Title separator for SEO          |
 | <small> `{privatePagePathPrefix}` </small>        | Prefix used before private pages |
 | <small> `{googleAnalyticsMeasurementId}` </small> | Google Analytics tracking ID     |
@@ -73,9 +77,9 @@ The following template tags are available:
 | <small> `{contentSeoTitle}` </small>       | SEO title of the content       |
 | <small> `{contentSeoDescription}` </small> | SEO description of the content |
 
-# Copyright
+# MIT License
 
-Copyright (c) 2021 [Justin Mahar](https://justinmahar.com)
+Copyright (c) 2021 [Justin Mahar](https://github.com/justinmahar)
 
 Copyright (c) 2018 gatsbyjs
 

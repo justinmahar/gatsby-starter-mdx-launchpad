@@ -23,6 +23,7 @@ export const mdxFragmentQuery = graphql`
     }
     timeToRead
     excerpt
+    # IMPORTANT: Be sure to add new frontmatter specs to mdx/defaults.mdx
     frontmatter {
       title
       slug
@@ -52,6 +53,7 @@ export type MdxData = {
   };
   timeToRead: string;
   excerpt: string;
+  // IMPORTANT: Be sure to add new frontmatter specs to mdx/defaults.mdx
   frontmatter: {
     title: string;
     slug?: string;

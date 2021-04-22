@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../data/useSettings';
+import Settings, { useSettings } from '../../settings/useSettings';
 
 export interface HeaderProps {}
 

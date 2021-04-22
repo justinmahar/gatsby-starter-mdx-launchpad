@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../data/useSettings';
+import Settings, { useSettings } from '../../settings/useSettings';
 import Body from '../layouts/Body';
 import Layout from '../layouts/Layout';
 import MdxHead from './MdxHead';

@@ -1,6 +1,6 @@
 /*
  * We use a JavaScript file for the .eslintrc file (instead of a JSON file) as it supports
- * comments that can be used to better describe rules.
+ * comments that can be used to better describe rules and allows us to write some logic.
  *
  * This config lints both TS and JS. Shared rules are defined below, and any additional rules specific
  * to either TS or JS are specified in addition to those.
