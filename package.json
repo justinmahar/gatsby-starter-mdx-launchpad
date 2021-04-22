@@ -19,7 +19,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "lint": "eslint '*/**/*.{js,jsx,ts,tsx}' --quiet --fix",
-    "preship": "npm run build && git add dist && git diff-index --quiet HEAD || git commit -m \"Build, version, and publish.\" && npm version patch -m \"Build, version, and publish.\"",
+    "preship": "npm run build && git diff-index --quiet HEAD || git commit -m \"Build, version, and publish.\" && npm version patch -m \"Build, version, and publish.\"",
     "ship": "npm publish --access public"
   },
   "dependencies": {
