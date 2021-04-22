@@ -23,8 +23,8 @@ export default function Footer(props: FooterProps): JSX.Element {
           <Col>
             <div className="d-flex flex-column justify-content-center">
               <div className="text-center mt-6 mb-4" style={{ color: 'white' }}>
-                Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}. MIT
-                License. Logo by{' '}
+                Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}.
+                Logo by{' '}
                 <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener noreferrer">
                   Twemoji
                 </a>
