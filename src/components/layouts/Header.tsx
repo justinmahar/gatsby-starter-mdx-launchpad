@@ -1,40 +1,51 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
+import { Container, Nav, Navbar, NavLink } from 'react-bootstrap';
 import Settings, { useSettings } from '../../settings/useSettings';
 
 export interface HeaderProps {}
 
-export default function Header(props: HeaderProps): JSX.Element {
+export default function Header(_props: HeaderProps): JSX.Element {
   const settings: Settings = useSettings();
-  const templateTagRenderer: TemplateTagRenderer = settings.getTemplateTagRenderer();
   return (
-    <div style={{ paddingTop: '2em', paddingBottom: '2em', backgroundColor: '#eeeeee' }}>
+    <Navbar
+      expand="lg"
+      sticky="top"
+      style={{
+        boxShadow: '0 4px 4px rgba(0, 0, 0, 0.1)',
+        background: 'white',
+      }}
+    >
       <Container>
-        <Row>
-          <Col>
-            <div className="text-center">
-              <div className="mt-6 mb-4">
-                <Link to="/">
-                  <strong>{templateTagRenderer.render('{siteName}')}</strong>
-                </Link>
-              </div>
-              <div className="d-flex flex-wrap justify-content-center">
-                <div className="mx-4 my-2">
-                  <Link to="/">Home</Link>
-                </div>
-                <div className="mx-4 my-2">
-                  <Link to="/about">About</Link>
-                </div>
-                <div className="mx-4 my-2">
-                  <Link to="/contact">Contact</Link>
-                </div>
-              </div>
+        <Link to="/" className={'navbar-brand'}>
+          <div className="d-flex flex-row">
+            <div className="d-flex align-items-center mr-2">
+              <img
+                src={settings.data.site.siteMetadata.siteIcon}
+                alt={settings.data.site.siteMetadata.siteIconAlt}
+                width={30}
+                height={30}
+                className="d-inline-block align-top"
+              />
             </div>
-          </Col>
-        </Row>
+            <div>{settings.data.site.siteMetadata.siteName}</div>
+          </div>
+        </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto"></Nav>
+          <Nav>
+            <NavLink>
+              <Link to="/about">About</Link>
+            </NavLink>
+          </Nav>
+          <Nav>
+            <NavLink>
+              <Link to="/contact">Contact</Link>
+            </NavLink>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
-    </div>
+    </Navbar>
   );
 }
