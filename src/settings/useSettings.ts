@@ -22,12 +22,7 @@ export const settingsQuery = graphql`
       seoTitleSeparator
       privatePagePathPrefix
       googleAnalyticsMeasurementId
-      disqusShortname
       twitterSiteUsername
-      redirects {
-        from
-        to
-      }
     }
   }
 `;
@@ -54,9 +49,7 @@ export type SettingsData = {
     seoTitleSeparator: string;
     privatePagePathPrefix: string;
     googleAnalyticsMeasurementId: string;
-    disqusShortname: string;
     twitterSiteUsername: string;
-    redirects: { from: string; to: string }[];
   };
 };
 
@@ -79,7 +72,6 @@ export default class Settings {
       seoTitleSeparator: this.data.settingsYaml.seoTitleSeparator,
       privatePagePathPrefix: this.data.settingsYaml.privatePagePathPrefix,
       googleAnalyticsMeasurementId: this.data.settingsYaml.googleAnalyticsMeasurementId,
-      disqusShortname: this.data.settingsYaml.disqusShortname,
       twitterSiteUsername: this.data.settingsYaml.twitterSiteUsername,
       year: `${new Date().getFullYear()}`,
     });

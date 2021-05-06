@@ -11,6 +11,9 @@ seo:
   imageAlt: none
 partial: true
 private: false
+category: none
+group: none
+date: 1970-01-01
 ---
 
 **Important: Be sure to add all new frontmatter specs to this file and `src/data/MdxContent.ts`.**
@@ -24,4 +27,4 @@ In any MDX file except this one:
 - Anything not specified, or set to `none`, is ignored.
 - When not specified, slugs are created from titles. They are made lowercase and all non-alphanumerics are converted to dashes.
 - `partial` - Set to true to make MDX into a partial. No page will be created by Gatsby. Default `false`.
-- `private` - Set to true to make MDX page private. It will not be included in sitemap.xml and its path will be prefixed with the `privatePagePathPrefix` value defined in `src/settings/settings.yml`. Default `false`.
+- `private` - Set to true to make MDX page private. It will not be included in `sitemap.xml` and its path will be prefixed with the `privatePagePathPrefix` value defined in `src/settings/settings.yml`. Default `false`.

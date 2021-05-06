@@ -96,6 +96,7 @@ const plugins = [
   },
   `gatsby-plugin-robots-txt`,
   `gatsby-plugin-typescript`,
+  `gatsby-plugin-typescript-checker`,
   `gatsby-plugin-sass`,
   {
     resolve: `gatsby-plugin-mdx`,
@@ -141,6 +142,7 @@ const plugins = [
   },
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
+  `gatsby-plugin-netlify`,
 ];
 
 // == Google Analytics ==

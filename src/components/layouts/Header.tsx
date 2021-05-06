@@ -8,14 +8,7 @@ export interface HeaderProps {}
 export default function Header(_props: HeaderProps): JSX.Element {
   const settings: Settings = useSettings();
   return (
-    <Navbar
-      expand="lg"
-      sticky="top"
-      style={{
-        boxShadow: '0 4px 4px rgba(0, 0, 0, 0.1)',
-        background: 'white',
-      }}
-    >
+    <Navbar expand="lg" sticky="top" bg="light" className="shadow-sm">
       <Container>
         <Link to="/" className={'navbar-brand'}>
           <div className="d-flex flex-row">

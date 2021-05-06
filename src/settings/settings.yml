@@ -20,8 +20,8 @@ seoTitleFormat: '{contentTitle}{seoTitleSeparator}{siteName}' # See README for a
 seoTitleSeparator: ' - '
 privatePagePathPrefix: private # Must not start or end with a slash
 googleAnalyticsMeasurementId: none
-disqusShortname: none
 twitterSiteUsername: none
-redirects:
-  - from: from-path
-    to: to-path
+redirects: # https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect
+  - fromPath: /old-url
+    toPath: /new-url
+    isPermanent: true

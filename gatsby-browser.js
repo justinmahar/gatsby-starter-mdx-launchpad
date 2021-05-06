@@ -41,14 +41,11 @@ require('prismjs/themes/prism.css');
 // require('prismjs/themes/prism-tomorrow.css');
 // require('prismjs/themes/prism-twilight.css');
 
-// == Bootstrap Style Override ==
-// None
-
 // == Custom Styles ==
 require('./src/styles/styles.scss');
 
-// // Offline support - Reload when there's an update
-// const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
-//   window.location.reload();
-// };
-// export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;
+// Reload when there's an update
+const onServiceWorkerUpdateReadyFunction = (_apiCallbackContext) => {
+  window.location.reload();
+};
+export const onServiceWorkerUpdateReady = onServiceWorkerUpdateReadyFunction;

@@ -28,6 +28,11 @@
  */
 
 import path from 'path';
+import readYaml from 'read-yaml';
+import sw from 'stopword';
+
+/** Load settings YAML */
+const settings = readYaml.sync(`${__dirname}/src/settings/settings.yml`);
 
 export const onCreateNode = ({ node, actions }, pluginOptions) => {
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
@@ -38,9 +43,8 @@ export const onCreateNode = ({ node, actions }, pluginOptions) => {
   if (node.internal.type === 'Mdx') {
     // Use frontmatter slug if provided, otherwise use the title
     const rawSlug = node.frontmatter.slug ? node.frontmatter.slug : node.frontmatter.title;
-    // Create a URL safe slug by lowercasing and replacing all non-alphanumerics
-    let safeSlug = rawSlug.toLocaleLowerCase().replace(/\W/gi, '-');
-
+    // Create a cleaned up URL safe slug from the raw slug
+    let safeSlug = createSafeSlug(rawSlug);
     createNodeField({
       // Name of the field you are adding
       name: 'slug',
@@ -53,8 +57,13 @@ export const onCreateNode = ({ node, actions }, pluginOptions) => {
 };
 
 export const createPages = ({ graphql, actions }, pluginOptions) => {
-  // Destructure the createPage function from the actions object
-  const { createPage } = actions;
+  // Destructure actions object for the functions we need
+  const { createRedirect, createPage } = actions;
+
+  // Create redirects configured in settings.yml
+  // See: https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect
+  const redirects = Array.isArray(settings.redirects) ? settings.redirects : [];
+  redirects.forEach((redirect) => createRedirect(redirect));
 
   // https://gatsby-mdx.netlify.com/guides/programmatically-creating-pages
   const mdxQueryPromise = graphql(`
@@ -75,7 +84,7 @@ export const createPages = ({ graphql, actions }, pluginOptions) => {
       }
     }
   `).then((result) => {
-    // This is some boilerlate to handle errors
+    // This is some boilerplate to handle errors
     if (result.errors) {
       console.error(result.errors);
       Promise.reject(result.errors);
@@ -90,7 +99,7 @@ export const createPages = ({ graphql, actions }, pluginOptions) => {
     // We'll call `createPage` for each result, creating each page.
     mdxNodes.forEach((node) => {
       // Don't create pages for partials
-      if (!node.frontmatter.partial) {
+      if (!node.frontmatter.partial && node.fields.slug) {
         const pageConfig = {
           // We'll use the slug we created in onCreateNode, in addition to a private path prefix if private
           path: `${node.frontmatter.private ? `${privatePagePathPrefix}/` : ''}${node.fields.slug}`,
@@ -113,6 +122,32 @@ export const createPages = ({ graphql, actions }, pluginOptions) => {
   return Promise.all([mdxQueryPromise]);
 };
 
+const createSafeSlug = (rawSlug) => {
+  const cleanUpSlug = (slug) => {
+    return (
+      slug
+        .toLowerCase()
+        // Remove apostrophes
+        .replace(/['’]/gi, '')
+        // Replace all non-alphanumerics with dashes
+        .replace(/\W/gi, '-')
+        // Remove dashes at start or end
+        .replace(/(^-+)|(-+$)/gi, '')
+        // Remove duplicate dashes
+        .replace(/-+/gi, '-')
+    );
+  };
+  // First, remove all stop words, make the array distinct, then clean it up
+  let safeSlug = cleanUpSlug(
+    [...new Set(sw.removeStopwords(rawSlug.split(/[!?:;,."*()\s]/)).map((word) => word.toLowerCase()))].join('-'),
+  );
+  // If the slug is empty, don't remove stop words
+  if (safeSlug.length === 0) {
+    safeSlug = cleanUpSlug(rawSlug);
+  }
+  return safeSlug;
+};
+
 // == Webpack Exclusions (for unchecked window and IndexedDB usage) ==
 // export const onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //   if (stage === 'build-html') {
@@ -121,7 +156,7 @@ export const createPages = ({ graphql, actions }, pluginOptions) => {
 //       module: {
 //         rules: [
 //           {
-//             test: /html2canvas/,
+//             test: /library-name-regex-goes-here/,
 //             use: loaders.null(),
 //           },
 //         ],

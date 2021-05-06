@@ -38,6 +38,9 @@ export const mdxFragmentQuery = graphql`
       }
       partial
       private
+      group
+      category
+      date
     }
     body
     fileAbsolutePath
@@ -68,6 +71,9 @@ export type MdxData = {
     };
     partial?: string;
     private?: string;
+    group?: string;
+    category?: string;
+    date?: Date;
   };
   body: string;
   fileAbsolutePath: string;
