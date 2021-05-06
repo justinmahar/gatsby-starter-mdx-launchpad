@@ -154,9 +154,9 @@ This is a new MDX page.
 
 The only frontmatter you need for new pages is a `title`. This will cause a new page with your MDX markdown to generate at `/new-page`.
 
-You can optionally provide a `slug` for the URL, and if unspecified, a lowercase slug will be automatically created from the title. All non-alphanumeric characters in the slug will be replaced with dashes.
+You can optionally provide a `slug` for the URL, and if unspecified, a SEO-friendly slug will be automatically created from the title. See the [SEO section](#slugs-and-stop-words) for how this works.
 
-See below for all frontmatter options, including `slug`, `seo`, and more.
+See below for all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
 
 ## Adding Blog Posts
 
@@ -187,7 +187,9 @@ const postsData = useStaticQuery(graphql`
 const postNodes: MdxData[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
 ```
 
-And if you'd like to query posts from a particular category:
+In this query, we're filtering for content that's not partial or private, and is in the group `posts`.
+
+If you'd like to query posts from a particular category:
 
 ```js
 const postsData = useStaticQuery(graphql`
@@ -207,9 +209,9 @@ const devPostNodes: MdxData[] = postsData?.devPosts?.nodes ? postsData.devPosts.
 
 ## Adding Partial Content
 
-Content partials are pieces of MDX markdown that you can embed in any of your other components.
+Content partials are pieces of MDX markdown that you can embed in any of your components.
 
-To add an MDX content partial, create a new `.mdx` file in `mdx/partials` with the following content:
+To add an MDX content partial, create a new `.mdx` file in `src/mdx/partials` with the following content:
 
 ```md
 ---
@@ -278,7 +280,7 @@ All MDX pages are rendered using the page template defined in `src/components/pa
 
 Changes to this component will apply to all MDX pages. You will likely want to make changes to this file to style your app the way you'd like.
 
-In addition, head data for MDX pages is handled in `src/components/page-templates/MdxHead.tsx`, should you want to customize that behavior.
+In addition, `head` element metadata for MDX pages is handled in `src/components/page-templates/MdxHead.tsx`, should you want to customize that behavior.
 
 ## Included Frontmatter
 
