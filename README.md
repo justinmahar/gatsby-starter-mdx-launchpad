@@ -474,6 +474,10 @@ This starter has a YAML file containing all site settings defined in `src/settin
 
 In addition, all site settings can be quickly accessed from any function component using the `useSettings` hook in `src/settings/useSettings.ts`. 🙌
 
+A default site image and icon are present in `/static/media`. There's also a favicon in `/static`. Replace these files with your own images. Be sure to update `src/settings/settings.yml` with the correct file names, image alts, and sizes.
+
+**You'll want to update all `siteMetadata` settings with your own project information.**
+
 ### Included Settings
 
 - `siteMetadata`
