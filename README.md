@@ -207,6 +207,8 @@ const postsData = useStaticQuery(graphql`
 const devPostNodes: MdxData[] = postsData?.devPosts?.nodes ? postsData.devPosts.nodes : [];
 ```
 
+This will query for all posts in the category `development`.
+
 ## Adding Partial Content
 
 Content partials are pieces of MDX markdown that you can embed in any of your components.
