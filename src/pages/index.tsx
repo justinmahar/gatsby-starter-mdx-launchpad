@@ -15,7 +15,7 @@ export default function Index(props: IndexProps): JSX.Element {
   const postsData = useStaticQuery(graphql`
     query IndexQuery {
       posts: allMdx(
-        filter: { frontmatter: { partial: { eq: false }, private: { eq: false }, group: { eq: "posts" } } }
+        filter: { frontmatter: { partial: { ne: true }, private: { ne: true }, group: { eq: "posts" } } }
         sort: { fields: frontmatter___date, order: DESC }
       ) {
         nodes {

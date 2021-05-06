@@ -142,17 +142,17 @@ You can add new pages to `/pages` as you would [normally in Gatsby](https://www.
 
 You can add MDX markdown pages as well, allowing you to author content that includes JSX components.
 
-To create an MDX page, add a new `.mdx` file in `mdx/pages` with the following content:
+To create an MDX page, add a new `.mdx` file in `src/mdx/pages` with the following content:
 
 ```md
 ---
-title: My New Page
+title: New Page
 ---
 
 This is a new MDX page.
 ```
 
-The only frontmatter you need for new pages is a `title`. This will cause a new page with your MDX markdown to generate at `/my-new-page`.
+The only frontmatter you need for new pages is a `title`. This will cause a new page with your MDX markdown to generate at `/new-page`.
 
 You can optionally provide a `slug` for the URL, and if unspecified, a lowercase slug will be automatically created from the title. All non-alphanumeric characters in the slug will be replaced with dashes.
 
@@ -175,7 +175,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 const postsData = useStaticQuery(graphql`
   query PostsQuery {
     posts: allMdx(
-      filter: { frontmatter: { partial: { eq: false }, private: { eq: false }, group: { eq: "posts" } } }
+      filter: { frontmatter: { partial: { ne: true }, private: { ne: true }, group: { eq: "posts" } } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
@@ -193,7 +193,7 @@ And if you'd like to query posts from a particular category:
 const postsData = useStaticQuery(graphql`
   query DevPostsQuery {
     devPosts: allMdx(
-      filter: { frontmatter: { partial: { eq: false }, private: { eq: false }, group: { eq: "posts" }, category: { eq: "development" } } }
+      filter: { frontmatter: { partial: { ne: true }, private: { ne: true }, group: { eq: "posts" }, category: { eq: "development" } } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
