@@ -5,7 +5,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Head from '../components/layouts/Head';
 import Layout from '../components/layouts/Layout';
-import { MdxData } from '../data/MdxContent';
+import MdxContent, { MdxData } from '../data/MdxContent';
 
 interface IndexProps {
   data: any;
@@ -34,7 +34,7 @@ export default function Index(props: IndexProps): JSX.Element {
   const devPostElements = devPostNodes.map((node: MdxData) => {
     return (
       <div className="mb-4" key={node.id}>
-        <MdxCard mdxData={node} />
+        <MdxPostCard mdxData={node} />
       </div>
     );
   });
@@ -43,7 +43,7 @@ export default function Index(props: IndexProps): JSX.Element {
   const lifestylePostElements = lifestylePostNodes.map((node: MdxData) => {
     return (
       <div className="mb-4" key={node.id}>
-        <MdxCard mdxData={node} />
+        <MdxPostCard mdxData={node} />
       </div>
     );
   });
@@ -67,27 +67,29 @@ export default function Index(props: IndexProps): JSX.Element {
   );
 }
 
-interface MdxCardProps {
+interface MdxPostCardProps {
   mdxData: MdxData;
 }
 
-const MdxCard = (props: MdxCardProps) => {
-  const mdxData = props.mdxData;
-  const date = moment(mdxData.frontmatter.date);
+const MdxPostCard = (props: MdxPostCardProps) => {
+  const mdxContent: MdxContent = new MdxContent(props.mdxData);
+  const date = moment(mdxContent.data.frontmatter.date);
   const dateString = date.utc().format('MMMM Do, YYYY');
   return (
     <Card>
       <Card.Header style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h4>
-          <Link to={mdxData.fields.slug}>{mdxData.frontmatter.title}</Link>
+          <Link to={mdxContent.data.fields.slug}>{mdxContent.data.frontmatter.title}</Link>
         </h4>
         <div>{dateString}</div>
       </Card.Header>
       <Card.Body>
         <div>
-          {mdxData.excerpt}{' '}
-          <Link to={mdxData.fields.slug}>
-            <Button variant="link">Read more &raquo;</Button>
+          {mdxContent.getExcerpt()}{' '}
+          <Link to={mdxContent.data.fields.slug}>
+            <Button size="sm" variant="link">
+              Read more &raquo;
+            </Button>
           </Link>
         </div>
       </Card.Body>

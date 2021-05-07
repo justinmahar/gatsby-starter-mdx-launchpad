@@ -41,17 +41,18 @@ export const onCreateNode = ({ node, actions }, pluginOptions) => {
   // remote CMS we could also check to see if the parent node was a
   // `File` node here
   if (node.internal.type === 'Mdx') {
-    // Use frontmatter slug if provided, otherwise use the title
-    const rawSlug = node.frontmatter.slug ? node.frontmatter.slug : node.frontmatter.title;
-    // Create a cleaned up URL safe slug from the raw slug
-    let safeSlug = createSafeSlug(rawSlug);
+    // Use frontmatter slug as-is if provided, otherwise slugify the title
+    let slugValue = node.frontmatter.slug;
+    if (!slugValue) {
+      slugValue = slugify(node.frontmatter.title);
+    }
     createNodeField({
       // Name of the field you are adding
       name: 'slug',
       // Individual MDX node
       node,
-      // URL safe slug for the content
-      value: safeSlug,
+      // Slug for the content
+      value: slugValue,
     });
   }
 };
@@ -122,10 +123,10 @@ export const createPages = ({ graphql, actions }, pluginOptions) => {
   return Promise.all([mdxQueryPromise]);
 };
 
-const createSafeSlug = (rawSlug) => {
-  const cleanUpSlug = (slug) => {
+const slugify = (text) => {
+  const createSlug = (rawText) => {
     return (
-      slug
+      rawText
         .toLowerCase()
         // Remove apostrophes
         .replace(/['’]/gi, '')
@@ -137,15 +138,22 @@ const createSafeSlug = (rawSlug) => {
         .replace(/-+/gi, '-')
     );
   };
-  // First, remove all stop words, make the array distinct, then clean it up
-  let safeSlug = cleanUpSlug(
-    [...new Set(sw.removeStopwords(rawSlug.split(/[!?:;,."*()\s]/)).map((word) => word.toLowerCase()))].join('-'),
+  // Remove all stop words, make resulting array lowercase and distinct, join with dashes, then create the slug
+  let slug = createSlug(
+    [...new Set(sw.removeStopwords(text.split(/[!?:;,."*()\s]/)).map((word) => word.toLowerCase()))].join('-'),
   );
-  // If the slug is empty, don't remove stop words
-  if (safeSlug.length === 0) {
-    safeSlug = cleanUpSlug(rawSlug);
+  // If the slug is empty after doing so, simply slugify the text without removing stop words
+  if (slug.length === 0) {
+    slug = createSlug(text);
   }
-  return safeSlug;
+  // If even THEN the slug is still empty, just make it lowercase and alphanumeric with dashes
+  if (slug.length === 0) {
+    slug = text
+      .toLowerCase()
+      // Replace all non-alphanumerics with dashes
+      .replace(/\W/gi, '-');
+  }
+  return slug;
 };
 
 // == Webpack Exclusions (for unchecked window and IndexedDB usage) ==

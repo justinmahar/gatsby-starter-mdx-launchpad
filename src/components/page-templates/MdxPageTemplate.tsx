@@ -27,7 +27,7 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
       <MdxHead mdxContent={mdxContent} />
       <Body>
         <Container className="content-container">
-          <h1>{contentTitle}</h1>
+          <h1 className="mb-4">{contentTitle}</h1>
           <MDXRenderer scope={undefined} components={undefined}>
             {mdxContent.data.body}
           </MDXRenderer>

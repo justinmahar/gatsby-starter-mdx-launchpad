@@ -59,8 +59,10 @@ See below for a list of main features.
   - [PrismJS](https://prismjs.com/) is included to make your code blocks shine in almost any language, with multiple themes available.
 - **📑 Template Tags**
   - A simple helper is included to allow use of metadata tags such as `{siteName}` and `{siteDescription}`, with values pulled right from `settings.yml`.
+- **📦 Gatsby API ES Modules**
+  - ES Module support! Comfortably use `import` and `export` keywords in your Gatsby API files.
 - **🕸️ XML Sitemap**
-  - Gives web crawlers a helping hand by auto-generating a `sitemap.xml` with all of your non-private pages.
+  - Give web crawlers a helping hand by auto-generating a `sitemap.xml` with all of your non-private pages.
 - **🌟 And much more!**
   - I hope you enjoy! Please [star the project](https://github.com/justinmahar/gatsby-starter-mdx-launchpad) if it's helpful so others can find it. :)
 
@@ -129,7 +131,9 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
   - [MDX Content](#mdx-content)
 - [PrismJS Syntax Highlighting](#prismjs-syntax-highlighting)
 - [Progressive Web App (PWA) Configuration](#progressive-web-app-pwa-configuration)
+- [Google Analytics](#google-analytics)
 - [Removing Bootstrap and Font Awesome](#removing-bootstrap-and-font-awesome)
+- [Gatsby APIs And ES Modules](#gatsby-apis-and-es-modules)
 - [Terms of Service and Privacy Policy](#terms-of-service-and-privacy-policy)
 - [Contributing](#contributing)
 - [BSD Zero Clause License](#bsd-zero-clause-license)
@@ -447,7 +451,9 @@ As such, all [stop words](https://www.npmjs.com/package/stopword) and duplicate 
 
 For instance, the title `"Everything you need to know about everything"` would have the auto-generated slug `everything-need-know`.
 
-You can review and tweak this logic in `createSafeSlug` in `gatsby-node.esm.js`.
+You can review and tweak this logic in the `slugify` function in `gatsby-node.esm.js`.
+
+If you do specify a `slug` in the frontmatter, it will be used as is. That way you can bypass this logic and make the slug whatever you'd like--just be sure to specify a URL-safe slug since no processing is done on slugs you specify explicitly.
 
 ## Configuring Redirects
 
@@ -594,6 +600,12 @@ Change the following setting:
 
 These settings are then handed to the manifest plugin during the Gatsby config stage.
 
+## Google Analytics
+
+This project uses the [gatsby-plugin-google-gtag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/) plugin for Google Analytics.
+
+Simply add your measurement ID to `src/settings/settings.yml` as `googleAnalyticsMeasurementId` and you're ready to go. Set this to `none` to disable Google Analytics.
+
 ## Removing Bootstrap and Font Awesome
 
 If you'd like to remove Bootstrap and Font Awesome: 
@@ -603,6 +615,16 @@ If you'd like to remove Bootstrap and Font Awesome:
   ```zsh
   npm uninstall bootstrap react-bootstrap @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
   ```
+
+## Gatsby APIs And ES Modules
+
+The [esm](https://www.npmjs.com/package/esm) package is being used to support ES Modules in Gatsby's API files as per [Gatsby's guide](https://support.gatsbyjs.com/hc/en-us/articles/1500000294121-Using-ES6-Module-Syntax-in-Gatsby-API-Files-on-Gatsby-Cloud).
+
+This lets us leave CommonJS syntax behind in favor of newer ES module syntax. This means you can comfortably use the `import` and `export` keywords from Gatsby's API files.
+
+The Gatsby API files that support ES modules in this project have the filename suffix `.esm.js`.
+
+> Note: This approach does not apply to  `gatsby-browser.js`. 
 
 ## Terms of Service and Privacy Policy
 
