@@ -524,6 +524,8 @@ redirects:
     isPermanent: true
 ```
 
+> Note: Depending on your configuration, redirects usually only work once a project is deployed (and not in a development environment).
+
 ## Site Settings
 
 This starter has a YAML file containing all site settings defined in `src/settings/setting.yml`, including site metadata.
