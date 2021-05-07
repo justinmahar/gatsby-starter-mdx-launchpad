@@ -343,7 +343,7 @@ If you're unfamiliar, the syntax `...mdxContent` is the use of a [GraphQL fragme
 Once you have the data, wrap each node in an `MdxContent` instance, like so:
 
 ```js
-import MdxContent from '../../data/MdxContent';
+import MdxContent from '../data/MdxContent';
 ```
 
 ```js
@@ -366,7 +366,7 @@ See `MdxPageTemplate` (`src/components/page-templates/MdxPageTemplate.tsx`) for 
 
 ## Layouts
 
-The standard Gatsby layout pattern is used for this starter's pages. Layout components are located in `src/components/layouts`. Customize the files in this directory to affect your entire site.
+The standard [Gatsby layout pattern](https://www.gatsbyjs.com/docs/how-to/routing/layout-components/) is used for this starter's pages. Layout components are located in `src/components/layouts`. Customize the files in this directory to affect your entire site.
 
 The `Layout` component will wrap its children with a `Header` and `Footer`.
 
@@ -395,7 +395,7 @@ import Layout from '../components/layouts/Layout';
 </Layout>
 ```
 
-In addition, all `Head` component children are added directly to the `head` element using [React Helmet](https://github.com/nfl/react-helmet).
+If you want to add something to the `head` element for a particular page, all `Head` component children are added directly to the `head` element using [React Helmet](https://github.com/nfl/react-helmet).
 
 ## Search Engine Optimization (SEO)
 
