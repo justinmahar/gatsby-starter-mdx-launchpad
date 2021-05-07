@@ -458,7 +458,7 @@ Redirects are created using the `createRedirect` Gatsby node API action function
 
 Example in `settings.yml`:
 
-```
+```yml
 redirects:
   - fromPath: /old-url
     toPath: /new-url
