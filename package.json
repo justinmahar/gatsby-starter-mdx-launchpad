@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-mdx-launchpad",
   "private": true,
-  "description": "Lightweight Gatsby starter supporting MDX and TypeScript. Start lightyears ahead!!",
+  "description": "Lightweight Gatsby starter supporting MDX and TypeScript. Start lightyears ahead!",
   "version": "0.0.1",
   "author": "Justin Mahar <contact@justinmahar.com>",
   "dependencies": {
