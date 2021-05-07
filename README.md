@@ -7,7 +7,7 @@
   </a>
 </h2>
 <h3 align="center">
-  Lightweight Gatsby starter supporting MDX and TypeScript. Launch your next big project!
+  Lightweight Gatsby starter supporting MDX and TypeScript. Start lightyears ahead!!
 </h3>
 <p align="center">
   <a href="https://github.com/justinmahar/gatsby-starter-mdx-launchpad/generate">
