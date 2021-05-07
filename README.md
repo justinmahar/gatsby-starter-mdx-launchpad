@@ -156,7 +156,7 @@ The only frontmatter you need for new pages is a `title`. This will cause a new 
 
 You can optionally provide a `slug` for the URL, and if unspecified, a SEO-friendly slug will be automatically created from the title. See the [SEO section](#slugs-and-stop-words) for how this works.
 
-See below for all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
+See all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
 
 ## Adding Blog Posts
 
@@ -495,7 +495,7 @@ A default site image and icon are present in `/static/media`. There's also a fav
 - `twitterSiteUsername`
   - Twitter site username for SEO purposes. Provide the twitter handle for your site, or use `none` to disable. 
 - `redirects`
-  - An array of redirects. Use the [createRedirect object specs](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect). See below for more info.
+  - An array of redirects. Use the [createRedirect object specs](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect). See [Configuring Redirects](#configuring-redirects) for more info.
 
 ### Adding New Settings
 
