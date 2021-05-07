@@ -1,5 +1,5 @@
 siteMetadata:
-  siteName: gatsby-starter-mdx-launchpad
+  siteName: MDX Launchpad
   siteUrl: 'https://gatsby-starter-mdx-launchpad.netlify.app'
   siteDescription: Lightweight Gatsby starter supporting TypeScript, and MDX. Launch your next big project!
   siteIcon: /media/site-icon.png
@@ -9,7 +9,7 @@ siteMetadata:
   siteImageHeight: 630
   siteImageAlt: Kittens
 gatsbyPluginManifestOptions:
-  name: gatsby-starter-mdx-launchpad
+  name: MDX Launchpad
   shortName: launchpad
   startUrl: /
   themeColor: '#1167b1'
