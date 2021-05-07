@@ -22,13 +22,14 @@
 
 ## Overview
 
-This is a [Gatsby starter](https://www.gatsbyjs.com/starters/) that supports [MDX](https://mdxjs.com/) for pages and content. MDX lets you seamlessly write JSX in your Markdown documents, and makes writing long-form content with components a blast.
+The main goal of this [Gatsby starter](https://www.gatsbyjs.com/starters/) is to take care of several boilerplate pain points that get in the way of starting a new project, while still being flexible enough to be used as a starting point for a website, blog, or progressive web app. 
 
-The main goal of this starter is to take care of the boilerplate and little things that get in the way of starting a new project, while still being flexible enough to be used as a starting point for a website, blog, or progressive web app. 
+This starter supports [MDX](https://mdxjs.com/) for pages and content. MDX lets you seamlessly write JSX in your Markdown documents, and makes writing long-form content with components a blast. This remains an optional feature of the starter. Feel free to add new pages the good old Gatsby way!
 
-The addition of MDX makes it possible to embed React components right into your markdown, but this remains an optional feature of the starter. Feel free to add new pages the good old Gatsby way, too!
+Other features include TypeScript support, site settings, SEO and smart page slugs, private pages and content partials, lightweight blog features, redirects, PWA support, syntax highlighting, Google Analytics, and more!
 
-See below for a list of main features.
+See below for the main list of features.
+
 ### Features include:
 
 - **🔥 Updated For Gatsby 3.0**
@@ -166,7 +167,7 @@ See all [frontmatter options](#included-frontmatter), including `slug`, `seo`, a
 
 ## Adding Blog Posts
 
-This starter has a loose blog feature. Simply add the frontmatter `group: posts` to your MDX and put your MDX in `src/mdx/pages/posts`. There is also a `category` field you can use to categorize content, if desired.
+This starter has a lightweight blog feature. Simply add the frontmatter `group: posts` to your MDX and put your MDX in `src/mdx/pages/posts`. There is also a `category` field you can use to categorize content, if desired.
 
 ### Querying For Posts
 
