@@ -218,6 +218,7 @@ To add an MDX content partial, create a new `.mdx` file in `src/mdx/partials` wi
 ```md
 ---
 title: My Partial
+slug: my-partial
 partial: true
 ---
 
