@@ -46,7 +46,7 @@ See below for a list of main features.
 - **🧑‍💻 MDX Markdown**
   - Add JSX to your Markdown! Drop components into your content seamlessly. Welcome to Markdown on steroids.
 - **📄 MDX Pages And Partials**
-  - Either auto-generate entire pages from MDX Markdown, or simply embed MDX content partials in any of your components. Or just use regular Gatsby pages. Create content your way.
+  - Either auto-generate entire pages from MDX markdown, or simply embed MDX content partials in any of your components. Or just use regular Gatsby pages. Create content your way.
 - **🕵️ Private Pages**
   - Hide MDX pages from queries and the sitemap using a simple `private` frontmatter setting.
 - **↪️ Redirects**
@@ -112,6 +112,8 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Adding Blog Posts](#adding-blog-posts)
   - [Querying For Posts](#querying-for-posts)
 - [Adding Partial Content](#adding-partial-content)
+  - [MdxPartial Helper Component](#mdxpartial-helper-component)
+  - [Querying And Using MDX Partials](#querying-and-using-mdx-partials)
 - [MDX Page Template](#mdx-page-template)
 - [Included Frontmatter](#included-frontmatter)
 - [Adding New Frontmatter Fields](#adding-new-frontmatter-fields)
@@ -231,7 +233,23 @@ partial: true
 Content goes here!
 ```
 
-MDX content partials can be embedded into any of your components like so:
+### MdxPartial Helper Component
+
+You can use the `MdxPartial` component (`src/components/content/MdxPartial.tsx`) to easily include any MDX partial using its `slug`, like so:
+
+```jsx
+import { MdxPartial } from '../components/content/MdxPartial';
+```
+
+```jsx
+<MdxPartial slug="my-partial-slug" />
+```
+
+This component queries all partials and then finds the one with the slug provided. If no partial is found, an empty JSX element is returned.
+
+### Querying And Using MDX Partials
+
+MDX content partials can be manually queried for and included in any of your components like so:
 
 ```tsx
 import { graphql } from 'gatsby';
@@ -386,7 +404,7 @@ import Layout from '../components/layouts/Layout';
 
 ```jsx
 <Layout>
-  <Head seo={{ title: 'My Page Title', description: 'A description of this page' }} />
+  <Head contentTitle={'My Page Title'} seo={{ description: 'A description of this page' }} />
   <Body>
     <Container className="content">
       <Row>
