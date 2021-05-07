@@ -361,7 +361,7 @@ MDX pages and partials by default support the following frontmatter fields:
 | `group`           | `string`  | no       | A group for the content. Can be used to group content by type, such as `posts`.                                                                                                      |
 | `date`            | `string`  | no       | A date for the content in the format `YYYY-MM-DD`.                                                                                                                                   |
 
-> `seo` is an object field with sub-fields (don't actually use a dot `.` for these).
+> `seo` is an object field with sub-fields (don't actually use a dot `.` for these; see `frontmatter-specs.mdx` for an example).
 
 ## Adding New Frontmatter Fields
 
