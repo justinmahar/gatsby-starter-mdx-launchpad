@@ -238,7 +238,7 @@ Content goes here!
 
 ### MdxPartial Helper Component
 
-You can use the `MdxPartial` component (`src/components/content/MdxPartial.tsx`) to easily include any MDX partial using its `slug`, like so:
+You can use the `MdxPartial` component (`src/components/content/MdxPartial.tsx`) to easily render any MDX partial using its `slug`, like so:
 
 ```jsx
 import { MdxPartial } from '../components/content/MdxPartial';
@@ -248,7 +248,7 @@ import { MdxPartial } from '../components/content/MdxPartial';
 <MdxPartial slug="my-partial" />
 ```
 
-This component queries all partials and then finds the one with the slug provided. The MDX content is then rendered. If no partial is found, an empty JSX element is returned.
+This component queries all partials and then finds the MDX node with the slug provided. The node is then rendered using `MdxNodeRenderer`. If no partial is found, an empty JSX element is rendered.
 
 ### Querying And Using MDX Partials
 
@@ -361,7 +361,9 @@ MDX pages and partials by default support the following frontmatter fields:
 | `group`           | `string`  | no       | A group for the content. Can be used to group content by type, such as `posts`.                                                                                                      |
 | `date`            | `string`  | no       | A date for the content in the format `YYYY-MM-DD`.                                                                                                                                   |
 
-Note: The string `'none'` can be used for `undefined`.
+> `seo` is an object field with sub-fields (don't actually use a dot `.` for these).
+
+> The string `none` can be used for `undefined`.
 
 ## Adding New Frontmatter Fields
 
