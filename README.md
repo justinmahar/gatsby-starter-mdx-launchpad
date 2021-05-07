@@ -242,7 +242,7 @@ import { MdxPartial } from '../components/content/MdxPartial';
 ```
 
 ```jsx
-<MdxPartial slug="my-partial-slug" />
+<MdxPartial slug="my-partial" />
 ```
 
 This component queries all partials and then finds the one with the slug provided. If no partial is found, an empty JSX element is returned.
