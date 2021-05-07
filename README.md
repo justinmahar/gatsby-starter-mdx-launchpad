@@ -312,7 +312,7 @@ Note: The string `'none'` can be used for `undefined`.
 
 ## Adding New Frontmatter Fields
 
-All frontmatter fields are specified in `mdx/frontmatter-specs.mdx` and `src/data/MDXContent.ts`. 
+All frontmatter fields are specified in `src/mdx/frontmatter-specs.mdx` and `src/data/MDXContent.ts`. 
 
 If you'd like to add or change the frontmatter fields for your pages and partials, follow these two steps:
 
@@ -335,6 +335,8 @@ query MyQuery {
   }
 }
 ```
+
+If you're unfamiliar, the syntax `...mdxContent` is the use of a [GraphQL fragment](https://www.apollographql.com/docs/react/data/fragments/). The fragment is defined in `src/data/MDXContent.ts` and includes all MDX data we want to query for, and makes things a lot cleaner and easier to read!
 
 > Tip: You can use [GraphiQL](http://localhost:8000/__graphiql) to easily create filters and sorts on your MDX content when your development server is running.
 
