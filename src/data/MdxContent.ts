@@ -49,7 +49,7 @@ export const mdxFragmentQuery = graphql`
 // ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 // Important: The shapes of the query above and the type below must match!
 // ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-export type MdxData = {
+export type MdxNode = {
   id: string;
   fields: {
     slug: string;
@@ -87,21 +87,21 @@ export type MdxData = {
  * to construct one. Then pass each MDX node into the constructor.
  */
 export default class MdxContent {
-  constructor(public data: MdxData) {}
+  constructor(public node: MdxNode) {}
 
   public getExcerpt(): string {
-    return this.data.frontmatter.excerpt && this.data.frontmatter.excerpt !== 'none'
-      ? this.data.frontmatter.excerpt
-      : this.data.excerpt;
+    return this.node.frontmatter.excerpt && this.node.frontmatter.excerpt !== 'none'
+      ? this.node.frontmatter.excerpt
+      : this.node.excerpt;
   }
 
   public getTemplateTagRenderer(): TemplateTagRenderer {
     return new TemplateTagRenderer({
-      contentTitle: this.data.frontmatter.title,
+      contentTitle: this.node.frontmatter.title,
       contentExcerpt: this.getExcerpt(),
-      contentSeoTitle: this.data.frontmatter.seo?.title ? this.data.frontmatter.seo.title : this.data.frontmatter.title,
-      contentSeoDescription: this.data.frontmatter.seo?.description
-        ? this.data.frontmatter.seo.description
+      contentSeoTitle: this.node.frontmatter.seo?.title ? this.node.frontmatter.seo.title : this.node.frontmatter.title,
+      contentSeoDescription: this.node.frontmatter.seo?.description
+        ? this.node.frontmatter.seo.description
         : this.getExcerpt(),
     });
   }

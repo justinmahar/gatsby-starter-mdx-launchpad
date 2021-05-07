@@ -1,12 +1,13 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { MdxNode } from '../../data/MdxContent';
 
 interface Props {
-  mdxNode: any;
+  mdxNode: MdxNode;
 }
 
-export const MdxNodeRenderer = (props: Props) => {
+export const MdxNodeRenderer = (props: Props): JSX.Element => {
   // You can define your own components if you'd like. See: https://mdxjs.com/getting-started#mdxprovider
   const components = {
     // p: (props: any) => <p>{props.children}</p>, //	Paragraph
@@ -24,7 +25,8 @@ export const MdxNodeRenderer = (props: Props) => {
     // thead: (props: any) => <thead>{props.children}</thead>, //	Table head
     // tbody: (props: any) => <tbody>{props.children}</tbody>, //	Table body
     // tr: (props: any) => <tr>{props.children}</tr>, //	Table row
-    // td: (props: any) => <td>{props.children}</td>, ///th	Table cell
+    // td: (props: any) => <td>{props.children}</td>, //	Table cell
+    // th: (props: any) => <th>{props.children}</th>, //	Table header
     // code: (props: any) => <code>{props.children}</code>, //	Code	```code```
     // inlineCode: (props: any) => <code>{props.children}</code>, //	InlineCode	`inlineCode`
     // pre: (props: any) => <pre>{props.children}</pre>, //	Code	```code```

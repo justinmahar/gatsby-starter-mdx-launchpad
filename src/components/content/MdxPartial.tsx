@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
+import { MdxNode } from '../../data/MdxContent';
 import { MdxNodeRenderer } from './MdxNodeRenderer';
 
 interface Props {
@@ -17,7 +18,7 @@ export const MdxPartial = (props: Props): JSX.Element => {
     }
   `);
 
-  const partialMdxNode: any = partialsData.allMdx.nodes.find((node: any) => node?.fields?.slug === props.slug);
+  const partialMdxNode: MdxNode = partialsData.allMdx.nodes.find((node: MdxNode) => node.fields.slug === props.slug);
 
   if (partialMdxNode) {
     return <MdxNodeRenderer mdxNode={partialMdxNode} />;

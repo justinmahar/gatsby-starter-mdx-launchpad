@@ -20,7 +20,7 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
   const templateTagRenderer: TemplateTagRenderer = mdxContent
     .getTemplateTagRenderer()
     .combineWith(settings.getTemplateTagRenderer());
-  const contentTitle = templateTagRenderer.render(mdxContent.data.frontmatter.title);
+  const contentTitle = templateTagRenderer.render(mdxContent.node.frontmatter.title);
 
   return (
     <Layout>
@@ -28,7 +28,7 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
       <Body>
         <Container className="content-container">
           <h1 className="mb-4">{contentTitle}</h1>
-          <MdxNodeRenderer mdxNode={mdxContent.data} />
+          <MdxNodeRenderer mdxNode={mdxContent.node} />
         </Container>
       </Body>
     </Layout>

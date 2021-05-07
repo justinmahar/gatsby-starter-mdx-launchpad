@@ -5,7 +5,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Head from '../components/layouts/Head';
 import Layout from '../components/layouts/Layout';
-import MdxContent, { MdxData } from '../data/MdxContent';
+import MdxContent, { MdxNode } from '../data/MdxContent';
 
 interface IndexProps {
   data: any;
@@ -28,22 +28,22 @@ export default function Index(props: IndexProps): JSX.Element {
   const pageTitle = `{siteName}`;
   const description = `{siteDescription}`;
 
-  const postNodes: MdxData[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
+  const postNodes: MdxNode[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
 
-  const devPostNodes: MdxData[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'development');
-  const devPostElements = devPostNodes.map((node: MdxData) => {
+  const devPostNodes: MdxNode[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'development');
+  const devPostElements = devPostNodes.map((node: MdxNode) => {
     return (
       <div className="mb-4" key={node.id}>
-        <MdxPostCard mdxData={node} />
+        <MdxPostCard mdxNode={node} />
       </div>
     );
   });
 
-  const lifestylePostNodes: MdxData[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'lifestyle');
-  const lifestylePostElements = lifestylePostNodes.map((node: MdxData) => {
+  const lifestylePostNodes: MdxNode[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'lifestyle');
+  const lifestylePostElements = lifestylePostNodes.map((node: MdxNode) => {
     return (
       <div className="mb-4" key={node.id}>
-        <MdxPostCard mdxData={node} />
+        <MdxPostCard mdxNode={node} />
       </div>
     );
   });
@@ -68,25 +68,25 @@ export default function Index(props: IndexProps): JSX.Element {
 }
 
 interface MdxPostCardProps {
-  mdxData: MdxData;
+  mdxNode: MdxNode;
 }
 
 const MdxPostCard = (props: MdxPostCardProps) => {
-  const mdxContent: MdxContent = new MdxContent(props.mdxData);
-  const date = moment(mdxContent.data.frontmatter.date);
+  const mdxContent: MdxContent = new MdxContent(props.mdxNode);
+  const date = moment(mdxContent.node.frontmatter.date);
   const dateString = date.utc().format('MMMM Do, YYYY');
   return (
     <Card>
       <Card.Header style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h4>
-          <Link to={mdxContent.data.fields.slug}>{mdxContent.data.frontmatter.title}</Link>
+          <Link to={mdxContent.node.fields.slug}>{mdxContent.node.frontmatter.title}</Link>
         </h4>
         <div>{dateString}</div>
       </Card.Header>
       <Card.Body>
         <div>
           {mdxContent.getExcerpt()}{' '}
-          <Link to={mdxContent.data.fields.slug}>
+          <Link to={mdxContent.node.fields.slug}>
             <Button size="sm" variant="link">
               Read more &raquo;
             </Button>

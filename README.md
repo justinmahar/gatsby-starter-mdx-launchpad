@@ -116,6 +116,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
   - [MdxPartial Helper Component](#mdxpartial-helper-component)
   - [Querying And Using MDX Partials](#querying-and-using-mdx-partials)
 - [Rendering Markdown For MDX Nodes](#rendering-markdown-for-mdx-nodes)
+  - [Customizing Rendered Markdown](#customizing-rendered-markdown)
 - [MDX Page Template](#mdx-page-template)
 - [Included Frontmatter](#included-frontmatter)
 - [Adding New Frontmatter Fields](#adding-new-frontmatter-fields)
@@ -175,7 +176,7 @@ This starter has a lightweight blog feature. Simply add the frontmatter `group: 
 You can query your posts sorted by descending date like so:
 
 ```js
-import { MdxData } from '../data/MdxContent';
+import { MdxNode } from '../data/MdxContent';
 import { graphql, useStaticQuery } from 'gatsby';
 ```
 
@@ -192,7 +193,7 @@ const postsData = useStaticQuery(graphql`
     }
   }
 `);
-const postNodes: MdxData[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
+const postNodes: MdxNode[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
 ```
 
 In this query, we're filtering for content that's not partial or private, and is in the group `posts`.
@@ -212,7 +213,7 @@ const postsData = useStaticQuery(graphql`
     }
   }
 `);
-const devPostNodes: MdxData[] = postsData?.devPosts?.nodes ? postsData.devPosts.nodes : [];
+const devPostNodes: MdxNode[] = postsData?.devPosts?.nodes ? postsData.devPosts.nodes : [];
 ```
 
 This will query for all posts in the category `development`.
@@ -308,7 +309,7 @@ import { MdxNodeRenderer } from '../components/content/MdxNodeRenderer';
 ```
 
 ```tsx
-const myMdxData = useStaticQuery(graphql`
+const data = useStaticQuery(graphql`
   query MyQuery {
     mdx(fields: { slug: { eq: "my-mdx-content" } }) {
       ...mdxContent
@@ -318,12 +319,16 @@ const myMdxData = useStaticQuery(graphql`
 ```
 
 ```tsx
-<MdxNodeRenderer mdxNode={myMdxData.mdx} />
+<MdxNodeRenderer mdxNode={data.mdx} />
 ```
 
-The rendered markdown can easily be customized if you'd like, too. For instance, you may want to add padding or change the fonts for certain elements.
+### Customizing Rendered Markdown
+
+The rendered markdown can easily be customized if you'd like, too. For instance, you may want to add margin, padding or font styles for certain elements.
 
 Just add your renderers for `p`, `h1`, `h2`, etc, to the `components` object in `src/components/content/MdxNodeRenderer.tsx` to customize the rendering for the tags you desire.
+
+For convenience, this file already has commented out renderers for all supported tags. Just uncomment and away you go.
 
 ## MDX Page Template
 
@@ -366,7 +371,7 @@ If you'd like to add or change the frontmatter fields for your pages and partial
 
 - Open `src/mdx/frontmatter-specs.mdx` and add your new MDX frontmatter fields, specifying dummy data such as `none` for strings. 
   - This will tell Gatsby what types to expect for your data when making queries.
-- Open `src/data/MDXContent.ts` and add your new MDX frontmatter fields to `mdxFragmentQuery` and `MdxData`. 
+- Open `src/data/MDXContent.ts` and add your new MDX frontmatter fields to `mdxFragmentQuery` and `MdxNode`. 
   - This will allow you to query the data using the `...mdxContent` [GraphQL fragment](https://www.apollographql.com/docs/react/data/fragments/), and will give you type checking and autocompletion for your new fields. 🔥
   - Optionally, you can add the data to `getTemplateTagRenderer()` so you can access it via the template tag system.
 
@@ -405,7 +410,7 @@ import { MdxNodeRenderer } from '../components/content/MdxNodeRenderer';
 ```
 
 ```jsx
-<MdxNodeRenderer mdxNode={mdxContent.data} />
+<MdxNodeRenderer mdxNode={mdxContent.node} />
 ```
 
 See `MdxPageTemplate` (`src/components/page-templates/MdxPageTemplate.tsx`) for how MDX pages are rendered in this starter.

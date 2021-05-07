@@ -12,18 +12,18 @@ export default function MdxHead(props: MdxHeadProps): JSX.Element {
   const mdxContent: MdxContent = props.mdxContent;
 
   const seoDescription: string | undefined =
-    mdxContent.data.frontmatter.seo?.description && mdxContent.data.frontmatter.seo.description !== 'none'
-      ? mdxContent.data.frontmatter.seo.description
+    mdxContent.node.frontmatter.seo?.description && mdxContent.node.frontmatter.seo.description !== 'none'
+      ? mdxContent.node.frontmatter.seo.description
       : mdxContent.getExcerpt();
   const seoImageUrl: string | undefined =
-    mdxContent.data.frontmatter.seo?.imageUrl && mdxContent.data.frontmatter.seo.imageUrl !== 'none'
-      ? mdxContent.data.frontmatter.seo.imageUrl
+    mdxContent.node.frontmatter.seo?.imageUrl && mdxContent.node.frontmatter.seo.imageUrl !== 'none'
+      ? mdxContent.node.frontmatter.seo.imageUrl
       : undefined;
-  const seoImageWidth: number | undefined = mdxContent.data.frontmatter.seo?.imageWidth;
-  const seoImageHeight: number | undefined = mdxContent.data.frontmatter.seo?.imageHeight;
+  const seoImageWidth: number | undefined = mdxContent.node.frontmatter.seo?.imageWidth;
+  const seoImageHeight: number | undefined = mdxContent.node.frontmatter.seo?.imageHeight;
   const seoImageAlt: string | undefined =
-    mdxContent.data.frontmatter.seo?.imageAlt && mdxContent.data.frontmatter.seo.imageAlt !== 'none'
-      ? mdxContent.data.frontmatter.seo.imageAlt
+    mdxContent.node.frontmatter.seo?.imageAlt && mdxContent.node.frontmatter.seo.imageAlt !== 'none'
+      ? mdxContent.node.frontmatter.seo.imageAlt
       : undefined;
 
   const mdxTemplateTagRenderer: TemplateTagRenderer = mdxContent.getTemplateTagRenderer();
