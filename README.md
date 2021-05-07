@@ -363,8 +363,6 @@ MDX pages and partials by default support the following frontmatter fields:
 
 > `seo` is an object field with sub-fields (don't actually use a dot `.` for these).
 
-> The string `none` can be used for `undefined`.
-
 ## Adding New Frontmatter Fields
 
 All frontmatter fields are specified in `src/mdx/frontmatter-specs.mdx` and `src/data/MDXContent.ts`. 
