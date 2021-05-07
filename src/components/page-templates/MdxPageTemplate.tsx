@@ -1,9 +1,9 @@
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../settings/useSettings';
+import { MdxNodeRenderer } from '../content/MdxNodeRenderer';
 import Body from '../layouts/Body';
 import Layout from '../layouts/Layout';
 import MdxHead from './MdxHead';
@@ -28,9 +28,7 @@ export default function MdxPageTemplate(props: MdxPageTemplateProps): JSX.Elemen
       <Body>
         <Container className="content-container">
           <h1 className="mb-4">{contentTitle}</h1>
-          <MDXRenderer scope={undefined} components={undefined}>
-            {mdxContent.data.body}
-          </MDXRenderer>
+          <MdxNodeRenderer mdxNode={mdxContent.data} />
         </Container>
       </Body>
     </Layout>

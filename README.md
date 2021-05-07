@@ -115,6 +115,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Adding Partial Content](#adding-partial-content)
   - [MdxPartial Helper Component](#mdxpartial-helper-component)
   - [Querying And Using MDX Partials](#querying-and-using-mdx-partials)
+- [Rendering Markdown For MDX Nodes](#rendering-markdown-for-mdx-nodes)
 - [MDX Page Template](#mdx-page-template)
 - [Included Frontmatter](#included-frontmatter)
 - [Adding New Frontmatter Fields](#adding-new-frontmatter-fields)
@@ -246,7 +247,7 @@ import { MdxPartial } from '../components/content/MdxPartial';
 <MdxPartial slug="my-partial" />
 ```
 
-This component queries all partials and then finds the one with the slug provided. If no partial is found, an empty JSX element is returned.
+This component queries all partials and then finds the one with the slug provided. The MDX content is then rendered. If no partial is found, an empty JSX element is returned.
 
 ### Querying And Using MDX Partials
 
@@ -254,7 +255,7 @@ MDX content partials can be manually queried for and included in any of your com
 
 ```tsx
 import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MdxNodeRenderer } from '../components/content/MdxNodeRenderer';
 import React from 'react';
 
 interface MyPageProps {
@@ -265,9 +266,7 @@ export default function MyPage(props: MyPageProps): JSX.Element {
   return (
     <div>
       <h1>This is an example of using a content partial!</h1>
-      <MDXRenderer scope={undefined} components={undefined}>
-        {props.data.mdx.body}
-      </MDXRenderer>
+      <MdxNodeRenderer mdxNode={props.data.mdx} />
     </div>
   );
 }
@@ -295,10 +294,36 @@ const partialData = useStaticQuery(graphql`
 ```
 
 ```tsx
-<MDXRenderer scope={undefined} components={undefined}>
-  {partialData.mdx.body}
-</MDXRenderer>
+<MdxNodeRenderer mdxNode={partialData.mdx} />
 ```
+
+## Rendering Markdown For MDX Nodes
+
+The `MdxNodeRenderer` component (`src/components/content/MdxNodeRenderer.tsx`) is used to render MDX nodes. 
+
+Pass the MDX node in via the `mdxNode` prop.
+
+```tsx
+import { MdxNodeRenderer } from '../components/content/MdxNodeRenderer';
+```
+
+```tsx
+const myMdxData = useStaticQuery(graphql`
+  query MyQuery {
+    mdx(fields: { slug: { eq: "my-mdx-content" } }) {
+      ...mdxContent
+    }
+  }
+`);
+```
+
+```tsx
+<MdxNodeRenderer mdxNode={myMdxData.mdx} />
+```
+
+The rendered markdown can easily be customized if you'd like, too. For instance, you may want to add padding or change the fonts for certain elements.
+
+Just add your renderers for `p`, `h1`, `h2`, etc, to the `components` object in `src/components/content/MdxNodeRenderer.tsx` to customize the rendering for the tags you desire.
 
 ## MDX Page Template
 
@@ -373,16 +398,14 @@ import MdxContent from '../data/MdxContent';
 const mdxContent: MdxContent = new MdxContent(mdxNode);
 ```
 
-And you can render content like so:
+And you can render MDX content like so:
 
 ```js
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MdxNodeRenderer } from '../components/content/MdxNodeRenderer';
 ```
 
 ```jsx
-<MDXRenderer scope={undefined} components={undefined}>
-  {mdxContent.data.body}
-</MDXRenderer>
+<MdxNodeRenderer mdxNode={mdxContent.data} />
 ```
 
 See `MdxPageTemplate` (`src/components/page-templates/MdxPageTemplate.tsx`) for how MDX pages are rendered in this starter.
