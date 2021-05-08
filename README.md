@@ -56,6 +56,8 @@ See below for the main list of features.
   - PWAs are the future! This starter uses sensible defaults and includes PWA features to boot.
 - **💁 TypeScript Support**
   - Enjoy the benefits of type-safety, code completion, and more with TypeScript support.
+- **💅 Styled Components**
+  - Style your app without stress. Learn about styled components [here](https://styled-components.com/).
 - **🔣 Syntax Highlighting With PrismJS**
   - [PrismJS](https://prismjs.com/) is included to make your code blocks shine in almost any language, with multiple themes available.
 - **📑 Template Tags**
