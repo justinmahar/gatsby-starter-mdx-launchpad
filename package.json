@@ -11,6 +11,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/tag": "^0.20.3",
+    "babel-plugin-styled-components": "^1.12.0",
     "bootstrap": "^4.6.0",
     "esm": "^3.2.25",
     "form-data": "^4.0.0",
@@ -27,6 +28,7 @@
     "gatsby-plugin-sass": "^4.3.0",
     "gatsby-plugin-sharp": "^3.3.1",
     "gatsby-plugin-sitemap": "^3.3.0",
+    "gatsby-plugin-styled-components": "^4.4.0",
     "gatsby-plugin-typescript": "^3.3.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "gatsby-remark-prismjs": "^5.0.0",
@@ -46,7 +48,7 @@
     "react-super-seo": "^1.0.6",
     "read-yaml": "^1.1.0",
     "stopword": "^1.0.7",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",

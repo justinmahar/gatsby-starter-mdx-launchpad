@@ -143,6 +143,7 @@ const plugins = [
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   `gatsby-plugin-netlify`,
+  `gatsby-plugin-styled-components`,
 ];
 
 // == Google Analytics ==
