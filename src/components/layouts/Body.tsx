@@ -9,6 +9,6 @@ export default function Body(props: BodyProps): JSX.Element {
 }
 
 const BodyDiv = styled.div`
-  padding-top: 5em;
-  padding-bottom: 6em;
+  padding-top: 3em;
+  padding-bottom: 4em;
 `;

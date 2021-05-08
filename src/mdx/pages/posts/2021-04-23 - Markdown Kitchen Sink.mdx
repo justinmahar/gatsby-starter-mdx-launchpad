@@ -1,6 +1,5 @@
 ---
 title: Markdown Kitchen Sink
-category: development
 group: posts
 date: 2021-04-23
 ---
@@ -8,35 +7,41 @@ date: 2021-04-23
 import { Link } from 'gatsby';
 import { Button, Spinner } from 'react-bootstrap';
 
-Below, all markdown elements are present. This page can be used to preview and customize how markdown is rendered by `MdxNodeRenderer`. See the [README](https://github.com/justinmahar/gatsby-starter-mdx-launchpad#customizing-rendered-markdown) for more information.
+Below, all markdown elements are present.
+
+This page can be used to preview and customize how markdown is rendered by `MdxNodeRenderer`.
+
+It can also be used as a quick markdown cheat sheet.
+
+See the [README](https://github.com/justinmahar/gatsby-starter-mdx-launchpad#customizing-rendered-markdown) for more rendering information.
 
 ---
 
-# h1: Heading 1
+# h1: Heading 1 `#`
 
-## h2: Heading 2
+## h2: Heading 2 `##`
 
-### h3: Heading 3
+### h3: Heading 3 `###`
 
-#### h4: Heading 4
+#### h4: Heading 4 `####`
 
-##### h5: Heading 5
+##### h5: Heading 5 `#####`
 
-###### h6: Heading 6
+###### h6: Heading 6 `######`
 
 p: Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ligula ac ligula vulputate luctus sit amet ac ante. Duis iaculis elit vel neque elementum molestie. Praesent eleifend lacinia tellus et bibendum. Vivamus lobortis diam sit amet libero tincidunt, nec consectetur enim tincidunt. Phasellus erat magna, sollicitudin sed eros ut, convallis commodo neque.
 
 p: Paragraph. Morbi mattis sapien nulla. Cras pellentesque neque eu sapien tempor, a porta justo sagittis. Donec libero est, malesuada efficitur erat sit amet, aliquam consectetur nibh. Nulla ultrices convallis viverra. Maecenas consequat sem molestie orci posuere, ac dignissim nisi varius. In tincidunt dui sit amet neque gravida mollis. Maecenas volutpat velit ex, vitae eleifend massa rutrum a. Sed elit nulla, mollis quis dictum ac, faucibus id augue.
 
-> blockquote: Blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ligula ac ligula vulputate luctus sit amet ac ante. Duis iaculis elit vel neque elementum molestie. Praesent eleifend lacinia tellus et bibendum. Vivamus lobortis diam sit amet libero tincidunt, nec consectetur enim tincidunt. Phasellus erat magna, sollicitudin sed eros ut, convallis commodo neque.
+> blockquote: Blockquote (`>`). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ligula ac ligula vulputate luctus sit amet ac ante. Duis iaculis elit vel neque elementum molestie. Praesent eleifend lacinia tellus et bibendum. Vivamus lobortis diam sit amet libero tincidunt, nec consectetur enim tincidunt. Phasellus erat magna, sollicitudin sed eros ut, convallis commodo neque.
 
-#### ul: Unordered List
+#### ul: Unordered List `-`
 
 - li: List Item
 - li: List Item
 - li: List Item
 
-#### ol: Ordered list
+#### ol: Ordered list `1.`
 
 1. li: List Item
 1. li: List Item
@@ -79,21 +84,25 @@ const evenMoreLongText =
 
 #### Formatting
 
-_em: Emphasis_
+_em: Emphasis_ `_` `*`
 
-**strong: Strong**
+**strong: Strong** `**` `__`
 
-~~del: Delete/Strikethrough~~
+~~del: Delete/Strikethrough~~ `~~`
 
 #### hr: Thematic break
 
+`---` `***`
+
 ---
 
-[a: Link](/markdown-kitchen-sink)
+[a: Link](/markdown-kitchen-sink) `[text](link)`
 
 #### img: Image
 
-![alt](/media/site-image.jpg)
+`![alt](link)`
+
+![kittens](/media/site-image.jpg)
 
 #### Paragraph Containing All Inline Markdown
 
@@ -108,5 +117,25 @@ At a minimum, this means we can use Gatsby's blazing fast Link component in our 
 For example:
 
 - Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
+
+  ```mdx
+  import { Button } from 'react-bootstrap';
+
+  - Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
+  ```
+
 - Spinner: <Spinner size="sm" animation="border"/>
+
+  ```mdx
+  import { Spinner } from 'react-bootstrap';
+
+  - Spinner: <Spinner size="sm" animation="border"/>
+  ```
+
 - Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+
+  ```mdx
+  import { Link } from 'gatsby';
+
+  - Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+  ```

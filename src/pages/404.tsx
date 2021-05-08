@@ -4,6 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Layout from '../components/layouts/Layout';
 import Head from '../components/layouts/Head';
+import styled from 'styled-components';
 
 interface NotFoundProps {
   data: any;
@@ -19,7 +20,7 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
       <Head contentTitle={contentTitle} seo={{ description: description }} />
       <Body>
         <Container className="text-center">
-          <div style={{ fontSize: '600%' }}>404</div>
+          <NotFoundTitleDiv>404</NotFoundTitleDiv>
           <h1>Well, shoot.</h1>
           <br />
           <h5>We couldn't find what you were looking for.</h5>
@@ -32,5 +33,9 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
     </Layout>
   );
 }
+
+const NotFoundTitleDiv = styled.div`
+  font-size: 600%;
+`;
 
 // Page query goes here

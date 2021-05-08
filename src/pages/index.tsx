@@ -30,17 +30,7 @@ export default function Index(props: IndexProps): JSX.Element {
 
   const postNodes: MdxNode[] = postsData?.posts?.nodes ? postsData.posts.nodes : [];
 
-  const devPostNodes: MdxNode[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'development');
-  const devPostElements = devPostNodes.map((node: MdxNode) => {
-    return (
-      <div className="mb-4" key={node.id}>
-        <MdxPostCard mdxNode={node} />
-      </div>
-    );
-  });
-
-  const lifestylePostNodes: MdxNode[] = postNodes.filter((postNode) => postNode.frontmatter?.category === 'lifestyle');
-  const lifestylePostElements = lifestylePostNodes.map((node: MdxNode) => {
+  const postElements = postNodes.map((node: MdxNode) => {
     return (
       <div className="mb-4" key={node.id}>
         <MdxPostCard mdxNode={node} />
@@ -55,10 +45,8 @@ export default function Index(props: IndexProps): JSX.Element {
         <Container>
           <Row>
             <Col>
-              <h2 className="mb-4">Development Posts</h2>
-              {devPostElements}
-              <h2 className="mb-4">Lifestyle Posts</h2>
-              {lifestylePostElements}
+              <h2 className="mb-4">Posts</h2>
+              {postElements}
             </Col>
           </Row>
         </Container>
