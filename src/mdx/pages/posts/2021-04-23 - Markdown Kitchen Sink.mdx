@@ -5,7 +5,7 @@ date: 2021-04-23
 ---
 
 import { Link } from 'gatsby';
-import { Button, Spinner } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 Below, all markdown elements are present.
 
@@ -114,28 +114,24 @@ Since this is an MDX page, you can use components right in your markdown!
 
 At a minimum, this means we can use Gatsby's blazing fast Link component in our markdown. 🙌 Beyond that, the sky's the limit.
 
-For example:
+##### Examples
 
-- Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
+---
 
-  ```jsx
-  import { Button } from 'react-bootstrap';
+Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
 
-  - Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
-  ```
+```md
+import { Button } from 'react-bootstrap';
 
-- Spinner: <Spinner size="sm" animation="border"/>
+Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>;
+```
 
-  ```jsx
-  import { Spinner } from 'react-bootstrap';
+---
 
-  - Spinner: <Spinner size="sm" animation="border"/>
-  ```
+Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
 
-- Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+```md
+import { Link } from 'gatsby';
 
-  ```jsx
-  import { Link } from 'gatsby';
-
-  - Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
-  ```
+Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+```
