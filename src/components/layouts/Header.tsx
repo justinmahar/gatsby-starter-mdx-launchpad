@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { Container, Nav, Navbar, NavLink } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import Settings, { useSettings } from '../../settings/useSettings';
 
 export interface HeaderProps {}
@@ -21,19 +21,19 @@ export default function Header(_props: HeaderProps): JSX.Element {
                 className="d-inline-block align-top"
               />
             </div>
-            <div>{settings.data.site.siteMetadata.siteName}</div>
+            <div className="font-weight-bold">{settings.data.site.siteMetadata.siteName}</div>
           </div>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <Link className="nav-link" role="button" to="/about">
+            <Link to="/about" className="nav-link" role="button">
               About
             </Link>
           </Nav>
           <Nav>
-            <Link className="nav-link" role="button" to="/contact">
+            <Link to="/contact" className="nav-link" role="button">
               Contact
             </Link>
           </Nav>

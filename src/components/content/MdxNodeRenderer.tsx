@@ -2,6 +2,8 @@ import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { MdxNode } from '../../data/MdxContent';
+import styled from 'styled-components';
+import { Table, Image } from 'react-bootstrap';
 
 interface Props {
   mdxNode: MdxNode;
@@ -17,11 +19,15 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
     // h4: (props: any) => <h4>{props.children}</h4>, //	Heading 4	####
     // h5: (props: any) => <h5>{props.children}</h5>, //	Heading 5	#####
     // h6: (props: any) => <h6>{props.children}</h6>, //	Heading 6	######
-    // blockquote: (props: any) => <blockquote>{props.children}</blockquote>, //	Blockquote	>
+    blockquote: (props: any) => <StyledBlockquote>{props.children}</StyledBlockquote>, //	Blockquote	>
     // ul: (props: any) => <ul>{props.children}</ul>, //	List	-
     // ol: (props: any) => <ol>{props.children}</ol>, //	Ordered list	1.
     // li: (props: any) => <li>{props.children}</li>, //	List item
-    // table: (props: any) => <table>{props.children}</table>, //	Table
+    table: (props: any) => (
+      <Table striped bordered responsive>
+        {props.children}
+      </Table>
+    ), //	Table
     // thead: (props: any) => <thead>{props.children}</thead>, //	Table head
     // tbody: (props: any) => <tbody>{props.children}</tbody>, //	Table body
     // tr: (props: any) => <tr>{props.children}</tr>, //	Table row
@@ -35,12 +41,31 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
     // del: (props: any) => <del>{props.children}</del>, //	Delete	~~strikethrough~~
     // hr: (props: any) => <hr>{props.children}</hr>, //	Thematic break	--- or ***
     // a: (props: any) => <a>{props.children}</a>, //	Link	<https://mdxjs.com> or [MDX](https://mdxjs.com)
-    // img: (props: any) => <img>{props.children}</img>, //	Image	![alt](https://mdx-logo.now.sh)
+    img: (props: any) => <Image {...props} fluid rounded />, //	Image	![alt](https://mdx-logo.now.sh)
   };
-  console.log(props.mdxNode);
+
   return (
     <MDXProvider components={components}>
-      <MDXRenderer>{props.mdxNode.body}</MDXRenderer>
+      <RenderContainer>
+        <MDXRenderer>{props.mdxNode.body}</MDXRenderer>
+      </RenderContainer>
     </MDXProvider>
   );
 };
+
+const RenderContainer = styled.div`
+  // Break code within a word to prevent overflow when an otherwise-unbreakable string is too long to fit within the line box
+  .language-text {
+    overflow-wrap: break-word !important;
+  }
+`;
+
+const StyledBlockquote = styled.blockquote`
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  p {
+    display: inline;
+  }
+`;

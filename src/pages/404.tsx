@@ -18,7 +18,7 @@ export default function NotFound(props: NotFoundProps): JSX.Element {
     <Layout>
       <Head contentTitle={contentTitle} seo={{ description: description }} />
       <Body>
-        <Container className="content text-center">
+        <Container className="text-center">
           <div style={{ fontSize: '600%' }}>404</div>
           <h1>Well, shoot.</h1>
           <br />

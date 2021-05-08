@@ -429,28 +429,30 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Head from '../components/layouts/Head';
 import Layout from '../components/layouts/Layout';
-```
 
-```jsx
-<Layout>
-  <Head contentTitle={'My Page Title'} seo={{ description: 'A description of this page' }} />
-  <Body>
-    <Container className="content">
-      <Row>
-        <Col>
-          Page content goes here.
-        </Col>
-      </Row>
-    </Container>
-  </Body>
-</Layout>
+interface Props {}
+
+export default function NewPage(props: Props): JSX.Element {
+  return (
+    <Layout>
+      <Head contentTitle="My Page Title" seo={{ description: 'A description of this page' }} />
+      <Body>
+        <Container>
+          <Row>
+            <Col>Page content goes here.</Col>
+          </Row>
+        </Container>
+      </Body>
+    </Layout>
+  );
+}
 ```
 
 If you want to add something to the `head` element for a particular page, all `Head` component children are added directly to the `head` element using [React Helmet](https://github.com/nfl/react-helmet).
 
 ## Search Engine Optimization (SEO)
 
-The `Head` (`src/components/layouts/Head.tsx`) and `MdxHead` (`src/components/page-templates/MdxHead.tsx`) components handle SEO under the hood, using fallbacks from site metadata where possible. For instance, if no SEO image is provided, the site image is used as a fallback. 
+The `Head` (`src/components/layouts/Head.tsx`) and `MdxHead` (`src/components/page-templates/MdxHead.tsx`) components handle SEO under the hood, using fallbacks from site metadata where possible. For instance, if no SEO image is provided, the site image is used as a fallback.
 
 In addition, `MdxHead` uses the MDX data to populate SEO data for you, falling back on defaults where possible. The goal with this part of the starter was to abstract away SEO boilerplate so you can focus on building your project. However these are your entry points to dig into this functionality should you feel the need to.
 

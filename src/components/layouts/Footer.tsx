@@ -4,6 +4,7 @@ import { Col, Container, Nav, Row } from 'react-bootstrap';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../settings/useSettings';
 import { BuildStatusBadge } from 'react-build-status-badge';
+import styled from 'styled-components';
 
 export interface FooterProps {}
 
@@ -11,18 +12,12 @@ export default function Footer(props: FooterProps): JSX.Element {
   const settings: Settings = useSettings();
   const templateTagRenderer: TemplateTagRenderer = settings.getTemplateTagRenderer();
   return (
-    <div
-      style={{
-        paddingTop: '8em',
-        paddingBottom: '8em',
-        backgroundColor: '#202020',
-      }}
-    >
+    <FooterDiv>
       <Container>
         <Row>
           <Col>
             <div className="d-flex flex-column justify-content-center">
-              <div className="text-center mt-6 mb-4" style={{ color: 'white' }}>
+              <div className="text-center text-white mt-6 mb-4">
                 Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}.
                 Logo by{' '}
                 <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener noreferrer">
@@ -59,6 +54,12 @@ export default function Footer(props: FooterProps): JSX.Element {
           </Col>
         </Row>
       </Container>
-    </div>
+    </FooterDiv>
   );
 }
+
+const FooterDiv = styled.div`
+  padding-top: 8em;
+  padding-bottom: 8em;
+  background-color: #202020;
+`;

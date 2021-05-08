@@ -21,7 +21,7 @@ export default function Contact(props: ContactProps): JSX.Element {
     <Layout>
       <Head contentTitle={contentTitle} seo={{ description: description }} />
       <Body>
-        <Container className="content">
+        <Container>
           <Row>
             <Col>
               <h1 className="mb-4">{contentTitle}</h1>

@@ -52,7 +52,7 @@ export default function Index(props: IndexProps): JSX.Element {
     <Layout>
       <Head seo={{ title: pageTitle, description: description }} />
       <Body>
-        <Container className="content">
+        <Container>
           <Row>
             <Col>
               <h2 className="mb-4">Development Posts</h2>
