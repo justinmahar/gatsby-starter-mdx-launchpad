@@ -1,7 +1,7 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Body from '../components/layouts/Body';
 import Head from '../components/layouts/Head';
 import Layout from '../components/layouts/Layout';
@@ -65,11 +65,13 @@ const MdxPostCard = (props: MdxPostCardProps) => {
   const dateString = date.utc().format('MMMM Do, YYYY');
   return (
     <Card>
-      <Card.Header style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Card.Header className="d-flex justify-content-between">
         <h4>
           <Link to={mdxContent.node.fields.slug}>{mdxContent.node.frontmatter.title}</Link>
         </h4>
-        <div>{dateString}</div>
+        <div>
+          <Badge>{dateString}</Badge>
+        </div>
       </Card.Header>
       <Card.Body>
         <div>
