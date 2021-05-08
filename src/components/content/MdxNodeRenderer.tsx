@@ -10,6 +10,12 @@ interface Props {
 }
 
 export const MdxNodeRenderer = (props: Props): JSX.Element => {
+  const [rerendered, setRerendered] = React.useState(false);
+
+  React.useEffect(() => {
+    setRerendered(true);
+  }, [rerendered]);
+
   // You can define your own components if you'd like. See: https://mdxjs.com/getting-started#mdxprovider
   const components = {
     // p: (props: any) => <p>{props.children}</p>, //	Paragraph
