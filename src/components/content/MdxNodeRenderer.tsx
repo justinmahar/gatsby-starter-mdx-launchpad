@@ -37,6 +37,7 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
     // a: (props: any) => <a>{props.children}</a>, //	Link	<https://mdxjs.com> or [MDX](https://mdxjs.com)
     // img: (props: any) => <img>{props.children}</img>, //	Image	![alt](https://mdx-logo.now.sh)
   };
+  console.log(props.mdxNode);
   return (
     <MDXProvider components={components}>
       <MDXRenderer>{props.mdxNode.body}</MDXRenderer>

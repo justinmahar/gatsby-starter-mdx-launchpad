@@ -56,9 +56,9 @@ export default function Index(props: IndexProps): JSX.Element {
           <Row>
             <Col>
               <h2 className="mb-4">Development Posts</h2>
-              <p>{devPostElements}</p>
+              {devPostElements}
               <h2 className="mb-4">Lifestyle Posts</h2>
-              <p>{lifestylePostElements}</p>
+              {lifestylePostElements}
             </Col>
           </Row>
         </Container>

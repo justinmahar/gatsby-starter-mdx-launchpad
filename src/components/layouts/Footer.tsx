@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Nav, Row } from 'react-bootstrap';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../settings/useSettings';
 import { BuildStatusBadge } from 'react-build-status-badge';
@@ -31,27 +31,29 @@ export default function Footer(props: FooterProps): JSX.Element {
                 .
               </div>
               <div className="d-flex flex-wrap justify-content-center">
-                <div className="mx-4 my-2">
-                  <Link className="heading" to="/terms">
+                <Nav>
+                  <Link className="nav-link" role="button" to="/terms">
                     Terms
                   </Link>
-                </div>
-                <div className="mx-4 my-2">
-                  <Link className="heading" to="/privacy">
+                </Nav>
+                <Nav>
+                  <Link className="nav-link" role="button" to="/privacy">
                     Privacy
                   </Link>
-                </div>
-                <div className="mx-4 my-2">
-                  <a className="heading" href="/sitemap.xml">
+                </Nav>
+                <Nav>
+                  <a className="nav-link" role="button" href="/sitemap.xml">
                     Sitemap
                   </a>
-                </div>
-                <div className="mx-4 my-2">
-                  <BuildStatusBadge>
-                    [![Netlify
-                    Status](https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
-                  </BuildStatusBadge>
-                </div>
+                </Nav>
+                <Nav>
+                  <div className="nav-link" role="button">
+                    <BuildStatusBadge>
+                      [![Netlify
+                      Status](https://api.netlify.com/api/v1/badges/21f52584-91b7-4198-8ac7-827357fef04f/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mdx-launchpad/deploys)
+                    </BuildStatusBadge>
+                  </div>
+                </Nav>
               </div>
             </div>
           </Col>

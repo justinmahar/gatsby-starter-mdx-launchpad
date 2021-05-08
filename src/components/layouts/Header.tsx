@@ -8,7 +8,7 @@ export interface HeaderProps {}
 export default function Header(_props: HeaderProps): JSX.Element {
   const settings: Settings = useSettings();
   return (
-    <Navbar expand="lg" sticky="top" bg="light" className="shadow-sm">
+    <Navbar expand="md" sticky="top" bg="light" className="shadow-sm navbar-light">
       <Container>
         <Link to="/" className={'navbar-brand'}>
           <div className="d-flex flex-row">
@@ -28,14 +28,14 @@ export default function Header(_props: HeaderProps): JSX.Element {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <NavLink>
-              <Link to="/about">About</Link>
-            </NavLink>
+            <Link className="nav-link" role="button" to="/about">
+              About
+            </Link>
           </Nav>
           <Nav>
-            <NavLink>
-              <Link to="/contact">Contact</Link>
-            </NavLink>
+            <Link className="nav-link" role="button" to="/contact">
+              Contact
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
