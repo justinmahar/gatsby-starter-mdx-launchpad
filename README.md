@@ -112,6 +112,9 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Table Of Contents](#table-of-contents)
 - [Adding Page Components](#adding-page-components)
 - [Adding MDX Pages](#adding-mdx-pages)
+  - [Private and Hidden Pages](#private-and-hidden-pages)
+    - [Private Pages](#private-pages)
+    - [Hidden Pages](#hidden-pages)
 - [Adding Blog Posts](#adding-blog-posts)
   - [Querying For Posts](#querying-for-posts)
 - [Adding Partial Content](#adding-partial-content)
@@ -168,6 +171,16 @@ The only frontmatter you need for new pages is a `title`. This will cause a new 
 You can optionally provide a `slug` for the URL, and if unspecified, a SEO-friendly slug will be automatically created from the title. See the [SEO section](#slugs-and-stop-words) for how this works.
 
 See all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
+
+### Private and Hidden Pages
+
+#### Private Pages
+
+You can make any page private by setting the `private: true` frontmatter. This will prevent the page from being listed in the sitemap, and will cause the page URL to use the path prefix `privatePagePathPrefix` set in `settings.yml`, which is by default in the format `/private/my-secret-page`.
+
+#### Hidden Pages
+
+To hide any page completely, set the `partial: true` frontmatter. This changes the MDX into a [content partial](#adding-partial-content) so it will never be generated as a page. This can be useful for temporarily removing content, writing drafts, or taking notes next to your content.
 
 ## Adding Blog Posts
 
@@ -237,6 +250,8 @@ partial: true
 
 Content goes here!
 ```
+
+Setting `partial: true` in the frontmatter prevents the MDX from being generated as a page. We can then use the [MdxPartial helper component](#mdxpartial-helper-component), or manually query over this field, to render the content anywhere we'd like.
 
 ### MdxPartial Helper Component
 
