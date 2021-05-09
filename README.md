@@ -647,7 +647,7 @@ The following template tags are available:
 
 ### Using Template Tags In MDX Content
 
-You can use the `TemplateText` helper component (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX content.
+You can use `TemplateText` (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX content.
 
 This component is included as a [short code](https://mdxjs.com/blog/shortcodes) in all MDX content so you don't need to import it.
 
