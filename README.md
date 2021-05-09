@@ -353,7 +353,7 @@ For convenience, this file already has commented out renderers for all supported
 
 MDX also supports [short codes](https://mdxjs.com/blog/shortcodes). These allow you to use React components in your MDX without having to import them.
 
-For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content.
+For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content. This starter already includes a short code for [TemplateText](#templatetext-helper-component).
 
 Add your short codes to the `shortCodes` object in `MdxNodeRenderer.tsx`, and see the docs on [short codes](https://mdxjs.com/blog/shortcodes) for some examples.
 
