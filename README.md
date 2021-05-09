@@ -670,7 +670,8 @@ For example, in a function component, you might do something like this:
 ```ts
 const settings: Settings = useSettings();
 const tags: TemplateTagRenderer = settings.getTemplateTagRenderer();
-const copyrightStatement = `Copyright ${tags.render('{year}')}, ${tags.render('{siteName}')}` // Copyright 2021, My Site Name
+const copyrightStatement = tags.render('Copyright {year}, {siteName}');
+// Copyright 2021, My Site Name
 ```
 
 > Note: Renderers for settings and MDX content can be combined using `TemplateTagRenderer.combineWith()`
