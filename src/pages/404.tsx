@@ -1,10 +1,10 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
-import Body from '../components/layouts/Body';
-import Layout from '../components/layouts/Layout';
-import Head from '../components/layouts/Head';
 import styled from 'styled-components';
+import Body from '../components/layouts/Body';
+import Head from '../components/layouts/Head';
+import Layout from '../components/layouts/Layout';
 
 interface NotFoundProps {
   data: any;

@@ -1,10 +1,10 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { Col, Container, Nav, Row } from 'react-bootstrap';
-import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
-import Settings, { useSettings } from '../../settings/useSettings';
 import { BuildStatusBadge } from 'react-build-status-badge';
 import styled from 'styled-components';
+import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
+import Settings, { useSettings } from '../../settings/useSettings';
 
 export interface FooterProps {}
 

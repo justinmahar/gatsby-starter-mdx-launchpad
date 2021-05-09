@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { Badge, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../settings/useSettings';

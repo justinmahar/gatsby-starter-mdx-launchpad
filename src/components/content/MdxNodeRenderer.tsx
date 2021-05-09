@@ -1,11 +1,11 @@
-import React from 'react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import MdxContent, { MdxNode } from '../../data/MdxContent';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import { Image, Table } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Table, Image } from 'react-bootstrap';
-import { TemplateText, TemplateTextProps } from './TemplateText';
+import MdxContent, { MdxNode } from '../../data/MdxContent';
 import { MdxPartial } from './MdxPartial';
+import { TemplateText, TemplateTextProps } from './TemplateText';
 
 interface Props {
   mdxNode: MdxNode;
