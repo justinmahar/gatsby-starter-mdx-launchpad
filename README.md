@@ -141,6 +141,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
   - [Settings](#settings)
   - [MDX Content](#mdx-content)
   - [Using Template Tags In MDX Content](#using-template-tags-in-mdx-content)
+  - [Using Template Tags Elsewhere](#using-template-tags-elsewhere)
 - [PrismJS Syntax Highlighting](#prismjs-syntax-highlighting)
 - [Progressive Web App (PWA) Configuration](#progressive-web-app-pwa-configuration)
 - [Google Analytics](#google-analytics)
@@ -615,16 +616,6 @@ A template tag system exists that allows you to reference site and content infor
 
 Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in Site Settings. Template tags are automatically applied to your frontmatter fields.
 
-`Settings` (from `useSettings` hook) and `MdxContent` (wraps MDX data) both have a getter for a `TemplateTagRenderer` which can be used to render their respective template tags.
-
-For example, in a function component, you might do something like this:
-
-```ts
-const settings: Settings = useSettings();
-const tags: TemplateTagRenderer = settings.getTemplateTagRenderer();
-const copyrightStatement = `Copyright ${tags.render('{year}')}, ${tags.render('{siteName}')}` // Copyright 2021, My Site Name
-```
-
 The following template tags are available:
 
 ### Settings
@@ -669,6 +660,20 @@ For example, in your markdown you could write:
 This would be rendered as: `My Content Title on My Site Name`
 
 Read about adding your own component short codes [here](#adding-component-short-codes).
+
+### Using Template Tags Elsewhere
+
+`Settings` (from `useSettings` hook) and `MdxContent` (wraps MDX data) both have a getter for a `TemplateTagRenderer` which can be used to render their respective template tags.
+
+For example, in a function component, you might do something like this:
+
+```ts
+const settings: Settings = useSettings();
+const tags: TemplateTagRenderer = settings.getTemplateTagRenderer();
+const copyrightStatement = `Copyright ${tags.render('{year}')}, ${tags.render('{siteName}')}` // Copyright 2021, My Site Name
+```
+
+> Note: Renderers for settings and MDX content can be combined using `TemplateTagRenderer.combineWith()`
 
 ## PrismJS Syntax Highlighting
 
