@@ -76,7 +76,8 @@ const StyledBlockquote = styled.blockquote`
   border-left: 10px solid #ccc;
   margin: 1.5em 10px;
   padding: 0.5em 10px;
-  p {
-    display: inline;
+  // Ensure no bottom margin exists on the last direct child
+  > *:last-child {
+    margin-bottom: 0;
   }
 `;
