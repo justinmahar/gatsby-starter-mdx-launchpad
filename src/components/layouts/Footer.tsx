@@ -20,24 +20,29 @@ export default function Footer(props: FooterProps): JSX.Element {
               <div className="text-center text-white mt-6 mb-4">
                 Copyright &copy; {templateTagRenderer.render('{year}')}, {templateTagRenderer.render('{siteName}')}.
                 Logo by{' '}
-                <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://twemoji.twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-weight-bold"
+                >
                   Twemoji
                 </a>
                 .
               </div>
               <div className="d-flex flex-wrap justify-content-center">
                 <Nav>
-                  <Link className="nav-link" role="button" to="/terms">
+                  <Link className="nav-link text-white font-weight-bold" role="button" to="/terms">
                     Terms
                   </Link>
                 </Nav>
                 <Nav>
-                  <Link className="nav-link" role="button" to="/privacy">
+                  <Link className="nav-link text-white font-weight-bold" role="button" to="/privacy">
                     Privacy
                   </Link>
                 </Nav>
                 <Nav>
-                  <a className="nav-link" role="button" href="/sitemap.xml">
+                  <a className="nav-link text-white font-weight-bold" role="button" href="/sitemap.xml">
                     Sitemap
                   </a>
                 </Nav>
