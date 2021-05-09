@@ -93,7 +93,7 @@ See below for the main list of features.
 
     Your site is now running at `http://localhost:8000`!
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+    > Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql).
 
     Open the `my-project` directory in your code editor of choice and edit `src/pages/index.tsx`. Save your changes and the browser will update in real time!
 
@@ -140,7 +140,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Template Tags](#template-tags)
   - [Settings](#settings)
   - [MDX Content](#mdx-content)
-  - [TemplateText Helper Component](#templatetext-helper-component)
+  - [Using Template Tags In MDX Content](#using-template-tags-in-mdx-content)
 - [PrismJS Syntax Highlighting](#prismjs-syntax-highlighting)
 - [Progressive Web App (PWA) Configuration](#progressive-web-app-pwa-configuration)
 - [Google Analytics](#google-analytics)
@@ -353,7 +353,7 @@ For convenience, this file already has commented out renderers for all supported
 
 MDX also supports [short codes](https://mdxjs.com/blog/shortcodes). These allow you to use React components in your MDX without having to import them.
 
-For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content. This starter already includes a short code for [TemplateText](#templatetext-helper-component).
+For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content. This starter already includes a short code for [TemplateText](#using-template-tags-in-mdx-content).
 
 Add your short codes to the `shortCodes` object in `MdxNodeRenderer.tsx`, and see the docs on [short codes](https://mdxjs.com/blog/shortcodes) for some examples.
 
@@ -613,9 +613,9 @@ From here, you can access site metadata such as `settings.data.site.siteMetadata
 
 A template tag system exists that allows you to reference site and content information using template tags.
 
-Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in Site Settings. Circular references are not allowed.
+Template tags are [lower camel case](https://en.wikipedia.org/wiki/Camel_case) keywords that are always wrapped in curly braces. For example, <small> `{siteName}` </small> will reference the site name configured in Site Settings. Template tags are automatically applied to your frontmatter fields.
 
-`Settings` (from `useSettings` hook) and `MdxContent` (wraps MDX data) both have a getter for a `TemplateTagRenderer` which can be used to render their respective template tags. Template tags for settings are automatically applied to SEO values, and SEO can accept a prop for an additional `TemplateTagRenderer` (this is how the MDX tags are passed into SEO).
+`Settings` (from `useSettings` hook) and `MdxContent` (wraps MDX data) both have a getter for a `TemplateTagRenderer` which can be used to render their respective template tags.
 
 For example, in a function component, you might do something like this:
 
@@ -654,11 +654,11 @@ The following template tags are available:
 | <small> `{contentSeoTitle}` </small>       | SEO title of the content       |
 | <small> `{contentSeoDescription}` </small> | SEO description of the content |
 
-### TemplateText Helper Component
+### Using Template Tags In MDX Content
 
-You can use the `TemplateText` helper component (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX or elsewhere.
+You can use the `TemplateText` helper component (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX content.
 
-This component is included as a [short code](https://mdxjs.com/blog/shortcodes) in all MDX content so you don't need to import it (read about adding your own component short codes [here](#adding-component-short-codes)).
+This component is included as a [short code](https://mdxjs.com/blog/shortcodes) in all MDX content so you don't need to import it.
 
 For example, in your markdown you could write: 
 
@@ -667,6 +667,8 @@ For example, in your markdown you could write:
 ```
 
 This would be rendered as: `My Content Title on My Site Name`
+
+Read about adding your own component short codes [here](#adding-component-short-codes).
 
 ## PrismJS Syntax Highlighting
 
@@ -679,7 +681,7 @@ For example:
 require('prismjs/themes/prism-okaidia.css');
 ```
 
-Note: Do not include `prism.css` if you're using a theme.
+> Note: Do not include `prism.css` if you're using a theme.
 
 ## Progressive Web App (PWA) Configuration
 
