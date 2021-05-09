@@ -10,11 +10,11 @@ interface Props {
   mdxNode: MdxNode;
 }
 
-export const MdxNodeRenderer = (props: Props): JSX.Element => {
+export const MdxNodeRenderer = ({ mdxNode }: Props): JSX.Element => {
   // Short codes allow you to use components in your MDX without importing them. See: https://mdxjs.com/blog/shortcodes
   const shortCodes = {
     // Short code for template text.
-    TemplateText: (p: TemplateTextProps) => <TemplateText text={p.text} mdxContent={new MdxContent(props.mdxNode)} />,
+    TemplateText: (props: TemplateTextProps) => <TemplateText text={props.text} mdxContent={new MdxContent(mdxNode)} />,
   };
 
   // Define custom markdown components here. See: https://mdxjs.com/getting-started#mdxprovider
@@ -55,7 +55,7 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
   return (
     <MDXProvider components={components}>
       <RenderContainer>
-        <MDXRenderer>{props.mdxNode.body}</MDXRenderer>
+        <MDXRenderer>{mdxNode.body}</MDXRenderer>
       </RenderContainer>
     </MDXProvider>
   );
