@@ -175,7 +175,7 @@ You can optionally provide a `slug` for the URL, and if unspecified, a SEO-frien
 
 Since the slug is generated from the frontmatter and not the filename, feel free to call the file anything you'd like.
 
-See all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
+See all [frontmatter options](#included-frontmatter), including `excerpt`, `seo`, `date`, and more.
 
 ### Private and Hidden Pages
 
