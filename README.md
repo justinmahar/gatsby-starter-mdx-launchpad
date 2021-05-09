@@ -139,6 +139,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Template Tags](#template-tags)
   - [Settings](#settings)
   - [MDX Content](#mdx-content)
+  - [TemplateText Helper Component](#templatetext-helper-component)
 - [PrismJS Syntax Highlighting](#prismjs-syntax-highlighting)
 - [Progressive Web App (PWA) Configuration](#progressive-web-app-pwa-configuration)
 - [Google Analytics](#google-analytics)
@@ -643,6 +644,18 @@ The following template tags are available:
 | <small> `{contentExcerpt}` </small>        | Excerpt from current content   |
 | <small> `{contentSeoTitle}` </small>       | SEO title of the content       |
 | <small> `{contentSeoDescription}` </small> | SEO description of the content |
+
+### TemplateText Helper Component
+
+You can use the `TemplateText` helper component (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX or elsewhere.
+
+For example: 
+
+```md
+import { TemplateText } from '../../../components/content/TemplateText.tsx';
+
+<TemplateText text="{siteName} version {siteVersion}" />
+```
 
 ## PrismJS Syntax Highlighting
 
