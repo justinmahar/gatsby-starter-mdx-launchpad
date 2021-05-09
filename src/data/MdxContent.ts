@@ -92,7 +92,10 @@ export default class MdxContent {
   public getExcerpt(): string {
     return this.node.frontmatter.excerpt && this.node.frontmatter.excerpt !== 'none'
       ? this.node.frontmatter.excerpt
-      : this.node.excerpt;
+      : // Use automatic MDX excerpt.
+        // We are removing the space that's added after components, before punctuation.
+        // In most cases, we don't want that space there.
+        this.node.excerpt.replace(/(\w) ([,.!?):;])/g, '$1$2');
   }
 
   public getTemplateTagRenderer(): TemplateTagRenderer {
