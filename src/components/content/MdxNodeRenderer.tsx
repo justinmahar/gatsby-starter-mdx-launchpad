@@ -17,7 +17,7 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
     TemplateText: (p: TemplateTextProps) => <TemplateText text={p.text} mdxContent={new MdxContent(props.mdxNode)} />,
   };
 
-  // You can define your own components if you'd like. See: https://mdxjs.com/getting-started#mdxprovider
+  // Define custom markdown components here. See: https://mdxjs.com/getting-started#mdxprovider
   const components = {
     // p: (props: any) => <p>{props.children}</p>, // Paragraph
     // h1: (props: any) => <h1>{props.children}</h1>, // Heading 1 #
