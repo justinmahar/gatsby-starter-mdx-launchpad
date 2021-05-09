@@ -1,15 +1,22 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { MdxNode } from '../../data/MdxContent';
+import MdxContent, { MdxNode } from '../../data/MdxContent';
 import styled from 'styled-components';
 import { Table, Image } from 'react-bootstrap';
+import { TemplateText, TemplateTextProps } from './TemplateText';
 
 interface Props {
   mdxNode: MdxNode;
 }
 
 export const MdxNodeRenderer = (props: Props): JSX.Element => {
+  // Short codes allow you to use components in your MDX without importing them. See: https://mdxjs.com/blog/shortcodes
+  const shortCodes = {
+    // Short code for template text.
+    TemplateText: (p: TemplateTextProps) => <TemplateText text={p.text} mdxContent={new MdxContent(props.mdxNode)} />,
+  };
+
   // You can define your own components if you'd like. See: https://mdxjs.com/getting-started#mdxprovider
   const components = {
     // p: (props: any) => <p>{props.children}</p>, // Paragraph
@@ -42,6 +49,7 @@ export const MdxNodeRenderer = (props: Props): JSX.Element => {
     // hr: (props: any) => <hr />, // Thematic break --- or ***
     // a: ({ children, ...aProps }: any) => <a {...aProps}>{children}</a>, // Link <https://mdxjs.com> or [MDX](https://mdxjs.com)
     img: (props: any) => <Image {...props} fluid rounded />, // Image ![alt](https://mdx-logo.now.sh)
+    ...shortCodes,
   };
 
   return (

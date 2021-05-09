@@ -108,22 +108,34 @@ _em: Emphasis_ `_` `*`
 
 This is a paragraph with some _Emphasis_ text. It also contains **Strong** text, as well as ~~Strikethrough~~ text. Following that, we also have some plain text `Inline Code` as well as the code `js:::let code = 'Inline JavaScript code';`, which is highlighted as JavaScript!
 
+#### Template Text Short Code
+
+The following uses the `TemplateText` short code to reference the site name (from `settings.yml`) and the content title of this post using [template tags](https://github.com/justinmahar/gatsby-starter-mdx-launchpad#template-tags):
+
+> <TemplateText text="You're reading the post called {contentTitle} and the site name is {siteName}." />
+
+```jsx
+<TemplateText text="You're reading the post called {contentTitle} and the site name is {siteName}." />
+```
+
 #### React Components
 
 Since this is an MDX page, you can use components right in your markdown!
 
-At a minimum, this means we can use Gatsby's blazing fast Link component in our markdown. 🙌 Beyond that, the sky's the limit.
+At a minimum, this means we can use Gatsby's blazing fast Link component in our markdown. 🙌
+
+Sky's the limit beyond that.
 
 ##### Examples
 
 ---
 
-Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
+Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
 
 ```md
-import { Button } from 'react-bootstrap';
+import { Link } from 'gatsby';
 
-Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
+Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
 ```
 
 ---
@@ -142,10 +154,10 @@ Spinner:
 
 ---
 
-Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
 
 ```md
-import { Link } from 'gatsby';
+import { Button } from 'react-bootstrap';
 
-Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
+Button: <Button size="sm" variant="primary" onClick={() => alert("I've been pressed!")}>Press Me!</Button>
 ```

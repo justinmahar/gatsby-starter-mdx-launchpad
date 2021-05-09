@@ -3,12 +3,12 @@ import MdxContent from '../../data/MdxContent';
 import { TemplateTagRenderer } from '../../data/TemplateTagRenderer';
 import Settings, { useSettings } from '../../settings/useSettings';
 
-interface Props {
+export interface TemplateTextProps {
   text: string;
   mdxContent?: MdxContent;
 }
 
-export const TemplateText = (props: Props): JSX.Element => {
+export const TemplateText = (props: TemplateTextProps): JSX.Element => {
   const settings: Settings = useSettings();
   let tags: TemplateTagRenderer = settings.getTemplateTagRenderer();
   if (props.mdxContent) {

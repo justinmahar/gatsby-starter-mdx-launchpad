@@ -122,6 +122,7 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
   - [Querying And Using MDX Partials](#querying-and-using-mdx-partials)
 - [Rendering Markdown For MDX Nodes](#rendering-markdown-for-mdx-nodes)
   - [Customizing Rendered Markdown](#customizing-rendered-markdown)
+    - [Adding Component Short Codes](#adding-component-short-codes)
 - [MDX Page Template](#mdx-page-template)
 - [Included Frontmatter](#included-frontmatter)
 - [Adding New Frontmatter Fields](#adding-new-frontmatter-fields)
@@ -347,6 +348,14 @@ The rendered markdown can easily be customized if you'd like, too. For instance,
 Just add your renderers for `p`, `h1`, `h2`, etc, to the `components` object in `src/components/content/MdxNodeRenderer.tsx` to customize the rendering for the tags you desire.
 
 For convenience, this file already has commented out renderers for all supported tags. Just uncomment and away you go.
+
+#### Adding Component Short Codes
+
+MDX also supports [short codes](https://mdxjs.com/blog/shortcodes). These allow you to use React components in your MDX without having to import them.
+
+For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content.
+
+Add your short codes to the `shortCodes` object in `MdxNodeRenderer.tsx`, and see the docs on [short codes](https://mdxjs.com/blog/shortcodes) for some examples.
 
 ## MDX Page Template
 
@@ -649,13 +658,15 @@ The following template tags are available:
 
 You can use the `TemplateText` helper component (`src/components/content/TemplateText.tsx`) to render text containing template tags in your MDX or elsewhere.
 
-For example: 
+This component is included as a [short code](https://mdxjs.com/blog/shortcodes) in all MDX content so you don't need to import it.
+
+For example, in your markdown you could write: 
 
 ```md
-import { TemplateText } from '../../../components/content/TemplateText.tsx';
-
 <TemplateText text="{siteName} version {siteVersion}" />
 ```
+
+This would be rendered as: `My Site Name version 0.0.1`
 
 ## PrismJS Syntax Highlighting
 
