@@ -171,7 +171,9 @@ This is a new MDX page.
 
 The only frontmatter you need for new pages is a `title`. This will cause a new page with your MDX markdown to generate at `/new-page`.
 
-You can optionally provide a `slug` for the URL, and if unspecified, a SEO-friendly slug will be automatically created from the title. See the [SEO section](#slugs-and-stop-words) for how this works.
+You can optionally provide a `slug` for the URL, and if unspecified, a SEO-friendly slug will be automatically created from the title. See the [SEO section](#slugs-and-stop-words) for how this works. 
+
+Since the slug is generated from the frontmatter and not the filename, feel free to call the file anything you'd like.
 
 See all [frontmatter options](#included-frontmatter), including `slug`, `seo`, and more.
 
