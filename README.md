@@ -663,10 +663,10 @@ This component is included as a [short code](https://mdxjs.com/blog/shortcodes) 
 For example, in your markdown you could write: 
 
 ```md
-<TemplateText text="{siteName} version {siteVersion}" />
+<TemplateText text="{contentTitle} on {siteName}" />
 ```
 
-This would be rendered as: `My Site Name version 0.0.1`
+This would be rendered as: `My Content Title on My Site Name`
 
 ## PrismJS Syntax Highlighting
 
