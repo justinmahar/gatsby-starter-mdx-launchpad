@@ -680,7 +680,7 @@ const copyrightStatement = tags.render('Copyright {year}, {siteName}');
 
 [PrismJS](https://prismjs.com/) is included for syntax highlighting support. 
 
-If you'd like to use one of the many themes available, open `gatsby-browser.js` and uncomment the theme you want to use.
+If you'd like to use one of the many [themes available](https://prismjs.com/), open `gatsby-browser.js` and uncomment the theme you want to use.
 
 For example:
 ```js
