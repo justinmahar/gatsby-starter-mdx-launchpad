@@ -61,7 +61,7 @@ See below for the main list of features.
 - **🔣 Syntax Highlighting With PrismJS**
   - [PrismJS](https://prismjs.com/) is included to make your code blocks shine in almost any language, with multiple themes available.
 - **📑 Template Tags**
-  - A simple helper is included to allow use of metadata tags such as `{siteName}` and `{siteDescription}`, with values pulled right from `settings.yml` and frontmatter.
+  - A simple helper is included to allow use of metadata tags such as `{siteName}` and `{contentTitle}`, with values pulled right from `settings.yml` and frontmatter.
 - **📦 Gatsby API ES Modules**
   - ES Module support! Comfortably use `import` and `export` keywords in your Gatsby API files.
 - **🕸️ XML Sitemap**
