@@ -5,6 +5,7 @@ import MdxContent, { MdxNode } from '../../data/MdxContent';
 import styled from 'styled-components';
 import { Table, Image } from 'react-bootstrap';
 import { TemplateText, TemplateTextProps } from './TemplateText';
+import { MdxPartial } from './MdxPartial';
 
 interface Props {
   mdxNode: MdxNode;
@@ -13,8 +14,10 @@ interface Props {
 export const MdxNodeRenderer = ({ mdxNode }: Props): JSX.Element => {
   // Short codes allow you to use components in your MDX without importing them. See: https://mdxjs.com/blog/shortcodes
   const shortCodes = {
-    // Short code for template text.
+    // Short code for template text
     TemplateText: (props: TemplateTextProps) => <TemplateText text={props.text} mdxContent={new MdxContent(mdxNode)} />,
+    // Short code for MDX partials
+    MdxPartial,
   };
 
   // Define custom markdown components here. See: https://mdxjs.com/getting-started#mdxprovider

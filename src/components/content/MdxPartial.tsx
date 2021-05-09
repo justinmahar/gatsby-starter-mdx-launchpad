@@ -3,11 +3,11 @@ import React from 'react';
 import { MdxNode } from '../../data/MdxContent';
 import { MdxNodeRenderer } from './MdxNodeRenderer';
 
-interface Props {
+export interface MdxPartialProps {
   slug: string;
 }
 
-export const MdxPartial = (props: Props): JSX.Element => {
+export const MdxPartial = (props: MdxPartialProps): JSX.Element => {
   const partialsData: any = useStaticQuery(graphql`
     query PartialsQuery {
       allMdx(filter: { frontmatter: { partial: { eq: true } } }) {

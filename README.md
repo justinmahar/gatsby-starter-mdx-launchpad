@@ -118,8 +118,8 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 - [Adding Blog Posts](#adding-blog-posts)
   - [Querying For Posts](#querying-for-posts)
 - [Adding Partial Content](#adding-partial-content)
-  - [MdxPartial Helper Component](#mdxpartial-helper-component)
-  - [Querying And Using MDX Partials](#querying-and-using-mdx-partials)
+  - [MdxPartial Component](#mdxpartial-component)
+  - [Querying MDX Partials Manually](#querying-mdx-partials-manually)
 - [Rendering Markdown For MDX Nodes](#rendering-markdown-for-mdx-nodes)
   - [Customizing Rendered Markdown](#customizing-rendered-markdown)
     - [Adding Component Short Codes](#adding-component-short-codes)
@@ -254,15 +254,11 @@ partial: true
 Content goes here!
 ```
 
-Setting `partial: true` in the frontmatter prevents the MDX from being generated as a page. We can then use the [MdxPartial helper component](#mdxpartial-helper-component), or manually query over this field, to render the content anywhere we'd like.
+Setting `partial: true` in the frontmatter prevents the MDX from being generated as a page. We can then use the [MdxPartial component](#mdxpartial-component), or manually query over this field, to render the content anywhere we'd like.
 
-### MdxPartial Helper Component
+### MdxPartial Component
 
 You can use the `MdxPartial` component (`src/components/content/MdxPartial.tsx`) to easily render any MDX partial using its `slug`, like so:
-
-```jsx
-import { MdxPartial } from '../components/content/MdxPartial';
-```
 
 ```jsx
 <MdxPartial slug="my-partial" />
@@ -270,7 +266,9 @@ import { MdxPartial } from '../components/content/MdxPartial';
 
 This component queries all partials and then finds the MDX node with the slug provided. The node is then rendered using `MdxNodeRenderer`. If no partial is found, an empty JSX element is rendered.
 
-### Querying And Using MDX Partials
+`MdxPartial` is included as a [short code](https://mdxjs.com/blog/shortcodes) in all MDX content so you don't need to import it.
+
+### Querying MDX Partials Manually
 
 MDX content partials can be manually queried for and included in any of your components like so:
 
@@ -354,7 +352,7 @@ For convenience, this file already has commented out renderers for all supported
 
 MDX also supports [short codes](https://mdxjs.com/blog/shortcodes). These allow you to use React components in your MDX without having to import them.
 
-For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content. This starter already includes a short code for [TemplateText](#using-template-tags-in-mdx-content).
+For instance, you may want to add short codes to easily support YouTube and Twitter embeds in your content. This starter already includes a short code for [TemplateText](#using-template-tags-in-mdx-content) and [MdxPartial](#mdxpartial-component).
 
 Add your short codes to the `shortCodes` object in `MdxNodeRenderer.tsx`, and see the docs on [short codes](https://mdxjs.com/blog/shortcodes) for some examples.
 
