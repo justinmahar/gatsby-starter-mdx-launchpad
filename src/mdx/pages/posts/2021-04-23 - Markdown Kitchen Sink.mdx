@@ -4,7 +4,6 @@ group: posts
 date: 2021-04-23
 ---
 
-import { Link } from 'gatsby';
 import { Button, Spinner } from 'react-bootstrap';
 
 Below, all markdown elements are present.
@@ -139,7 +138,7 @@ The following uses the `TemplateText` short code to reference the site name (fro
 
 Since this is an MDX page, you can use components right in your markdown!
 
-At a minimum, this means we can use Gatsby's blazing fast Link component in our markdown. 🙌
+At a minimum, this means we can use Gatsby's blazing fast Link component in our markdown, which is automatically imported as a [short code](https://github.com/justinmahar/gatsby-starter-mdx-launchpad#adding-component-short-codes). 🙌
 
 Sky's the limit beyond that.
 
@@ -150,8 +149,6 @@ Sky's the limit beyond that.
 Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
 
 ```md
-import { Link } from 'gatsby';
-
 Blazing fast Gatsby Link: <Link to="/">Home 🔥</Link>
 ```
 
